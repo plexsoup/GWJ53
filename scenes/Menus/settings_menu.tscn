@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/instance_scene_on_button_press.gd" type="Script" id=1]
-[ext_resource path="res://scripts/return_from_instanced_scene.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Menus/return_from_instanced_scene.gd" type="Script" id=2]
 [ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=3]
-[ext_resource path="res://scenes/LanguageBtn.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Menus/LanguageBtn.gd" type="Script" id=4]
 
 [node name="SettingsMenu" type="Control"]
 anchor_right = 1.0
@@ -33,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "MENU_KEYBINDINGS"
 script = ExtResource( 1 )
-scene_path = "res://scenes/keybinding_menu.tscn"
+scene_path = "res://scenes/Menus/keybinding_menu.tscn"
 instance_as_child = true
 
 [node name="Sensitivity" type="Button" parent="Panel/VBoxContainer"]
@@ -44,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "MENU_SENSITIVITY"
 script = ExtResource( 1 )
-scene_path = "res://scenes/input_sensitivity_menu.tscn"
+scene_path = "res://scenes/Menus/input_sensitivity_menu.tscn"
 instance_as_child = true
 
 [node name="Audio" type="Button" parent="Panel/VBoxContainer"]
@@ -55,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "MENU_AUDIO"
 script = ExtResource( 1 )
-scene_path = "res://scenes/audio_mixer_menu.tscn"
+scene_path = "res://scenes/Menus/audio_mixer_menu.tscn"
 instance_as_child = true
 
 [node name="LanguageBtn" type="OptionButton" parent="Panel/VBoxContainer"]
