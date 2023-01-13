@@ -23,7 +23,7 @@ _global_script_class_icons={
 config/name="GWJ 53 - Juicy Jam"
 config/description="Godot Wild Jam 53. Chungle-Down-Bim producer.
 "
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/Menus/main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
