@@ -1,0 +1,161 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/audio_mixing/Ultralounge.mp3" type="AudioStream" id=2]
+[ext_resource path="res://addons/audio_mixing/audio_bus_volume_slider.gd" type="Script" id=3]
+
+[node name="AudioMixerMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+margin_left = 330.0
+margin_right = 540.0
+margin_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+margin_top = 240.0
+margin_right = 210.0
+margin_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Master Volume"
+
+[node name="Label2" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+margin_top = 271.0
+margin_right = 210.0
+margin_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music Volume"
+
+[node name="Label3" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+margin_top = 302.0
+margin_right = 210.0
+margin_bottom = 329.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX Volume"
+
+[node name="Label4" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+margin_top = 333.0
+margin_right = 210.0
+margin_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Voice Volume"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]
+margin_left = 544.0
+margin_right = 694.0
+margin_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MasterVolumeContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2"]
+margin_top = 240.0
+margin_right = 150.0
+margin_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="Panel/HBoxContainer/VBoxContainer2/MasterVolumeContainer"]
+margin_right = 150.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 150, 27 )
+min_value = 0.001
+max_value = 2.0
+step = 0.01
+value = 1.0
+script = ExtResource( 3 )
+example_audio_path = NodePath("../AudioStreamPlayerMaster")
+
+[node name="AudioStreamPlayerMaster" type="AudioStreamPlayer" parent="Panel/HBoxContainer/VBoxContainer2/MasterVolumeContainer"]
+stream = ExtResource( 2 )
+
+[node name="MusicVolumeContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2"]
+margin_top = 271.0
+margin_right = 150.0
+margin_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Panel/HBoxContainer/VBoxContainer2/MusicVolumeContainer"]
+margin_right = 150.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 150, 27 )
+min_value = 0.001
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource( 3 )
+bus_name = "Music"
+example_audio_path = NodePath("../AudioStreamPlayerMusic")
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="Panel/HBoxContainer/VBoxContainer2/MusicVolumeContainer"]
+stream = ExtResource( 2 )
+bus = "Music"
+
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2"]
+margin_top = 302.0
+margin_right = 150.0
+margin_bottom = 329.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Panel/HBoxContainer/VBoxContainer2/SFXVolumeContainer"]
+margin_right = 150.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 150, 27 )
+min_value = 0.001
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource( 3 )
+bus_name = "SFX"
+example_audio_path = NodePath("../AudioStreamPlayerSFX")
+
+[node name="AudioStreamPlayerSFX" type="AudioStreamPlayer" parent="Panel/HBoxContainer/VBoxContainer2/SFXVolumeContainer"]
+stream = ExtResource( 2 )
+bus = "SFX"
+
+[node name="VoiceVolumeContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2"]
+margin_top = 333.0
+margin_right = 150.0
+margin_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VoiceVolumeSlider" type="HSlider" parent="Panel/HBoxContainer/VBoxContainer2/VoiceVolumeContainer"]
+margin_right = 150.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 150, 27 )
+min_value = 0.001
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource( 3 )
+bus_name = "Voice"
+example_audio_path = NodePath("../AudioStreamPlayerVoice")
+
+[node name="AudioStreamPlayerVoice" type="AudioStreamPlayer" parent="Panel/HBoxContainer/VBoxContainer2/VoiceVolumeContainer"]
+stream = ExtResource( 2 )
+bus = "Voice"

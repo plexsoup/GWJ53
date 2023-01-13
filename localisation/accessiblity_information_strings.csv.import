@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://localisation/accessiblity_information_strings.en.translation" ]
+
+source_file="res://localisation/accessiblity_information_strings.csv"
+dest_files=[ "res://localisation/accessiblity_information_strings.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

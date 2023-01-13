@@ -1,0 +1,10 @@
+id,en
+GAG_TITLE, Implemented Accessibility Features:
+GAG_KEYBINDING_REMAP, - the controls can be remapped
+GAG_UI_CONTROL, - the UI can be controlled via mouse or keyboard
+GAG_CONTROL_SENSITIVITY, - the sensitivity of controls can be adjusted
+GAG_DEFAULT_FONT, - the default font is easily readable
+GAG_DEFAULT_FONT_SIZE, - the default font size is chosen to be easily readable
+GAG_VOLUME_CONTROLS, "- seperate volume controls are provided for effects, speech, background and music"
+GAG_ACCESSIBILIY_INFORMATION, - information about the implemented accessibility features is provided to the user
+GAG_Accessibility_CONTACT, Feedback: milasbaumgarten@gmail.com

@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://addons/keybindings/localisation/keybinding_menu_strings.en.translation" ]
+
+source_file="res://addons/keybindings/localisation/keybinding_menu_strings.csv"
+dest_files=[ "res://addons/keybindings/localisation/keybinding_menu_strings.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

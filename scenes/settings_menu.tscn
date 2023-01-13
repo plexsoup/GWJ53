@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/instance_scene_on_button_press.gd" type="Script" id=1]
+[ext_resource path="res://scripts/return_from_instanced_scene.gd" type="Script" id=2]
+[ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=3]
+[ext_resource path="res://scenes/LanguageBtn.gd" type="Script" id=4]
+
+[node name="SettingsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+ui_element_path = NodePath("Panel/VBoxContainer/Keybindings")
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -56.0
+margin_right = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Keybindings" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 228.0
+margin_right = 266.0
+margin_bottom = 261.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MENU_KEYBINDINGS"
+script = ExtResource( 1 )
+scene_path = "res://scenes/keybinding_menu.tscn"
+instance_as_child = true
+
+[node name="Sensitivity" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 265.0
+margin_right = 266.0
+margin_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MENU_SENSITIVITY"
+script = ExtResource( 1 )
+scene_path = "res://scenes/input_sensitivity_menu.tscn"
+instance_as_child = true
+
+[node name="Audio" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 302.0
+margin_right = 266.0
+margin_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MENU_AUDIO"
+script = ExtResource( 1 )
+scene_path = "res://scenes/audio_mixer_menu.tscn"
+instance_as_child = true
+
+[node name="LanguageBtn" type="OptionButton" parent="Panel/VBoxContainer"]
+margin_top = 339.0
+margin_right = 266.0
+margin_bottom = 372.0
+text = "English"
+items = [ "English", null, false, 0, null, "Español", null, false, 1, null, "Hànyǔ", null, false, 2, null ]
+selected = 0
+script = ExtResource( 4 )
+
+[node name="ReturnButton" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -128.0
+margin_bottom = 34.0
+grow_horizontal = 0
+text = "MENU_RETURN"
+script = ExtResource( 2 )
