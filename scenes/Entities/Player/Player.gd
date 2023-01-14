@@ -1,8 +1,8 @@
 """
-Cursor (target reticle) follows mouse. Pretty simple
+Player Battle Mech for top-down shooting inherits from Entity
 """
 
-extends Sprite
+extends "res://scenes/Entities/Entity.gd"
 
 
 # Declare member variables here. Examples:
@@ -12,9 +12,10 @@ extends Sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
+	Global.player = self
+	
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	set_global_position(get_global_mouse_position())
+#func _process(delta):
+#	pass

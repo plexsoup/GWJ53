@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garage/Garage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Testing/Nav2DTest.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Menus/MenuReturnButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Maps/StreetBattle01.tscn" type="PackedScene" id=6]
 
 [node name="Testing" type="Control"]
 anchor_right = 1.0
@@ -52,6 +53,7 @@ margin_bottom = 150.0
 rect_min_size = Vector2( 75, 50 )
 text = "Scene 3 Shooter"
 script = ExtResource( 1 )
+packed_scene = ExtResource( 6 )
 
 [node name="RewardScene" type="Button" parent="CenterContainer/GridContainer"]
 margin_left = 436.0
