@@ -1,3 +1,5 @@
+tool
+
 # To note:
 # Right now the code expects that a scene is structered in the following way:
 #   Root
@@ -14,6 +16,7 @@ extends Node
 
 
 export(String, FILE, "*tscn") var scene_path
+export var packed_scene : PackedScene
 export var instance_as_child: bool = false
 
 
@@ -23,18 +26,25 @@ func _ready():
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("pressed", self, "_on_pressed")
 	
-	# TODO: assert scene exists
-	assert(ResourceLoader.exists(scene_path), 
-			"No scene exists at: " + scene_path + "!" +
-			"\nObject: " + self.name + 
-			"\nScene: " + owner.get_name())
 
+func _get_configuration_warning() -> String:
+	if packed_scene == null and scene_path == "":
+		return "Set one of the parameters: scene_path or packed_scene. packed_scene takes priority."
+	else:
+		return ""
 
 func _on_pressed():
+	var scene
+	if packed_scene == null:
+		if ResourceLoader.exists(scene_path):
+			packed_scene = load(scene_path)
+		else:
+			printerr("instance_scene_on_button.gd, problem in " + self.name + ". packed_scene or scene_path must be specified")
+	assert(packed_scene != null)
+	scene = packed_scene.instance()
 	if instance_as_child:
-		var scene = load(scene_path).instance()
 		owner.add_child(scene)
 		owner.get_child(0).visible = false
 	else:
 		#warning-ignore:RETURN_VALUE_DISCARDED
-		get_tree().change_scene(scene_path)
+		get_tree().change_scene_to(scene)
