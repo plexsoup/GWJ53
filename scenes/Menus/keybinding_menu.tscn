@@ -6,15 +6,21 @@
 
 [node name="KeybindingMenu" instance=ExtResource( 1 )]
 
-[node name="ReturnButton" type="Button" parent="." index="1"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -128.0
-margin_bottom = 34.0
+[node name="VBoxContainer" parent="Panel" index="0"]
+margin_top = 167.0
+margin_bottom = 433.0
+
+[node name="ReturnButton" type="Button" parent="Panel/VBoxContainer" index="4"]
+margin_left = 259.0
+margin_top = 216.0
+margin_right = 445.0
+margin_bottom = 266.0
 grow_horizontal = 0
+rect_min_size = Vector2( 150, 50 )
+size_flags_horizontal = 6
 text = "MENU_RETURN"
 script = ExtResource( 2 )
 
-[node name="Node" type="Node" parent="ReturnButton" index="0"]
+[node name="Node" type="Node" parent="Panel/VBoxContainer/ReturnButton" index="0"]
 script = ExtResource( 3 )
 ui_element_path = NodePath("..")

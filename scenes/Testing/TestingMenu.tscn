@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garage/Garage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Testing/Nav2DTest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Menus/return_from_instanced_scene.gd" type="Script" id=4]
+[ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=5]
 
 [node name="Testing" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
+ui_element_path = NodePath("CenterContainer/GridContainer/InventoryScene")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -18,16 +22,17 @@ anchor_bottom = 1.0
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
 margin_left = 109.0
-margin_top = 200.0
+margin_top = 125.0
 margin_right = 915.0
-margin_bottom = 399.0
+margin_bottom = 475.0
 custom_constants/vseparation = 50
 custom_constants/hseparation = 50
 columns = 2
 
 [node name="InventoryScene" type="Button" parent="CenterContainer/GridContainer"]
 margin_right = 386.0
-margin_bottom = 33.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 75, 50 )
 text = "Scene 1 Inventory"
 script = ExtResource( 1 )
 packed_scene = ExtResource( 2 )
@@ -35,38 +40,51 @@ packed_scene = ExtResource( 2 )
 [node name="MechBuilderScene" type="Button" parent="CenterContainer/GridContainer"]
 margin_left = 436.0
 margin_right = 806.0
-margin_bottom = 33.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 75, 50 )
 text = "Scene 2 Mech Builder"
 script = ExtResource( 1 )
 
 [node name="ShooterScene" type="Button" parent="CenterContainer/GridContainer"]
-margin_top = 83.0
+margin_top = 100.0
 margin_right = 386.0
-margin_bottom = 116.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 75, 50 )
 text = "Scene 3 Shooter"
 script = ExtResource( 1 )
 
 [node name="RewardScene" type="Button" parent="CenterContainer/GridContainer"]
 margin_left = 436.0
-margin_top = 83.0
+margin_top = 100.0
 margin_right = 806.0
-margin_bottom = 116.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 75, 50 )
 text = "Scene 4 Reward"
 script = ExtResource( 1 )
 
 [node name="NavTesting" type="Button" parent="CenterContainer/GridContainer"]
-margin_top = 166.0
+margin_top = 200.0
 margin_right = 386.0
-margin_bottom = 199.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 75, 50 )
 text = "Nav Testing Pathfinding"
 script = ExtResource( 1 )
 scene_path = "res://scenes/Testing/Nav2DTest.tscn"
 
 [node name="FlockTesting" type="Button" parent="CenterContainer/GridContainer"]
 margin_left = 436.0
-margin_top = 166.0
+margin_top = 200.0
 margin_right = 806.0
-margin_bottom = 199.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 75, 50 )
 text = "Swarm Testing Flocking"
 script = ExtResource( 1 )
 packed_scene = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="CenterContainer/GridContainer"]
+margin_top = 300.0
+margin_right = 386.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 75, 50 )
+text = "MENU_RETURN"
+script = ExtResource( 4 )

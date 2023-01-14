@@ -23,55 +23,61 @@ margin_left = -56.0
 margin_right = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+custom_constants/separation = 50
 alignment = 1
 
 [node name="Keybindings" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 228.0
+margin_top = 75.0
 margin_right = 266.0
-margin_bottom = 261.0
+margin_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_min_size = Vector2( 0, 50 )
 text = "MENU_KEYBINDINGS"
 script = ExtResource( 1 )
 scene_path = "res://scenes/Menus/keybinding_menu.tscn"
 instance_as_child = true
 
 [node name="Sensitivity" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 265.0
+margin_top = 175.0
 margin_right = 266.0
-margin_bottom = 298.0
+margin_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_min_size = Vector2( 0, 50 )
 text = "MENU_SENSITIVITY"
 script = ExtResource( 1 )
 scene_path = "res://scenes/Menus/input_sensitivity_menu.tscn"
 instance_as_child = true
 
 [node name="Audio" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 302.0
+margin_top = 275.0
 margin_right = 266.0
-margin_bottom = 335.0
+margin_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_min_size = Vector2( 0, 50 )
 text = "MENU_AUDIO"
 script = ExtResource( 1 )
 scene_path = "res://scenes/Menus/audio_mixer_menu.tscn"
 instance_as_child = true
 
 [node name="LanguageBtn" type="OptionButton" parent="Panel/VBoxContainer"]
-margin_top = 339.0
+margin_top = 375.0
 margin_right = 266.0
-margin_bottom = 372.0
+margin_bottom = 425.0
+rect_min_size = Vector2( 0, 50 )
 text = "English"
-items = [ "English", null, false, 0, null, "Español", null, false, 1, null, "Hànyǔ", null, false, 2, null ]
+align = 1
+items = [ "English", null, false, 0, null, "Spanish", null, false, 1, null, "Chinese", null, false, 2, null ]
 selected = 0
 script = ExtResource( 4 )
 
-[node name="ReturnButton" type="Button" parent="Panel"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -128.0
-margin_bottom = 34.0
+[node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 475.0
+margin_right = 266.0
+margin_bottom = 525.0
 grow_horizontal = 0
+rect_min_size = Vector2( 0, 50 )
 text = "MENU_RETURN"
 script = ExtResource( 2 )

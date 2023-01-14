@@ -1,4 +1,4 @@
-tool
+
 
 # To note:
 # Right now the code expects that a scene is structered in the following way:
@@ -11,7 +11,7 @@ tool
 #
 # This structure is also expected by the return_from_instanced_scene.gd script.
 
-
+tool
 extends Node
 
 
