@@ -31,7 +31,7 @@ func shoot():
 		
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if State == States.SHOOTING:
 		$Line2D.points = [ Vector2.ZERO, get_global_mouse_position() - mech.get_global_position()]
 		
