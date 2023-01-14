@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
+
+[sub_resource type="GDScript" id=4]
+resource_name = "Cursor"
+script/source = "extends Sprite
+
+
+"
+
+[sub_resource type="GDScript" id=3]
+resource_name = "BuilderCamera"
+script/source = "extends Camera2D
+
+var camera_velocity = Vector2()
+export var camera_speed = 50
+
+func _process(delta):
+	var movement := Input.get_vector(\"move_left\", \"move_right\", \"move_forwards\", \"move_backwards\")
+	movement = movement.normalized() * camera_speed
+	camera_velocity = camera_velocity.linear_interpolate(movement, delta * 10)
+	position += camera_velocity * delta
+	
+"
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.11055, 0.191283, 0.269531, 1, 0.117188, 0.117188, 0.117188, 1 )
+
+[sub_resource type="GradientTexture2D" id=2]
+gradient = SubResource( 1 )
+width = 1
+height = 16
+fill_from = Vector2( 1, 0 )
+fill_to = Vector2( 1, 1 )
+
+[node name="MechBuilder" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+min_joint_distance = 50.0
+max_joint_distance = 100.0
+
+[node name="BuildingZone" type="Node2D" parent="."]
+
+[node name="Cursor" type="Sprite" parent="BuildingZone"]
+unique_name_in_owner = true
+scale = Vector2( 0.5, 0.5 )
+script = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="BuildingZone"]
+process_priority = -50
+position = Vector2( 512, 300 )
+current = true
+script = SubResource( 3 )
+camera_speed = 500
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+texture = SubResource( 2 )
+expand = true
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Foreground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="PartsPanel" type="PanelContainer" parent="Foreground/HBoxContainer"]
+margin_right = 214.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/HBoxContainer/PartsPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 207.0
+margin_bottom = 593.0
+
+[node name="Label" type="Label" parent="Foreground/HBoxContainer/PartsPanel/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 27.0
+text = "Parts"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/HBoxContainer/PartsPanel/VBoxContainer"]
+margin_top = 31.0
+margin_right = 200.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="PartsList" type="ItemList" parent="Foreground/HBoxContainer/PartsPanel/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+margin_right = 200.0
+margin_bottom = 555.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_columns = 3
+icon_mode = 0
+
+[node name="BuildingZone" type="Control" parent="Foreground/HBoxContainer"]
+margin_left = 218.0
+margin_right = 862.0
+margin_bottom = 600.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/HBoxContainer"]
+margin_left = 866.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Info Panel" type="PanelContainer" parent="Foreground/HBoxContainer/VBoxContainer"]
+margin_right = 158.0
+margin_bottom = 563.0
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Foreground/HBoxContainer/VBoxContainer"]
+margin_top = 567.0
+margin_right = 158.0
+margin_bottom = 600.0
+text = "Go Fight!"
+
+[connection signal="item_selected" from="Foreground/HBoxContainer/PartsPanel/VBoxContainer/ScrollContainer/PartsList" to="." method="_on_PartsList_item_selected"]

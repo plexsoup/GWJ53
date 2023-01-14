@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Entities/Parts/Part.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Entities/Parts/Mobility/Wheels.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Wheels"
+description = "Some wheels to get you moving"
+icon = ExtResource( 2 )
