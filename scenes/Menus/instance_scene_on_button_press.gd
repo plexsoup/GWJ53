@@ -28,23 +28,21 @@ func _ready():
 	
 
 func _get_configuration_warning() -> String:
-	if packed_scene == null and scene_path == "":
+	if packed_scene == null and (scene_path == null or scene_path == ""):
 		return "Set one of the parameters: scene_path or packed_scene. packed_scene takes priority."
 	else:
 		return ""
 
 func _on_pressed():
-	var scene
+	
 	if packed_scene == null:
 		if ResourceLoader.exists(scene_path):
 			packed_scene = load(scene_path)
 		else:
 			printerr("instance_scene_on_button.gd, problem in " + self.name + ". packed_scene or scene_path must be specified")
-	assert(packed_scene != null)
-	scene = packed_scene.instance()
 	if instance_as_child:
-		owner.add_child(scene)
+		owner.add_child(packed_scene.instance())
 		owner.get_child(0).visible = false
 	else:
 		#warning-ignore:RETURN_VALUE_DISCARDED
-		get_tree().change_scene_to(scene)
+		get_tree().change_scene_to(packed_scene)

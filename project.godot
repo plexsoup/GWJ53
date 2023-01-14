@@ -30,6 +30,7 @@ config/icon="res://icon.png"
 [autoload]
 
 KeyPersistence="*res://addons/keybindings/key_persistence.gd"
+Global="*res://Global.gd"
 
 [editor_plugins]
 
