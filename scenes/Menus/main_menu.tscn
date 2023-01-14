@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/instance_scene_on_button_press.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
 [ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=2]
 
 [node name="MainMenu" type="Control"]
