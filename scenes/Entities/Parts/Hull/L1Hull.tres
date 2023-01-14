@@ -8,3 +8,4 @@ script = ExtResource( 2 )
 name = "Level 1 Hull"
 description = "A trusty ol thing"
 icon = ExtResource( 1 )
+power_draw = -10
