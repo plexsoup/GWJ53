@@ -3,7 +3,7 @@ DESIGN NOTES:
 	Repo: https://github.com/plexsoup/GWJ53
 	Issues: https://github.com/plexsoup/GWJ53/issues
 	Project: https://github.com/users/plexsoup/projects/2/views/1
-	
+	Figma: https://www.figma.com/file/9D4oo1ATOVsIhFqvb4oXIB/Untitled?node-id=0%3A1&t=H3yvrpDP7pCNzjnp-1
 	
 GWJ 53: Mech Repair Simulator
 1960's - 1970's era custom Muscle Mechs

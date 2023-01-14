@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Menus/return_from_instanced_scene.gd" type="Script" id=2]
 [ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Menus/LanguageBtn.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Menus/keybinding_menu.tscn" type="PackedScene" id=5]
 
 [node name="SettingsMenu" type="Control"]
 anchor_right = 1.0
@@ -35,7 +36,7 @@ grow_vertical = 2
 rect_min_size = Vector2( 0, 50 )
 text = "MENU_KEYBINDINGS"
 script = ExtResource( 1 )
-scene_path = "res://scenes/Menus/keybinding_menu.tscn"
+packed_scene = ExtResource( 5 )
 instance_as_child = true
 
 [node name="Sensitivity" type="Button" parent="Panel/VBoxContainer"]
