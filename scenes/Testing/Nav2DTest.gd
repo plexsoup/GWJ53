@@ -7,9 +7,8 @@ var nav_agent : RID
 
 var current_path = []
 
-func _process(_delta):
-	$TargetSprite.set_global_position(get_global_mouse_position())
-	
+#func _process(_delta):
+#	pass
 
 func _ready():
 	level_navigation_map = get_world_2d().get_navigation_map()
@@ -18,13 +17,13 @@ func _ready():
 	Navigation2DServer.agent_set_map(nav_agent, level_navigation_map)	
 	Navigation2DServer.agent_set_radius(nav_agent, 50)
 
-func update_nav():
-	#$Line2D.points = [actor.global_position, get_global_mouse_position()]
-	$Line2D.points = current_path
-	var optimize = true
-	current_path = Navigation2DServer.map_get_path(level_navigation_map, actor.get_global_position(), $TargetSprite.get_global_position(), optimize)
-	#nav_agent.set_target_location($Sprite.get_global_position())
-	#print(current_path)
+#func update_nav():
+#	#$Line2D.points = [actor.global_position, get_global_mouse_position()]
+#	$Line2D.points = current_path
+#	var optimize = true
+#	current_path = Navigation2DServer.map_get_path(level_navigation_map, actor.get_global_position(), $TargetSprite.get_global_position(), optimize)
+#	#nav_agent.set_target_location($Sprite.get_global_position())
+#	#print(current_path)
 
-func _on_NavUpdateTimer_timeout():
-	update_nav()
+#func _on_NavUpdateTimer_timeout():
+#	update_nav()

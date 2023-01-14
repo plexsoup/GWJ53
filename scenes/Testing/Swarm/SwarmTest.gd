@@ -8,7 +8,7 @@ var current_path
 var local_path
 var next_point : Vector2
 
-export var speed : float = 2.0
+export var speed : float = 200.0
 export var max_boids : int = 6
 export var max_swarms : int = 4
 onready var follow_target = $SwarmMother
@@ -32,7 +32,7 @@ func _process(_delta):
 	if current_path != null and current_path.size() > 2:
 		next_point = local_path[2] # look ahead an extra step
 		var velocity = Vector2.ZERO
-		velocity += next_point * speed
+		velocity += next_point.normalized() * speed
 		$SwarmMother.move_and_slide( velocity )
 
 func translate_points_to_local(pointsArr):

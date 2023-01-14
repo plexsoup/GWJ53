@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Menus/return_from_instanced_scene.gd" type="Script" id=1]
+
+[node name="MenuReturnButton" type="Button"]
+margin_top = 300.0
+margin_right = 386.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 75, 50 )
+size_flags_horizontal = 6
+text = "MENU_RETURN"
+script = ExtResource( 1 )

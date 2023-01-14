@@ -7,6 +7,8 @@ func _ready():
 	connect("pressed", self, "_on_pressed")
 
 
+
+
 func _on_pressed():
 	# quit if this is the root scene
 	if owner.get_parent() == get_tree().root:

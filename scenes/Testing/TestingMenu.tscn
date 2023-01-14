@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garage/Garage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Testing/Nav2DTest.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Menus/return_from_instanced_scene.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Menus/MenuReturnButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=5]
 
 [node name="Testing" type="Control"]
@@ -81,10 +81,6 @@ text = "Swarm Testing Flocking"
 script = ExtResource( 1 )
 packed_scene = ExtResource( 3 )
 
-[node name="Button" type="Button" parent="CenterContainer/GridContainer"]
-margin_top = 300.0
-margin_right = 386.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 75, 50 )
-text = "MENU_RETURN"
-script = ExtResource( 4 )
+[node name="MenuReturnButton" parent="CenterContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 100.0
+margin_right = 286.0
