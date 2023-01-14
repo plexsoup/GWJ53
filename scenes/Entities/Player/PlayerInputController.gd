@@ -30,7 +30,7 @@ func init(myMech):
 #func _process(delta):
 #	pass
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if mech != null and mech.State == mech.States.READY:
 		if mech.is_human_player:
 			for inputName in inputs:

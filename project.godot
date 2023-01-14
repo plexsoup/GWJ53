@@ -9,13 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BuildingPart",
+"language": "GDScript",
+"path": "res://scenes/MechBuilder/BuildingPart.gd"
+}, {
 "base": "Resource",
 "class": "Input_Settings",
 "language": "GDScript",
 "path": "res://addons/keybindings/resources/input_settings.gd"
+}, {
+"base": "Node",
+"class": "Mech",
+"language": "GDScript",
+"path": "res://scenes/MechBuilder/Mech.gd"
+}, {
+"base": "Resource",
+"class": "Part",
+"language": "GDScript",
+"path": "res://scenes/Entities/Parts/Part.gd"
 } ]
 _global_script_class_icons={
-"Input_Settings": ""
+"BuildingPart": "",
+"Input_Settings": "",
+"Mech": "",
+"Part": ""
 }
 
 [application]
@@ -95,6 +113,14 @@ shoot_alternate={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
  ]
+}
+place_part={
+"deadzone": 0.5,
+"events": [  ]
+}
+jump={
+"deadzone": 0.5,
+"events": [  ]
 }
 
 [layer_names]
