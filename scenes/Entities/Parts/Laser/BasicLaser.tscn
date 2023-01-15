@@ -16,6 +16,10 @@ one_shot = true
 wait_time = 1.5
 one_shot = true
 
+[node name="DamageTicks" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
 [node name="LaserNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = -15.0
@@ -38,6 +42,7 @@ initial_velocity_random = 0.9
 scale_amount = 4.0
 
 [node name="HurtBox" type="Area2D" parent="TargetLocation"]
+collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetLocation/HurtBox"]
@@ -45,4 +50,5 @@ shape = SubResource( 1 )
 
 [connection signal="timeout" from="ShotDurationTimer" to="." method="_on_ShotDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
+[connection signal="timeout" from="DamageTicks" to="." method="_on_DamageTicks_timeout"]
 [connection signal="body_entered" from="TargetLocation/HurtBox" to="." method="_on_HurtBox_body_entered"]

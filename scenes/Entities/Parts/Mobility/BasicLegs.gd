@@ -2,7 +2,7 @@ extends Node2D
 
 var mech : KinematicBody2D
 
-export var speed : float = 300.0
+export var speed : float = 150.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,7 +33,7 @@ func move(_delta):
 		velocity += Vector2.LEFT
 	
 	#warning-ignore:RETURN_VALUE_DISCARDED
-	mech.move_and_slide(velocity * speed * Global.game_speed)
+	mech.move_and_slide(velocity * speed / global_scale.x * Global.game_speed)
 
 	
 	
