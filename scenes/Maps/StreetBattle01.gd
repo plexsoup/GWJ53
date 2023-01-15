@@ -13,7 +13,7 @@ func _ready():
 
 func init(playerScene): # called by MechBuilderTest when user presses finished
 	playerScene.set_scale(Vector2(0.33, 0.33))
-	$Entities.add_child(playerScene)
+	$YSort/Entities.add_child(playerScene)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
