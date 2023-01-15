@@ -108,26 +108,30 @@ margin_right = 848.0
 margin_bottom = 27.0
 text = "Parts"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
 margin_top = 31.0
 margin_right = 848.0
 margin_bottom = 138.0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
+margin_right = 848.0
+margin_bottom = 107.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
+margin_right = 848.0
+margin_bottom = 107.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer/MarginContainer"]
+margin_right = 848.0
+margin_bottom = 107.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_vertical_enabled = false
 
-[node name="PartsList" type="ItemList" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/ScrollContainer"]
+[node name="PartButtons" type="HBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer/MarginContainer/ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 848.0
-margin_bottom = 107.0
-rect_min_size = Vector2( 200, 0 )
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-max_columns = 0
-same_column_width = true
-icon_mode = 0
-fixed_icon_size = Vector2( 64, 64 )
+custom_constants/separation = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer"]
 margin_left = 866.0
@@ -145,5 +149,3 @@ margin_top = 119.0
 margin_right = 158.0
 margin_bottom = 152.0
 text = "Go Fight!"
-
-[connection signal="item_selected" from="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/ScrollContainer/PartsList" to="." method="_on_PartsList_item_selected"]
