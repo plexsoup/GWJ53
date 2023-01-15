@@ -11,6 +11,10 @@ func _ready():
 	Global.current_scene = self
 
 
+func init(playerScene):
+	$Entities.add_child(playerScene)
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

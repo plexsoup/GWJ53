@@ -1,6 +1,7 @@
 extends Control
 
 onready var builder = $MechBuilder
+export var fight_scene: PackedScene
 
 func _ready():
 	var hull_part = preload("res://scenes/Entities/Parts/Hull/L1Hull.tres")
@@ -29,5 +30,11 @@ func _on_fight_pressed():
 	var mech_structure = builder.generate_mech_structure()
 	var player = mech_structure.create_entity(preload("res://scenes/Entities/Player/Player.tscn"))
 	builder.queue_free()
-	$TextureRect.show()
-	add_child(player)
+	
+	if fight_scene != null:
+		var new_arena = fight_scene.instance()
+		add_child(new_arena)
+		new_arena.init(player)
+
+#	$TextureRect.show()
+#	add_child(player)
