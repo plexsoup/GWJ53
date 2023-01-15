@@ -16,9 +16,15 @@ extends Node2D
 var mech
 #export var projectile : PackedScene
 export var beam_range : float = 200.0
+export var damage : float = 10.0
+export (Global.damage_types) var damage_type : int = Global.damage_types.ENERGY
+
+
 
 enum States { RELOADING, SHOOTING }
 var State = States.RELOADING
+
+signal hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,7 +33,14 @@ func _ready():
 
 func init(myMech):
 	mech = myMech
-	
+	if mech.is_in_group("enemies"):
+		$TargetLocation/HurtBox.set_collision_mask_bit(1, false)
+		$TargetLocation/HurtBox.set_collision_mask_bit(0, true)
+	else: # player
+		$TargetLocation/HurtBox.set_collision_mask_bit(1, true)
+		$TargetLocation/HurtBox.set_collision_mask_bit(0, false)
+		
+
 func shoot():
 	# WIP we should ask the target acquisition system for a target
 	if mech != null and mech.State == mech.States.READY:
@@ -80,5 +93,20 @@ func _on_HurtBox_body_entered(body):
 	if body != mech: # don't hurt yourself.
 		print(str(Time.get_ticks_msec()) + ": Laser Hit " + body.name  )
 
-	# TBD: figure out how to manage friendly fire, since weapons are group agnostic.
-	
+
+func hurt_target(target):
+	var impactVector = Vector2.ZERO # no knockback for beam weapon
+	if target.has_method("_on_hit"):
+		connect("hit", target, "_on_hit")
+		emit_signal("hit", damage, impactVector, damage_type)
+		# disconnect signal so they don't keep taking hits after we target someone else
+		disconnect("hit", target, "_on_hit")
+			
+
+
+func _on_DamageTicks_timeout():
+	if State == States.SHOOTING:
+		var targets = $TargetLocation/HurtBox.get_overlapping_areas()
+		if targets.size() > 0:
+			for target in targets:
+				hurt_target(target)
