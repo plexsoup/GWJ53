@@ -8,7 +8,6 @@
 [ext_resource path="res://scenes/Entities/Player/PlayerInputController.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Entities/Parts/BasicLaser.tscn" type="PackedScene" id=7]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 19.0
 
@@ -20,6 +19,7 @@ is_human_player = true
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="Appearance" index="0"]
+visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 

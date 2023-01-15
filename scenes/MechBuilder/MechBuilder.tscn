@@ -54,7 +54,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 1 )
 min_joint_distance = 50.0
-max_joint_distance = 100.0
+max_joint_distance = 150.0
 
 [node name="BuildingZone" type="Node2D" parent="."]
 
@@ -116,6 +116,7 @@ unique_name_in_owner = true
 margin_right = 200.0
 margin_bottom = 555.0
 rect_min_size = Vector2( 200, 0 )
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_columns = 3
@@ -138,7 +139,8 @@ margin_right = 158.0
 margin_bottom = 563.0
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="Foreground/HBoxContainer/VBoxContainer"]
+[node name="FightButton" type="Button" parent="Foreground/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 567.0
 margin_right = 158.0
 margin_bottom = 600.0
