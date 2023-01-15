@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
 [ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Accreditation.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Menus/return_from_instanced_scene.gd" type="Script" id=6]
 [ext_resource path="res://_common/Fonts/accessibility_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scenes/Testing/MechBuilderTest.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 7 )
@@ -42,7 +43,7 @@ grow_vertical = 2
 rect_min_size = Vector2( 75, 50 )
 text = "MENU_START_GAME"
 script = ExtResource( 1 )
-scene_path = "res://game.tscn"
+packed_scene = ExtResource( 8 )
 
 [node name="Settings" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 200.0
