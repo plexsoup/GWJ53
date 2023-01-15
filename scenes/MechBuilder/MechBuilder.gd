@@ -16,6 +16,8 @@ func _ready():
 	set_enabled_list_items()
 
 func _on_PartsList_item_selected(index):
+	if parts_list.is_item_disabled(index):
+		return
 	selected_part = parts_list.get_item_metadata(index)
 	cursor.texture = selected_part.icon
 
