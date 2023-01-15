@@ -13,6 +13,9 @@ func _ready():
 	var legs_part = preload("res://scenes/Entities/Parts/Mobility/Legs.tres")
 	for i in 2: builder.add_part_to_list(legs_part)
 	
+	var head_part = preload("res://scenes/Entities/Parts/Head/Head.tres")
+	for i in 2: builder.add_part_to_list(head_part)
+	
 	var dummy_part = Part.new()
 	dummy_part.icon = preload("res://icon.png")
 	dummy_part.name = "Test part"
