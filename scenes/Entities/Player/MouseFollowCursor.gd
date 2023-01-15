@@ -8,8 +8,8 @@ export var speed : float = 50.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	Global.player_cursor = self
+	
 
 func seek_nearest_enemy(delta):
 	var closest_enemy = Utils.get_closest_object(get_tree().get_nodes_in_group("enemies"), self)
