@@ -12,7 +12,8 @@ export var speed : float = 200.0
 export var max_boids : int = 6
 export var max_swarms : int = 4
 onready var follow_target = $SwarmMother
-var swarm_scene_path = "res://Scenes/Enemies/Swarm/SwarmTest.tscn"
+var swarm_scene_path = "res://scenes/Testing/Swarm/SwarmTest.tscn"
+
 
 enum States { INITIALIZING, READY, DEAD }
 var State = States.INITIALIZING
@@ -29,11 +30,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# move_and_slide doesn't use delta
-	if current_path != null and current_path.size() > 2:
-		next_point = local_path[2] # look ahead an extra step
-		var velocity = Vector2.ZERO
-		velocity += next_point.normalized() * speed
-		$SwarmMother.move_and_slide( velocity )
+	if current_path != null:
+		if current_path.size() > 1:
+			next_point = local_path[1] # look ahead an extra step
+			var velocity = Vector2.ZERO
+			velocity += next_point.normalized() * speed
+			$SwarmMother.move_and_slide( velocity )
 
 func translate_points_to_local(pointsArr):
 	var newArr = []
@@ -50,6 +52,7 @@ func update_nav():
 	if Global.player == null:
 		current_path = Navigation2DServer.map_get_path(level_navigation_map, actor.get_global_position(), get_global_mouse_position(), optimize)
 	else:
+		# why isn't this updating?
 		current_path = Navigation2DServer.map_get_path(level_navigation_map, actor.get_global_position(), Global.player.global_position, optimize)
 
 	local_path = translate_points_to_local(current_path)
@@ -68,6 +71,7 @@ func split_using_binary_fission():
 	# make a new swarm and give it half your boids
 	if get_parent().get_child_count() < max_swarms:
 		var newSwarm = load(swarm_scene_path).instance()
+		printerr("Warning, SwarmTest.gd loads a file from string path. May be better if preloaded, or packed_scene")
 		get_parent().add_child(newSwarm)
 		var randOffset = Vector2.ONE.rotated(rand_range(-PI, PI) * rand_range(30,50))
 		newSwarm.set_global_position(global_position)
