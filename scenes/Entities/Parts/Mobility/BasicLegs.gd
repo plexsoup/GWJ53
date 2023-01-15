@@ -2,7 +2,7 @@ extends Node2D
 
 var mech : KinematicBody2D
 
-export var speed : float = 60.0
+export var speed : float = 300.0
 
 
 # Called when the node enters the scene tree for the first time.
