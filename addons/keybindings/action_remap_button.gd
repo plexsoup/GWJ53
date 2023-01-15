@@ -41,7 +41,7 @@ func remap_action_to(event):
 func display_current_key():
 	var current_key
 	if InputMap.get_action_list(action).size() > 0:
-		current_key = InputMap.get_action_list(action)[0].as_text()
+		current_key = InputMap.get_action_list(action)[-1].as_text()
 		text = current_key + " Key"
 	else:
 		current_key = "No"

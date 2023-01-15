@@ -92,11 +92,7 @@ func set_enabled_list_items():
 
 
 func _unhandled_input(event):
-	var clicked_w_mouse = false
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			clicked_w_mouse = true
-	if event.is_action_pressed("place_part") or clicked_w_mouse:
+	if event.is_action_pressed("place_part"):
 		if not can_place_part:
 			return
 		
