@@ -37,9 +37,11 @@ func shoot():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$LaserCannon.look_at(get_global_mouse_position())
-	if State == States.SHOOTING:
-		$Line2D.points = [ Vector2.ZERO, get_global_mouse_position() - global_position]
+	if Global.player_cursor != null:
+		var mousePos = Global.player_cursor.get_global_position() # note, cursor might be on autopilot depending on Global.auto_targetting
+		$LaserCannon.look_at(mousePos)
+		if State == States.SHOOTING:
+			$Line2D.points = [ Vector2.ZERO, mousePos - global_position]
 		
 
 

@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.0
 
-[node name="SwarmMother" type="KinematicBody2D"]
+[node name="SwarmMother" type="KinematicBody2D" groups=["enemies"]]
 collision_layer = 2
 script = ExtResource( 2 )
 

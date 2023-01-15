@@ -5,7 +5,6 @@
 
 [node name="MouseFollowCursor" type="Sprite"]
 modulate = Color( 0.811765, 0.85098, 0.113725, 1 )
-position = Vector2( 852, 300 )
 scale = Vector2( 0.527254, 0.5687 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Menus/return_from_instanced_scene.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Menus/keybinding_menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Menus/accessibility_information.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=7]
+[ext_resource path="res://scenes/Menus/AutoTargettingOptionButton.gd" type="Script" id=8]
 
 [node name="SettingsMenu" type="Control"]
 anchor_right = 1.0
@@ -119,11 +120,12 @@ script = ExtResource( 1 )
 packed_scene = ExtResource( 6 )
 instance_as_child = true
 
-[node name="OptionButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="AutoTargettingOptionButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 205.0
 margin_right = 490.0
 margin_bottom = 245.0
 text = "Auto-Targetting"
+script = ExtResource( 8 )
 
 [node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 375.0
@@ -133,3 +135,5 @@ grow_horizontal = 0
 rect_min_size = Vector2( 0, 50 )
 text = "MENU_RETURN"
 script = ExtResource( 2 )
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AutoTargettingOptionButton" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AutoTargettingOptionButton" method="_on_AutoTargettingOptionButton_toggled"]
