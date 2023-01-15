@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Maps/StaticBodyBuilding.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Entities/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Maps/StreetBattle01.gd" type="Script" id=3]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -49,5 +48,3 @@ position = Vector2( -2049, 2171 )
 [node name="Entities" type="YSort" parent="."]
 
 [node name="Destructibles" type="YSort" parent="."]
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
