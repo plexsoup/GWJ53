@@ -2,6 +2,11 @@
 Basic laser.
 Might track the mouse, or maybe autotargets.
 
+Only deal damage to the thing you're currently targetting.
+No real need for collision shapes, since it doesn't penetrate.
+
+To meet accessibility requirements:
+	Every weapon needs a mouselook targetted attack and an autotarget.
 
 
 """
