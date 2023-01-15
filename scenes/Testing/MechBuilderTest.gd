@@ -29,4 +29,5 @@ func _on_fight_pressed():
 	var mech_structure = builder.generate_mech_structure()
 	var player = mech_structure.create_entity(preload("res://scenes/Entities/Player/Player.tscn"))
 	builder.queue_free()
+	$TextureRect.show()
 	add_child(player)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
+[ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=4]
 resource_name = "Cursor"
@@ -38,16 +39,6 @@ func _process(delta):
 
 "
 
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.11055, 0.191283, 0.269531, 1, 0.117188, 0.117188, 0.117188, 1 )
-
-[sub_resource type="GradientTexture2D" id=2]
-gradient = SubResource( 1 )
-width = 1
-height = 16
-fill_from = Vector2( 1, 0 )
-fill_to = Vector2( 1, 1 )
-
 [node name="MechBuilder" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,72 +68,80 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 size_flags_horizontal = 3
-texture = SubResource( 2 )
+texture = ExtResource( 2 )
 expand = true
 
 [node name="Foreground" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Foreground"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="PartsPanel" type="PanelContainer" parent="Foreground/HBoxContainer"]
-margin_right = 214.0
-margin_bottom = 600.0
+[node name="BuildingZone" type="Control" parent="Foreground/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 444.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/HBoxContainer/PartsPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Foreground/VBoxContainer"]
+margin_top = 448.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.34
+
+[node name="PartsPanel" type="PanelContainer" parent="Foreground/VBoxContainer/HBoxContainer"]
+margin_right = 862.0
+margin_bottom = 152.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 207.0
-margin_bottom = 593.0
+margin_right = 855.0
+margin_bottom = 145.0
 
-[node name="Label" type="Label" parent="Foreground/HBoxContainer/PartsPanel/VBoxContainer"]
-margin_right = 200.0
+[node name="Label" type="Label" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
+margin_right = 848.0
 margin_bottom = 27.0
 text = "Parts"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/HBoxContainer/PartsPanel/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
 margin_top = 31.0
-margin_right = 200.0
-margin_bottom = 586.0
+margin_right = 848.0
+margin_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
 
-[node name="PartsList" type="ItemList" parent="Foreground/HBoxContainer/PartsPanel/VBoxContainer/ScrollContainer"]
+[node name="PartsList" type="ItemList" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 200.0
-margin_bottom = 555.0
+margin_right = 848.0
+margin_bottom = 107.0
 rect_min_size = Vector2( 200, 0 )
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-max_columns = 3
+max_columns = 0
 icon_mode = 0
 
-[node name="BuildingZone" type="Control" parent="Foreground/HBoxContainer"]
-margin_left = 218.0
-margin_right = 862.0
-margin_bottom = 600.0
-mouse_filter = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer"]
 margin_left = 866.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 152.0
 
-[node name="Info Panel" type="PanelContainer" parent="Foreground/HBoxContainer/VBoxContainer"]
+[node name="Info Panel" type="PanelContainer" parent="Foreground/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 158.0
-margin_bottom = 563.0
+margin_bottom = 115.0
 size_flags_vertical = 3
 
-[node name="FightButton" type="Button" parent="Foreground/HBoxContainer/VBoxContainer"]
+[node name="FightButton" type="Button" parent="Foreground/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 567.0
+margin_top = 119.0
 margin_right = 158.0
-margin_bottom = 600.0
+margin_bottom = 152.0
 text = "Go Fight!"
 
-[connection signal="item_selected" from="Foreground/HBoxContainer/PartsPanel/VBoxContainer/ScrollContainer/PartsList" to="." method="_on_PartsList_item_selected"]
+[connection signal="item_selected" from="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/ScrollContainer/PartsList" to="." method="_on_PartsList_item_selected"]
