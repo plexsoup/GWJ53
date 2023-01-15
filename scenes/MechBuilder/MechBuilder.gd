@@ -2,6 +2,9 @@ extends Control
 
 export(float) var min_joint_distance # Minimum distance parts should be seperated
 export(float) var max_joint_distance # Maximum distance between connected parts
+export(PackedScene) var part_button_scene
+export(PackedScene) var building_part_scene
+export(PackedScene) var strut_scene
 
 onready var part_buttons = $"%PartButtons"
 onready var cursor : Sprite = $"%Cursor"
@@ -23,7 +26,7 @@ func _on_part_button_pressed(part_button):
 	cursor.texture = part_button.part.icon
 
 func add_part_to_list(part : Part):
-	var part_button = preload("res://scenes/MechBuilder/PartButton.tscn").instance()
+	var part_button = part_button_scene.instance()
 	part_button.part = part
 	part_buttons.add_child(part_button)
 	part_button.connect("pressed", self, "_on_part_button_pressed", [part_button])
@@ -61,7 +64,7 @@ func _process(delta):
 	
 	if can_place_part:
 		for nearby_part in nearby_parts:
-			var strut = preload("res://scenes/MechBuilder/Strut.tscn").instance()
+			var strut = strut_scene.instance()
 			strut.modulate = Color(1,1,1,0.2)
 			$BuildingZone.add_child(strut)
 			strut.length = cursor.position.distance_to(nearby_part.position)
@@ -98,7 +101,7 @@ func _unhandled_input(event):
 			return
 		
 		# Add part
-		var building_part = preload("res://scenes/MechBuilder/BuildingPart.tscn").instance()
+		var building_part = building_part_scene.instance()
 		building_part.part = selected_part
 		$BuildingZone.add_child(building_part)
 		building_part.global_position = cursor.global_position
@@ -107,7 +110,7 @@ func _unhandled_input(event):
 		# Add struts
 		var tween = create_tween().set_parallel()
 		for nearby_part in get_nearby_parts(building_part.global_position):
-			var strut = preload("res://scenes/MechBuilder/Strut.tscn").instance()
+			var strut = strut_scene.instance()
 			$BuildingZone.add_child(strut)
 			tween.tween_property(strut, "length", building_part.position.distance_to(nearby_part.position), 0.2)
 			strut.position = nearby_part.position
