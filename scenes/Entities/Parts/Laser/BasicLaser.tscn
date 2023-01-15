@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/Entities/Parts/BasicLaser.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Entities/Parts/Laser/BasicLaser.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Entities/Parts/Laser/LaserCannon.png" type="Texture" id=2]
 
 [node name="BasicLaser" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,6 +16,9 @@ one_shot = true
 [node name="LaserNoise" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="."]
+
+[node name="LaserCannon" type="Sprite" parent="."]
+texture = ExtResource( 2 )
 
 [connection signal="timeout" from="ShotDurationTimer" to="." method="_on_ShotDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

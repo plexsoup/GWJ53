@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/MechBuilder/Mech.gd"
 }, {
+"base": "Node",
+"class": "MechPart",
+"language": "GDScript",
+"path": "res://scenes/Entities/Parts/MechPart.gd"
+}, {
+"base": "Reference",
+"class": "MechStructure",
+"language": "GDScript",
+"path": "res://scenes/Entities/MechStructure.gd"
+}, {
 "base": "Resource",
 "class": "Part",
 "language": "GDScript",
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "BuildingPart": "",
 "Input_Settings": "",
 "Mech": "",
+"MechPart": "",
+"MechStructure": "",
 "Part": ""
 }
 
@@ -118,6 +130,10 @@ place_part={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
+}
+jump={
+"deadzone": 0.5,
+"events": [  ]
 }
 
 [layer_names]
