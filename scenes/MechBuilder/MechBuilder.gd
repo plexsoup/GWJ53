@@ -62,6 +62,7 @@ func _process(delta):
 	if can_place_part:
 		for nearby_part in nearby_parts:
 			var strut = preload("res://scenes/MechBuilder/Strut.tscn").instance()
+			strut.modulate = Color(1,1,1,0.2)
 			$BuildingZone.add_child(strut)
 			strut.length = cursor.position.distance_to(nearby_part.position)
 			strut.position = cursor.position
@@ -104,12 +105,13 @@ func _unhandled_input(event):
 		building_parts.append(building_part)
 		
 		# Add struts
+		var tween = create_tween().set_parallel()
 		for nearby_part in get_nearby_parts(building_part.global_position):
 			var strut = preload("res://scenes/MechBuilder/Strut.tscn").instance()
 			$BuildingZone.add_child(strut)
-			strut.length = building_part.position.distance_to(nearby_part.position)
-			strut.position = building_part.position
-			strut.look_at(nearby_part.position)
+			tween.tween_property(strut, "length", building_part.position.distance_to(nearby_part.position), 0.2)
+			strut.position = nearby_part.position
+			strut.look_at(building_part.position)
 			$BuildingZone.move_child(strut, 0)
 		
 		# Remove part from parts list
