@@ -12,25 +12,25 @@ custom_constants/separation = 20
 
 [node name="FwdBindBtn" parent="." instance=ExtResource( 1 )]
 button_name = "KEYBINDINGS_MOVE_FORWARDS"
-action_name = "ui_up"
+action_name = "move_forwards"
 
 [node name="LeftBindBtn" parent="." instance=ExtResource( 1 )]
 margin_top = 70.0
 margin_bottom = 120.0
 button_name = "KEYBINDINGS_MOVE_LEFT"
-action_name = "ui_left"
+action_name = "move_left"
 
 [node name="BackBindBtn" parent="." instance=ExtResource( 1 )]
 margin_top = 140.0
 margin_bottom = 190.0
 button_name = "KEYBINDINGS_MOVE_BACKWARDS"
-action_name = "ui_down"
+action_name = "move_backwards"
 
 [node name="RightBindBtn" parent="." instance=ExtResource( 1 )]
 margin_top = 210.0
 margin_bottom = 260.0
 button_name = "KEYBINDINGS_MOVE_RIGHT"
-action_name = "ui_right"
+action_name = "move_right"
 
 [node name="ZoomInBindBtn" parent="." instance=ExtResource( 1 )]
 margin_top = 280.0
@@ -56,10 +56,16 @@ margin_bottom = 540.0
 button_name = "KEYBINDINGS_SHOOT_ALTERNATE"
 action_name = "shoot_alternate"
 
-[node name="ReloadDefaultKeybindsButton" type="Button" parent="."]
+[node name="PlaceMechPart" parent="." instance=ExtResource( 1 )]
 margin_top = 560.0
+margin_bottom = 610.0
+button_name = "KEYBINDINGS_PLACE_PART"
+action_name = "place_part"
+
+[node name="ReloadDefaultKeybindsButton" type="Button" parent="."]
+margin_top = 630.0
 margin_right = 704.0
-margin_bottom = 593.0
+margin_bottom = 663.0
 text = "KEYBINDINGS_RELOAD_DEFAULT"
 script = ExtResource( 2 )
 
