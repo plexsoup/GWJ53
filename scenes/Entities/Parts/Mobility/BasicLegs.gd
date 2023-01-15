@@ -31,10 +31,9 @@ func move(_delta):
 		velocity += Vector2.DOWN
 	if mech.input_controller.pressed["move_left"] == true:
 		velocity += Vector2.LEFT
-		
+	
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	mech.move_and_slide(velocity * speed * Global.game_speed)
-		
-	
+
 	
 	

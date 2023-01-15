@@ -29,7 +29,7 @@ func create_entity(base_entity : PackedScene):
 		entity.shield_max += part.shield
 		var mech_part : Node
 		if part.mech_part != null:
-			part.mech_part.instance()
+			mech_part = part.mech_part.instance()
 		else:
 			var spr =  Sprite.new()
 			spr.texture = part.icon

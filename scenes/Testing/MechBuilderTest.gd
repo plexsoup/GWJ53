@@ -4,11 +4,14 @@ onready var builder = $MechBuilder
 
 func _ready():
 	var hull_part = preload("res://scenes/Entities/Parts/Hull/L1Hull.tres")
-	for i in 2:
-		builder.add_part_to_list(hull_part)
+	for i in 2: builder.add_part_to_list(hull_part)
+	
 	var wheels_part = preload("res://scenes/Entities/Parts/Mobility/Wheels.tres")
-	for i in 2:
-		builder.add_part_to_list(wheels_part)
+	for i in 2: builder.add_part_to_list(wheels_part)
+	
+	var legs_part = preload("res://scenes/Entities/Parts/Mobility/Legs.tres")
+	for i in 2: builder.add_part_to_list(legs_part)
+	
 	var dummy_part = Part.new()
 	dummy_part.icon = preload("res://icon.png")
 	dummy_part.name = "Test part"

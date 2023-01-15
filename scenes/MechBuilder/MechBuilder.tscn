@@ -60,7 +60,6 @@ max_joint_distance = 150.0
 
 [node name="Cursor" type="Sprite" parent="BuildingZone"]
 unique_name_in_owner = true
-scale = Vector2( 0.5, 0.5 )
 script = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="BuildingZone"]
