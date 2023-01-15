@@ -68,7 +68,13 @@ func _ready():
 			if subsystem.has_method("init"):
 				subsystem.init(self) # tell each module who the owner is.
 
+	custom_ready()
 	State = States.READY
+	
+
+func custom_ready():
+	#override this in descendants
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
