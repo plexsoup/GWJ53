@@ -2,7 +2,7 @@ id,en,es,zh
 MENU_START_GAME,Play,Jugar,wán
 MENU_SETTINGS,Settings,Ajustes,"shè zhì"
 MENU_QUIT,Quit,Abandonar,"tíu chū"
-MENU_ACCESSIBILITY_INFORMATION,Accessibility,Accesibilidad,"dì dào"
+MENU_ACCESSIBILITY_INFORMATION,"Accessibility Info",Accesibilidad,"dì dào"
 MENU_KEYBINDINGS,Keybindings,"Asignación de teclas","jiàn yì"
 MENU_RETURN,Return,Volver,"huí dào"
 MENU_SENSITIVITY,Sensitivity,Sensibilidad,"mǐn jiāng"

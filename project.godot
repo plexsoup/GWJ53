@@ -150,7 +150,7 @@ jump={
 
 [locale]
 
-translations=PoolStringArray( "res://addons/keybindings/localisation/keybinding_menu_strings.en.translation", "res://localisation/accessiblity_information_strings.en.translation", "res://localisation/main_menu_strings.en.translation" )
+translations=PoolStringArray( "res://localisation/accessiblity_information_strings.en.translation", "res://localisation/main_menu_strings.en.translation", "res://localisation/keybinding_menu_strings.en.translation" )
 
 [physics]
 
