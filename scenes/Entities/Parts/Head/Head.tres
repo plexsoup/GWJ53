@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Entities/Parts/Part.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Entities/Parts/Head/Head_test.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Head"
+description = ""
+icon = ExtResource( 2 )
+type = 3
+health = 0
+power_draw = 0
+armor = 0
+shield = 0

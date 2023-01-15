@@ -13,6 +13,14 @@ anims/die = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+[node name="Health" type="Node2D" parent="."]
+
+[node name="DeathTimer" type="Timer" parent="Health"]
+
+[node name="DecayTimer" type="Timer" parent="Health"]
+
+[node name="CorpseSprite" type="Sprite" parent="Health"]
+
 [node name="Appearance" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Appearance"]
@@ -26,14 +34,6 @@ anims/die = SubResource( 1 )
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Defences" type="Node2D" parent="."]
-
-[node name="Health" type="Node2D" parent="."]
-
-[node name="DeathTimer" type="Timer" parent="Health"]
-
-[node name="DecayTimer" type="Timer" parent="Health"]
-
-[node name="CorpseSprite" type="Sprite" parent="Health"]
 
 [node name="Summons" type="Node2D" parent="."]
 
