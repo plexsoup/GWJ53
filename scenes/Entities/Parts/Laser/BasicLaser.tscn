@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/Laser/BasicLaser.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Laser/LaserCannon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Entities/Parts/Laser/laserShoot.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
 
 [node name="BasicLaser" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,6 +17,8 @@ wait_time = 1.5
 one_shot = true
 
 [node name="LaserNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
 
 [node name="Line2D" type="Line2D" parent="."]
 
@@ -32,5 +37,12 @@ initial_velocity = 200.0
 initial_velocity_random = 0.9
 scale_amount = 4.0
 
+[node name="HurtBox" type="Area2D" parent="TargetLocation"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetLocation/HurtBox"]
+shape = SubResource( 1 )
+
 [connection signal="timeout" from="ShotDurationTimer" to="." method="_on_ShotDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
+[connection signal="body_entered" from="TargetLocation/HurtBox" to="." method="_on_HurtBox_body_entered"]
