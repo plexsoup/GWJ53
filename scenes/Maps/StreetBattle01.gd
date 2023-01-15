@@ -11,7 +11,7 @@ func _ready():
 	Global.current_scene = self
 
 
-func init(playerScene):
+func init(playerScene): # called by MechBuilderTest when user presses finished
 	playerScene.set_scale(Vector2(0.33, 0.33))
 	$Entities.add_child(playerScene)
 	

@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Maps/StaticBodyBuilding.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/textures/StreetBasicPlaceholder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Maps/StreetBattle01.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Entities/Enemies/ChaseMech.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Testing/Swarm/SwarmTest.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -240, 593, -953, 577, -1620, -596, -914, -611, -278, -611, 658, -550, 2552, -2513, 1846, -2506, -286, -2559, -2970, -3081, 3027, -3089, -1582, 2625, 3058, 2993, -3016, 2985, -2418, 2587, 2537, 1344, 2529, 577, 2552, -1785, 1793, 593, 1310, -550, 1294, -1256, 1823, -1815, -937, -2529, -2379, 1843, -255, 1367, 1823, 1329, -1582, 1881, 635, -1256, -278, -1302, -861, -1294, -1620, -1240, -945, -1923, -301, -1908, -953, 1344, -2280, -619, -2310, -1233 )
@@ -47,6 +49,12 @@ position = Vector2( 2147, 913 )
 position = Vector2( -2049, 2171 )
 
 [node name="Entities" type="YSort" parent="."]
+
+[node name="ChaseMech" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 272, -350 )
+
+[node name="Swarm" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 491, -364 )
 
 [node name="Destructibles" type="YSort" parent="."]
 

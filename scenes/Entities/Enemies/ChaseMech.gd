@@ -28,4 +28,6 @@ func update_nav():
 	$NavUpdateTimer.start()
 
 func _on_NavUpdateTimer_timeout():
+	if target == null and Global.player != null:
+		target = Global.player
 	update_nav()
