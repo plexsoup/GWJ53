@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
 [ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Menus/return_from_instanced_scene.gd" type="Script" id=6]
 [ext_resource path="res://_common/Fonts/accessibility_font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://scenes/Testing/MechBuilderTest.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Menus/settings_menu.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 7 )
@@ -35,9 +36,9 @@ custom_constants/separation = 25
 alignment = 1
 
 [node name="Start Game" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 125.0
-margin_right = 550.0
-margin_bottom = 175.0
+margin_top = 162.0
+margin_right = 280.0
+margin_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 75, 50 )
@@ -46,33 +47,21 @@ script = ExtResource( 1 )
 packed_scene = ExtResource( 8 )
 
 [node name="Settings" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 200.0
-margin_right = 550.0
-margin_bottom = 250.0
+margin_top = 237.0
+margin_right = 280.0
+margin_bottom = 287.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 75, 50 )
 text = "MENU_SETTINGS"
 script = ExtResource( 1 )
-scene_path = "res://scenes/Menus/settings_menu.tscn"
-instance_as_child = true
-
-[node name="Accessibility Information" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 275.0
-margin_right = 550.0
-margin_bottom = 325.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 75, 50 )
-text = "MENU_ACCESSIBILITY_INFORMATION"
-script = ExtResource( 1 )
-scene_path = "res://scenes/Menus/accessibility_information.tscn"
+packed_scene = ExtResource( 10 )
 instance_as_child = true
 
 [node name="TestingMenuBtn" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 350.0
-margin_right = 550.0
-margin_bottom = 400.0
+margin_top = 312.0
+margin_right = 280.0
+margin_bottom = 362.0
 rect_min_size = Vector2( 75, 50 )
 text = "MENU_TESTING"
 script = ExtResource( 1 )
@@ -80,9 +69,9 @@ packed_scene = ExtResource( 3 )
 instance_as_child = true
 
 [node name="QuitBtn" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 425.0
-margin_right = 550.0
-margin_bottom = 475.0
+margin_top = 387.0
+margin_right = 280.0
+margin_bottom = 437.0
 rect_min_size = Vector2( 75, 50 )
 text = "MENU_QUIT"
 script = ExtResource( 6 )
