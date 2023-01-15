@@ -32,9 +32,11 @@ func shoot():
 	# WIP we should ask the target acquisition system for a target
 	if mech != null and mech.State == mech.States.READY:
 		State = States.SHOOTING
+		$TargetLocation/HurtBox.set_deferred("disabled", false)
+
 		$Line2D.default_color = Color(1,1,0,0.66)
 		$ShotDurationTimer.start()
-		
+		$LaserNoise.play()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -69,4 +71,14 @@ func _on_ReloadTimer_timeout():
 func _on_ShotDurationTimer_timeout():
 	$Line2D.default_color = Color(0,0,0,0)
 	State = States.RELOADING
+	$LaserNoise.stop()
+	$TargetLocation/HurtBox.set_deferred("disabled", true)
 	$ReloadTimer.start()
+
+
+func _on_HurtBox_body_entered(body):
+	if body != mech: # don't hurt yourself.
+		print(str(Time.get_ticks_msec()) + ": Laser Hit " + body.name  )
+
+	# TBD: figure out how to manage friendly fire, since weapons are group agnostic.
+	
