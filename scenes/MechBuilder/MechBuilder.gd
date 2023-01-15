@@ -3,9 +3,10 @@ extends Control
 export(float) var min_joint_distance # Minimum distance parts should be seperated
 export(float) var max_joint_distance # Maximum distance between connected parts
 
-onready var parts_list : ItemList = $"%PartsList" 
+onready var part_buttons = $"%PartButtons"
 onready var cursor : Sprite = $"%Cursor"
 var selected_part : Part
+var selected_part_button = null
 var can_place_part = false
 
 var strut_hints = []
@@ -15,17 +16,17 @@ func _ready():
 	yield(Engine.get_main_loop(), "idle_frame")
 	set_enabled_list_items()
 
-func _on_PartsList_item_selected(index):
-	if parts_list.is_item_disabled(index):
-		return
-	selected_part = parts_list.get_item_metadata(index)
-	cursor.texture = selected_part.icon
+
+func _on_part_button_pressed(part_button):
+	selected_part = part_button.part
+	selected_part_button = part_button
+	cursor.texture = part_button.part.icon
 
 func add_part_to_list(part : Part):
-	parts_list.add_item(part.name, part.icon)
-	var part_index = parts_list.get_item_count()-1
-	parts_list.set_item_metadata(part_index, part)
-	parts_list.set_item_tooltip(part_index, part.description)
+	var part_button = preload("res://scenes/MechBuilder/PartButton.tscn").instance()
+	part_button.part = part
+	part_buttons.add_child(part_button)
+	part_button.connect("pressed", self, "_on_part_button_pressed", [part_button])
 
 
 # Returns an array of BuildingParts that 
@@ -70,22 +71,24 @@ func _process(delta):
 
 func set_enabled_list_items():
 	var any_hulls = false
-	var max_mobility = false
-	
+#
 	for building_part in building_parts:
 		building_part = building_part as BuildingPart
 		if building_part.part.type == Part.Type.HULL:
 			any_hulls = true
-		if building_part.part.type == Part.Type.MOBILITY:
-			max_mobility = true
 	
-	
-	for i in parts_list.get_item_count():
-		var part = parts_list.get_item_metadata(i) as Part
+	for part_button in part_buttons.get_children():
+		var part = part_button.part
 		if not any_hulls:
-			parts_list.set_item_disabled(i, part.type != Part.Type.HULL)
+			part_button.disabled = part.type != Part.Type.HULL
 		else:
-			parts_list.set_item_disabled(i, part.type == Part.Type.HULL)
+			part_button.disabled = part.type == Part.Type.HULL
+#	for i in parts_list.get_item_count():
+#		var part = parts_list.get_item_metadata(i) as Part
+#		if not any_hulls:
+#			parts_list.set_item_disabled(i, part.type != Part.Type.HULL)
+#		else:
+#			parts_list.set_item_disabled(i, part.type == Part.Type.HULL)
 
 
 func _unhandled_input(event):
@@ -110,8 +113,8 @@ func _unhandled_input(event):
 			$BuildingZone.move_child(strut, 0)
 		
 		# Remove part from parts list
-		parts_list.remove_item(parts_list.get_selected_items()[0])
-		parts_list.unselect_all()
+		
+		selected_part_button.queue_free()
 		selected_part = null
 		cursor.texture = null
 		set_enabled_list_items()
