@@ -35,7 +35,10 @@ func load_keymap() -> void:
 			keymaps[action] = temp_keymap[action]
 			# Whilst setting the keymap dictionary, we also set the
 			# correct InputMap event
-			InputMap.action_erase_events(action)
+			
+			for existing_event in InputMap.get_action_list(action):
+				if not existing_event is InputEventMouse:
+					InputMap.action_erase_event(action, existing_event)
 			InputMap.action_add_event(action, keymaps[action])
 
 

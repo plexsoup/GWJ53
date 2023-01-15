@@ -29,7 +29,9 @@ func _unhandled_key_input(event):
 
 func remap_action_to(event):
 	# We first change the event in this game instance.
-	InputMap.action_erase_events(action)
+	for existing_event in InputMap.get_action_list(action):
+		if not existing_event is InputEventMouse:
+			InputMap.action_erase_event(action, existing_event)
 	InputMap.action_add_event(action, event)
 	# And then save it to the keymaps file
 	KeyPersistence.keymaps[action] = event
