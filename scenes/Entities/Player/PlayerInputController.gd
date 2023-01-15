@@ -27,8 +27,8 @@ func init(myMech):
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(_delta):
+#	pass
 		
 
 func _unhandled_input(_event):
