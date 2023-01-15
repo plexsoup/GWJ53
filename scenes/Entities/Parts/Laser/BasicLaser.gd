@@ -14,7 +14,8 @@ To meet accessibility requirements:
 extends Node2D
 
 var mech
-export var projectile : PackedScene
+#export var projectile : PackedScene
+export var beam_range : float = 200.0
 
 enum States { RELOADING, SHOOTING }
 var State = States.RELOADING
@@ -36,13 +37,28 @@ func shoot():
 		
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
+	aim_laser(delta)
+	
+
+func aim_laser(_delta):
 	if Global.player_cursor != null:
-		var mousePos = Global.player_cursor.get_global_position() # note, cursor might be on autopilot depending on Global.auto_targetting
-		$LaserCannon.look_at(mousePos)
+		var myPos = self.global_position
+		var cursorPos = Global.player_cursor.get_global_position() # note, cursor might be on autopilot depending on Global.auto_targetting
+		var targetPos = cursorPos
+		if myPos.distance_squared_to(cursorPos) > beam_range * beam_range:
+			targetPos = myPos.direction_to(cursorPos)*beam_range
+		else:
+			targetPos = cursorPos - myPos
+			
+		$LaserCannon.look_at(targetPos + myPos)
 		if State == States.SHOOTING:
-			$Line2D.points = [ Vector2.ZERO, mousePos - global_position]
-		
+			var rescaled_target_pos = Vector2(targetPos.x / global_scale.x, targetPos.y / global_scale.y)
+			$Line2D.points = [ Vector2.ZERO, rescaled_target_pos]
+			$TargetLocation.position = rescaled_target_pos
+			$TargetLocation/CPUParticles2D.emitting = true
+		else:
+			$TargetLocation/CPUParticles2D.emitting = false
 
 
 func _on_ReloadTimer_timeout():

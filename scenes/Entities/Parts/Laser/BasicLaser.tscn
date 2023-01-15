@@ -20,5 +20,17 @@ one_shot = true
 [node name="LaserCannon" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
+[node name="TargetLocation" type="Sprite" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TargetLocation"]
+emitting = false
+amount = 16
+lifetime = 0.2
+direction = Vector2( 0, -1 )
+spread = 180.0
+initial_velocity = 200.0
+initial_velocity_random = 0.9
+scale_amount = 4.0
+
 [connection signal="timeout" from="ShotDurationTimer" to="." method="_on_ShotDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
