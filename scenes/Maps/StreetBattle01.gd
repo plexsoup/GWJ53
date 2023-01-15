@@ -12,6 +12,7 @@ func _ready():
 
 
 func init(playerScene):
+	playerScene.set_scale(Vector2(0.33, 0.33))
 	$Entities.add_child(playerScene)
 	
 	
