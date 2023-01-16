@@ -12,7 +12,7 @@
 # This structure is also expected by the return_from_instanced_scene.gd script.
 
 tool
-extends Node
+extends Button
 
 
 export(String, FILE, "*tscn") var scene_path
@@ -64,6 +64,6 @@ func _on_pressed():
 
 
 func _on_hover():
-	if has_node("HoverNoise"):
+	if has_node("HoverNoise") and disabled == false:
 		get_node("HoverNoise").play()
 		

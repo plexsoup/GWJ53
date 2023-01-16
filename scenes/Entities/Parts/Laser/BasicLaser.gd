@@ -51,7 +51,11 @@ func shoot():
 
 		$Line2D.default_color = Color(1,1,0,0.66)
 		$ShotDurationTimer.start()
-		$LaserNoise.play()
+		make_noise()
+
+func make_noise():
+	$LaserNoise.set_pitch_scale(rand_range(0.8, 1.2))
+	$LaserNoise.play()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
