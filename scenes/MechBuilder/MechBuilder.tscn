@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
+[ext_resource path="res://scenes/MechBuilder/Strut.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/MechBuilder/BuildingPart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/MechBuilder/PartButton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="GDScript" id=4]
 resource_name = "Cursor"
@@ -46,6 +49,9 @@ mouse_filter = 2
 script = ExtResource( 1 )
 min_joint_distance = 50.0
 max_joint_distance = 150.0
+part_button_scene = ExtResource( 5 )
+building_part_scene = ExtResource( 4 )
+strut_scene = ExtResource( 3 )
 
 [node name="BuildingZone" type="Node2D" parent="."]
 

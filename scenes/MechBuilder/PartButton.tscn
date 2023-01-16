@@ -10,11 +10,11 @@ size_flags_vertical = 3
 script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-margin_right = 72.0
+margin_right = 136.0
 margin_bottom = 103.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 72.0
+margin_right = 136.0
 margin_bottom = 103.0
 mouse_filter = 2
 custom_constants/margin_right = 4
@@ -25,12 +25,13 @@ custom_constants/margin_bottom = 4
 [node name="VboxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 68.0
+margin_right = 132.0
 margin_bottom = 99.0
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VboxContainer"]
-margin_right = 64.0
+margin_left = 32.0
+margin_right = 96.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 mouse_filter = 2
@@ -40,8 +41,11 @@ expand = true
 
 [node name="Label" type="Label" parent="MarginContainer/VboxContainer"]
 margin_top = 68.0
-margin_right = 64.0
+margin_right = 128.0
 margin_bottom = 95.0
+rect_min_size = Vector2( 128, 0 )
 text = "Part"
+align = 1
+autowrap = true
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
