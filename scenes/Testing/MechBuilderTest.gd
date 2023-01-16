@@ -24,6 +24,12 @@ func _ready():
 	for i in 2:
 		builder.add_part_to_list(penetrating_laser_part)
 	
+	var missile_launcher_part = preload("res://scenes/Entities/Parts/MissileLaunchers/BasicMissileLauncher.tres")
+	for i in 2:
+		builder.add_part_to_list(missile_launcher_part)
+	
+	
+	
 	var dummy_part = Part.new()
 	dummy_part.icon = preload("res://icon.png")
 	dummy_part.name = "Test part"

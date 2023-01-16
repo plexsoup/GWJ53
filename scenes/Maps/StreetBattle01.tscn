@@ -81,6 +81,8 @@ position = Vector2( -2049, 2171 )
 
 [node name="Destructibles" type="YSort" parent="YSort"]
 
+[node name="Projectiles" type="YSort" parent="YSort"]
+
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="EnemyWaveSpawner2" parent="Spawners" instance=ExtResource( 6 )]
