@@ -19,6 +19,7 @@ export(String, FILE, "*tscn") var scene_path
 export var packed_scene : PackedScene
 export var instance_as_child: bool = false
 export var quit_game : bool = false
+export var return_to_previous_screen : bool = false
 
 
 func _ready():
@@ -39,6 +40,9 @@ func _on_pressed():
 	if quit_game:
 		#if owner.get_parent() == get_tree().root:
 		get_tree().quit()
+	elif return_to_previous_screen:
+		print("owner: " + owner.name)
+		owner.queue_free()
 	
 	
 	if has_node("ClickNoise"):
