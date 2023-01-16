@@ -14,18 +14,18 @@ func init(myMech):
 	mech = myMech
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
-func move(delta):
-	if mech.State ==  mech.States.READY:
-	
-		if mech == null or mech.State == mech.States.DEAD:
-			return
-		var velocity = get_velocity(delta)
-		#warning-ignore:RETURN_VALUE_DISCARDED
-		mech.move_and_slide(velocity * Global.game_speed)
+
+
+# Entity now handles movement
+#func move(delta):
+#	if mech.State ==  mech.States.READY:
+#
+#		if mech == null or mech.State == mech.States.DEAD:
+#			return
+#		var velocity = get_velocity(delta)
+#		#warning-ignore:RETURN_VALUE_DISCARDED
+#		mech.move_and_slide(velocity * Global.game_speed)
 
 func get_velocity(_delta):
 	if mech != null and mech.State ==  mech.States.READY:

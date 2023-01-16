@@ -82,9 +82,16 @@ func custom_ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	move(delta)
+	
+func move(delta):
+	# locomotion parts need to provide the actual velocity
+	# they'll check with input_controller directly
+	
+	# multiple sets of legs should give diminishing returns, using the "Harmonic Series"
 	if has_node("Locomotion"):
 		var childNum = 1
-		var velocity_multiplier = 1.0
+		var velocity_multiplier = 0.0
 		var velocity = Vector2.ZERO
 		for child in $Locomotion.get_children():
 			if child.has_method("get_velocity"):
