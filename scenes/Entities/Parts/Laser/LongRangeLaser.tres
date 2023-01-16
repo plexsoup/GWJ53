@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Basic Laser"
-description = "Shoots a beam"
+name = "Long Range Laser"
+description = "Shoots a beam at distant targets"
 icon = ExtResource( 2 )
 mech_part = ExtResource( 3 )
 type = 2

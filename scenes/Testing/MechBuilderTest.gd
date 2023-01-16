@@ -27,6 +27,10 @@ func _ready():
 	for i in 10:
 		builder.add_part_to_list(dummy_part)
 	
+	var long_range_laser_part = preload("res://scenes/Entities/Parts/Laser/LongRangeLaser.tres")
+	for i in 2:
+		builder.add_part_to_list(long_range_laser_part)
+	
 	builder.get_node("%FightButton").connect("pressed", self, "_on_fight_pressed")
 	
 func _on_fight_pressed():
