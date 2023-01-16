@@ -105,6 +105,7 @@ func _on_ShotDurationTimer_timeout():
 func hurt_target(target):
 	var impactVector = Vector2.ZERO # no knockback for beam weapon
 	if target.has_method("_on_hit"):
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("hit", target, "_on_hit")
 		emit_signal("hit", damage, impactVector, damage_type)
 		# disconnect signal so they don't keep taking hits after we target someone else

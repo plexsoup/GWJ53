@@ -116,6 +116,9 @@ func knockback(damage, impactVector):
 	
 
 func _on_hit(damage, impactVector, damageType):
+	if State != States.READY:
+		return
+	
 	# check damage resistance first.
 	# then take damage of shields, then armor
 	var resist = damage_resistances[damageType]
@@ -142,7 +145,7 @@ func _on_finished_dying():
 func _on_DecayTimer_timeout():
 	disappear()
 
-func _on_animation_finished(anim_name):
+func _on_animation_finished(_anim_name):
 	pass
 #	if anim_name == "die":
 #		_on_finished_dying()
