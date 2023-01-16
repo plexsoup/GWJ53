@@ -89,5 +89,10 @@ position = Vector2( -213, 202 )
 [node name="SpawnSupply" parent="Spawners/EnemyWaveSpawner2" index="3"]
 resources = [ PoolStringArray( "ChaseMechSpawner" ), [ ExtResource( 4 ) ] ]
 
+[node name="CheckWinConditions" type="Node" parent="."]
+
+[node name="WinCheckTimer" type="Timer" parent="CheckWinConditions"]
+autostart = true
+
 [editable path="Spawners/EnemyWaveSpawner2"]
 [editable path="Spawners/EnemyWaveSpawner2/DeathViz"]

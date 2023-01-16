@@ -22,7 +22,7 @@ export var knockback_resistance : float = 0.0 # 1.0 == no knockback from impacts
 export var shield_max : float = 0.0
 var shield : float = shield_max
 
-enum Damage_Types { IMPACT, LASER, FIRE, SHOCK }
+var Damage_Types = Global.damage_types
 # TODO: Should sync these up with Global.damage_types
 
 
@@ -48,9 +48,9 @@ export var head : NodePath
 # applied to damage as (1-resistance) * damage
 export var damage_resistances : Dictionary = {
 	Damage_Types.IMPACT:0.0,
-	Damage_Types.SHOCK:0.0,
-	Damage_Types.FIRE:0.0,
 	Damage_Types.LASER:0.0,
+	Damage_Types.FIRE:0.0,
+	Damage_Types.SHOCK:0.0,
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -83,10 +83,19 @@ func custom_ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if has_node("Locomotion"):
+		var childNum = 1
+		var velocity_multiplier = 1.0
+		var velocity = Vector2.ZERO
 		for child in $Locomotion.get_children():
-			if child.has_method("move"):
-				child.move(delta)
-	
+			if child.has_method("get_velocity"):
+				velocity += child.get_velocity(delta)
+				velocity_multiplier += 1/childNum
+				childNum += 1
+		velocity = velocity / childNum  # normalize velocity
+		velocity *= velocity_multiplier # add diminishing returns multiplier
+		#warning-ignore:RETURN_VALUE_DISCARDED
+		move_and_slide(velocity)
+
 
 func begin_dying():
 	State = States.DYING
