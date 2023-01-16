@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Partattach.wav-b3223fe03d97687b4454dcadcd83cbae.sample"
+
+[deps]
+
+source_file="res://sfx/Partattach.wav"
+dest_files=[ "res://.import/Partattach.wav-b3223fe03d97687b4454dcadcd83cbae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
