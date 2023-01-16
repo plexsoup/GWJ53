@@ -18,12 +18,17 @@ func init(myMech):
 #func _process(delta):
 #	pass
 
-func move(_delta):
+func move(delta):
 	if mech.State ==  mech.States.READY:
 	
 		if mech == null or mech.State == mech.States.DEAD:
 			return
+		var velocity = get_velocity(delta)
+		#warning-ignore:RETURN_VALUE_DISCARDED
+		mech.move_and_slide(velocity * Global.game_speed)
 
+func get_velocity(_delta):
+	if mech != null and mech.State ==  mech.States.READY:
 		var velocity = Vector2.ZERO
 		if mech.input_controller.pressed["move_forwards"] == true:
 			velocity += Vector2.UP
@@ -33,9 +38,5 @@ func move(_delta):
 			velocity += Vector2.DOWN
 		if mech.input_controller.pressed["move_left"] == true:
 			velocity += Vector2.LEFT
-		
-		#warning-ignore:RETURN_VALUE_DISCARDED
-		mech.move_and_slide(velocity * speed / global_scale.x * Global.game_speed)
-
-	
+		return velocity * speed / global_scale.x 
 	

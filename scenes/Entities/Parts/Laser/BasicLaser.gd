@@ -17,7 +17,7 @@ var mech
 #export var projectile : PackedScene
 export var beam_range : float = 200.0
 export var damage : float = 500.0
-export (Global.damage_types) var damage_type : int = Global.damage_types.ENERGY
+export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 
 
 
