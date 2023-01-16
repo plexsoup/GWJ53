@@ -27,7 +27,9 @@ func _ready():
 	
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("pressed", self, "_on_pressed")
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("focus_entered", self, "_on_hover")
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("mouse_entered", self, "_on_hover")
 
 func _get_configuration_warning() -> String:
