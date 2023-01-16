@@ -38,7 +38,7 @@ func init(myMech, myDamage, damageType, projectileRange, lineOfSight):
 	if mech.is_in_group("enemies"):
 		set_collision_layer_bit(3, true)
 		set_collision_mask_bit(0, true)
-	else:
+	elif mech.is_human_player:
 		set_collision_layer_bit(2, true)
 		set_collision_mask_bit(1, true)
 	

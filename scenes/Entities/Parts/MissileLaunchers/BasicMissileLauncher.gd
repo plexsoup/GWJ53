@@ -54,7 +54,7 @@ func shoot():
 			State = States.RELOADING
 			$ReloadTimer.start()
 		else:
-			State = States.COCKING		
+			State = States.COCKING
 			$CockDurationTimer.start()
 		make_noise()
 		flash_muzzle()
@@ -95,7 +95,7 @@ func aim(_delta):
 			targetPos = cursorPos - myPos
 			
 		$MissileLauncherSprite.look_at(targetPos + myPos)
-		flash_muzzle()
+		
 
 
 func flash_muzzle():
