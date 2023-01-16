@@ -17,7 +17,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="DamageTicks" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.1
 autostart = true
 
 [node name="LaserNoise" type="AudioStreamPlayer2D" parent="."]
@@ -51,4 +51,3 @@ shape = SubResource( 1 )
 [connection signal="timeout" from="ShotDurationTimer" to="." method="_on_ShotDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
 [connection signal="timeout" from="DamageTicks" to="." method="_on_DamageTicks_timeout"]
-[connection signal="body_entered" from="TargetLocation/HurtBox" to="." method="_on_HurtBox_body_entered"]

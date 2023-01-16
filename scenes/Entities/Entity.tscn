@@ -20,6 +20,7 @@ anims/die = SubResource( 1 )
 z_index = 1
 
 [node name="DeathTimer" type="Timer" parent="Health"]
+one_shot = true
 
 [node name="DecayTimer" type="Timer" parent="Health"]
 
@@ -34,7 +35,7 @@ rect_scale = Vector2( 0.254482, 0.134482 )
 rect_pivot_offset = Vector2( 62.8728, 0 )
 max_value = 1.0
 step = 0.1
-value = 0.5
+value = 1.0
 texture_under = ExtResource( 3 )
 texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 4 )
@@ -59,4 +60,5 @@ texture_progress = ExtResource( 4 )
 
 [node name="TargetAcquisitionSensors" type="Node2D" parent="."]
 
+[connection signal="timeout" from="Health/DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="timeout" from="Health/DecayTimer" to="." method="_on_DecayTimer_timeout"]

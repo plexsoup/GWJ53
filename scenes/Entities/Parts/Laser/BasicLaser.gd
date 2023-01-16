@@ -16,13 +16,15 @@ extends Node2D
 var mech
 #export var projectile : PackedScene
 export var beam_range : float = 200.0
-export var damage : float = 10.0
+export var damage : float = 500.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.ENERGY
 
 
 
 enum States { RELOADING, SHOOTING }
 var State = States.RELOADING
+
+var target_locked : Node2D # probably a kinematic body
 
 signal hit
 
@@ -89,10 +91,12 @@ func _on_ShotDurationTimer_timeout():
 	$ReloadTimer.start()
 
 
-func _on_HurtBox_body_entered(body):
-	if body != mech: # don't hurt yourself.
-		print(str(Time.get_ticks_msec()) + ": Laser Hit " + body.name  )
+#func _on_HurtBox_body_entered(body):
+#	if body != mech: # don't hurt yourself.
+#		print(str(Time.get_ticks_msec()) + ": Target Acquired " + body.name  )
+#		target_locked = body
 
+		
 
 func hurt_target(target):
 	var impactVector = Vector2.ZERO # no knockback for beam weapon
@@ -106,7 +110,7 @@ func hurt_target(target):
 
 func _on_DamageTicks_timeout():
 	if State == States.SHOOTING:
-		var targets = $TargetLocation/HurtBox.get_overlapping_areas()
-		if targets.size() > 0:
-			for target in targets:
+		var possible_targets = $TargetLocation/HurtBox.get_overlapping_bodies()
+		if possible_targets.size() > 0:
+			for target in possible_targets:
 				hurt_target(target)

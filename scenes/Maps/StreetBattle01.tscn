@@ -83,9 +83,6 @@ position = Vector2( -2049, 2171 )
 
 [node name="Spawners" type="Node2D" parent="."]
 
-[node name="EnemyWaveSpawner" parent="Spawners" instance=ExtResource( 6 )]
-position = Vector2( 59, -249 )
-
 [node name="EnemyWaveSpawner2" parent="Spawners" instance=ExtResource( 6 )]
 position = Vector2( -213, 202 )
 
