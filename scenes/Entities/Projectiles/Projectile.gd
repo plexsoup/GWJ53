@@ -4,6 +4,7 @@ Basic projectile
 spawned, then travels until it reaches target position or range
 
 
+
 """
 
 extends Area2D
@@ -75,3 +76,9 @@ func _on_Projectile_body_entered(body):
 		hurt(body)
 			
 			
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "explode":
+		call_deferred("queue_free")
+		
