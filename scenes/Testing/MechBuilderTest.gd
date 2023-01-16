@@ -15,6 +15,14 @@ func _ready():
 	
 	var head_part = preload("res://scenes/Entities/Parts/Head/Head.tres")
 	for i in 2: builder.add_part_to_list(head_part)
+
+	var long_range_laser_part = preload("res://scenes/Entities/Parts/Laser/LongRangeLaser.tres")
+	for i in 2:
+		builder.add_part_to_list(long_range_laser_part)
+	
+	var penetrating_laser_part = preload("res://scenes/Entities/Parts/Laser/PenetratingLaser.tres")
+	for i in 2:
+		builder.add_part_to_list(penetrating_laser_part)
 	
 	var dummy_part = Part.new()
 	dummy_part.icon = preload("res://icon.png")
@@ -27,9 +35,7 @@ func _ready():
 	for i in 10:
 		builder.add_part_to_list(dummy_part)
 	
-	var long_range_laser_part = preload("res://scenes/Entities/Parts/Laser/LongRangeLaser.tres")
-	for i in 2:
-		builder.add_part_to_list(long_range_laser_part)
+
 	
 	builder.get_node("%FightButton").connect("pressed", self, "_on_fight_pressed")
 	
