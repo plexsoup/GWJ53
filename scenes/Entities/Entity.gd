@@ -82,7 +82,8 @@ func custom_ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move(delta)
+	if State == States.READY:
+		move(delta)
 	
 func move(delta):
 	# locomotion parts need to provide the actual velocity
