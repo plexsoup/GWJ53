@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Garagedoor-s.wav-fac670a33a6701e374939a0b3632c5e7.sample"
+
+[deps]
+
+source_file="res://sfx/Garagedoor-s.wav"
+dest_files=[ "res://.import/Garagedoor-s.wav-fac670a33a6701e374939a0b3632c5e7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -114,6 +114,6 @@ margin_top = 375.0
 margin_right = 924.0
 margin_bottom = 425.0
 text = "MENU_RETURN_TEST"
-scene_path = "res://scenes/Menus/main_menu.tscn"
+scene_path = "res://scenes/Menus/MainMenu02.tscn"
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AutoTargettingOptionButton" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AutoTargettingOptionButton" method="_on_AutoTargettingOptionButton_toggled"]

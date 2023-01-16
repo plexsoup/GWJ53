@@ -65,4 +65,4 @@ margin_top = 100.0
 margin_right = 662.0
 margin_bottom = 150.0
 text = "MENU_RETURN"
-scene_path = "res://scenes/Menus/main_menu.tscn"
+scene_path = "res://scenes/Menus/MainMenu02.tscn"
