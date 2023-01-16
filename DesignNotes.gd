@@ -8,7 +8,7 @@ DESIGN NOTES:
 GWJ 53: Mech Repair Simulator
 1960's - 1970's era custom Muscle Mechs
 
-Player repairs mechas.
+Player builds/repairs mechas.
 - adds rims, paint and spoilers
 
 Then fights the mech.

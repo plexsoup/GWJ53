@@ -22,7 +22,9 @@ export var knockback_resistance : float = 0.0 # 1.0 == no knockback from impacts
 export var shield_max : float = 0.0
 var shield : float = shield_max
 
-enum Damage_Types { IMPACT, SHOCK, FIRE, LASER }
+enum Damage_Types { IMPACT, LASER, FIRE, SHOCK }
+# TODO: Should sync these up with Global.damage_types
+
 
 enum States { INITIALIZING, READY, DYING, DEAD }
 var State = States.INITIALIZING
@@ -42,11 +44,13 @@ export var engine : NodePath
 export var legs : NodePath
 export var head : NodePath
 
+# resistance is float: 0 to 1.
+# applied to damage as (1-resistance) * damage
 export var damage_resistances : Dictionary = {
-	Damage_Types.IMPACT:0,
-	Damage_Types.SHOCK:0,
-	Damage_Types.FIRE:0,
-	Damage_Types.LASER:0,
+	Damage_Types.IMPACT:0.0,
+	Damage_Types.SHOCK:0.0,
+	Damage_Types.FIRE:0.0,
+	Damage_Types.LASER:0.0,
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -68,7 +72,13 @@ func _ready():
 			if subsystem.has_method("init"):
 				subsystem.init(self) # tell each module who the owner is.
 
+	custom_ready()
 	State = States.READY
+	
+
+func custom_ready():
+	#override this in descendants
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -79,11 +89,14 @@ func _process(delta):
 	
 
 func begin_dying():
+	State = States.DYING
 	$CollisionShape2D.set_deferred("disabled", true)
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("die"):
 		#warning-ignore:RETURN_VALUE_DISCARDED
-		$AnimationPlayer.connect("animation_finished", self, "_on_finished_dying")
+		$AnimationPlayer.connect("animation_finished", self, "_on_animation_finished")
 		$AnimationPlayer.play("die")
+		$Health/DeathTimer.start()
+		
 
 
 func die_for_real_this_time():
@@ -106,13 +119,19 @@ func _on_hit(damage, impactVector, damageType):
 	# check damage resistance first.
 	# then take damage of shields, then armor
 	var resist = damage_resistances[damageType]
-	damage = max(damage * resist, 0.0)
-	if damage > 0:
+	damage = max(damage * (1.0-resist), 0.0)
+	if damage > 0.0:
+		
 		knockback(damage, impactVector)
-	health = max(damage, 0.0)
-	if health == 0.0:
-		begin_dying()
+		health = max(health - damage, 0.0)
+		update_health_bar()
 	
+		if health <= 0.0:
+			begin_dying()
+	
+func update_health_bar():
+	if $Health.has_node("TextureProgress"):
+		$Health/TextureProgress.value = health/health_max
 
 
 func _on_finished_dying():
@@ -122,3 +141,12 @@ func _on_finished_dying():
 
 func _on_DecayTimer_timeout():
 	disappear()
+
+func _on_animation_finished(anim_name):
+	pass
+#	if anim_name == "die":
+#		_on_finished_dying()
+
+
+func _on_DeathTimer_timeout():
+	_on_finished_dying()

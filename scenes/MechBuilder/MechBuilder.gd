@@ -41,7 +41,7 @@ func get_nearby_parts(position : Vector2) -> Array:
 			nearby_parts.append(bp)
 	return nearby_parts
 
-func _process(delta):
+func _process(_delta):
 	cursor.global_position = get_global_mouse_position()
 	
 	var nearby_parts = get_nearby_parts(cursor.global_position)
