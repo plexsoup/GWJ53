@@ -39,6 +39,7 @@ tracks/0/keys = {
 
 [node name="BasicMissileLauncher" type="Node2D"]
 script = ExtResource( 1 )
+line_of_sight = true
 projectile = ExtResource( 5 )
 
 [node name="CockTimer" type="Timer" parent="."]
@@ -53,20 +54,20 @@ stream = ExtResource( 3 )
 volume_db = -15.0
 
 [node name="MissileLauncherSprite" type="Sprite" parent="."]
-position = Vector2( 2, -3 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 2, 0 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 2 )
-offset = Vector2( 176, 10 )
+offset = Vector2( 2, 1.33333 )
 
 [node name="MuzzleLocation" type="Position2D" parent="MissileLauncherSprite"]
-position = Vector2( 414, 4 )
+position = Vector2( 122.667, 1.33333 )
 scale = Vector2( 2, 2 )
 
 [node name="MuzzleFlash" type="Sprite" parent="MissileLauncherSprite"]
-visible = false
-position = Vector2( 414, 6 )
+position = Vector2( 118.667, 5.33333 )
 
 [node name="Polygon2D" type="Polygon2D" parent="MissileLauncherSprite/MuzzleFlash"]
+scale = Vector2( 0.458969, 0.458969 )
 color = Color( 1, 0.905882, 0.156863, 1 )
 polygon = PoolVector2Array( -6, -38, -42, -116, 4, -88, 42, -158, 50, -108, 136, -156, 108, -90, 196, -96, 152, -58, 304, -32, 186, -24, 352, -4, 254, 4, 284, 38, 180, 12, 218, 56, 130, 18, 148, 66, 72, 30, 78, 84, 28, 30, 2, 106 )
 
