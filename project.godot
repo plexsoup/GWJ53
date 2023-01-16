@@ -55,7 +55,7 @@ config/description="Godot Wild Jam 53. Chungle-Down-Bim producer. Jan 2023
 https://github.com/plexsoup/GWJ53
 "
 run/main_scene="res://scenes/Menus/main_menu.tscn"
-config/icon="res://icon2.png"
+config/icon="res://mascot_icon.png"
 
 [autoload]
 
