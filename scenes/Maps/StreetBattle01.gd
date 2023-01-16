@@ -9,7 +9,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.current_scene = self
-
+	init(Global.player)
 
 func init(playerScene): # called by MechBuilderTest when user presses finished
 	playerScene.set_scale(Vector2(0.33, 0.33))

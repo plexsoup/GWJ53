@@ -57,12 +57,15 @@ func _on_pressed():
 			packed_scene = load(scene_path)
 		else:
 			printerr("instance_scene_on_button.gd, problem in " + self.name + ". packed_scene or scene_path must be specified")
-	if instance_as_child:
-		owner.add_child(packed_scene.instance())
-		owner.get_child(0).visible = false
-	else:
-		#warning-ignore:RETURN_VALUE_DISCARDED
-		get_tree().change_scene_to(packed_scene)
+	
+	Global.stage_manager.change_scene_to(packed_scene)
+
+#	if instance_as_child:
+#		owner.add_child(packed_scene.instance())
+#		owner.get_child(0).visible = false
+#	else:
+#		#warning-ignore:RETURN_VALUE_DISCARDED
+#		get_tree().change_scene_to(packed_scene)
 
 
 func _on_hover():

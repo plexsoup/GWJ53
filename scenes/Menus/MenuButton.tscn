@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Menus/instance_scene_on_button_press.gd" type="Script" id=1]
+[ext_resource path="res://sfx/Mechstomp.wav" type="AudioStream" id=2]
 [ext_resource path="res://sfx/Partattach.wav" type="AudioStream" id=3]
-[ext_resource path="res://sfx/Garagedoor.wav" type="AudioStream" id=4]
 
 [node name="SceneChangeMenuBTN" type="Button"]
 margin_top = 162.0
@@ -19,5 +19,5 @@ stream = ExtResource( 3 )
 volume_db = -12.0
 
 [node name="ClickNoise" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 2 )
 volume_db = -12.0

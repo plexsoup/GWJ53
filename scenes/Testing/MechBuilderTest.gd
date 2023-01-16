@@ -51,9 +51,11 @@ func _on_fight_pressed():
 	builder.queue_free()
 	
 	if fight_scene != null:
-		var new_arena = fight_scene.instance()
-		add_child(new_arena)
-		new_arena.init(player)
+		Global.player = player
+		Global.stage_manager.change_scene_to(fight_scene)
+#		var new_arena = fight_scene.instance()
+#		add_child(new_arena)
+#		new_arena.init(player)
 
 #	$TextureRect.show()
 #	add_child(player)
