@@ -48,7 +48,7 @@ func check_win_conditions():
 	if win_requirement == Win_Requirements.LAST_SURVIVOR:
 		
 		var enemies_remain = false
-		if battle_scene.get("done_spawning_enemies") == true:
+		if battle_scene.get("done_initial_spawns") == true:
 			var possible_enemies = get_tree().get_nodes_in_group("enemies")
 			for enemy in possible_enemies:
 				if enemy.State != enemy.States.DEAD:

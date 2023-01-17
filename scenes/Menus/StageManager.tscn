@@ -37,3 +37,4 @@ script = ExtResource( 2 )
 ui_element_path = NodePath("../SceneContainer/MainMenu/VBoxContainer/Start Game")
 
 [node name="SplashImage" parent="." instance=ExtResource( 7 )]
+visible = false
