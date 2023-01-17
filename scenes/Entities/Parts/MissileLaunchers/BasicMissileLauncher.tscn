@@ -64,6 +64,7 @@ position = Vector2( 122.667, 1.33333 )
 scale = Vector2( 2, 2 )
 
 [node name="MuzzleFlash" type="Sprite" parent="MissileLauncherSprite"]
+visible = false
 position = Vector2( 118.667, 5.33333 )
 
 [node name="Polygon2D" type="Polygon2D" parent="MissileLauncherSprite/MuzzleFlash"]

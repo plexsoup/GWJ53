@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Testing/Nav2DTest.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Player/MouseFollowCursor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Entities/Enemies/ChaseMech.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Entities/Enemies/_dep_ChaseMech.tscn" type="PackedScene" id=3]
 [ext_resource path="res://_common/Materials/SmallWhiteSquare.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Testing/Swarm/SwarmTest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Entities/Player/Camera2D.tscn" type="PackedScene" id=6]
