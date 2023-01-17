@@ -55,8 +55,6 @@ func _on_pressed():
 	
 	if has_node("ClickNoise"):
 		get_node("ClickNoise").play()
-		var timer = get_tree().create_timer(1.3)
-		yield(timer, "timeout") # pause for audio
 	
 	if packed_scene == null:
 		if ResourceLoader.exists(scene_path):
