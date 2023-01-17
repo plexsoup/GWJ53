@@ -94,6 +94,7 @@ autowrap = true
 margin_top = 217.0
 margin_right = 794.0
 margin_bottom = 267.0
+text = "MENU_RETURN"
 scene_path = "res://scenes/Menus/MainMenu02.tscn"
 
 [node name="GrabFocus" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ReturnBTN" instance=ExtResource( 3 )]

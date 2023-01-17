@@ -30,7 +30,13 @@ func _ready():
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("focus_entered", self, "_on_hover")
 	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("focus_exited", self, "_on_stop_hovering")
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("mouse_entered", self, "_on_hover")
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("mouse_exited", self, "_on_stop_hovering")
+
+
 
 func _get_configuration_warning() -> String:
 	if packed_scene == null and (scene_path == null or scene_path == ""):
@@ -71,4 +77,10 @@ func _on_pressed():
 func _on_hover():
 	if has_node("HoverNoise") and disabled == false:
 		get_node("HoverNoise").play()
-		
+
+		var outline_font = ResourceLoader.load("res://_common/Fonts/RobotoBoldItalicPurpleOutline.tres")
+		#add_font_override("purple_outline", outline_font)
+		set("custom_fonts/font", outline_font)
+
+func _on_stop_hovering():
+	set("custom_fonts/font", null)
