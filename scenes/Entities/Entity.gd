@@ -32,6 +32,8 @@ var State = States.INITIALIZING
 
 var input_controller
 export var is_human_player : bool = false
+export var team : int = -1
+var targetting_cursor
 
 
 # Not sure what to do with these yet.

@@ -16,7 +16,7 @@ export var max_spawns : int = 1
 export var die_on_completion : bool = true
 export var slow_death : bool = false
 export var spawn_randomly : bool = false # if true, walk down the list of available spawns in an orderly fashion
-
+export var team : int = -1
 
 var current_spawn_num : int = 0
 var active_spawns = [] # array of object refs in case we need it for flocking or running patterns
