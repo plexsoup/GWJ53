@@ -20,7 +20,7 @@ func _ready():
 			spawner.connect("finished", self, "_on_spawner_finished")
 
 func init(playerScene): # called by MechBuilderTest when user presses finished
-	playerScene.set_scale(Vector2(0.33, 0.33))
+	playerScene.set_scale(Vector2(0.5, 0.5))
 	$YSort/Entities.add_child(playerScene)
 	
 	

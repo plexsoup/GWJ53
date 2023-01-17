@@ -17,18 +17,15 @@ collision_layer = 2
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="Appearance" index="0"]
+visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
 [node name="BasicLegs" parent="Locomotion" index="0" instance=ExtResource( 4 )]
-
-[node name="Legs" parent="Locomotion/BasicLegs" index="2"]
-visible = false
+position = Vector2( -3, 50 )
 
 [node name="BasicLaser" parent="Weapons" index="0" instance=ExtResource( 6 )]
-
-[node name="LaserCannon" parent="Weapons/BasicLaser" index="5"]
-visible = false
+position = Vector2( 4, -15 )
 
 [node name="PathfindToPlayer" parent="Input" index="0" instance=ExtResource( 3 )]
 
