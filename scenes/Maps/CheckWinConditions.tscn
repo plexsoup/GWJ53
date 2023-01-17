@@ -6,6 +6,7 @@
 script = ExtResource( 1 )
 
 [node name="WinCheckTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="WinCheckTimer" to="." method="_on_WinCheckTimer_timeout"]

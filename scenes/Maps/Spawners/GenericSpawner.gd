@@ -21,6 +21,8 @@ export var spawn_randomly : bool = false # if true, walk down the list of availa
 var current_spawn_num : int = 0
 var active_spawns = [] # array of object refs in case we need it for flocking or running patterns
 
+signal finished
+
 signal died
 
 # Called when the node enters the scene tree for the first time.
@@ -76,6 +78,9 @@ func spawn_something(spawnNum : int = -1):
 	current_spawn_num += 1
 	if current_spawn_num < max_spawns:
 		$SpawnTimer.start()
+	else:
+		print(self.name + " finished spawning")
+		emit_signal("finished")
 
 
 func die():
