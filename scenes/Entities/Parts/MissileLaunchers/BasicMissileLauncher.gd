@@ -46,7 +46,15 @@ func init(myMech):
 	mech = myMech
 
 
+func scene_finished():
+	if Global.current_scene.State == Global.current_scene.States.FINISHED:
+		return true
+
+
 func shoot():
+	if scene_finished():
+		return
+		
 	# WIP we should ask the target acquisition system for a target
 	if mech != null and mech.State == mech.States.READY:
 		shots_left -= 1
