@@ -37,22 +37,25 @@ stretch_mode = 5
 packed_scene = ExtResource( 1 )
 
 [node name="Settings" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 16.0
 margin_top = 237.0
-margin_right = 250.0
+margin_right = 234.0
 margin_bottom = 287.0
 text = "MENU_SETTINGS"
 packed_scene = ExtResource( 2 )
 
 [node name="Testing" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 64.0
 margin_top = 312.0
-margin_right = 250.0
+margin_right = 186.0
 margin_bottom = 362.0
 text = "TESTING"
 packed_scene = ExtResource( 4 )
 
 [node name="Quit" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 48.0
 margin_top = 387.0
-margin_right = 250.0
+margin_right = 202.0
 margin_bottom = 437.0
 text = "MENU_QUIT"
 quit_game = true
