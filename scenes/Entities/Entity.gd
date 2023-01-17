@@ -32,7 +32,7 @@ var State = States.INITIALIZING
 
 var input_controller
 export var is_human_player : bool = false
-export var team : int = -1
+export var team : int = -1 setget set_team, get_team
 var targetting_cursor
 
 
@@ -67,6 +67,7 @@ func _ready():
 		$Summons,
 		$Input,
 		$TargetAcquisitionSensors,
+		$Debug,
 	]
 
 	for system in systems:
@@ -82,6 +83,12 @@ func custom_ready():
 	#override this in descendants
 	pass
 
+func set_team(newTeam):
+	team = newTeam
+
+func get_team():
+	return team
+	
 
 func scene_finished():
 	if Global.current_scene.State == Global.current_scene.States.FINISHED:

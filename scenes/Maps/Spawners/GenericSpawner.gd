@@ -16,7 +16,7 @@ export var max_spawns : int = 1
 export var die_on_completion : bool = true
 export var slow_death : bool = false
 export var spawn_randomly : bool = false # if true, walk down the list of available spawns in an orderly fashion
-export var team : int = -1
+export var team : int = -1 setget set_team, get_team
 
 var current_spawn_num : int = 0
 var active_spawns = [] # array of object refs in case we need it for flocking or running patterns
@@ -41,6 +41,13 @@ func register_callback(callbackObj, callbackMethod):
 func custom_ready():
 	# override this method in inherited scenes
 	pass
+
+func set_team(newTeam):
+	team = newTeam
+	
+func get_team():
+	return team
+
 
 func get_next_spawn_name(spawnNum):
 	var ratio = float(spawnNum)/float(max_spawns)
@@ -74,6 +81,8 @@ func spawn_something(spawnNum : int = -1):
 		get_parent().add_child(spawn)
 	spawn.set_global_position(get_global_position())
 
+	if spawn.has_method("set_team"):
+		spawn.set_team(team)
 
 	current_spawn_num += 1
 	if current_spawn_num < max_spawns:

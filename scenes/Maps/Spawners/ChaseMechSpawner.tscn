@@ -5,6 +5,7 @@
 [ext_resource path="res://scenes/Entities/Enemies/ChaseMech03.tscn" type="PackedScene" id=3]
 
 [node name="ChaseMechSpawner" instance=ExtResource( 1 )]
+num_spawns_per_interval = 3
 spawn_randomly = true
 
 [node name="SpawnSupply" parent="." index="3"]

@@ -47,9 +47,12 @@ region_rect = Rect2( 454, 273, 546, 120 )
 
 [node name="EnemyWaveSpawner2" parent="Spawners" index="0"]
 num_spawns_per_interval = 3
+team = 1
 
 [node name="EnemyWaveSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
 position = Vector2( 239, -137 )
+max_spawns = 3
+team = 2
 
 [editable path="Spawners/EnemyWaveSpawner2"]
 [editable path="Spawners/EnemyWaveSpawner2/DeathViz"]

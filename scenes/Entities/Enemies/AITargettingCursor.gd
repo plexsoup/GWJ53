@@ -15,10 +15,11 @@ func _ready():
 	mech = get_parent().mech
 	
 	mech.targetting_cursor = self
+	if mech.team > -1:
+		set_modulate(Global.team_colors[mech.team])
 
-func seek_nearest_enemy():
+func identify_nearest_enemy():
 	# find the nearest mech that's not on your team and hover over them.
-	# WIP
 
 	var all_mechs = get_tree().get_nodes_in_group("enemies")
 	all_mechs.push_back(Global.player)
@@ -26,12 +27,10 @@ func seek_nearest_enemy():
 	
 	# remove the mechs on my team
 	for singleMech in all_mechs:
-		if singleMech.team == mech.team:
+		if singleMech.team != mech.team:
 			enemy_mechs.push_back(singleMech)
 	
 	var closest_enemy = Utils.get_closest_object(enemy_mechs, self)
-	
-	
 	nearest_enemy = closest_enemy
 
 
@@ -40,8 +39,9 @@ func follow_nearest_enemy(delta):
 	if nearest_enemy != null:
 		var myPos = get_global_position()
 		var enemyPos
-		enemyPos = nearest_enemy.get_global_position()
-		set_global_position(myPos.linear_interpolate(enemyPos, 0.9 * delta * speed))
+		if is_instance_valid(nearest_enemy):
+			enemyPos = nearest_enemy.get_global_position()
+			set_global_position(myPos.linear_interpolate(enemyPos, 0.9 * delta * speed))
 
 	
 func _process(delta):
@@ -52,4 +52,4 @@ func _process(delta):
 func _on_Timer_timeout():
 	if mech == null:
 		mech = get_parent().mech
-	seek_nearest_enemy()
+	identify_nearest_enemy()
