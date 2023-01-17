@@ -73,7 +73,8 @@ func shoot():
 
 func spawn_projectile():
 	var newProjectile = projectile.instance()
-	newProjectile.init(mech, damage, damage_type, projectile_range, line_of_sight)
+	var targetPos = mech.targetting_cursor.global_position
+	newProjectile.init(mech, damage, damage_type, projectile_range, line_of_sight, targetPos)
 
 	if Global.current_scene != null:
 #		if Global.current_scene.has_node("YSort/Projectiles"):
