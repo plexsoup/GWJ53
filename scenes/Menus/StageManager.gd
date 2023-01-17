@@ -11,6 +11,9 @@ func _ready():
 	$SplashImage.show()
 	Global.stage_manager = self
 	
+func change_scene(scenePathStr):
+	var packedScene = load(scenePathStr)
+	change_scene_to(packedScene)
 	
 func change_scene_to(packedScene):
 
@@ -25,6 +28,16 @@ func change_scene_to(packedScene):
 	$SceneContainer.add_child(newScene)
 	
 	$GarageDoorsTransition.open()
+
+
+func start_next_battle(playerObj):
+	var battleIdx = Global.battles_completed.size()
+	var battleName = Global.battles[battleIdx]
+	change_scene(Global.battle_scenes[battleName])
+	Global.battles_completed.append(battleName)
+
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

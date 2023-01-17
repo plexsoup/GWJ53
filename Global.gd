@@ -10,6 +10,15 @@ var player_cursor : Sprite # in battles, always use this for targetting instead 
 
 enum damage_types { IMPACT, LASER, FIRE, SHOCK }
 
+var battles = ["Desert Canyon", "Junkyard", "Old Port"]
+var battle_scenes = {
+	"Old Port":"res://scenes/Maps/StreetBattle01.tscn",
+	"Desert Canyon":"res://scenes/Maps/DesertCanyonBattle.tscn",
+	"Junkyard": "res://scenes/Maps/StreetBattle01.tscn",
+}
+var battles_completed = []
+
+
 var parts_pool := {}
 func _ready():
 	# populate the parts pool

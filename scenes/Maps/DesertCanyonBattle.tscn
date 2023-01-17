@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://WIP/desertCanyon01.png" type="Texture" id=2]
+[ext_resource path="res://WIP/desertCanyon02.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Maps/Spawners/EnemyWaveSpawner.tscn" type="PackedScene" id=4]
+
+[node name="DesesrtCanyonBattle" instance=ExtResource( 1 )]
+num_spawners = 2
+
+[node name="NavigationPolygonInstance" parent="." index="0"]
+visible = false
+
+[node name="GroundTex" parent="Ground" index="0"]
+position = Vector2( 0, -8 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 17.366, 19.172, 355.634, 377.828 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
+position = Vector2( -78, -107 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/StaticBody2D" index="0"]
+polygon = PoolVector2Array( 3995, -1554, 3601, -1615, 3213, -1309, 2676, -1377, 2207, -1921, 1738, -2207, 1194, -2281, 1024, -2390, 1044, -2091, 561, -1799, 160, -1996, -37, -1853, -1315, -1867, -1771, -2132, -2186, -2125, -2682, -1907, -3022, -1581, -3750, -1554, -3763, -3063, 3982, -3050 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/StaticBody2D" index="1"]
+position = Vector2( 122, -2087 )
+scale = Vector2( 16, 16 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 378, 10, 484, 122 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="YSort/Obstacles" index="1"]
+position = Vector2( 47, 993 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/StaticBody2D2" index="0"]
+polygon = PoolVector2Array( -4355, 998, -4369, -798, -3872, -893, -3070, -580, -2805, -689, -1989, -328, -1703, 161, -1866, 284, -1050, 474, -493, 297, 38, 433, 323, 406, 541, 501, 1473, 127, 1622, 148, 2187, -349, 4308, -274, 4342, 957 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/StaticBody2D2" index="1"]
+scale = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 454, 273, 546, 120 )
+
+[node name="EnemyWaveSpawner2" parent="Spawners" index="0"]
+num_spawns_per_interval = 3
+
+[node name="EnemyWaveSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
+position = Vector2( 239, -137 )
+
+[editable path="Spawners/EnemyWaveSpawner2"]
+[editable path="Spawners/EnemyWaveSpawner2/DeathViz"]
+[editable path="Spawners/EnemyWaveSpawner"]
+[editable path="Spawners/EnemyWaveSpawner/DeathViz"]
