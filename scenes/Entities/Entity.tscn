@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://_common/Materials/HP_progress_over.png" type="Texture" id=2]
 [ext_resource path="res://_common/Materials/HP_progress_back.png" type="Texture" id=3]
 [ext_resource path="res://_common/Materials/HP_progress_fill.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Entities/TeamLabel.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "die"
@@ -59,6 +60,16 @@ texture_progress = ExtResource( 4 )
 [node name="Input" type="Node2D" parent="."]
 
 [node name="TargetAcquisitionSensors" type="Node2D" parent="."]
+
+[node name="Debug" type="Node2D" parent="."]
+
+[node name="TeamLabel" type="Label" parent="Debug"]
+margin_left = -83.0
+margin_top = 198.0
+margin_right = 75.0
+margin_bottom = 225.0
+text = "TeamLabel"
+script = ExtResource( 5 )
 
 [connection signal="timeout" from="Health/DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="timeout" from="Health/DecayTimer" to="." method="_on_DecayTimer_timeout"]

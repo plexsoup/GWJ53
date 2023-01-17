@@ -17,7 +17,7 @@ var battle_scenes = {
 	"Junkyard": "res://scenes/Maps/StreetBattle01.tscn",
 }
 var battles_completed = []
-
+var team_colors = [Color.red, Color.blue, Color.yellow, Color.purple, Color.peru]
 
 var parts_pool := {}
 func _ready():
