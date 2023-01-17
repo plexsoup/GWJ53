@@ -81,9 +81,9 @@ func _process(delta):
 	
 
 func aim_laser(_delta):
-	if Global.player_cursor != null:
+	if mech.targetting_cursor != null:
 		var myPos = self.global_position
-		var cursorPos = Global.player_cursor.get_global_position() # note, cursor might be on autopilot depending on Global.auto_targetting
+		var cursorPos = mech.targetting_cursor.get_global_position() # note, cursor might be on autopilot depending on Global.auto_targetting
 		var targetPos = cursorPos
 		if myPos.distance_squared_to(cursorPos) > beam_range * beam_range:
 			targetPos = myPos.direction_to(cursorPos)*beam_range

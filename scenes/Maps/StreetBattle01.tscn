@@ -91,6 +91,7 @@ resources = [ PoolStringArray( "ChaseMechSpawner" ), [ ExtResource( 4 ) ] ]
 [node name="CheckWinConditions" parent="." instance=ExtResource( 5 )]
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [editable path="Spawners/EnemyWaveSpawner2"]
 [editable path="Spawners/EnemyWaveSpawner2/DeathViz"]
