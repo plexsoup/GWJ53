@@ -31,7 +31,10 @@ func change_scene_to(packedScene):
 
 
 func start_next_battle(playerObj):
-	var battleIdx = Global.battles_completed.size()
+	printerr("need looping constraints")
+	
+	var battleIdx = Global.battles_completed.size() % Global.battle_scenes.size()
+	
 	var battleName = Global.battles[battleIdx]
 	change_scene(Global.battle_scenes[battleName])
 	Global.battles_completed.append(battleName)
