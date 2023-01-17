@@ -36,3 +36,32 @@ margin_right = 605.0
 margin_bottom = 50.0
 text = "MENU_RETURN"
 scene_path = "res://scenes/Testing/MechBuilderTest.tscn"
+
+[node name="PopupDialog" type="PopupPanel" parent="."]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupDialog"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 656.0
+margin_bottom = 115.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupDialog/MarginContainer"]
+margin_right = 652.0
+margin_bottom = 111.0
+
+[node name="CongratulationsText" type="Label" parent="PopupDialog/MarginContainer/VBoxContainer"]
+margin_right = 652.0
+margin_bottom = 57.0
+text = "We defeated all the mechs in the arena.
+That's why they call us, MechBusters."
+
+[node name="ReturnToHangar" parent="PopupDialog/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_left = 189.0
+margin_top = 61.0
+margin_right = 463.0
+margin_bottom = 111.0
+text = "Return To Hangar"
+scene_path = "res://scenes/Testing/MechBuilderTest.tscn"
