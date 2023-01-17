@@ -10,9 +10,9 @@ Generic spawner,
 
 extends Node2D
 
-
+export var num_spawns_per_interval : int = 1
 export var time_between_spawns : float = 5.0
-export var max_spawns : int = 3
+export var max_spawns : int = 1
 export var die_on_completion : bool = true
 export var slow_death : bool = false
 export var spawn_randomly : bool = false # if true, walk down the list of available spawns in an orderly fashion
@@ -89,7 +89,7 @@ func die():
 
 func _on_SpawnTimer_timeout():
 	if current_spawn_num < max_spawns:
-		spawn_something(current_spawn_num)
+		spawn_something(num_spawns_per_interval)
 
 
 func _on_spawn_died(spawnObj):
