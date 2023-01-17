@@ -193,4 +193,5 @@ margin_bottom = 529.0
 rect_rotation = 89.9999
 text = "Re-roll"
 
+[connection signal="pressed" from="Foreground/FightButton" to="." method="_on_FightButton_pressed"]
 [connection signal="pressed" from="Foreground/RerollButton" to="." method="reroll_parts"]

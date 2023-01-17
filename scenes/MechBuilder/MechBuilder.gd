@@ -17,9 +17,11 @@ var strut_hints = []
 var building_parts = []
 
 func _ready():
-	add_building_part(Global.parts_pool["L1Hull"])
-	add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
-	add_building_part(Global.parts_pool["BasicLaser"], Vector2(0, -150))
+	var _discard
+	_discard = add_building_part(Global.parts_pool["L1Hull"])
+	_discard = add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
+	_discard = add_building_part(Global.parts_pool["BasicLaser"], Vector2(0, -150))
+	reroll_parts()
 	
 
 
@@ -116,7 +118,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("place_part"):
 		if not can_place_part:
 			return
-		add_building_part(selected_part, cursor.global_position)
+		var _discard = add_building_part(selected_part, cursor.global_position)
 		
 		# Remove part from parts list
 		part_buttons.erase(selected_part_button)
@@ -159,7 +161,8 @@ func reroll_parts():
 			break
 		add_part_to_list(part)
 	
-	yield(get_tree(),"idle_frame")
+	part_buttons_hbox.notification(Container.NOTIFICATION_SORT_CHILDREN)
+	
 	for part_button in part_buttons_hbox.get_children():
 		part_button = part_button as Control
 		var global_pos = part_button.rect_global_position
@@ -167,3 +170,10 @@ func reroll_parts():
 		part_buttons_hbox.get_parent().add_child(part_button)
 		part_button.rect_global_position = global_pos
 		
+
+
+func _on_FightButton_pressed():
+	var mech_structure = generate_mech_structure()
+	var player = mech_structure.create_entity(preload("res://scenes/Entities/Player/Player.tscn"))
+	Global.player = player
+	Global.stage_manager.start_next_battle(player)
