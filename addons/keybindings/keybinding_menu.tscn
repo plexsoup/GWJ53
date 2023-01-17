@@ -66,6 +66,7 @@ action_name = "place_part"
 margin_top = 630.0
 margin_right = 704.0
 margin_bottom = 663.0
+disabled = true
 text = "KEYBINDINGS_RELOAD_DEFAULT"
 script = ExtResource( 2 )
 
