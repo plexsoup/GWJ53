@@ -18,6 +18,7 @@ export(String, MULTILINE) var description : String
 export var icon : Texture
 export var mech_part : PackedScene
 export(Type) var type
+export var cost = 3
 
 # Stats that the part contributes to the mech
 export var health : int
