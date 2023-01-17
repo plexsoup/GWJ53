@@ -15,6 +15,20 @@ func _ready():
 	
 	var head_part = preload("res://scenes/Entities/Parts/Head/Head.tres")
 	for i in 2: builder.add_part_to_list(head_part)
+
+	var long_range_laser_part = preload("res://scenes/Entities/Parts/Laser/LongRangeLaser.tres")
+	for i in 2:
+		builder.add_part_to_list(long_range_laser_part)
+	
+	var penetrating_laser_part = preload("res://scenes/Entities/Parts/Laser/PenetratingLaser.tres")
+	for i in 2:
+		builder.add_part_to_list(penetrating_laser_part)
+	
+	var missile_launcher_part = preload("res://scenes/Entities/Parts/MissileLaunchers/BasicMissileLauncher.tres")
+	for i in 2:
+		builder.add_part_to_list(missile_launcher_part)
+	
+	
 	
 	var dummy_part = Part.new()
 	dummy_part.icon = preload("res://icon.png")
@@ -27,6 +41,8 @@ func _ready():
 	for i in 10:
 		builder.add_part_to_list(dummy_part)
 	
+
+	
 	builder.get_node("%FightButton").connect("pressed", self, "_on_fight_pressed")
 	
 func _on_fight_pressed():
@@ -35,9 +51,11 @@ func _on_fight_pressed():
 	builder.queue_free()
 	
 	if fight_scene != null:
-		var new_arena = fight_scene.instance()
-		add_child(new_arena)
-		new_arena.init(player)
+		Global.player = player
+		Global.stage_manager.change_scene_to(fight_scene)
+#		var new_arena = fight_scene.instance()
+#		add_child(new_arena)
+#		new_arena.init(player)
 
 #	$TextureRect.show()
 #	add_child(player)

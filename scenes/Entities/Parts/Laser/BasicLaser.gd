@@ -17,8 +17,8 @@ var mech
 #export var projectile : PackedScene
 export var beam_range : float = 200.0
 export var damage : float = 500.0
-export (Global.damage_types) var damage_type : int = Global.damage_types.ENERGY
-
+export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
+export var line_of_sight : bool = false
 
 
 enum States { RELOADING, SHOOTING }
@@ -36,12 +36,23 @@ func _ready():
 func init(myMech):
 	mech = myMech
 	if mech.is_in_group("enemies"):
-		$TargetLocation/HurtBox.set_collision_mask_bit(1, false)
-		$TargetLocation/HurtBox.set_collision_mask_bit(0, true)
+		$TargetLocation/HurtBox.set_collision_mask_bit(0, true) # player
+		$TargetLocation/HurtBox.set_collision_mask_bit(1, false) # enemies
+		$RayCast2D.set_collision_mask_bit(0, true)
+		$RayCast2D.set_collision_mask_bit(1, false)
+		
 	else: # player
 		$TargetLocation/HurtBox.set_collision_mask_bit(1, true)
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, false)
+		$RayCast2D.set_collision_mask_bit(1, true)
+		$RayCast2D.set_collision_mask_bit(0, false)
+	
+	if line_of_sight:
+		$RayCast2D.enabled = true
+	else:
+		$RayCast2D.enabled = false
 		
+
 
 func shoot():
 	# WIP we should ask the target acquisition system for a target
@@ -49,7 +60,7 @@ func shoot():
 		State = States.SHOOTING
 		$TargetLocation/HurtBox.set_deferred("disabled", false)
 
-		$Line2D.default_color = Color(1,1,0,0.66)
+		$Line2D.default_color.a = 0.66
 		$ShotDurationTimer.start()
 		make_noise()
 
@@ -76,6 +87,10 @@ func aim_laser(_delta):
 		if State == States.SHOOTING:
 			var rescaled_target_pos = Vector2(targetPos.x / global_scale.x, targetPos.y / global_scale.y)
 			$Line2D.points = [ Vector2.ZERO, rescaled_target_pos]
+			if line_of_sight:
+				$RayCast2D.set_cast_to(rescaled_target_pos)
+				if $RayCast2D.is_colliding():
+					$Line2D.points = [ Vector2.ZERO, self.to_local($RayCast2D.get_collision_point())]
 			$TargetLocation.position = rescaled_target_pos
 			$TargetLocation/CPUParticles2D.emitting = true
 		else:
@@ -88,7 +103,8 @@ func _on_ReloadTimer_timeout():
 
 
 func _on_ShotDurationTimer_timeout():
-	$Line2D.default_color = Color(0,0,0,0)
+	
+	$Line2D.default_color.a = 0
 	State = States.RELOADING
 	$LaserNoise.stop()
 	$TargetLocation/HurtBox.set_deferred("disabled", true)
@@ -105,6 +121,7 @@ func _on_ShotDurationTimer_timeout():
 func hurt_target(target):
 	var impactVector = Vector2.ZERO # no knockback for beam weapon
 	if target.has_method("_on_hit"):
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("hit", target, "_on_hit")
 		emit_signal("hit", damage, impactVector, damage_type)
 		# disconnect signal so they don't keep taking hits after we target someone else
@@ -114,7 +131,15 @@ func hurt_target(target):
 
 func _on_DamageTicks_timeout():
 	if State == States.SHOOTING:
-		var possible_targets = $TargetLocation/HurtBox.get_overlapping_bodies()
-		if possible_targets.size() > 0:
-			for target in possible_targets:
+		if line_of_sight == false: # hit only things under the target
+			var possible_targets = $TargetLocation/HurtBox.get_overlapping_bodies()
+			if possible_targets.size() > 0:
+				for target in possible_targets:
+					hurt_target(target)
+		else: # hit the first thing you touch
+			var target = $RayCast2D.get_collider()
+			if target:
 				hurt_target(target)
+				
+			
+	

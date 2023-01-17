@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Entities/Projectiles/Projectile.tscn" type="PackedScene" id=1]
+
+[node name="BasicMissile" instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 2

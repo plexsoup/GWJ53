@@ -7,14 +7,23 @@
 [ext_resource path="res://scenes/Entities/Player/PlayerInputController.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 19.0
+radius = 66.0076
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 is_human_player = true
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 73 )
 shape = SubResource( 1 )
+
+[node name="Health" parent="." index="2"]
+position = Vector2( 0, 1 )
+
+[node name="TextureProgress" parent="Health" index="3"]
+margin_top = 186.0
+margin_bottom = 226.0
+rect_scale = Vector2( 0.942998, 0.301814 )
 
 [node name="Sprite" parent="Appearance" index="0"]
 visible = false
@@ -25,3 +34,11 @@ texture = ExtResource( 4 )
 anchor_mode = 1
 
 [node name="PlayerInputController" parent="Input" index="0" instance=ExtResource( 6 )]
+
+[node name="refSprite" type="Sprite" parent="." index="13"]
+position = Vector2( -1, 64 )
+scale = Vector2( 4.10793, 4.10793 )
+
+[node name="Polygon2D" type="Polygon2D" parent="refSprite" index="0"]
+color = Color( 0.858824, 0.827451, 0.0470588, 0.231373 )
+polygon = PoolVector2Array( -23, 20, -23, -52, 24, -52, 23, 20 )

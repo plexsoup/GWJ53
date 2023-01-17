@@ -54,8 +54,9 @@ config/name="GWJ 53 - Mech Repair Simulator"
 config/description="Godot Wild Jam 53. Chungle-Down-Bim producer. Jan 2023
 https://github.com/plexsoup/GWJ53
 "
-run/main_scene="res://scenes/Menus/main_menu.tscn"
-config/icon="res://icon2.png"
+run/main_scene="res://scenes/Menus/StageManager.tscn"
+boot_splash/image="res://Art/Title screen.png"
+config/icon="res://mascot_icon.png"
 
 [autoload]
 
@@ -159,4 +160,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0156863, 0.0117647, 0.0196078, 1 )
 environment/default_environment="res://default_env.tres"
