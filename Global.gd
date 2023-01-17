@@ -9,3 +9,12 @@ var auto_targetting: bool = false # false = binding twin-stick roguelite, true =
 var player_cursor : Sprite # in battles, always use this for targetting instead of get_global_mouse_position()
 
 enum damage_types { IMPACT, LASER, FIRE, SHOCK }
+
+var battles = ["Desert Canyon", "Junkyard", "Old Port"]
+var battle_scenes = {
+	"Old Port":"res://scenes/Maps/StreetBattle01.tscn",
+	"Desert Canyon":"res://scenes/Maps/DesertCanyonBattle.tscn",
+	"Junkyard": "res://scenes/Maps/StreetBattle01.tscn",
+}
+var battles_completed = []
+

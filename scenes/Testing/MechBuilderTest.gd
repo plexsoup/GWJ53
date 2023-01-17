@@ -52,7 +52,7 @@ func _on_fight_pressed():
 	
 	if fight_scene != null:
 		Global.player = player
-		Global.stage_manager.change_scene_to(fight_scene)
+		Global.stage_manager.start_next_battle(player)
 #		var new_arena = fight_scene.instance()
 #		add_child(new_arena)
 #		new_arena.init(player)
