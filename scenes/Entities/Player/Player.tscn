@@ -12,6 +12,7 @@ radius = 66.0076
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 is_human_player = true
+team = 0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 73 )

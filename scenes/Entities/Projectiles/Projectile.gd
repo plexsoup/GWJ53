@@ -14,6 +14,7 @@ var damage : float
 var damage_type : int # see Global.damage_types
 var projectile_range : float
 var line_of_sight : bool
+var target_location : Vector2
 var speed : float = 600.0
 var velocity : Vector2
 
@@ -29,12 +30,13 @@ func _ready():
 	pass # Replace with function body.
 
 
-func init(myMech, myDamage, damageType, projectileRange, lineOfSight):
+func init(myMech, myDamage, damageType, projectileRange, lineOfSight, targetLocation):
 	mech = myMech
 	damage = myDamage
 	damage_type = damageType
 	projectile_range = projectileRange
 	line_of_sight = lineOfSight
+	target_location = targetLocation
 	
 	if mech.is_in_group("enemies"):
 		set_collision_layer_bit(3, true)
