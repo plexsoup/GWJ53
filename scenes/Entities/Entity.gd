@@ -40,8 +40,10 @@ var targetting_cursor
 # Each mech will have plugins for a variety of functions
 # could be slots, hardpoints, or whatever
 # nodes that have their own functionality
-export var primary_weapon : NodePath 
-export var alternate_weapon : NodePath 
+
+#export var primary_weapon : NodePath 
+#export var alternate_weapon : NodePath 
+
 export var engine : NodePath
 export var legs : NodePath
 export var head : NodePath

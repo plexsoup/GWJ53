@@ -1,5 +1,5 @@
 """
-Cursor (target reticle) follows mouse. Pretty simple
+Cursor moves onto the closest enemy, so weapons can point toward it.
 """
 
 extends Sprite
