@@ -80,8 +80,17 @@ func custom_ready():
 	#override this in descendants
 	pass
 
+
+func scene_finished():
+	if Global.current_scene.State == Global.current_scene.States.FINISHED:
+		return true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if scene_finished():
+		return
+	
 	if State == States.READY:
 		move(delta)
 	

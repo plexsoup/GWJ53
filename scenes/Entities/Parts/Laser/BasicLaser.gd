@@ -53,8 +53,15 @@ func init(myMech):
 		$RayCast2D.enabled = false
 		
 
+func scene_finished():
+	if Global.current_scene.State == Global.current_scene.States.FINISHED:
+		return true
+	
 
 func shoot():
+	if scene_finished():
+		return
+		
 	# WIP we should ask the target acquisition system for a target
 	if mech != null and mech.State == mech.States.READY:
 		State = States.SHOOTING
