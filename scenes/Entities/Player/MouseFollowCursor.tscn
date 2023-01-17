@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://_common/Materials/white_target.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Entities/Player/MouseFollowCursor.gd" type="Script" id=2]
+
+[node name="MouseFollowCursor" type="Sprite"]
+modulate = Color( 0.811765, 0.85098, 0.113725, 1 )
+scale = Vector2( 0.527254, 0.5687 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )

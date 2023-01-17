@@ -1,9 +1,9 @@
 id,en,es,zh
-MENU_START_GAME,Play,Jugar,wán
-MENU_SETTINGS,Settings,Ajustes,"shè zhì"
-MENU_QUIT,Quit,Abandonar,"tíu chū"
-MENU_ACCESSIBILITY_INFORMATION,Accessibility,Accesibilidad,"dì dào"
-MENU_KEYBINDINGS,Keybindings,"Asignación de teclas","jiàn yì"
-MENU_RETURN,Return,Volver,"huí dào"
-MENU_SENSITIVITY,Sensitivity,Sensibilidad,"mǐn jiāng"
-MENU_AUDIO,Audio,Audio,"yīn yuè"
+MENU_START_GAME,PLAY,Jugar,wán
+MENU_SETTINGS,SETTINGS,Ajustes,"shè zhì"
+MENU_QUIT,QUIT,Abandonar,"tíu chū"
+MENU_ACCESSIBILITY_INFORMATION,"ACCESSIBILITY INFO",Accesibilidad,"dì dào"
+MENU_KEYBINDINGS,KEYBINDINGS,"Asignación de teclas","jiàn yì"
+MENU_RETURN,RETURN,Volver,"huí dào"
+MENU_SENSITIVITY,SENSITIVITY,Sensibilidad,"mǐn jiāng"
+MENU_AUDIO,AUDIO,Audio,"yīn yuè"

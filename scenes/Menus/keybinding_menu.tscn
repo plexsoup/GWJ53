@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Menus/MenuReturnButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/keybindings/keybinding_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=3]
+[ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=4]
+[ext_resource path="res://scenes/Menus/MenuButton.tscn" type="PackedScene" id=5]
+
+[node name="KeybindingMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+follow_focus = true
+scroll_vertical = 100
+
+[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer"]
+margin_top = -100.0
+margin_right = 1012.0
+margin_bottom = 663.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/CenterContainer"]
+margin_left = 154.0
+margin_right = 858.0
+margin_bottom = 763.0
+custom_constants/separation = 50
+
+[node name="KeybindingMenu" parent="ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 704.0
+margin_bottom = 663.0
+
+[node name="MenuReturnButton" parent="ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+visible = false
+margin_left = 259.0
+margin_top = 713.0
+margin_right = 445.0
+margin_bottom = 763.0
+
+[node name="Return" parent="ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 713.0
+margin_right = 704.0
+margin_bottom = 763.0
+text = "MENU_RETURN"
+scene_path = "res://scenes/Menus/MainMenu02.tscn"
+
+[node name="SetMouseFocus" type="Node" parent="."]
+script = ExtResource( 3 )
+ui_element_path = NodePath("../ScrollContainer/CenterContainer/VBoxContainer/MenuReturnButton")

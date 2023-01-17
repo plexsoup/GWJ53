@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Maps/Spawners/GenericSpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Maps/Spawners/EnemyWaveSpawner.gd" type="Script" id=2]
+[ext_resource path="res://_common/Materials/white_star.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Maps/Spawners/EnemySpawner.tscn" type="PackedScene" id=4]
+
+[node name="EnemyWaveSpawner" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="Appearance" index="0"]
+self_modulate = Color( 0.741176, 0.513726, 0.156863, 1 )
+texture = ExtResource( 3 )
+
+[node name="SpawnSupply" parent="." index="3"]
+resources = [ PoolStringArray( "EnemySpawner" ), [ ExtResource( 4 ) ] ]
+
+[editable path="DeathViz"]

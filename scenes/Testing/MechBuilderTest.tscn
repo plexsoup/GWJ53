@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/MechBuilder/MechBuilder.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Testing/MechBuilderTest.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Maps/StreetBattle01.tscn" type="PackedScene" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+
+[sub_resource type="NoiseTexture" id=2]
+width = 64
+height = 64
+noise = SubResource( 1 )
+
+[node name="MechBuilderTest" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+fight_scene = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.207843 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource( 2 )
+stretch_mode = 2
+
+[node name="MechBuilder" parent="." instance=ExtResource( 1 )]
