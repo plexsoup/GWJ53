@@ -11,6 +11,7 @@ description = "Some wheels to get you moving"
 icon = ExtResource( 2 )
 mech_part = ExtResource( 3 )
 type = 1
+cost = 3
 health = 0
 power_draw = 2
 armor = 0
