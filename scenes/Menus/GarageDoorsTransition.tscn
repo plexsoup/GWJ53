@@ -7,7 +7,7 @@
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("LeftDoor:margin_left")
+tracks/0/path = NodePath("CanvasLayer/LeftDoor:margin_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ -600.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RightDoor:margin_left")
+tracks/1/path = NodePath("CanvasLayer/RightDoor:margin_left")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -43,7 +43,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("LeftDoor:visible")
+tracks/3/path = NodePath("CanvasLayer/LeftDoor:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -55,7 +55,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("RightDoor:visible")
+tracks/4/path = NodePath("CanvasLayer/RightDoor:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -72,7 +72,7 @@ resource_name = "close"
 length = 1.5
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("LeftDoor:margin_left")
+tracks/0/path = NodePath("CanvasLayer/LeftDoor:margin_left")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -84,7 +84,7 @@ tracks/0/keys = {
 "values": [ -600.0, -100, 0, 10, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RightDoor:margin_left")
+tracks/1/path = NodePath("CanvasLayer/RightDoor:margin_left")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -108,7 +108,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("RightDoor:visible")
+tracks/3/path = NodePath("CanvasLayer/RightDoor:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -120,7 +120,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("LeftDoor:visible")
+tracks/4/path = NodePath("CanvasLayer/LeftDoor:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -135,7 +135,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=3]
 resource_name = "open"
 tracks/0/type = "value"
-tracks/0/path = NodePath("LeftDoor:margin_left")
+tracks/0/path = NodePath("CanvasLayer/LeftDoor:margin_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -147,7 +147,7 @@ tracks/0/keys = {
 "values": [ 0.0, -600.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RightDoor:margin_left")
+tracks/1/path = NodePath("CanvasLayer/RightDoor:margin_left")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -171,7 +171,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("LeftDoor:visible")
+tracks/3/path = NodePath("CanvasLayer/LeftDoor:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -183,7 +183,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("RightDoor:visible")
+tracks/4/path = NodePath("CanvasLayer/RightDoor:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -215,7 +215,13 @@ anims/RESET = SubResource( 1 )
 anims/close = SubResource( 2 )
 anims/open = SubResource( 3 )
 
-[node name="LeftDoor" type="TextureRect" parent="."]
+[node name="GarageDoorNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="LeftDoor" type="TextureRect" parent="CanvasLayer"]
 anchor_bottom = 1.0
 margin_left = -600.0
 rect_min_size = Vector2( 600, 600 )
@@ -223,16 +229,14 @@ texture = SubResource( 4 )
 expand = true
 stretch_mode = 7
 
-[node name="RightDoor" type="TextureRect" parent="."]
+[node name="RightDoor" type="TextureRect" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 600.0
 rect_min_size = Vector2( 600, 600 )
 texture = SubResource( 5 )
 expand = true
 stretch_mode = 7
-
-[node name="GarageDoorNoise" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
