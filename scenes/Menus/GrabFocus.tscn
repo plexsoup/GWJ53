@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=1]
+
+[node name="GrabFocus" type="Node"]
+script = ExtResource( 1 )
+ui_element_path = NodePath("..")
