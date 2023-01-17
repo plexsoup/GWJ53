@@ -12,7 +12,7 @@
 # This structure is also expected by the return_from_instanced_scene.gd script.
 
 tool
-extends Button
+extends BaseButton
 
 
 export(String, FILE, "*tscn") var scene_path
