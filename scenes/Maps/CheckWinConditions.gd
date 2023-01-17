@@ -34,6 +34,7 @@ func _ready():
 func delayed_ready():
 	battle_scene = get_parent()
 	if battle_scene.has_method("_on_player_won"):
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("player_won", battle_scene, "_on_player_won")
 	else:
 		printerr("Configuration error in " + battle_scene.name + ", requires _on_player_won() method.")
@@ -43,14 +44,18 @@ func delayed_ready():
 #	pass
 
 func check_win_conditions():
+	#var win_conditions_met = false
 	if win_requirement == Win_Requirements.LAST_SURVIVOR:
+		
 		var enemies_remain = false
 		if battle_scene.get("done_spawning_enemies") == true:
 			var possible_enemies = get_tree().get_nodes_in_group("enemies")
 			for enemy in possible_enemies:
 				if enemy.State != enemy.States.DEAD:
 					enemies_remain = true
-		return !enemies_remain
+			return !enemies_remain
+		else: # still spawning enemies
+			return false
 	elif win_requirement == Win_Requirements.TIME:
 		return $WinCheckTimer.is_stopped()
 	elif win_requirement == Win_Requirements.KILL_COUNT:

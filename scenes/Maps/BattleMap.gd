@@ -6,7 +6,7 @@ var done_initial_spawns : bool = false
 enum States { SPAWNING, FIGHTING, PAUSED, FINISHED }
 var state = States.SPAWNING
 
-var num_spawners : int # count the $Spawners children
+export var num_spawners : int = 1 # count the $Spawners children
 var spawners_finished_spawning : int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -14,9 +14,9 @@ func _ready():
 	Global.current_scene = self
 	init(Global.player)
 
-	num_spawners = $Spawners.get_child_count()
+	#num_spawners = $Spawners.get_child_count()
 	for spawner in $Spawners.get_children():
-		if spawner.has_signal("finihsed"):
+		if spawner.has_signal("finished"):
 			spawner.connect("finished", self, "_on_spawner_finished")
 
 func init(playerScene): # called by MechBuilderTest when user presses finished
@@ -25,8 +25,9 @@ func init(playerScene): # called by MechBuilderTest when user presses finished
 	
 	
 func _on_spawner_finished():
+	
 	spawners_finished_spawning += 1
-	if spawners_finished_spawning == num_spawners:
+	if spawners_finished_spawning >= num_spawners:
 		state = States.FIGHTING
 		done_initial_spawns = true
 		
