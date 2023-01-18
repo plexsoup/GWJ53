@@ -28,13 +28,14 @@ func _get_configuration_warning():
 
 func _on_HiddenObject_mouse_entered():
 	if !found:
-		emit_signal("found", mech_part)
-		
-		$AnimationPlayer.play("pickup")
 		found = true
-
-
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "pickup":
+		var tween = create_tween()
+		tween.set_parallel().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+		tween.tween_property($Sprite, "position", $Sprite.position + Vector2(0, -100), 0.5)
+		tween.tween_property($Sprite, "rotation_degrees", $Sprite.rotation_degrees + rand_range(-50, 50), 0.5)
+		tween.tween_property($Sprite, "modulate", Color(1,1,1,0), 0.5)
+		$CPUParticles2D.emitting = true
+		$AudioStreamPlayer2D.play()
+		yield(tween, "finished")
+		emit_signal("found", mech_part)
 		queue_free()
