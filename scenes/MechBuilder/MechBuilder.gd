@@ -18,9 +18,15 @@ var building_parts = []
 
 func _ready():
 	var _discard
-	_discard = add_building_part(Global.parts_pool["L1Hull"])
-	_discard = add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
-	_discard = add_building_part(Global.parts_pool["BasicLaser"], Vector2(0, -150))
+	if Global.persistent_mech == null:
+		add_building_part(Global.parts_pool["L1Hull"])
+		add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
+		add_building_part(Global.parts_pool["BasicLaser"], Vector2(0, -150))
+	else:
+		for inner_part in Global.persistent_mech.inner_parts:
+			inner_part = inner_part as MechStructure.MechStructurePart
+			add_building_part(inner_part.part, inner_part.position)
+	
 	reroll_parts()
 	
 
@@ -94,7 +100,7 @@ func set_enabled_list_items():
 		else:
 			part_button.disabled = part.type == Part.Type.HULL
 
-func add_building_part(part : Part, position : Vector2 = Vector2.ZERO) -> BuildingPart:
+func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 	# Add part
 	var building_part = building_part_scene.instance()
 	building_part.part = part
@@ -111,7 +117,6 @@ func add_building_part(part : Part, position : Vector2 = Vector2.ZERO) -> Buildi
 		strut.position = nearby_part.position
 		strut.look_at(building_part.position)
 		$BuildingZone.move_child(strut, 0)
-	return building_part
 
 
 func _unhandled_input(event):
@@ -176,4 +181,5 @@ func _on_FightButton_pressed():
 	var mech_structure = generate_mech_structure()
 	var player = mech_structure.create_entity(preload("res://scenes/Entities/Player/Player.tscn"))
 	Global.player = player
+	Global.persistent_mech = mech_structure
 	Global.stage_manager.start_next_battle(player)

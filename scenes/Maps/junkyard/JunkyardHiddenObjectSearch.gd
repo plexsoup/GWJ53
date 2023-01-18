@@ -3,9 +3,16 @@ extends Control
 var parts_found = [] # list of Part resource RIDs
 var num_parts_to_find = 3
 export var next_scene : PackedScene
+export var hidden_object_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for inner_part in Global.persistent_mech.inner_parts:
+		var hidden_object = hidden_object_scene.instance()
+		hidden_object.mech_part = inner_part.part
+		$SecretParts.add_child(hidden_object)
+		num_parts_to_find += 1
+	
 	for part in $SecretParts.get_children():
 		
 		var rect = $ReferenceRect.get_rect()
