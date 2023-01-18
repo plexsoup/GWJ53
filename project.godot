@@ -142,10 +142,10 @@ jump={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Enemies"
+2d_physics/layer_1="Player Mech"
+2d_physics/layer_2="AI Mechs"
 2d_physics/layer_3="PlayerBullets"
-2d_physics/layer_4="EnemyBullets"
+2d_physics/layer_4="AIBullets"
 2d_physics/layer_5="Walls"
 2d_physics/layer_6="Destructables"
 2d_physics/layer_7="Pickups"

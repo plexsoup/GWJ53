@@ -11,7 +11,7 @@ func _ready():
 	$SplashImage.show()
 	Global.stage_manager = self
 	
-func change_scene(scenePathStr):
+func change_scene(scenePathStr : String):
 	var packedScene = load(scenePathStr)
 	change_scene_to(packedScene)
 	
