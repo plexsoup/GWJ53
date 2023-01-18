@@ -39,5 +39,6 @@ scale = Vector2( 2.9147, 1.26413 )
 
 [node name="explosionSprite" type="Sprite" parent="." index="4"]
 visible = false
+scale = Vector2( 5.49001, 5.49001 )
 texture = ExtResource( 3 )
 hframes = 6
