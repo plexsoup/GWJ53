@@ -34,6 +34,9 @@ func _on_spawner_finished():
 func _on_player_won():
 	State = States.FINISHED
 	if has_node("HUD"):
+		$HUD.visible = true
 		if $HUD.has_method("_on_player_won"):
 			$HUD._on_player_won()
+	else:
+		printerr("Configuration error in BattleMap.gd for " + self.name + ". No HUD found.")
 

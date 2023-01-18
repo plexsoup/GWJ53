@@ -10,8 +10,9 @@ var player_cursor : Sprite # in battles, always use this for targetting instead 
 
 enum damage_types { IMPACT, LASER, FIRE, SHOCK }
 
-var battles = ["Desert Canyon", "Junkyard", "Old Port"]
+var battles = ["Street Battle", "Desert Canyon", "Junkyard", "Old Port"]
 var battle_scenes = {
+	"Street Battle" : "res://scenes/Maps/StreetBattle01.tscn",
 	"Old Port":"res://scenes/Maps/StreetBattle01.tscn",
 	"Desert Canyon":"res://scenes/Maps/DesertCanyonBattle.tscn",
 	"Junkyard": "res://scenes/Maps/StreetBattle01.tscn",
