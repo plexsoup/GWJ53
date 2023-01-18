@@ -19,9 +19,10 @@ func get_closest_object(group : Array, referenceObj : Node2D ) -> Node2D :
 
 func get_enemies_from_list(group : Array, referenceMech : Node2D) -> Node2D:
 	var enemies = []
-	for mech in group:
-		if mech.team != referenceMech.team:
-			enemies.push_back(mech)
+	for object in group:
+		if object.has_method("get_team") and object.team != referenceMech.team:
+			# static body walls might get included in the list accidentally, but they won't have a team.
+			enemies.push_back(object)
 	return enemies
 	
 	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/textures/desertCanyon01.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Maps/textures/desertCanyon02.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Maps/Spawners/EnemyWaveSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Maps/Spawners/ShotgunMechSpawner.tscn" type="PackedScene" id=5]
 
 [node name="DesesrtCanyonBattle" instance=ExtResource( 1 )]
 num_spawners = 2
@@ -52,6 +53,11 @@ team = 1
 [node name="EnemyWaveSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
 position = Vector2( 239, -137 )
 max_spawns = 3
+team = 2
+
+[node name="ShotgunMechSpawner" parent="Spawners" index="2" instance=ExtResource( 5 )]
+position = Vector2( -465, -15 )
+max_spawns = 6
 team = 2
 
 [editable path="Spawners/EnemyWaveSpawner2"]

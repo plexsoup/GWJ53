@@ -1,11 +1,6 @@
 """
-Basic missile launcher.
-Might track the mouse, or maybe autotargets.
-
-Spawns a projectile which deals damage on impact.
-
-To meet accessibility requirements:
-	Every weapon needs a mouselook targetted attack and an autotarget.
+Basic shotgun.
+Area2D hurtbox immediate effect with particles.
 
 
 """
@@ -19,8 +14,8 @@ export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 export var line_of_sight : bool = false
 
 export var shots_per_burst : int = 2
-export var burst_delay : float = 0.5
-export var reload_time : float = 1.5
+export var burst_delay : float = 1.0
+export var reload_time : float = 5.0
 
 export var knockback_effect : float = 100.0
 
@@ -43,7 +38,7 @@ signal hit
 func _ready():
 	pass # Replace with function body.
 	$ReloadTimer.start()
-	$MissileLauncherSprite/MuzzleFlash.visible = false
+	$ShotgunSprite/MuzzleFlash.visible = false
 
 func init(myMech):
 	mech = myMech
@@ -73,14 +68,15 @@ func shoot():
 		#spawn_projectile()
 
 func hurt_targets():
-	var blast = $MissileLauncherSprite/MuzzleLocation/BlastArea
+	var blast = $ShotgunSprite/MuzzleLocation/BlastArea
 	var potential_targets = blast.get_overlapping_bodies()
 	var enemies = Utils.get_enemies_from_list(potential_targets, mech)
+	var impactVector = (mech.targetting_cursor.get_global_position() - self.get_global_position()).normalized() * knockback_effect
 	for enemy in enemies:
 		if enemy.has_method("_on_hit"):
-			connect("hit", enemy, "_on_hit")
-		var impactVector = (mech.targetting_cursor.get_global_position() - self.get_global_position()).normalized() * knockback_effect
-		emit_signal("hit", damage, impactVector, damage_type)
+			enemy._on_hit(damage, impactVector, damage_type)
+			
+		
 
 
 func spawn_projectile():
@@ -92,8 +88,8 @@ func spawn_projectile():
 #		if Global.current_scene.has_node("YSort/Projectiles"):
 #			Global.current_scene.get_node("Ysort/Projectiles").add_child(newProjectile)
 		Global.current_scene.add_child(newProjectile)
-		newProjectile.global_position = $MissileLauncherSprite/MuzzleLocation.global_position
-		newProjectile.global_rotation = $MissileLauncherSprite.global_rotation
+		newProjectile.global_position = $ShotgunSprite/MuzzleLocation.global_position
+		newProjectile.global_rotation = $ShotgunSprite.global_rotation
 
 func make_noise():
 	$ShootNoise.set_pitch_scale(rand_range(0.8, 1.2))
@@ -116,7 +112,7 @@ func aim(_delta):
 		else:
 			targetPos = cursorPos - myPos
 			
-		$MissileLauncherSprite.look_at(targetPos + myPos)
+		$ShotgunSprite.look_at(targetPos + myPos)
 		
 
 
@@ -134,19 +130,10 @@ func _on_ReloadTimer_timeout():
 	shoot()
 
 func _on_CockDurationTimer_timeout():
-
-	shoot()
-	$CockDurationTimer.start()
-
-func _on_ShotDurationTimer_timeout():
-	
-	$Line2D.default_color.a = 0
-	State = States.RELOADING
-	$LaserNoise.stop()
-	$TargetLocation/HurtBox.set_deferred("disabled", true)
-	$ReloadTimer.start()
+	shoot() # shoot method will subtract ammo and restart timers
 
 
-		
-			
-	
+
+
+
+
