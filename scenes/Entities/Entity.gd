@@ -122,6 +122,11 @@ func move(delta):
 		velocity = velocity / childNum  # normalize velocity
 		velocity *= velocity_multiplier # add diminishing returns multiplier
 		#warning-ignore:RETURN_VALUE_DISCARDED
+		
+		# fudge factor for humans?
+		if is_human_player:
+			velocity *= 1.3
+			
 		move_and_slide(velocity)
 
 
@@ -144,9 +149,17 @@ func disappear():
 	queue_free()
 
 
-func knockback(damage, impactVector):
-	var knockbackVector = impactVector.normalized() * damage * (1-knockback_resistance)
-	var fudgeFactor = 50.0 # modify this to make knockbacks feel good
+func knockback(damage, impactVector, damageType):
+	var types = Global.damage_types
+	var knockback_modifiers = {
+		types.IMPACT:5.0,
+		types.LASER:0.2,
+		types.FIRE:0.3,
+		types.SHOCK:1.0,
+	}
+	var damageKnockback = damage * knockback_modifiers[damageType]
+	var knockbackVector = impactVector.normalized() * damageKnockback * (1-knockback_resistance)
+	var fudgeFactor = 25.0 # modify this to make knockbacks feel good
 	
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	move_and_slide(knockbackVector * fudgeFactor)
@@ -162,7 +175,7 @@ func _on_hit(damage, impactVector, damageType):
 	damage = max(damage * (1.0-resist), 0.0)
 	if damage > 0.0:
 		
-		knockback(damage, impactVector)
+		knockback(damage, impactVector, damageType)
 		health = max(health - damage, 0.0)
 		update_health_bar()
 	
