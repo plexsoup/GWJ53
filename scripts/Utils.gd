@@ -16,3 +16,12 @@ func get_closest_object(group : Array, referenceObj : Node2D ) -> Node2D :
 			if closest_object == null or objPos.distance_squared_to(refPos) < closest_object.global_position.distance_squared_to(refPos):
 				closest_object = obj
 	return closest_object
+
+func get_enemies_from_list(group : Array, referenceMech : Node2D) -> Node2D:
+	var enemies = []
+	for mech in group:
+		if mech.team != referenceMech.team:
+			enemies.push_back(mech)
+	return enemies
+	
+	
