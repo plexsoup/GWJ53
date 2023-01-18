@@ -1,7 +1,7 @@
 extends Control
 
 var parts_found = [] # list of Part resource RIDs
-var num_parts_to_find = 3
+var num_parts_to_find = 0
 export var next_scene : PackedScene
 export var hidden_object_scene : PackedScene
 
