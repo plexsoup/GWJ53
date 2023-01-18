@@ -16,6 +16,7 @@ func _ready():
 	
 	
 func die_for_real_this_time():
+	Global.money += Global.current_scene.cash_for_losing
 	print("You lose!")
 	
 	Global.stage_manager.change_scene(lose_scene_path)

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Entities/Parts/Shotguns/BasicShotgun.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Shotguns/shotgun.png" type="Texture" id=2]
-[ext_resource path="res://sfx/Missileshoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/Entities/Projectiles/shotgun.wav" type="AudioStream" id=3]
 [ext_resource path="res://_common/Materials/white_target.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -54,7 +54,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -87,12 +87,12 @@ tracks/2/keys = {
 [node name="BasicShotgun" type="Node2D"]
 script = ExtResource( 1 )
 damage_type = 0
+reload_time = 4.0
 
 [node name="CockDurationTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
 
 [node name="ShootNoise" type="AudioStreamPlayer2D" parent="."]
