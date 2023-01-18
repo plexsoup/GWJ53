@@ -3,6 +3,8 @@ extends Area2D
 
 export (Resource) var mech_part : Resource
 
+var found : bool = false
+
 signal found(partResource)
 
 
@@ -25,10 +27,12 @@ func _get_configuration_warning():
 
 
 func _on_HiddenObject_mouse_entered():
-	emit_signal("found", mech_part)
-	
-	$AnimationPlayer.play("pickup")
-	
+	if !found:
+		emit_signal("found", mech_part)
+		
+		$AnimationPlayer.play("pickup")
+		found = true
+
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -17,8 +17,9 @@ var current_target
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	var timer = get_tree().create_timer(0.66)
+	yield(timer, "timeout")
+	select_new_target()
 
 func init(myMech):
 	mech = myMech

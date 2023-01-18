@@ -8,8 +8,10 @@ export var next_scene : PackedScene
 func _ready():
 	for part in $SecretParts.get_children():
 		
-		part.position.x = rand_range(0, 1024)
-		part.position.y = rand_range(0, 600)
+		var rect = $ReferenceRect.get_rect()
+		
+		part.position.x = rand_range(rect.position.x, rect.end.x)
+		part.position.y = rand_range(rect.position.y, rect.end.y)
 
 		part.connect("found", self, "_on_part_found")
 

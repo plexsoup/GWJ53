@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/MechBuilder/BuildingPart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/MechBuilder/PartButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/MechBuilder/Build_UI.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Menus/GrabFocus.tscn" type="PackedScene" id=7]
 
 [sub_resource type="GDScript" id=4]
 resource_name = "Cursor"
@@ -183,6 +184,8 @@ margin_top = 397.0
 margin_right = 1024.0
 margin_bottom = 430.0
 text = "Go Fight!"
+
+[node name="GrabFocus" parent="Foreground/FightButton" instance=ExtResource( 7 )]
 
 [node name="RerollButton" type="Button" parent="Foreground"]
 unique_name_in_owner = true
