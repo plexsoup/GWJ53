@@ -8,10 +8,11 @@ Area2D hurtbox immediate effect with particles.
 extends Node2D
 
 var mech
-export var projectile_range : float = 200.0
+export var projectile_range : float = 500.0
+
 export var damage : float = 100.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
-export var line_of_sight : bool = false
+#export var line_of_sight : bool = false
 
 export var shots_per_burst : int = 2
 export var burst_delay : float = 1.0
@@ -40,9 +41,15 @@ func _ready():
 	$ReloadTimer.start()
 	$ShotgunSprite/MuzzleFlash.visible = false
 
+	modify_hurtbox_size()
+
 func init(myMech):
 	mech = myMech
 
+func modify_hurtbox_size():
+	var default_blast_size = 500.0
+	$ShotgunSprite/MuzzleLocation/BlastArea/CollisionPolygon2D.scale.x = projectile_range / default_blast_size
+	$ShotgunSprite/MuzzleLocation/BlastArea/BlastImage.scale.x = projectile_range/ default_blast_size
 
 func scene_finished():
 	if Global.current_scene.State == Global.current_scene.States.FINISHED:
@@ -79,17 +86,17 @@ func hurt_targets():
 		
 
 
-func spawn_projectile():
-	var newProjectile = projectile.instance()
-	var targetPos = mech.targetting_cursor.global_position
-	newProjectile.init(mech, damage, damage_type, projectile_range, line_of_sight, targetPos)
-
-	if Global.current_scene != null:
-#		if Global.current_scene.has_node("YSort/Projectiles"):
-#			Global.current_scene.get_node("Ysort/Projectiles").add_child(newProjectile)
-		Global.current_scene.add_child(newProjectile)
-		newProjectile.global_position = $ShotgunSprite/MuzzleLocation.global_position
-		newProjectile.global_rotation = $ShotgunSprite.global_rotation
+#func spawn_projectile():
+#	var newProjectile = projectile.instance()
+#	var targetPos = mech.targetting_cursor.global_position
+#	newProjectile.init(mech, damage, damage_type, projectile_range, line_of_sight, targetPos)
+#
+#	if Global.current_scene != null:
+##		if Global.current_scene.has_node("YSort/Projectiles"):
+##			Global.current_scene.get_node("Ysort/Projectiles").add_child(newProjectile)
+#		Global.current_scene.add_child(newProjectile)
+#		newProjectile.global_position = $ShotgunSprite/MuzzleLocation.global_position
+#		newProjectile.global_rotation = $ShotgunSprite.global_rotation
 
 func make_noise():
 	$ShootNoise.set_pitch_scale(rand_range(0.8, 1.2))
