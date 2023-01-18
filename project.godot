@@ -64,6 +64,10 @@ KeyPersistence="*res://addons/keybindings/key_persistence.gd"
 Global="*res://Global.gd"
 Utils="*res://scripts/Utils.gd"
 
+[display]
+
+window/stretch/mode="2d"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/keybindings/plugin.cfg" )
