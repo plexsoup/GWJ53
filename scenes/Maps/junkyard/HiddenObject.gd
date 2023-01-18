@@ -32,4 +32,5 @@ func _on_HiddenObject_mouse_entered():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	queue_free()
+	if anim_name == "pickup":
+		queue_free()
