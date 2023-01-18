@@ -3,7 +3,8 @@ Basic projectile
 
 spawned, then travels until it reaches target position or range
 
-
+It seems like inherited animation players can't have custom animations for children,
+so you can create a new AnimationPlayer with a custom explode animation to override the default.
 
 """
 
@@ -58,7 +59,11 @@ func explode():
 	var possibleTargets = get_overlapping_bodies()
 	for body in possibleTargets:
 		hurt(body)
-		$AnimationPlayer.play("explode")
+		if has_node("AnimationPlayer") and get_node("AnimationPlayer").has_animation("explode"): # custom AnimationPlayer on scenes that inherit this scene.
+			$AnimationPlayer.play("explode")
+		else:
+			$defaultAnimationPlayer.play("explode")
+			
 	State = States.EXPLODING
 
 func hurt(body):

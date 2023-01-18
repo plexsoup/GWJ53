@@ -40,14 +40,19 @@ func _ready():
 	pass # Replace with function body.
 	$ReloadTimer.start()
 	$ShotgunSprite/MuzzleFlash.visible = false
+	$CockDurationTimer.set_wait_time(burst_delay)
+	$ReloadTimer.set_wait_time(reload_time)
 
-	modify_hurtbox_size()
+	
 
 func init(myMech):
 	mech = myMech
+	modify_hurtbox_size()
 
 func modify_hurtbox_size():
 	var default_blast_size = 500.0
+	if mech.is_human_player:
+		default_blast_size *= 1.25
 	$ShotgunSprite/MuzzleLocation/BlastArea/CollisionPolygon2D.scale.x = projectile_range / default_blast_size
 	$ShotgunSprite/MuzzleLocation/BlastArea/BlastImage.scale.x = projectile_range/ default_blast_size
 
