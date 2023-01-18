@@ -17,6 +17,7 @@ export var die_on_completion : bool = true
 export var slow_death : bool = false
 export var spawn_randomly : bool = false # if true, walk down the list of available spawns in an orderly fashion
 export var team : int = -1 setget set_team, get_team
+export var rescale_spawns : Vector2 = Vector2.ONE
 
 var current_spawn_num : int = 0
 var active_spawns = [] # array of object refs in case we need it for flocking or running patterns
@@ -88,7 +89,6 @@ func spawn_something(spawnNum : int = -1):
 	if current_spawn_num < max_spawns:
 		$SpawnTimer.start()
 	else:
-		print(self.name + " finished spawning")
 		emit_signal("finished")
 
 

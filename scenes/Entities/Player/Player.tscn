@@ -13,6 +13,7 @@ radius = 66.0076
 script = ExtResource( 2 )
 is_human_player = true
 team = 0
+lose_scene_path = "res://scenes/Maps/junkyard/JunkyardHiddenObjectSearch.tscn"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 73 )
@@ -28,7 +29,7 @@ rect_scale = Vector2( 0.942998, 0.301814 )
 
 [node name="Sprite" parent="Appearance" index="0"]
 visible = false
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="Camera2D" parent="." index="10" instance=ExtResource( 3 )]

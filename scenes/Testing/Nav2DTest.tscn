@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Testing/Nav2DTest.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Player/MouseFollowCursor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Entities/Enemies/_dep_ChaseMech.tscn" type="PackedScene" id=3]
 [ext_resource path="res://_common/Materials/SmallWhiteSquare.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Testing/Swarm/SwarmTest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Entities/Player/Camera2D.tscn" type="PackedScene" id=6]
@@ -20,8 +19,6 @@ script = ExtResource( 1 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = SubResource( 2 )
-
-[node name="ChaseMech" parent="." instance=ExtResource( 3 )]
 
 [node name="LightOccluders" type="Node2D" parent="."]
 

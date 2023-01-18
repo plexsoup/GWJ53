@@ -5,16 +5,23 @@ Player Battle Mech for top-down shooting inherits from Entity
 extends "res://scenes/Entities/Entity.gd"
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var lose_scene_path : String
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.player = self
+	knockback_resistance = 0.8
 	
 	
+func die_for_real_this_time():
+	Global.money += Global.current_scene.cash_for_losing
+	print("You lose!")
+	
+	Global.stage_manager.change_scene(lose_scene_path)
+	
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -67,4 +67,6 @@ func check_win_conditions():
 func _on_WinCheckTimer_timeout():
 	if check_win_conditions() == true:
 		emit_signal("player_won")
+		disconnect("player_won", battle_scene, "_on_player_won")
+		$WinCheckTimer.stop()
 	

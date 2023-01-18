@@ -1,58 +1,155 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/textures/desertCanyon01.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Maps/textures/desertCanyon02.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Maps/Spawners/EnemyWaveSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Maps/Spawners/ShotgunMechSpawner.tscn" type="PackedScene" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 887, -251, 3027, -3089, 3058, 2993, 155, 660, 178, 489, 758, -121, 569, -116, 98, 337, 569, -634, -2970, -3081, 445, -590, 297, -590, 173, -494, -736, -624, 476, -233, 354, -212, -673, -96, -642, -429, 238, -310, -394, 554, -3016, 2985, -849, -49, -368, 681, -422, 810, -1025, -593, -1069, -590, -989, -168, -352, 958, -169, 966, 0, 849, 0, 741 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 0, 2, 3, 4, 5 ), PoolIntArray( 6, 5, 4, 7 ), PoolIntArray( 1, 0, 8 ), PoolIntArray( 9, 1, 8, 10, 11 ), PoolIntArray( 9, 11, 12, 13 ), PoolIntArray( 14, 6, 7, 15 ), PoolIntArray( 16, 17, 12, 18, 7, 19 ), PoolIntArray( 18, 15, 7 ), PoolIntArray( 20, 21, 16, 19, 22, 23 ), PoolIntArray( 12, 17, 13 ), PoolIntArray( 9, 13, 24, 25 ), PoolIntArray( 20, 9, 25, 26 ), PoolIntArray( 20, 26, 21 ), PoolIntArray( 20, 23, 27 ), PoolIntArray( 2, 20, 27, 28 ), PoolIntArray( 2, 28, 29 ), PoolIntArray( 3, 2, 29, 30 ) ]
+outlines = [ PoolVector2Array( -2970, -3081, 3027, -3089, 3058, 2993, -3016, 2985 ), PoolVector2Array( -1025, -593, -736, -624, -642, -429, -673, -96, -849, -49, -989, -168, -1069, -590 ), PoolVector2Array( 173, -494, 297, -590, 445, -590, 569, -634, 887, -251, 758, -121, 569, -116, 476, -233, 354, -212, 238, -310 ), PoolVector2Array( 98, 337, 178, 489, 155, 660, 0, 741, 0, 849, -169, 966, -352, 958, -422, 810, -368, 681, -394, 554 ) ]
 
 [node name="DesesrtCanyonBattle" instance=ExtResource( 1 )]
 num_spawners = 2
 
 [node name="NavigationPolygonInstance" parent="." index="0"]
-visible = false
+navpoly = SubResource( 1 )
 
 [node name="GroundTex" parent="Ground" index="0"]
-position = Vector2( 0, -8 )
-scale = Vector2( 8, 8 )
+position = Vector2( -35.9999, 109 )
+scale = Vector2( 11.431, 11.431 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 17.366, 19.172, 355.634, 377.828 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
-position = Vector2( -78, -107 )
+[node name="NorthWall" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
+position = Vector2( -298, -509 )
 scale = Vector2( 0.5, 0.5 )
+collision_layer = 16
+collision_mask = 15
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/StaticBody2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/NorthWall" index="0"]
 polygon = PoolVector2Array( 3995, -1554, 3601, -1615, 3213, -1309, 2676, -1377, 2207, -1921, 1738, -2207, 1194, -2281, 1024, -2390, 1044, -2091, 561, -1799, 160, -1996, -37, -1853, -1315, -1867, -1771, -2132, -2186, -2125, -2682, -1907, -3022, -1581, -3750, -1554, -3763, -3063, 3982, -3050 )
 
-[node name="Sprite" type="Sprite" parent="YSort/Obstacles/StaticBody2D" index="1"]
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/NorthWall" index="1"]
 position = Vector2( 122, -2087 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 378, 10, 484, 122 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="YSort/Obstacles" index="1"]
-position = Vector2( 47, 993 )
+[node name="EastWall" type="StaticBody2D" parent="YSort/Obstacles" index="1"]
+position = Vector2( 479, -186 )
+rotation = 1.57079
 scale = Vector2( 0.5, 0.5 )
+collision_layer = 16
+collision_mask = 15
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/StaticBody2D2" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/EastWall" index="0"]
+polygon = PoolVector2Array( 3995, -1554, 3601, -1615, 3213, -1309, 2676, -1377, 2207, -1921, 1738, -2207, 1194, -2281, 1024, -2390, 1044, -2091, 561, -1799, 160, -1996, -37, -1853, -1315, -1867, -1771, -2132, -2186, -2125, -2682, -1907, -3022, -1581, -3750, -1554, -3763, -3063, 3982, -3050 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/EastWall" index="1"]
+position = Vector2( 122, -2087 )
+scale = Vector2( 16, 16 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 378, 10, 484, 122 )
+
+[node name="SouthWall" type="StaticBody2D" parent="YSort/Obstacles" index="2"]
+position = Vector2( -52, 1791 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/SouthWall" index="0"]
 polygon = PoolVector2Array( -4355, 998, -4369, -798, -3872, -893, -3070, -580, -2805, -689, -1989, -328, -1703, 161, -1866, 284, -1050, 474, -493, 297, 38, 433, 323, 406, 541, 501, 1473, 127, 1622, 148, 2187, -349, 4308, -274, 4342, 957 )
 
-[node name="Sprite" type="Sprite" parent="YSort/Obstacles/StaticBody2D2" index="1"]
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/SouthWall" index="1"]
 scale = Vector2( 16, 16 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 454, 273, 546, 120 )
 
+[node name="WestWall" type="StaticBody2D" parent="YSort/Obstacles" index="3"]
+position = Vector2( -1676, 140 )
+rotation = 1.57079
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/WestWall" index="0"]
+polygon = PoolVector2Array( -4355, 998, -4369, -798, -3872, -893, -3070, -580, -2805, -689, -1989, -328, -1703, 161, -1866, 284, -1050, 474, -493, 297, 38, 433, 323, 406, 541, 501, 1473, 127, 1622, 148, 2187, -349, 4308, -274, 4342, 957 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/WestWall" index="1"]
+scale = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 454, 273, 546, 120 )
+
+[node name="Hoodoo1" type="StaticBody2D" parent="YSort/Obstacles" index="4"]
+position = Vector2( -109, 621 )
+collision_layer = 16
+collision_mask = 15
+
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/Hoodoo1" index="0"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 746, 123, 115, 134 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Hoodoo1" index="1"]
+polygon = PoolVector2Array( -184, 295, -242, 179, -191, 87, -225, 27, -213, -47, -96, -99, -12, -176, 175, -242, 205, -231, 195, -194, 239, -120, 213, 12, 114, 49, 42, 128, 69, 172, 63, 203, -15, 246, -63, 300 )
+
+[node name="Hoodoo2" type="StaticBody2D" parent="YSort/Obstacles" index="5"]
+position = Vector2( 561, -369 )
+rotation = 1.33662
+collision_layer = 16
+collision_mask = 15
+
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/Hoodoo2" index="0"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 746, 123, 115, 134 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Hoodoo2" index="1"]
+polygon = PoolVector2Array( -184, 295, -242, 179, -191, 87, -225, 27, -213, -47, -96, -99, -12, -176, 175, -242, 205, -231, 195, -194, 239, -120, 213, 12, 114, 49, 42, 128, 69, 172, 63, 203, -15, 246, -63, 300 )
+
+[node name="Hoodoo3" type="StaticBody2D" parent="YSort/Obstacles" index="6"]
+position = Vector2( -835, -339 )
+rotation = 1.33662
+collision_layer = 16
+collision_mask = 15
+
+[node name="Sprite" type="Sprite" parent="YSort/Obstacles/Hoodoo3" index="0"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 555, 121, 120, 74 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Hoodoo3" index="1"]
+position = Vector2( 8.7287, -45.2084 )
+polygon = PoolVector2Array( 236.164, -7.40155, 232.209, 30.7215, 202.107, 118.122, 13.8542, 204.805, -43.0713, 189.169, -186.364, 216.669, -268.052, 154.003, -234.091, -70.2368, -71.2019, -102.315, -19.3719, -86.8661, 3.63306, -45.3961, 130.781, -18.1484 )
+
 [node name="EnemyWaveSpawner2" parent="Spawners" index="0"]
+position = Vector2( -1117, 732 )
 num_spawns_per_interval = 3
 team = 1
 
 [node name="EnemyWaveSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
-position = Vector2( 239, -137 )
+position = Vector2( 758, -916 )
 max_spawns = 3
 team = 2
+
+[node name="ShotgunMechSpawner" parent="Spawners" index="2" instance=ExtResource( 5 )]
+position = Vector2( -1169, -754 )
+max_spawns = 6
+team = 2
+
+[node name="HUD" parent="." index="5"]
+visible = false
 
 [editable path="Spawners/EnemyWaveSpawner2"]
 [editable path="Spawners/EnemyWaveSpawner2/DeathViz"]

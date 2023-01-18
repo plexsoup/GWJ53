@@ -11,7 +11,7 @@ func _ready():
 	$SplashImage.show()
 	Global.stage_manager = self
 	
-func change_scene(scenePathStr):
+func change_scene(scenePathStr : String):
 	var packedScene = load(scenePathStr)
 	change_scene_to(packedScene)
 	
@@ -32,7 +32,7 @@ func change_scene_to(packedScene):
 
 func start_next_battle(playerObj):
 	
-	var battleIdx = Global.battles_completed.size() % Global.battle_scenes.size()
+	var battleIdx = Global.battles_completed.size() % Global.battles.size()
 	
 	var battleName = Global.battles[battleIdx]
 	change_scene(Global.battle_scenes[battleName])

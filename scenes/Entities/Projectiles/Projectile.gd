@@ -3,7 +3,8 @@ Basic projectile
 
 spawned, then travels until it reaches target position or range
 
-
+It seems like inherited animation players can't have custom animations for children,
+so you can create a new AnimationPlayer with a custom explode animation to override the default.
 
 """
 
@@ -40,10 +41,10 @@ func init(myMech, myDamage, damageType, projectileRange, lineOfSight, targetLoca
 	
 	if mech.is_in_group("enemies"):
 		set_collision_layer_bit(3, true)
-		set_collision_mask_bit(0, true)
 	elif mech.is_human_player:
 		set_collision_layer_bit(2, true)
-		set_collision_mask_bit(1, true)
+	set_collision_mask_bit(0, true)
+	set_collision_mask_bit(1, true)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,7 +59,11 @@ func explode():
 	var possibleTargets = get_overlapping_bodies()
 	for body in possibleTargets:
 		hurt(body)
-		$AnimationPlayer.play("explode")
+		if has_node("AnimationPlayer") and get_node("AnimationPlayer").has_animation("explode"): # custom AnimationPlayer on scenes that inherit this scene.
+			$AnimationPlayer.play("explode")
+		else:
+			$defaultAnimationPlayer.play("explode")
+			
 	State = States.EXPLODING
 
 func hurt(body):
@@ -72,10 +77,11 @@ func hurt(body):
 
 func _on_Projectile_body_entered(body):
 	if State == States.FLYING and line_of_sight:
-		if body.has_method("_on_hit"):
+		if body.has_method("_on_hit") and body.team != mech.team:
 			explode()
 	elif State == States.EXPLODING:
-		hurt(body)
+		if body.get("team") != mech.team:
+			hurt(body)
 			
 			
 

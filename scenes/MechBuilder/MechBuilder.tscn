@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://scenes/MechBuilder/BuildingPart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/MechBuilder/PartButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/MechBuilder/Build_UI.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Menus/GrabFocus.tscn" type="PackedScene" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
 
 [sub_resource type="GDScript" id=4]
 resource_name = "Cursor"
@@ -42,6 +44,22 @@ func _process(delta):
 
 
 "
+
+[sub_resource type="Animation" id=5]
+resource_name = "ShakeMoney"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="MechBuilder" type="Control"]
 anchor_right = 1.0
@@ -184,6 +202,8 @@ margin_right = 1024.0
 margin_bottom = 430.0
 text = "Go Fight!"
 
+[node name="GrabFocus" parent="Foreground/FightButton" instance=ExtResource( 7 )]
+
 [node name="RerollButton" type="Button" parent="Foreground"]
 unique_name_in_owner = true
 margin_left = 164.0
@@ -191,7 +211,52 @@ margin_top = 445.0
 margin_right = 317.0
 margin_bottom = 529.0
 rect_rotation = 89.9999
-text = "Re-roll"
+
+[node name="Label" type="Label" parent="Foreground/RerollButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.5
+margin_top = -29.0
+margin_right = 56.5
+margin_bottom = 28.0
+text = "Re-roll
+1 "
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/RerollButton"]
+margin_left = 75.9999
+margin_top = 43.0001
+margin_right = 103.0
+margin_bottom = 70.0001
+size_flags_horizontal = 3
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="MoneyDisplay" type="HBoxContainer" parent="Foreground"]
+margin_right = 271.0
+margin_bottom = 27.0
+
+[node name="MoneyLabel" type="Label" parent="Foreground/MoneyDisplay"]
+unique_name_in_owner = true
+margin_right = 146.0
+margin_bottom = 27.0
+text = "MONEY: 10"
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/MoneyDisplay"]
+margin_left = 150.0
+margin_right = 271.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="MoneyAnimation" type="AnimationPlayer" parent="Foreground/MoneyDisplay"]
+unique_name_in_owner = true
+anims/ShakeMoney = SubResource( 5 )
 
 [connection signal="pressed" from="Foreground/FightButton" to="." method="_on_FightButton_pressed"]
-[connection signal="pressed" from="Foreground/RerollButton" to="." method="reroll_parts"]
+[connection signal="pressed" from="Foreground/RerollButton" to="." method="_on_RerollButton_pressed"]

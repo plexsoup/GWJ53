@@ -47,13 +47,17 @@ func translate_points_to_local(pointsArr):
 	return newArr
 
 func update_nav():
+	if target == null:
+		target = mech.currently_targetted_enemy_mech
+		
+		
+	if !is_instance_valid(target) or target.State == target.States.DEAD:
+		return
+
 	var level_navigation_map = get_world_2d().get_navigation_map()
 	if level_navigation_map == null:
 		return
 	var optimize = true
-	
-	if target == null:
-		target = Global.player
 	current_path = Navigation2DServer.map_get_path(level_navigation_map, self.get_global_position(), target.global_position, optimize)
 
 	local_path = translate_points_to_local(current_path)
