@@ -133,11 +133,12 @@ func move(delta):
 func begin_dying():
 	State = States.DYING
 	$CollisionShape2D.set_deferred("disabled", true)
+	
+	var animation_player = $DefaultAnimationPlayer
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("die"):
-		#warning-ignore:RETURN_VALUE_DISCARDED
-		$AnimationPlayer.connect("animation_finished", self, "_on_animation_finished")
-		$AnimationPlayer.play("die")
-		$Health/DeathTimer.start()
+		animation_player = get_node("AnimationPlayer")
+	animation_player.play("die")
+	$Health/DeathTimer.start()
 		
 
 
@@ -195,10 +196,7 @@ func _on_finished_dying():
 func _on_DecayTimer_timeout():
 	disappear()
 
-func _on_animation_finished(_anim_name):
-	pass
-#	if anim_name == "die":
-#		_on_finished_dying()
+
 
 
 func _on_DeathTimer_timeout():

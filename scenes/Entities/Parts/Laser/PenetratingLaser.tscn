@@ -3,4 +3,5 @@
 [ext_resource path="res://scenes/Entities/Parts/Laser/BasicLaser.tscn" type="PackedScene" id=1]
 
 [node name="PenetratingLaser" instance=ExtResource( 1 )]
+beam_range = 500.0
 line_of_sight = true
