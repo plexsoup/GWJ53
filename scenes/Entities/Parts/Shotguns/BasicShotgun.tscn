@@ -86,8 +86,9 @@ tracks/2/keys = {
 
 [node name="BasicShotgun" type="Node2D"]
 script = ExtResource( 1 )
+damage_type = 0
 
-[node name="CockTimer" type="Timer" parent="."]
+[node name="CockDurationTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="."]
@@ -117,7 +118,7 @@ polygon = PoolVector2Array( 1.99984, -7.33333, 352, -211.333, 352, 201.333, 2.66
 
 [node name="BlastImage" type="Polygon2D" parent="ShotgunSprite/MuzzleLocation/BlastArea"]
 visible = false
-color = Color( 0.439216, 0.443137, 0.368627, 1 )
+color = Color( 0.439216, 0.443137, 0.368627, 0.25098 )
 polygon = PoolVector2Array( 1.99984, -7.33333, 352, -211.333, 352, 201.333, 2.6665, 19.3333 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ShotgunSprite/MuzzleLocation/BlastArea"]
@@ -151,5 +152,5 @@ texture = ExtResource( 4 )
 anims/RESET = SubResource( 1 )
 anims/flash = SubResource( 2 )
 
-[connection signal="timeout" from="CockTimer" to="." method="_on_ShotDurationTimer_timeout"]
+[connection signal="timeout" from="CockDurationTimer" to="." method="_on_CockDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
