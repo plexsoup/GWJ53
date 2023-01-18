@@ -175,13 +175,17 @@ func _on_hit(damage, impactVector, damageType):
 	var resist = damage_resistances[damageType]
 	damage = max(damage * (1.0-resist), 0.0)
 	if damage > 0.0:
+
+		if shield > 0.0:
+			print("Shield took " + str(damage))
+			shield -= damage
+		else:
+			knockback(damage, impactVector, damageType)
+			health = max(health - damage, 0.0)
+			update_health_bar()
 		
-		knockback(damage, impactVector, damageType)
-		health = max(health - damage, 0.0)
-		update_health_bar()
-	
-		if health <= 0.0:
-			begin_dying()
+			if health <= 0.0:
+				begin_dying()
 	
 func update_health_bar():
 	if $Health.has_node("TextureProgress"):
