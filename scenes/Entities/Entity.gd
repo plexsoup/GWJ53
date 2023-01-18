@@ -145,11 +145,11 @@ func disappear():
 
 
 func knockback(damage, impactVector):
-	var knockbackVector = impactVector.normalized() * damage * knockback_resistance
-	var fudgeFactor = 1.0 # modify this to make knockbacks feel good
+	var knockbackVector = impactVector.normalized() * damage * (1-knockback_resistance)
+	var fudgeFactor = 50.0 # modify this to make knockbacks feel good
 	
 	#warning-ignore:RETURN_VALUE_DISCARDED
-	move_and_collide(knockbackVector * fudgeFactor)
+	move_and_slide(knockbackVector * fudgeFactor)
 	
 
 func _on_hit(damage, impactVector, damageType):
