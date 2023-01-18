@@ -89,7 +89,6 @@ func spawn_something(spawnNum : int = -1):
 	if current_spawn_num < max_spawns:
 		$SpawnTimer.start()
 	else:
-		print(self.name + " finished spawning")
 		emit_signal("finished")
 
 
