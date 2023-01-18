@@ -138,7 +138,11 @@ func _unhandled_input(event):
 		
 		# Remove part from parts list
 		part_buttons.erase(selected_part_button)
-		selected_part_button.queue_free()
+		var tween = create_tween()
+		tween.tween_property(selected_part_button, "rect_scale", selected_part_button.rect_scale * 2, 0.3)
+		tween.parallel().tween_property(selected_part_button, "modulate", Color(1,1,1,0), 0.3)
+		tween.tween_callback(selected_part_button, "queue_free")
+		
 		selected_part_button = null
 		selected_part = null
 		cursor.texture = null
@@ -192,6 +196,7 @@ func reroll_parts():
 	
 	for part_button in part_buttons_hbox.get_children():
 		part_button = part_button as Control
+		part_button.rect_pivot_offset = part_button.rect_size/2
 		var global_pos = part_button.rect_global_position
 		part_buttons_hbox.remove_child(part_button)
 		part_buttons_hbox.get_parent().add_child(part_button)
