@@ -18,6 +18,8 @@ func _ready():
 	if mech.team > -1:
 		set_modulate(Global.team_colors[mech.team])
 
+	identify_nearest_enemy()
+
 func identify_nearest_enemy():
 	# find the nearest mech that's not on your team and hover over them.
 
