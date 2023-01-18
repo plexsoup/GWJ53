@@ -35,6 +35,8 @@ func _ready():
 
 func init(myMech):
 	mech = myMech
+
+
 	if mech.is_in_group("enemies"):
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, true) # player
 		$TargetLocation/HurtBox.set_collision_mask_bit(1, false) # enemies
