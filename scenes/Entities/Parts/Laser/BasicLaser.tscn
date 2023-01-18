@@ -8,6 +8,7 @@
 
 [node name="BasicLaser" type="Node2D"]
 script = ExtResource( 1 )
+beam_range = 400.0
 
 [node name="ShotDurationTimer" type="Timer" parent="."]
 one_shot = true
