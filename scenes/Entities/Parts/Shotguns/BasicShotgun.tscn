@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Entities/Parts/Shotguns/BasicShotgun.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Entities/Parts/Shotguns/shotgun.png" type="Texture" id=2]
+[ext_resource path="res://sfx/Missileshoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://_common/Materials/white_target.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShotgunSprite/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ShotgunSprite/MuzzleLocation/BlastArea/BlastImage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShotgunSprite/MuzzleLocation/BlastArea/CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShotgunSprite/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ShotgunSprite/MuzzleLocation/BlastArea/BlastImage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShotgunSprite/MuzzleLocation/BlastArea/CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="BasicShotgun" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="ShootNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+
+[node name="ShotgunSprite" type="Sprite" parent="."]
+position = Vector2( 2, 0 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+offset = Vector2( 2, 1.33333 )
+
+[node name="MuzzleLocation" type="Position2D" parent="ShotgunSprite"]
+position = Vector2( 69.3333, 1.90735e-06 )
+scale = Vector2( 2, 2 )
+
+[node name="BlastArea" type="Area2D" parent="ShotgunSprite/MuzzleLocation"]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShotgunSprite/MuzzleLocation/BlastArea"]
+polygon = PoolVector2Array( 1.99984, -7.33333, 352, -211.333, 352, 201.333, 2.6665, 19.3333 )
+
+[node name="BlastImage" type="Polygon2D" parent="ShotgunSprite/MuzzleLocation/BlastArea"]
+visible = false
+color = Color( 0.439216, 0.443137, 0.368627, 1 )
+polygon = PoolVector2Array( 1.99984, -7.33333, 352, -211.333, 352, 201.333, 2.6665, 19.3333 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShotgunSprite/MuzzleLocation/BlastArea"]
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.88
+spread = 40.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 800.0
+scale_amount = 4.0
+hue_variation = 0.21
+hue_variation_random = 1.0
+
+[node name="MuzzleFlash" type="Sprite" parent="ShotgunSprite"]
+visible = false
+position = Vector2( 65.3333, 4 )
+
+[node name="Polygon2D" type="Polygon2D" parent="ShotgunSprite/MuzzleFlash"]
+scale = Vector2( 0.458969, 0.458969 )
+color = Color( 1, 0.905882, 0.156863, 1 )
+polygon = PoolVector2Array( -6, -38, -42, -116, 4, -88, 42, -158, 50, -108, 136, -156, 108, -90, 196, -96, 152, -58, 304, -32, 186, -24, 352, -4, 254, 4, 284, 38, 180, 12, 218, 56, 130, 18, 148, 66, 72, 30, 78, 84, 28, 30, 2, 106 )
+
+[node name="TargetLocation" type="Sprite" parent="."]
+self_modulate = Color( 0.831373, 0.180392, 0.180392, 0.647059 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/flash = SubResource( 2 )
+
+[connection signal="timeout" from="CockTimer" to="." method="_on_ShotDurationTimer_timeout"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
