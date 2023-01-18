@@ -40,10 +40,10 @@ func init(myMech, myDamage, damageType, projectileRange, lineOfSight, targetLoca
 	
 	if mech.is_in_group("enemies"):
 		set_collision_layer_bit(3, true)
-		set_collision_mask_bit(0, true)
 	elif mech.is_human_player:
 		set_collision_layer_bit(2, true)
-		set_collision_mask_bit(1, true)
+	set_collision_mask_bit(0, true)
+	set_collision_mask_bit(1, true)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -72,9 +72,9 @@ func hurt(body):
 
 func _on_Projectile_body_entered(body):
 	if State == States.FLYING and line_of_sight:
-		if body.has_method("_on_hit"):
+		if body.has_method("_on_hit") and body.team != mech.team:
 			explode()
-	elif State == States.EXPLODING:
+	elif State == States.EXPLODING and body.team != mech.team:
 		hurt(body)
 			
 			

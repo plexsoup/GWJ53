@@ -39,15 +39,16 @@ func init(myMech):
 
 	if mech.is_in_group("enemies"):
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, true) # player
-		$TargetLocation/HurtBox.set_collision_mask_bit(1, false) # enemies
-		$RayCast2D.set_collision_mask_bit(0, true)
-		$RayCast2D.set_collision_mask_bit(1, false)
+		$TargetLocation/HurtBox.set_collision_mask_bit(1, true) # enemies
 		
 	else: # player
 		$TargetLocation/HurtBox.set_collision_mask_bit(1, true)
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, false)
-		$RayCast2D.set_collision_mask_bit(1, true)
-		$RayCast2D.set_collision_mask_bit(0, false)
+
+	
+	$RayCast2D.set_collision_mask_bit(0, true)
+	$RayCast2D.set_collision_mask_bit(1, true)
+	
 	
 	if line_of_sight:
 		$RayCast2D.enabled = true
@@ -129,7 +130,7 @@ func _on_ShotDurationTimer_timeout():
 
 func hurt_target(target):
 	var impactVector = Vector2.ZERO # no knockback for beam weapon
-	if target.has_method("_on_hit"):
+	if target.has_method("_on_hit") and target.team != mech.team:
 		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("hit", target, "_on_hit")
 		emit_signal("hit", damage, impactVector, damage_type)
@@ -140,12 +141,12 @@ func hurt_target(target):
 
 func _on_DamageTicks_timeout():
 	if State == States.SHOOTING:
-		if line_of_sight == false: # hit only things under the target
+		if line_of_sight == false: # hurtbox under cursor
 			var possible_targets = $TargetLocation/HurtBox.get_overlapping_bodies()
 			if possible_targets.size() > 0:
 				for target in possible_targets:
 					hurt_target(target)
-		else: # hit the first thing you touch
+		else: # raycast: first thing you touch
 			var target = $RayCast2D.get_collider()
 			if target:
 				hurt_target(target)
