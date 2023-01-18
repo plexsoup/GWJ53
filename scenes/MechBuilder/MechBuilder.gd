@@ -2,12 +2,14 @@ extends Control
 
 export(float) var min_joint_distance # Minimum distance parts should be seperated
 export(float) var max_joint_distance # Maximum distance between connected parts
+export(int) var reroll_cost = 1
 export(PackedScene) var part_button_scene
 export(PackedScene) var building_part_scene
 export(PackedScene) var strut_scene
 
 onready var part_buttons_hbox = $"%PartButtonsHBox"
 var part_buttons = []
+onready var money_label : Label = $"%MoneyLabel"
 onready var cursor : Sprite = $"%Cursor"
 var selected_part : Part
 var selected_part_button = null
@@ -28,7 +30,10 @@ func _ready():
 			add_building_part(inner_part.part, inner_part.position)
 	
 	reroll_parts()
+	_update_money_display()
 	
+func _update_money_display():
+	money_label.text = "MONEY: %d" % Global.money
 
 
 func _on_part_button_pressed(part_button):
@@ -123,7 +128,13 @@ func _unhandled_input(event):
 	if event.is_action_pressed("place_part"):
 		if not can_place_part:
 			return
-		var _discard = add_building_part(selected_part, cursor.global_position)
+		if selected_part.cost > Global.money:
+			$"%MoneyAnimation".stop()
+			$"%MoneyAnimation".play("ShakeMoney")
+			return
+		Global.money -= selected_part.cost
+		_update_money_display()
+		add_building_part(selected_part, cursor.global_position)
 		
 		# Remove part from parts list
 		part_buttons.erase(selected_part_button)
@@ -132,7 +143,11 @@ func _unhandled_input(event):
 		selected_part = null
 		cursor.texture = null
 		set_enabled_list_items()
-		
+	if event.is_action_pressed("ui_cancel"):
+		if selected_part_button :selected_part_button.release_focus()
+		selected_part_button = null
+		selected_part = null
+		cursor.texture = null
 
 func generate_mech_structure() -> MechStructure:
 	var mech_structure = MechStructure.new()
@@ -155,6 +170,10 @@ func generate_mech_structure() -> MechStructure:
 
 
 func reroll_parts():
+	selected_part_button = null
+	selected_part = null
+	cursor.texture = null
+	
 	for part_button in part_buttons:
 		part_button.queue_free()
 	part_buttons.clear()
@@ -174,7 +193,6 @@ func reroll_parts():
 		part_buttons_hbox.remove_child(part_button)
 		part_buttons_hbox.get_parent().add_child(part_button)
 		part_button.rect_global_position = global_pos
-		
 
 
 func _on_FightButton_pressed():
@@ -183,3 +201,10 @@ func _on_FightButton_pressed():
 	Global.player = player
 	Global.persistent_mech = mech_structure
 	Global.stage_manager.start_next_battle(player)
+
+
+func _on_RerollButton_pressed():
+	if Global.money >= reroll_cost:
+		Global.money -= reroll_cost
+		_update_money_display()
+		reroll_parts()
