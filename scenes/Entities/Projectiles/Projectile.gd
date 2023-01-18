@@ -77,8 +77,14 @@ func hurt(body):
 
 func _on_Projectile_body_entered(body):
 	if State == States.FLYING and line_of_sight:
-		if body.has_method("_on_hit") and body.team != mech.team:
+		if body.has_method("_on_hit") == false: # walls, etc
 			explode()
+		elif body.team != mech.team:
+			explode()
+		else: # friendly fire
+			pass
+			#hurt(body)
+		
 	elif State == States.EXPLODING:
 		if body.get("team") != mech.team:
 			hurt(body)
