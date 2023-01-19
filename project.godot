@@ -349,6 +349,10 @@ dialogic_default_action={
 
 translations=PoolStringArray( "res://localisation/accessiblity_information_strings.en.translation", "res://localisation/main_menu_strings.en.translation", "res://localisation/keybinding_menu_strings.en.translation" )
 
+[navigation]
+
+2d/default_edge_connection_margin=32.0
+
 [physics]
 
 common/enable_pause_aware_picking=true
