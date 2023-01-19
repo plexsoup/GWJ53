@@ -35,7 +35,8 @@ func _ready():
 
 func init(myMech):
 	mech = myMech
-
+	if mech == Global.player:
+		damage *= 2.0
 
 	if mech.is_in_group("enemies"):
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, true) # player
@@ -148,7 +149,7 @@ func _on_DamageTicks_timeout():
 					hurt_target(target)
 		else: # raycast: first thing you touch
 			var target = $RayCast2D.get_collider()
-			if target:
+			if target and target.has_method("get_team") and target.team != mech.team:
 				hurt_target(target)
 				
 			

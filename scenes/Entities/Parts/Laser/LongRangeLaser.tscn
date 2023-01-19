@@ -5,6 +5,7 @@
 [node name="LongRangeLaser" instance=ExtResource( 1 )]
 beam_range = 800.0
 damage = 350.0
+line_of_sight = true
 
 [node name="Line2D" parent="." index="4"]
 points = PoolVector2Array( 63, -3, 154, -5 )
@@ -12,3 +13,6 @@ default_color = Color( 0.854902, 0.4, 1, 1 )
 
 [node name="HurtBox" parent="TargetLocation" index="1"]
 position = Vector2( 153, -5 )
+
+[node name="RayCast2D" parent="." index="7"]
+collision_mask = 19

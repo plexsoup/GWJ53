@@ -21,7 +21,7 @@ export var knockback_resistance : float = 0.0 # 1.0 == no knockback from impacts
 export var shield_max : float = 0.0
 var shield : float = shield_max
 
-export var human_velocity_advantage = 1.3
+export var human_velocity_advantage = 2.25
 export var speed_fudge_factor = 1.0 # apply to every type of conveyance for every mech
 
 var Damage_Types = Global.damage_types
