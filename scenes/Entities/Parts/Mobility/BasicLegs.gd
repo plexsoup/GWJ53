@@ -5,7 +5,7 @@ var mech : KinematicBody2D
 export var speed : float = 600.0
 export var acceleration : float = 5.0 # per second
 export var deceleration : float = 25.0
-export var dash : bool = true
+export var dash : bool = false
 export var dash_speed_multiplier : float = 8.0
 export var dash_duration : float = 0.2
 export var dash_cooldown : float = 2.0
@@ -57,7 +57,8 @@ func get_velocity(delta):
 		if mech.input_controller.pressed["move_left"] == true:
 			velocity += Vector2.LEFT
 
-		velocity = check_dash_ability(velocity)
+		if dash:
+			velocity = check_dash_ability(velocity)
 
 		var desired_velocity = velocity * speed / global_scale.x 
 		var new_velocity = Vector2.ZERO
