@@ -28,7 +28,7 @@ var Damage_Types = Global.damage_types
 # TODO: Should sync these up with Global.damage_types
 
 
-enum States { INITIALIZING, READY, DYING, DEAD }
+enum States { INITIALIZING, READY, INVULNERABLE, DYING, DEAD }
 var State = States.INITIALIZING
 
 
@@ -37,6 +37,7 @@ export var is_human_player : bool = false
 export var team : int = -1 setget set_team, get_team
 var targetting_cursor
 
+var previous_velocity : Vector2 = Vector2.ZERO
 
 # Not sure what to do with these yet.
 # Each mech will have plugins for a variety of functions
@@ -59,8 +60,18 @@ export var damage_resistances : Dictionary = {
 	Damage_Types.SHOCK:0.0,
 }
 
+var ticks : int = 0
+
+
+
+signal started_walking
+signal stopped_walking
+signal died
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	var systems = [
 		$Engine,
 		$Locomotion,
@@ -74,23 +85,27 @@ func _ready():
 		$Debug,
 	]
 
-	if $Locomotion.get_child_count() == 0:
-		spawn_default_legs()
-	
+	custom_ready() # must happen before systems are initialized, if you expect custom addon subsystems to be included
 	
 	for system in systems:
 		for subsystem in system.get_children():
 			if subsystem.has_method("init"):
 				subsystem.init(self) # tell each module who the owner is.
+			if subsystem.has_method("_on_started_walking"):
+				#warning-ignore:RETURN_VALUE_DISCARDED
+				connect("started_walking", subsystem, "_on_started_walking")
+			if subsystem.has_method("_on_stopped_walking"):
+				#warning-ignore:RETURN_VALUE_DISCARDED
+				connect("stopped_walking", subsystem, "_on_stopped_walking")
+			if subsystem.has_method("_on_mech_died"):
+				#warning-ignore:RETURN_VALUE_DISCARDED
+				connect("died", subsystem, "_on_mech_died")
 
-	custom_ready()
 	State = States.READY
 	
-func spawn_default_legs():
-	var legScene = load("res://scenes/Entities/Parts/Mobility/BasicLegs.tscn").instance()
-	$Locomotion.add_child(legScene)
+	
 
-
+	
 func custom_ready():
 	#override this in descendants
 	pass
@@ -112,7 +127,7 @@ func _process(delta):
 	if scene_finished():
 		return
 	
-	if State == States.READY:
+	if State in [ States.READY, States.INVULNERABLE]:
 		move(delta)
 	
 func move(delta):
@@ -121,26 +136,37 @@ func move(delta):
 	
 	# multiple sets of legs should give diminishing returns, using the "Harmonic Series"
 	if has_node("Locomotion"):
-		var childNum = 1
+		var activeLocomotionPartsCounted = 1
 		var velocity_multiplier = 0.0
 		var velocity = Vector2.ZERO
 		for child in $Locomotion.get_children():
 			if child.has_method("get_velocity"):
 				velocity += child.get_velocity(delta)
-				velocity_multiplier += 1/childNum
-				childNum += 1
-		velocity = velocity / childNum  # normalize velocity
+				velocity_multiplier += 1/activeLocomotionPartsCounted # harmonic series diminishing returns
+				activeLocomotionPartsCounted += 1
+		velocity = velocity / activeLocomotionPartsCounted  # normalize velocity
 		velocity *= velocity_multiplier # add diminishing returns multiplier
-		#warning-ignore:RETURN_VALUE_DISCARDED
 		
 		
 		# fudge factor for humans?
 		if is_human_player:
 			velocity *= human_velocity_advantage
 		velocity *= speed_fudge_factor # exposed in inspector for game tuning
-		
+		change_walking_animation_if_required(velocity)
+		previous_velocity = velocity
+
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		move_and_slide(velocity)
 
+
+func change_walking_animation_if_required(velocity):
+	if previous_velocity.length_squared() < 1000.0 and velocity.length_squared() > 1000.0:
+		emit_signal("started_walking", velocity)
+	elif previous_velocity.length_squared() > 1000.0 and velocity.length_squared() < 1000.0:
+		emit_signal("stopped_walking", velocity)
+
+
+	
 
 func begin_dying():
 	State = States.DYING
@@ -151,6 +177,8 @@ func begin_dying():
 		animation_player = get_node("AnimationPlayer")
 	animation_player.play("die")
 	$Health/DeathTimer.start()
+
+	emit_signal("died")
 		
 
 
@@ -179,7 +207,7 @@ func knockback(damage, impactVector, damageType):
 	
 
 func _on_hit(damage, impactVector, damageType):
-	if State != States.READY:
+	if State != States.READY: #INVULNERABLE Can't be hurt
 		return
 	
 	# check damage resistance first.

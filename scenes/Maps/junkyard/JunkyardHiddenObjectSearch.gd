@@ -7,12 +7,14 @@ export var hidden_object_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for inner_part in Global.persistent_mech.inner_parts:
-		var hidden_object = hidden_object_scene.instance()
-		hidden_object.mech_part = inner_part.part
-		$SecretParts.add_child(hidden_object)
-		num_parts_to_find += 1
+	if Global.persistent_mech:
+		for inner_part in Global.persistent_mech.inner_parts:
+			var hidden_object = hidden_object_scene.instance()
+			hidden_object.mech_part = inner_part.part
+			$SecretParts.add_child(hidden_object)
+			num_parts_to_find += 1
 	
+		
 	for part in $SecretParts.get_children():
 		
 		var rect = $ReferenceRect.get_rect()
