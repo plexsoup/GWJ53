@@ -32,8 +32,9 @@ func init(myMech):
 func select_new_target():
 	var possible_targets = get_tree().get_nodes_in_group("enemies")
 	possible_targets.erase(mech)
-	if mech.team != Global.player.team:
-		possible_targets.push_back(Global.player)
+	if Global.player != null:
+		if mech.team != Global.player.team:
+			possible_targets.push_back(Global.player)
 	
 	var enemy_targets = []
 	for target in possible_targets:

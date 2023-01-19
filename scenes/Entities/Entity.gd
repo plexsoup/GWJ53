@@ -146,8 +146,7 @@ func move(delta):
 				activeLocomotionPartsCounted += 1
 		velocity = velocity / activeLocomotionPartsCounted  # normalize velocity
 		velocity *= velocity_multiplier # add diminishing returns multiplier
-		
-		
+
 		# fudge factor for humans?
 		if is_human_player:
 			velocity *= human_velocity_advantage

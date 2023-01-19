@@ -27,7 +27,6 @@ z_index = -1
 [node name="CheckWinConditions" parent="." instance=ExtResource( 5 )]
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
-visible = false
 
 [node name="OverviewPauseDuration" type="Timer" parent="."]
 wait_time = 3.0
