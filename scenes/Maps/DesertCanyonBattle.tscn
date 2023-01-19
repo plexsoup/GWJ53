@@ -3,8 +3,8 @@
 [ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/textures/desertCanyon01.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Maps/textures/desertCanyon02.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Maps/Spawners/EnemyWaveSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Maps/Spawners/ShotgunMechSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Maps/Spawners/LaserMechSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Maps/Spawners/MissileMechSpawner.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 887, -251, 3027, -3089, 3058, 2993, 155, 660, 178, 489, 758, -121, 569, -116, 98, 337, 569, -634, -2970, -3081, 445, -590, 297, -590, 173, -494, -736, -624, 476, -233, 354, -212, -673, -96, -642, -429, 238, -310, -394, 554, -3016, 2985, -849, -49, -368, 681, -422, 810, -1025, -593, -1069, -590, -989, -168, -352, 958, -169, 966, 0, 849, 0, 741 )
@@ -133,25 +133,17 @@ region_rect = Rect2( 555, 121, 120, 74 )
 position = Vector2( 8.7287, -45.2084 )
 polygon = PoolVector2Array( 236.164, -7.40155, 232.209, 30.7215, 202.107, 118.122, 13.8542, 204.805, -43.0713, 189.169, -186.364, 216.669, -268.052, 154.003, -234.091, -70.2368, -71.2019, -102.315, -19.3719, -86.8661, 3.63306, -45.3961, 130.781, -18.1484 )
 
-[node name="EnemyWaveSpawner2" parent="Spawners" index="0"]
-position = Vector2( -1117, 732 )
-num_spawns_per_interval = 3
+[node name="ShotgunMechSpawner2" parent="Spawners" index="0" instance=ExtResource( 5 )]
+position = Vector2( -827, 883 )
+team = 3
+
+[node name="LaserMechSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
+position = Vector2( -1101, -787 )
 team = 1
 
-[node name="EnemyWaveSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
-position = Vector2( 758, -916 )
-max_spawns = 3
-team = 2
-
-[node name="ShotgunMechSpawner" parent="Spawners" index="2" instance=ExtResource( 5 )]
-position = Vector2( -1169, -754 )
-max_spawns = 6
+[node name="MissileMechSpawner" parent="Spawners" index="2" instance=ExtResource( 5 )]
+position = Vector2( 585, -1018 )
 team = 2
 
 [node name="HUD" parent="." index="5"]
 visible = false
-
-[editable path="Spawners/EnemyWaveSpawner2"]
-[editable path="Spawners/EnemyWaveSpawner2/DeathViz"]
-[editable path="Spawners/EnemyWaveSpawner"]
-[editable path="Spawners/EnemyWaveSpawner/DeathViz"]
