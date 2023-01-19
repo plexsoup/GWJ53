@@ -17,7 +17,9 @@ var previous_velocity : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("idle")
+	
+	if $AnimationPlayer.get_animation("idle"):
+		$AnimationPlayer.play("idle")
 
 var ticks : int = 0
 
@@ -101,7 +103,8 @@ func check_dash_ability(velocity : Vector2) -> Vector2:
 
 func _on_started_walking(velocity):
 	$AnimationPlayer.stop()
-	$AnimationPlayer.play("walk")
+	if $AnimationPlayer.get_animation("walk"):
+		$AnimationPlayer.play("walk")
 	if velocity.x < 0:
 		$LegPivot.scale.x = -1.0
 	else:
@@ -110,7 +113,8 @@ func _on_started_walking(velocity):
 func _on_stopped_walking(_velocity):
 	$AnimationPlayer.stop()
 	if mech.State != mech.States.DEAD:
-		$AnimationPlayer.play("idle")
+		if $AnimationPlayer.get_animation("idle"):
+			$AnimationPlayer.play("idle")
 
 func _on_mech_died():
 	$AnimationPlayer.stop()
