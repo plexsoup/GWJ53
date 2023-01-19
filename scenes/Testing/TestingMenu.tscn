@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Menus/GrabFocus.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Maps/StreetBattle01.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Menus/Intro.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Testing/MechBuilderTest.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Menus/MenuButton.tscn" type="PackedScene" id=8]
 
@@ -18,9 +18,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
-margin_left = 181.0
+margin_left = 189.0
 margin_top = 225.0
-margin_right = 843.0
+margin_right = 835.0
 margin_bottom = 375.0
 custom_constants/vseparation = 50
 custom_constants/hseparation = 50
@@ -36,11 +36,10 @@ packed_scene = ExtResource( 7 )
 [node name="ShooterSceneBtn" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
 margin_left = 388.0
 margin_top = 0.0
-margin_right = 662.0
+margin_right = 646.0
 margin_bottom = 50.0
-disabled = true
-text = "Scene 2: Shooter"
-packed_scene = ExtResource( 6 )
+text = "Scene 2: Dialog"
+packed_scene = ExtResource( 2 )
 
 [node name="RewardSceneBtn" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
 margin_left = 40.0
@@ -51,9 +50,9 @@ disabled = true
 text = "Scene 3: Reward"
 
 [node name="MainMenuBtn" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
-margin_left = 432.0
+margin_left = 424.0
 margin_top = 100.0
-margin_right = 618.0
+margin_right = 610.0
 margin_bottom = 150.0
 text = "MENU_RETURN"
 scene_path = "res://scenes/Menus/MainMenu02.tscn"
