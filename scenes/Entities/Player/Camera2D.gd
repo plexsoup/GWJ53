@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	if player.State != player.States.DEAD:
 		if look_ahead:
-			look_ahead(delta)
+			camera_look_ahead(delta)
 
 func _unhandled_input(event):
 	if event.is_action("camera_zoom_in") and Input.is_action_just_pressed("camera_zoom_in"):
@@ -31,7 +31,7 @@ func _unhandled_input(event):
 		if get_zoom().x < max_zoom:
 			set_zoom( get_zoom() + Vector2(0.1, 0.1))
 
-func look_ahead(delta):
+func camera_look_ahead(delta):
 	var mousePos = get_global_mouse_position()
 	var currentPos = get_parent().global_position
 	var averagePos = (mousePos + currentPos) / 2

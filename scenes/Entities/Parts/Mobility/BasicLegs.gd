@@ -6,15 +6,18 @@ export var speed : float = 400.0
 export var acceleration : float = 5.0 # per second
 export var deceleration : float = 25.0
 
-var previous_velocity : Vector2
+var previous_velocity : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$AnimationPlayer.play("idle")
 
+var ticks : int = 0
 
 func init(myMech):
 	mech = myMech
+	if !mech.is_human_player: # AI no footsteps!
+		$FootstepNoise.set_stream(null)
 
 
 
@@ -31,8 +34,9 @@ func init(myMech):
 #		mech.move_and_slide(velocity * Global.game_speed)
 
 func get_velocity(delta):
+	var velocity = Vector2.ZERO
+		
 	if mech != null and mech.State ==  mech.States.READY:
-		var velocity = Vector2.ZERO
 		if mech.input_controller.pressed["move_forwards"] == true:
 			velocity += Vector2.UP
 		if mech.input_controller.pressed["move_right"] == true:
@@ -42,12 +46,32 @@ func get_velocity(delta):
 		if mech.input_controller.pressed["move_left"] == true:
 			velocity += Vector2.LEFT
 		var desired_velocity = velocity * speed / global_scale.x 
-		var new_velocity
+		var new_velocity = Vector2.ZERO
 		if desired_velocity.length_squared() > previous_velocity.length_squared():
 			new_velocity = lerp(previous_velocity, desired_velocity, acceleration*delta)
 		else:
 			new_velocity = lerp(previous_velocity, desired_velocity, deceleration*delta)
+		
+		#change_animation_if_required(new_velocity)
+		velocity = new_velocity
 		previous_velocity = new_velocity
-		return new_velocity
+
+	return velocity
+
 	
+	
+	
+
+func _on_started_walking(velocity):
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("walk")
+	if velocity.x < 0:
+		$LegPivot.scale.x = -1.0
+	else:
+		$LegPivot.scale.x = 1.0
+
+func _on_stopped_walking(_velocity):
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("idle")
+
 
