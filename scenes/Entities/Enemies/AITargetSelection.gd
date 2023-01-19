@@ -30,9 +30,10 @@ func init(myMech):
 #	pass
 
 func select_new_target():
-	var possible_targets = get_tree().get_nodes_in_group("enemeies")
+	var possible_targets = get_tree().get_nodes_in_group("enemies")
 	possible_targets.erase(mech)
-	possible_targets.push_back(Global.player)
+	if mech.team != Global.player.team:
+		possible_targets.push_back(Global.player)
 	
 	var enemy_targets = []
 	for target in possible_targets:
@@ -40,7 +41,10 @@ func select_new_target():
 			enemy_targets.push_back(target)
 			
 	# grab one randomly for now, but it might be better to look for the closest
-	set_target( enemy_targets[randi()%enemy_targets.size()] )
+	
+	if enemy_targets.size() > 0:
+		set_target( enemy_targets[randi()%enemy_targets.size()] )
+
 
 
 func set_target(target):

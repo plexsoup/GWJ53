@@ -18,9 +18,11 @@ var armor : float = armor_max
 
 export var knockback_resistance : float = 0.0 # 1.0 == no knockback from impacts
 
-
 export var shield_max : float = 0.0
 var shield : float = shield_max
+
+export var human_velocity_advantage = 1.3
+export var speed_fudge_factor = 1.0 # apply to every type of conveyance for every mech
 
 var Damage_Types = Global.damage_types
 # TODO: Should sync these up with Global.damage_types
@@ -123,10 +125,12 @@ func move(delta):
 		velocity *= velocity_multiplier # add diminishing returns multiplier
 		#warning-ignore:RETURN_VALUE_DISCARDED
 		
+		
 		# fudge factor for humans?
 		if is_human_player:
-			velocity *= 1.3
-			
+			velocity *= human_velocity_advantage
+		velocity *= speed_fudge_factor # exposed in inspector for game tuning
+		
 		move_and_slide(velocity)
 
 
