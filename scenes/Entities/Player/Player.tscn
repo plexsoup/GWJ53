@@ -34,5 +34,6 @@ texture = ExtResource( 4 )
 
 [node name="Camera2D" parent="." index="10" instance=ExtResource( 3 )]
 anchor_mode = 1
+look_ahead = true
 
 [node name="PlayerInputController" parent="Input" index="0" instance=ExtResource( 6 )]

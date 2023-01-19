@@ -20,6 +20,9 @@ export var damage : float = 500.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 export var line_of_sight : bool = false
 
+export var shot_duration : float = 1.0
+export var reload_time : float = 1.5
+
 
 enum States { RELOADING, SHOOTING }
 var State = States.RELOADING
@@ -30,8 +33,13 @@ signal hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	vary_shot_timers(0.2)
 	$ReloadTimer.start()
+
+func vary_shot_timers(variation): # 0.0 to 1.0. Low is less variability
+	$ShotDurationTimer.set_wait_time(rand_range(1.0-variation, 1.0+variation)*shot_duration)
+	$ReloadTimer.set_wait_time(rand_range(1.0-variation, 1.0+variation)*reload_time)
+
 
 func init(myMech):
 	mech = myMech
@@ -76,7 +84,7 @@ func shoot():
 		make_noise()
 
 func make_noise():
-	$LaserNoise.set_pitch_scale(rand_range(0.8, 1.2))
+	$LaserNoise.set_pitch_scale(rand_range(0.8, 1.5))
 	$LaserNoise.play()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -109,6 +117,8 @@ func aim_laser(_delta):
 
 
 func _on_ReloadTimer_timeout():
+	vary_shot_timers(0.2)
+
 	shoot()
 
 
