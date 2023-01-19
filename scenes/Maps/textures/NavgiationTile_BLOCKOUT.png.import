@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/afb6872a0fbefb737c7636270f3b626b.jpg-b22396ded4f8fe27c6906632f03d1018.stex"
+path="res://.import/NavgiationTile_BLOCKOUT.png-d49123df465cbf66ebfd4e01addb5814.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Maps/textures/afb6872a0fbefb737c7636270f3b626b.jpg"
-dest_files=[ "res://.import/afb6872a0fbefb737c7636270f3b626b.jpg-b22396ded4f8fe27c6906632f03d1018.stex" ]
+source_file="res://scenes/Maps/textures/NavgiationTile_BLOCKOUT.png"
+dest_files=[ "res://.import/NavgiationTile_BLOCKOUT.png-d49123df465cbf66ebfd4e01addb5814.stex" ]
 
 [params]
 
