@@ -22,19 +22,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="MainMenu" parent="SceneContainer" instance=ExtResource( 1 )]
-texture = ExtResource( 2 )
-
-<<<<<<< HEAD
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SceneContainer/MainMenu"]
-stream = ExtResource( 8 )
-autoplay = true
-=======
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SceneContainer"]
 stream = ExtResource( 8 )
 autoplay = true
 bus = "Music"
->>>>>>> dev
+
+[node name="MainMenu" parent="SceneContainer" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
 
 [node name="DesignNotes" type="Node" parent="."]
 script = ExtResource( 4 )
