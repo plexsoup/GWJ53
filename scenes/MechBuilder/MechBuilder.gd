@@ -21,9 +21,7 @@ var building_parts = []
 func _ready():
 	var _discard
 	if Global.persistent_mech == null:
-		add_building_part(Global.parts_pool["L1Hull"])
-		add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
-		add_building_part(Global.parts_pool["BasicLaser"], Vector2(0, -150))
+		add_default_mech()
 	else:
 		for inner_part in Global.persistent_mech.inner_parts:
 			inner_part = inner_part as MechStructure.MechStructurePart
@@ -32,6 +30,13 @@ func _ready():
 	for part_name in Global.parts_pool:
 			add_part_to_list(Global.parts_pool[part_name])
 	_update_money_display()
+
+func add_default_mech():
+	add_building_part(Global.parts_pool["L1Hull"])
+	add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
+	add_building_part(Global.parts_pool["LongRangeLaser"], Vector2(0, -150))
+	
+
 	
 func _update_money_display():
 	money_label.text = "MONEY: %d" % Global.money

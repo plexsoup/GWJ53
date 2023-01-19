@@ -8,8 +8,8 @@
 [ext_resource path="res://scenes/Entities/Enemies/BasicAI_Mech.gd" type="Script" id=7]
 [ext_resource path="res://scenes/Entities/Enemies/AITargetSelection.tscn" type="PackedScene" id=8]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 18.0278
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.576, 14.3967 )
 
 [node name="BasicAI_Mech" groups=["enemies"] instance=ExtResource( 1 )]
 collision_layer = 2
@@ -17,7 +17,17 @@ collision_mask = 3
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -0.499991, 32.285 )
+rotation = 3.14159
+scale = Vector2( 1.94597, -7.34299 )
 shape = SubResource( 1 )
+
+[node name="TextureProgress" parent="Health" index="3"]
+margin_left = -61.0
+margin_top = 167.0
+margin_right = 67.0
+margin_bottom = 207.0
+rect_scale = Vector2( 1.09932, 0.580939 )
 
 [node name="Sprite" parent="Appearance" index="0"]
 visible = false

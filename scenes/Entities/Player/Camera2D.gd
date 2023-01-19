@@ -1,8 +1,9 @@
 extends Camera2D
 
-export var current_zoom = 2.0
-export var max_zoom = 3.0
+export var default_zoom = 5.0
+export var max_zoom = 24.0
 export var min_zoom = 1.0
+var current_zoom = max_zoom * 2.0
 
 export var look_ahead : bool = false
 export var damping : float = 30.0
@@ -11,8 +12,8 @@ var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_zoom(Vector2(current_zoom, current_zoom))
-	player = Global.player
+	set_zoom(Vector2.ONE * current_zoom)
+	player = get_parent()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,4 +37,10 @@ func look_ahead(delta):
 	var averagePos = (mousePos + currentPos) / 2
 	var newPos = lerp(currentPos, averagePos, damping * delta)
 	set_global_position(newPos)
+	
+func zoom_into_battle():
+	# change this to lerp.
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "zoom", Vector2.ONE*default_zoom, 1.0)
+		
 	
