@@ -6,6 +6,5 @@
 anchor_mode = 0
 current = true
 script = ExtResource( 1 )
-current_zoom = 3.0
 max_zoom = 5.0
 min_zoom = 2.0
