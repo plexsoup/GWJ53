@@ -97,11 +97,8 @@ func _ready():
 	State = States.READY
 	
 	
-func spawn_default_legs():
-	var legScene = load("res://scenes/Entities/Parts/Mobility/BasicLegs.tscn").instance()
-	$Locomotion.add_child(legScene)
 
-
+	
 func custom_ready():
 	#override this in descendants
 	pass
