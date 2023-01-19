@@ -26,3 +26,8 @@ func die_for_real_this_time():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _on_fight_started():
+	$Camera2D.zoom_into_battle()
+	
+	

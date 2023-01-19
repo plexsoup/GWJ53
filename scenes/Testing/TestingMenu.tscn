@@ -41,13 +41,13 @@ margin_bottom = 50.0
 text = "Scene 2: Dialog"
 packed_scene = ExtResource( 2 )
 
-[node name="RewardSceneBtn" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
-margin_left = 40.0
+[node name="Junkyard" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 66.0
 margin_top = 100.0
-margin_right = 298.0
+margin_right = 272.0
 margin_bottom = 150.0
-disabled = true
-text = "Scene 3: Reward"
+text = "Junkyard Map"
+scene_path = "res://scenes/Maps/junkyard/JunkyardMap.tscn"
 
 [node name="MainMenuBtn" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
 margin_left = 424.0
