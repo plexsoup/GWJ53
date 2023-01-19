@@ -8,7 +8,7 @@
 [ext_resource path="res://Art/Title Screen Buttons/Play_Hover.png" type="Texture" id=6]
 [ext_resource path="res://Art/Title screen.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Menus/GrabFocus.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/MechBuilder/MechBuilder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Maps/junkyard/IntroJunkyard.tscn" type="PackedScene" id=9]
 
 [node name="Panel" type="TextureRect"]
 anchor_right = 1.0

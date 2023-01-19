@@ -151,6 +151,7 @@
 			}
 		},
 		{
+
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -185,6 +186,7 @@
 					"file": "res://Narrative/NA01_Intro/NA01_13G.wav"
 				}
 			}
+
 		}
 	],
 	"metadata": {

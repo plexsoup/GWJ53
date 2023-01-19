@@ -36,11 +36,3 @@ texture = ExtResource( 4 )
 anchor_mode = 1
 
 [node name="PlayerInputController" parent="Input" index="0" instance=ExtResource( 6 )]
-
-[node name="refSprite" type="Sprite" parent="." index="13"]
-position = Vector2( -1, 64 )
-scale = Vector2( 4.10793, 4.10793 )
-
-[node name="Polygon2D" type="Polygon2D" parent="refSprite" index="0"]
-color = Color( 0.858824, 0.827451, 0.0470588, 0.231373 )
-polygon = PoolVector2Array( -23, 20, -23, -52, 24, -52, 23, 20 )
