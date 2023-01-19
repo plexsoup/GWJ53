@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/Shotguns/BasicShotgun.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Shotguns/shotgun.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Entities/Projectiles/shotgun.wav" type="AudioStream" id=3]
 [ext_resource path="res://_common/Materials/white_target.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Entities/Projectiles/DynamicShotgunBlastArea.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -32,7 +33,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ShotgunSprite/MuzzleLocation/BlastArea/CPUParticles2D:emitting")
+tracks/2/path = NodePath("ShotgunSprite/MuzzleLocation/CPUParticles2D:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -72,7 +73,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ShotgunSprite/MuzzleLocation/BlastArea/CPUParticles2D:emitting")
+tracks/2/path = NodePath("ShotgunSprite/MuzzleLocation/CPUParticles2D:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -109,19 +110,9 @@ offset = Vector2( 2, 1.33333 )
 position = Vector2( 69.3333, 1.90735e-06 )
 scale = Vector2( 2, 2 )
 
-[node name="BlastArea" type="Area2D" parent="ShotgunSprite/MuzzleLocation"]
-collision_layer = 0
-collision_mask = 3
+[node name="BlastArea" parent="ShotgunSprite/MuzzleLocation" instance=ExtResource( 5 )]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShotgunSprite/MuzzleLocation/BlastArea"]
-polygon = PoolVector2Array( 1.99984, -7.33333, 352, -211.333, 352, 201.333, 2.6665, 19.3333 )
-
-[node name="BlastImage" type="Polygon2D" parent="ShotgunSprite/MuzzleLocation/BlastArea"]
-visible = false
-color = Color( 0.439216, 0.443137, 0.368627, 0.25098 )
-polygon = PoolVector2Array( 1.99984, -7.33333, 352, -211.333, 352, 201.333, 2.6665, 19.3333 )
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ShotgunSprite/MuzzleLocation/BlastArea"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShotgunSprite/MuzzleLocation"]
 emitting = false
 amount = 32
 lifetime = 0.5

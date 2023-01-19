@@ -64,7 +64,9 @@ func scene_finished():
 func shoot():
 	if scene_finished():
 		return
-		
+
+	if $ShotgunSprite/MuzzleLocation/BlastArea.has_method("update_polygon_shape"):
+		$ShotgunSprite/MuzzleLocation/BlastArea.update_polygon_shape()
 	# WIP we should ask the target acquisition system for a target
 	if mech != null and mech.State == mech.States.READY:
 		shots_left -= 1
