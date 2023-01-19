@@ -29,7 +29,8 @@ func _ready():
 			inner_part = inner_part as MechStructure.MechStructurePart
 			add_building_part(inner_part.part, inner_part.position)
 	
-	reroll_parts()
+	for part_name in Global.parts_pool:
+			add_part_to_list(Global.parts_pool[part_name])
 	_update_money_display()
 	
 func _update_money_display():
@@ -90,21 +91,6 @@ func _process(_delta):
 			$BuildingZone.move_child(strut, 0)
 			strut_hints.append(strut)
 
-func set_enabled_list_items():
-	var any_hulls = false
-#
-	for building_part in building_parts:
-		building_part = building_part as BuildingPart
-		if building_part.part.type == Part.Type.HULL:
-			any_hulls = true
-	
-	for part_button in part_buttons_hbox.get_children():
-		var part = part_button.part
-		if not any_hulls:
-			part_button.disabled = part.type != Part.Type.HULL
-		else:
-			part_button.disabled = part.type == Part.Type.HULL
-
 func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 	# Add part
 	var building_part = building_part_scene.instance()
@@ -137,16 +123,16 @@ func _unhandled_input(event):
 		add_building_part(selected_part, cursor.global_position)
 		
 		# Remove part from parts list
-		part_buttons.erase(selected_part_button)
-		var tween = create_tween()
-		tween.tween_property(selected_part_button, "rect_scale", selected_part_button.rect_scale * 2, 0.3)
-		tween.parallel().tween_property(selected_part_button, "modulate", Color(1,1,1,0), 0.3)
-		tween.tween_callback(selected_part_button, "queue_free")
-		
+#		part_buttons.erase(selected_part_button)
+#		var tween = create_tween()
+#		tween.tween_property(selected_part_button, "rect_scale", selected_part_button.rect_scale * 2, 0.3)
+#		tween.parallel().tween_property(selected_part_button, "modulate", Color(1,1,1,0), 0.3)
+#		tween.tween_callback(selected_part_button, "queue_free")
+
 		selected_part_button = null
 		selected_part = null
 		cursor.texture = null
-		set_enabled_list_items()
+		
 	if event.is_action_pressed("ui_cancel"):
 		if selected_part_button :selected_part_button.release_focus()
 		selected_part_button = null
@@ -173,51 +159,9 @@ func generate_mech_structure() -> MechStructure:
 	return mech_structure
 
 
-func reroll_parts():
-	selected_part_button = null
-	selected_part = null
-	cursor.texture = null
-	
-	for part_button in part_buttons:
-		var tween = create_tween()
-		tween.tween_interval(rand_range(0.1, 0.3))
-		tween.tween_property(part_button, "rect_position", part_button.rect_position + Vector2(0, 200), 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-		tween.tween_callback(part_button, "queue_free")
-	part_buttons.clear()
-	var all_parts = Global.parts_pool.values().duplicate()
-	all_parts.shuffle()
-	for i in 5:
-		var part : Part = all_parts.pop_back()
-		if part == null:
-			break
-		add_part_to_list(part)
-	
-	part_buttons_hbox.notification(Container.NOTIFICATION_SORT_CHILDREN)
-	
-	for part_button in part_buttons_hbox.get_children():
-		part_button = part_button as Control
-		part_button.rect_pivot_offset = part_button.rect_size/2
-		var global_pos = part_button.rect_global_position
-		part_buttons_hbox.remove_child(part_button)
-		part_buttons_hbox.get_parent().add_child(part_button)
-		part_button.rect_global_position = global_pos + Vector2(0,200)
-		var tween = create_tween()
-		tween.tween_callback(part_button, "hide")
-		tween.tween_interval(rand_range(0.6, 0.8))
-		tween.tween_callback(part_button, "show")
-		tween.tween_property(part_button, "rect_global_position", global_pos, 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-
-
 func _on_FightButton_pressed():
 	var mech_structure = generate_mech_structure()
 	var player = mech_structure.create_entity(preload("res://scenes/Entities/Player/Player.tscn"))
 	Global.player = player
 	Global.persistent_mech = mech_structure
 	Global.stage_manager.start_next_battle(player)
-
-
-func _on_RerollButton_pressed():
-	if Global.money >= reroll_cost:
-		Global.money -= reroll_cost
-		_update_money_display()
-		reroll_parts()
