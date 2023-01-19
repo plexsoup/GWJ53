@@ -25,10 +25,10 @@ func _ready():
 	else:
 		for inner_part in Global.persistent_mech.inner_parts:
 			inner_part = inner_part as MechStructure.MechStructurePart
-			add_building_part(inner_part.part, inner_part.position)
 	
-	for part_name in Global.parts_pool:
-			add_part_to_list(Global.parts_pool[part_name])
+	for part in Global.parts_pool.values():
+		if part.type != Part.Type.HULL:
+			add_part_to_list(part)
 	_update_money_display()
 
 func add_default_mech():
