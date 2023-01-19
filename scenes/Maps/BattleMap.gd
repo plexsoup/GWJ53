@@ -31,7 +31,9 @@ func _ready():
 
 func init(playerScene): # called by MechBuilderTest when user presses finished
 	playerScene.set_scale(Vector2(1.0, 1.0))
-	$YSort/Entities.add_child(playerScene)
+	
+	if not playerScene.is_visible_in_tree():
+		$YSort/Entities.add_child(playerScene)
 	
 	
 func _on_spawner_finished():
