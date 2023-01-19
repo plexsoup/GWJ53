@@ -60,7 +60,8 @@ func explode():
 	$CollisionShape2D.set_scale($CollisionShape2D.get_scale()*3.0)
 	var possibleTargets = get_overlapping_bodies()
 	for body in possibleTargets:
-		hurt(body)
+		if body.has_method("get_team") and body.team != team:
+			hurt(body)
 		if has_node("AnimationPlayer") and get_node("AnimationPlayer").has_animation("explode"): # custom AnimationPlayer on scenes that inherit this scene.
 			$AnimationPlayer.play("explode")
 		else:
