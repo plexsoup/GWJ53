@@ -151,8 +151,42 @@
 			}
 		},
 		{
-			"emit_signal": "end",
-			"event_id": "dialogic_040"
+
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Got got me fired....Joking. But seriously, Don't go out there withou me.  ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_11D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "But..the best part..",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_12D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "uhhh...What's the best part?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_13G.wav"
+				}
+			}
+
 		}
 	],
 	"metadata": {
