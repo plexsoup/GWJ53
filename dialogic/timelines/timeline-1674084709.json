@@ -1,14 +1,8 @@
 {
 	"events": [
 		{
-			"character": "character-1674084678.json",
-			"event_id": "dialogic_001",
-			"portrait": "Son Portrait",
-			"text": "Uhh"
-		},
-		{
-			"animation": "slide_in_right.gd",
-			"animation_length": 0,
+			"animation": "1-fade_in.gd",
+			"animation_length": 1,
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
@@ -30,12 +24,18 @@
 		{
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
-			"portrait": "(Don't change)",
-			"text": "Hey...Uhh.."
+			"portrait": "Default",
+			"text": "Uhh...Hey..uhhh...Welcome home dad!",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_01D.wav"
+				}
+			}
 		},
 		{
 			"animation": "slide_in_left.gd",
-			"animation_length": 0,
+			"animation_length": 1,
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
@@ -55,10 +55,100 @@
 			"z_index": 0
 		},
 		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Uh, what'cha got there,son?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_02G.wav"
+				}
+			}
+		},
+		{
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
-			"portrait": "Son Portrait",
-			"text": "Welcome home dad"
+			"portrait": "",
+			"text": "This is a MechaBusters Hunter V1 core...Old but still works! And that's not even the best thing about it!",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_03D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Mhm...Where did you get it?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_04G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The Junkyard",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_05D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What!? With what money!?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_06G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The Junkyard. And I put it on your tab. ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_07D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You did what!? Danny c'mon. ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_9G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Just cuz I work there dosn't mean you can invite yourself in. You could of got HURT! Or worse... ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_10G.wav"
+				}
+			}
 		}
 	],
 	"metadata": {
