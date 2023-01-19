@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Maps/junkyard/HiddenObject.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Maps/junkyard/Junkyard02.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Maps/junkyard/JunkyardHiddenObjectSearch.gd" type="Script" id=3]
+[ext_resource path="res://scenes/MechBuilder/MechBuilder.tscn" type="PackedScene" id=7]
+
+[node name="Junkyard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+next_scene = ExtResource( 7 )
+hidden_object_scene = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect"]
+anchor_right = 1.0
+margin_bottom = 41.0
+
+[node name="Label" type="Label" parent="TextureRect/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 34.0
+text = "Gather Parts to Repair your Mech!"
+align = 1
+
+[node name="SecretParts" type="Node2D" parent="."]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 337.0
+margin_right = -20.0
+margin_bottom = -11.0
+mouse_filter = 2

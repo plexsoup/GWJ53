@@ -224,11 +224,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GWJ 53 - Mech Repair Simulator"
+config/name="GWJ 53 - Mecha Busters"
 config/description="Godot Wild Jam 53. Chungle-Down-Bim producer. Jan 2023
 https://github.com/plexsoup/GWJ53
 "
-run/main_scene="res://scenes/Menus/main_menu.tscn"
+run/main_scene="res://scenes/Menus/StageManager.tscn"
+boot_splash/image="res://Art/Title screen.png"
 config/icon="res://mascot_icon.png"
 
 [autoload]
@@ -236,6 +237,10 @@ config/icon="res://mascot_icon.png"
 KeyPersistence="*res://addons/keybindings/key_persistence.gd"
 Global="*res://Global.gd"
 Utils="*res://scripts/Utils.gd"
+
+[display]
+
+window/stretch/mode="2d"
 
 [editor_plugins]
 
@@ -255,21 +260,29 @@ ui_end={
 move_forwards={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
  ]
 }
 move_left={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
  ]
 }
 move_backwards={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
  ]
 }
 move_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
  ]
 }
 camera_zoom_in={
@@ -324,10 +337,10 @@ dialogic_default_action={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Enemies"
+2d_physics/layer_1="Player Mech"
+2d_physics/layer_2="AI Mechs"
 2d_physics/layer_3="PlayerBullets"
-2d_physics/layer_4="EnemyBullets"
+2d_physics/layer_4="AIBullets"
 2d_physics/layer_5="Walls"
 2d_physics/layer_6="Destructables"
 2d_physics/layer_7="Pickups"
@@ -342,4 +355,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0156863, 0.0117647, 0.0196078, 1 )
 environment/default_environment="res://default_env.tres"

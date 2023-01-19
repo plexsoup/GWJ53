@@ -10,16 +10,19 @@ Generic spawner,
 
 extends Node2D
 
-
+export var num_spawns_per_interval : int = 1
 export var time_between_spawns : float = 5.0
-export var max_spawns : int = 3
+export var max_spawns : int = 1
 export var die_on_completion : bool = true
 export var slow_death : bool = false
 export var spawn_randomly : bool = false # if true, walk down the list of available spawns in an orderly fashion
-
+export var team : int = -1 setget set_team, get_team
+export var rescale_spawns : Vector2 = Vector2.ONE
 
 var current_spawn_num : int = 0
 var active_spawns = [] # array of object refs in case we need it for flocking or running patterns
+
+signal finished
 
 signal died
 
@@ -39,6 +42,13 @@ func register_callback(callbackObj, callbackMethod):
 func custom_ready():
 	# override this method in inherited scenes
 	pass
+
+func set_team(newTeam):
+	team = newTeam
+	
+func get_team():
+	return team
+
 
 func get_next_spawn_name(spawnNum):
 	var ratio = float(spawnNum)/float(max_spawns)
@@ -72,10 +82,14 @@ func spawn_something(spawnNum : int = -1):
 		get_parent().add_child(spawn)
 	spawn.set_global_position(get_global_position())
 
+	if spawn.has_method("set_team"):
+		spawn.set_team(team)
 
 	current_spawn_num += 1
 	if current_spawn_num < max_spawns:
 		$SpawnTimer.start()
+	else:
+		emit_signal("finished")
 
 
 func die():
@@ -89,7 +103,7 @@ func die():
 
 func _on_SpawnTimer_timeout():
 	if current_spawn_num < max_spawns:
-		spawn_something(current_spawn_num)
+		spawn_something(num_spawns_per_interval)
 
 
 func _on_spawn_died(spawnObj):

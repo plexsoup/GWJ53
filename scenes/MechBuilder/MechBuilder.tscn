@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
 [ext_resource path="res://scenes/MechBuilder/Strut.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/MechBuilder/BuildingPart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/MechBuilder/PartButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/MechBuilder/Build_UI.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Menus/GrabFocus.tscn" type="PackedScene" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
 
 [sub_resource type="GDScript" id=4]
 resource_name = "Cursor"
@@ -42,6 +45,22 @@ func _process(delta):
 
 "
 
+[sub_resource type="Animation" id=5]
+resource_name = "ShakeMoney"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="MechBuilder" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -61,7 +80,6 @@ script = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="BuildingZone"]
 process_priority = -50
-position = Vector2( 512, 300 )
 current = true
 script = SubResource( 3 )
 camera_speed = 500
@@ -80,78 +98,165 @@ expand = true
 [node name="Foreground" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="BuildingZone" type="Control" parent="Foreground/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 444.0
+margin_bottom = 408.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Foreground/VBoxContainer"]
-margin_top = 448.0
+visible = false
+margin_top = 322.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 430.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.34
 
 [node name="PartsPanel" type="PanelContainer" parent="Foreground/VBoxContainer/HBoxContainer"]
+margin_left = 126.0
 margin_right = 862.0
-margin_bottom = 152.0
+margin_bottom = 108.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 855.0
-margin_bottom = 145.0
+margin_right = 729.0
+margin_bottom = 101.0
 
 [node name="Label" type="Label" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
-margin_right = 848.0
+margin_right = 722.0
 margin_bottom = 27.0
-text = "Parts"
+text = "Shop"
 
 [node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
 margin_top = 31.0
-margin_right = 848.0
-margin_bottom = 138.0
+margin_right = 722.0
+margin_bottom = 94.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
-margin_right = 848.0
-margin_bottom = 107.0
+margin_right = 722.0
+margin_bottom = 63.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
-margin_right = 848.0
-margin_bottom = 107.0
+margin_right = 722.0
+margin_bottom = 63.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer/MarginContainer"]
-margin_right = 848.0
-margin_bottom = 107.0
+margin_right = 722.0
+margin_bottom = 63.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_vertical_enabled = false
 
-[node name="PartButtons" type="HBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer/MarginContainer/ScrollContainer"]
-unique_name_in_owner = true
-custom_constants/separation = 2
+[node name="Control" type="Control" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer/MarginContainer/ScrollContainer"]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer"]
 margin_left = 866.0
 margin_right = 1024.0
-margin_bottom = 152.0
+margin_bottom = 108.0
 
 [node name="Info Panel" type="PanelContainer" parent="Foreground/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 158.0
-margin_bottom = 115.0
+margin_bottom = 71.0
 size_flags_vertical = 3
 
-[node name="FightButton" type="Button" parent="Foreground/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer"]
+margin_top = 412.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.46
+
+[node name="TextureRect" type="TextureRect" parent="Foreground"]
+margin_top = 412.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.58
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="PartButtonsHBox" type="HBoxContainer" parent="Foreground"]
 unique_name_in_owner = true
-margin_top = 119.0
-margin_right = 158.0
-margin_bottom = 152.0
+margin_left = 197.0
+margin_top = 456.0
+margin_right = 946.0
+margin_bottom = 590.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="FightButton" type="Button" parent="Foreground"]
+unique_name_in_owner = true
+margin_left = 866.0
+margin_top = 397.0
+margin_right = 1024.0
+margin_bottom = 430.0
 text = "Go Fight!"
+
+[node name="GrabFocus" parent="Foreground/FightButton" instance=ExtResource( 7 )]
+
+[node name="RerollButton" type="Button" parent="Foreground"]
+unique_name_in_owner = true
+margin_left = 164.0
+margin_top = 445.0
+margin_right = 317.0
+margin_bottom = 529.0
+rect_rotation = 89.9999
+
+[node name="Label" type="Label" parent="Foreground/RerollButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.5
+margin_top = -29.0
+margin_right = 56.5
+margin_bottom = 28.0
+text = "Re-roll
+1 "
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/RerollButton"]
+margin_left = 75.9999
+margin_top = 43.0001
+margin_right = 103.0
+margin_bottom = 70.0001
+size_flags_horizontal = 3
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="MoneyDisplay" type="HBoxContainer" parent="Foreground"]
+margin_right = 271.0
+margin_bottom = 27.0
+
+[node name="MoneyLabel" type="Label" parent="Foreground/MoneyDisplay"]
+unique_name_in_owner = true
+margin_right = 146.0
+margin_bottom = 27.0
+text = "MONEY: 10"
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/MoneyDisplay"]
+margin_left = 150.0
+margin_right = 271.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="MoneyAnimation" type="AnimationPlayer" parent="Foreground/MoneyDisplay"]
+unique_name_in_owner = true
+anims/ShakeMoney = SubResource( 5 )
+
+[connection signal="pressed" from="Foreground/FightButton" to="." method="_on_FightButton_pressed"]
+[connection signal="pressed" from="Foreground/RerollButton" to="." method="_on_RerollButton_pressed"]

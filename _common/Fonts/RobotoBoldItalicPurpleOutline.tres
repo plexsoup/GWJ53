@@ -1,0 +1,10 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://_common/Fonts/Roboto/Roboto-BoldItalic.ttf"
+
+[resource]
+size = 32
+outline_size = 3
+outline_color = Color( 0.443137, 0.0980392, 0.333333, 1 )
+font_data = SubResource( 1 )

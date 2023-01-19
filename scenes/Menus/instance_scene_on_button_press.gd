@@ -12,7 +12,7 @@
 # This structure is also expected by the return_from_instanced_scene.gd script.
 
 tool
-extends Button
+extends BaseButton
 
 
 export(String, FILE, "*tscn") var scene_path
@@ -30,7 +30,13 @@ func _ready():
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("focus_entered", self, "_on_hover")
 	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("focus_exited", self, "_on_stop_hovering")
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("mouse_entered", self, "_on_hover")
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("mouse_exited", self, "_on_stop_hovering")
+
+
 
 func _get_configuration_warning() -> String:
 	if packed_scene == null and (scene_path == null or scene_path == ""):
@@ -49,23 +55,30 @@ func _on_pressed():
 	
 	if has_node("ClickNoise"):
 		get_node("ClickNoise").play()
-		var timer = get_tree().create_timer(1.3)
-		yield(timer, "timeout") # pause for audio
 	
 	if packed_scene == null:
 		if ResourceLoader.exists(scene_path):
 			packed_scene = load(scene_path)
 		else:
 			printerr("instance_scene_on_button.gd, problem in " + self.name + ". packed_scene or scene_path must be specified")
-	if instance_as_child:
-		owner.add_child(packed_scene.instance())
-		owner.get_child(0).visible = false
-	else:
-		#warning-ignore:RETURN_VALUE_DISCARDED
-		get_tree().change_scene_to(packed_scene)
+	
+	Global.stage_manager.change_scene_to(packed_scene)
+
+#	if instance_as_child:
+#		owner.add_child(packed_scene.instance())
+#		owner.get_child(0).visible = false
+#	else:
+#		#warning-ignore:RETURN_VALUE_DISCARDED
+#		get_tree().change_scene_to(packed_scene)
 
 
 func _on_hover():
 	if has_node("HoverNoise") and disabled == false:
 		get_node("HoverNoise").play()
-		
+
+		var outline_font = ResourceLoader.load("res://_common/Fonts/RobotoBoldItalicPurpleOutline.tres")
+		#add_font_override("purple_outline", outline_font)
+		set("custom_fonts/font", outline_font)
+
+func _on_stop_hovering():
+	set("custom_fonts/font", null)

@@ -32,14 +32,18 @@ var State = States.INITIALIZING
 
 var input_controller
 export var is_human_player : bool = false
+export var team : int = -1 setget set_team, get_team
+var targetting_cursor
 
 
 # Not sure what to do with these yet.
 # Each mech will have plugins for a variety of functions
 # could be slots, hardpoints, or whatever
 # nodes that have their own functionality
-export var primary_weapon : NodePath 
-export var alternate_weapon : NodePath 
+
+#export var primary_weapon : NodePath 
+#export var alternate_weapon : NodePath 
+
 export var engine : NodePath
 export var legs : NodePath
 export var head : NodePath
@@ -65,6 +69,7 @@ func _ready():
 		$Summons,
 		$Input,
 		$TargetAcquisitionSensors,
+		$Debug,
 	]
 
 	for system in systems:
@@ -80,8 +85,23 @@ func custom_ready():
 	#override this in descendants
 	pass
 
+func set_team(newTeam):
+	team = newTeam
+
+func get_team():
+	return team
+	
+
+func scene_finished():
+	if Global.current_scene.State == Global.current_scene.States.FINISHED:
+		return true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if scene_finished():
+		return
+	
 	if State == States.READY:
 		move(delta)
 	
@@ -102,17 +122,23 @@ func move(delta):
 		velocity = velocity / childNum  # normalize velocity
 		velocity *= velocity_multiplier # add diminishing returns multiplier
 		#warning-ignore:RETURN_VALUE_DISCARDED
+		
+		# fudge factor for humans?
+		if is_human_player:
+			velocity *= 1.3
+			
 		move_and_slide(velocity)
 
 
 func begin_dying():
 	State = States.DYING
 	$CollisionShape2D.set_deferred("disabled", true)
+	
+	var animation_player = $DefaultAnimationPlayer
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("die"):
-		#warning-ignore:RETURN_VALUE_DISCARDED
-		$AnimationPlayer.connect("animation_finished", self, "_on_animation_finished")
-		$AnimationPlayer.play("die")
-		$Health/DeathTimer.start()
+		animation_player = get_node("AnimationPlayer")
+	animation_player.play("die")
+	$Health/DeathTimer.start()
 		
 
 
@@ -124,12 +150,20 @@ func disappear():
 	queue_free()
 
 
-func knockback(damage, impactVector):
-	var knockbackVector = impactVector.normalized() * damage * knockback_resistance
-	var fudgeFactor = 1.0 # modify this to make knockbacks feel good
+func knockback(damage, impactVector, damageType):
+	var types = Global.damage_types
+	var knockback_modifiers = {
+		types.IMPACT:5.0,
+		types.LASER:0.2,
+		types.FIRE:0.3,
+		types.SHOCK:1.0,
+	}
+	var damageKnockback = damage * knockback_modifiers[damageType]
+	var knockbackVector = impactVector.normalized() * damageKnockback * (1-knockback_resistance)
+	var fudgeFactor = 25.0 # modify this to make knockbacks feel good
 	
 	#warning-ignore:RETURN_VALUE_DISCARDED
-	move_and_collide(knockbackVector * fudgeFactor)
+	move_and_slide(knockbackVector * fudgeFactor)
 	
 
 func _on_hit(damage, impactVector, damageType):
@@ -141,13 +175,17 @@ func _on_hit(damage, impactVector, damageType):
 	var resist = damage_resistances[damageType]
 	damage = max(damage * (1.0-resist), 0.0)
 	if damage > 0.0:
+
+		if shield > 0.0:
+			print("Shield took " + str(damage))
+			shield -= damage
+		else:
+			knockback(damage, impactVector, damageType)
+			health = max(health - damage, 0.0)
+			update_health_bar()
 		
-		knockback(damage, impactVector)
-		health = max(health - damage, 0.0)
-		update_health_bar()
-	
-		if health <= 0.0:
-			begin_dying()
+			if health <= 0.0:
+				begin_dying()
 	
 func update_health_bar():
 	if $Health.has_node("TextureProgress"):
@@ -162,10 +200,7 @@ func _on_finished_dying():
 func _on_DecayTimer_timeout():
 	disappear()
 
-func _on_animation_finished(_anim_name):
-	pass
-#	if anim_name == "die":
-#		_on_finished_dying()
+
 
 
 func _on_DeathTimer_timeout():

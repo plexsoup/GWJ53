@@ -46,7 +46,15 @@ func init(myMech):
 	mech = myMech
 
 
+func scene_finished():
+	if Global.current_scene.State == Global.current_scene.States.FINISHED:
+		return true
+
+
 func shoot():
+	if scene_finished():
+		return
+		
 	# WIP we should ask the target acquisition system for a target
 	if mech != null and mech.State == mech.States.READY:
 		shots_left -= 1
@@ -65,7 +73,8 @@ func shoot():
 
 func spawn_projectile():
 	var newProjectile = projectile.instance()
-	newProjectile.init(mech, damage, damage_type, projectile_range, line_of_sight)
+	var targetPos = mech.targetting_cursor.global_position
+	newProjectile.init(mech, damage, damage_type, projectile_range, line_of_sight, targetPos)
 
 	if Global.current_scene != null:
 #		if Global.current_scene.has_node("YSort/Projectiles"):
@@ -84,10 +93,11 @@ func _process(delta):
 	
 
 func aim(_delta):
-	# currently this only works for human player.
-	if Global.player_cursor != null:
+
+	#if Global.player_cursor != null:
+	if mech.targetting_cursor != null:
 		var myPos = self.global_position
-		var cursorPos = Global.player_cursor.get_global_position() # note, cursor might be on autopilot depending on Global.auto_targetting
+		var cursorPos = mech.targetting_cursor.get_global_position() # note, cursor might be on autopilot depending on Global.auto_targetting
 		var targetPos = cursorPos
 		if myPos.distance_squared_to(cursorPos) > projectile_range * projectile_range:
 			targetPos = myPos.direction_to(cursorPos)*projectile_range
