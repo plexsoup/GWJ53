@@ -6,6 +6,7 @@ export(int) var reroll_cost = 1
 export(PackedScene) var part_button_scene
 export(PackedScene) var building_part_scene
 export(PackedScene) var strut_scene
+export(Texture) var sell_symbol
 
 onready var part_buttons_hbox = $"%PartButtonsHBox"
 var part_buttons = []
@@ -88,6 +89,8 @@ func _process(_delta):
 			nearby_parts.size() > 0 or\
 			building_parts.size() == 0
 	cursor.modulate = Color.greenyellow if can_place_part else Color.red
+	if sell_button.pressed:
+		cursor.modulate = Color.white
 	
 	for strut in strut_hints:
 		strut.free()
@@ -193,23 +196,16 @@ func _unhandled_input(event):
 		Global.money -= selected_part.cost
 		_update_money_display()
 		add_building_part(selected_part, cursor.global_position)
-		
-		# Remove part from parts list
-#		part_buttons.erase(selected_part_button)
-#		var tween = create_tween()
-#		tween.tween_property(selected_part_button, "rect_scale", selected_part_button.rect_scale * 2, 0.3)
-#		tween.parallel().tween_property(selected_part_button, "modulate", Color(1,1,1,0), 0.3)
-#		tween.tween_callback(selected_part_button, "queue_free")
-
-		selected_part_button = null
-		selected_part = null
-		cursor.texture = null
+		deselect_part()
 		
 	if event.is_action_pressed("ui_cancel"):
-		if selected_part_button :selected_part_button.release_focus()
+		deselect_part()
+
+func deselect_part():
 		selected_part_button = null
 		selected_part = null
 		cursor.texture = null
+	
 
 func generate_mech_structure() -> MechStructure:
 	var mech_structure = MechStructure.new()
@@ -242,3 +238,6 @@ func _on_FightButton_pressed():
 func _on_SellButton_pressed():
 	if hovered_part != null:
 		hovered_part.modulate = Color.white
+	deselect_part()
+	if sell_button.pressed:
+		cursor.texture = sell_symbol
