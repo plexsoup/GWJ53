@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
@@ -44,6 +44,37 @@ func _process(delta):
 
 
 "
+
+[sub_resource type="Animation" id=7]
+resource_name = "GainMoney"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "ShakeMoney"
@@ -217,6 +248,18 @@ stretch_mode = 5
 
 [node name="MoneyAnimation" type="AnimationPlayer" parent="Foreground/MoneyDisplay"]
 unique_name_in_owner = true
+anims/GainMoney = SubResource( 7 )
+anims/RESET = SubResource( 6 )
 anims/ShakeMoney = SubResource( 5 )
 
+[node name="SellButton" type="Button" parent="Foreground"]
+unique_name_in_owner = true
+margin_left = 21.0
+margin_top = 438.0
+margin_right = 179.0
+margin_bottom = 471.0
+toggle_mode = true
+text = "Sell Part"
+
 [connection signal="pressed" from="Foreground/FightButton" to="." method="_on_FightButton_pressed"]
+[connection signal="pressed" from="Foreground/SellButton" to="." method="_on_SellButton_pressed"]
