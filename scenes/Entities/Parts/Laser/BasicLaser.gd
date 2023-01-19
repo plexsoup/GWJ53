@@ -111,7 +111,8 @@ func aim_laser(_delta):
 				if $RayCast2D.is_colliding():
 					$Line2D.points = [ Vector2.ZERO, self.to_local($RayCast2D.get_collision_point())]
 			$TargetLocation.position = rescaled_target_pos
-			$TargetLocation/CPUParticles2D.emitting = true
+			if Global.user_prefs["particles"]:
+				$TargetLocation/CPUParticles2D.emitting = true
 		else:
 			$TargetLocation/CPUParticles2D.emitting = false
 

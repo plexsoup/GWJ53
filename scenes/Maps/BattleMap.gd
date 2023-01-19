@@ -55,8 +55,10 @@ func _on_player_won():
 
 
 func _on_OverviewPauseDuration_timeout():
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("fight_started", Global.player, "_on_fight_started")
 	for spawner in $Spawners.get_children():
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("fight_started", spawner, "_on_fight_started")
 	State = States.SPAWNING
 	emit_signal("fight_started")

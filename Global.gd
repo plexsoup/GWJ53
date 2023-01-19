@@ -10,6 +10,10 @@ var player_cursor : Sprite # in battles, always use this for targetting instead 
 var persistent_mech : MechStructure
 var money = 10
 
+var user_prefs = {
+	"particles" : true
+}
+
 enum damage_types { IMPACT, LASER, FIRE, SHOCK }
 
 var battles = ["Desert Canyon", "Junkyard", "Old Port"]

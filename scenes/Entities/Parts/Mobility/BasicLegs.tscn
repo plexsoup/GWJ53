@@ -146,3 +146,27 @@ region_rect = Rect2( 130, 38, 75, 180 )
 [node name="FootstepNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = -7.0
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DashDurationTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 0.33
+local_coords = false
+direction = Vector2( -1, 0 )
+spread = 22.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 800.0
+initial_velocity_random = 0.33
+scale_amount = 20.0
+
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_DashCooldownTimer_timeout"]
+[connection signal="timeout" from="DashDurationTimer" to="." method="_on_DashDurationTimer_timeout"]

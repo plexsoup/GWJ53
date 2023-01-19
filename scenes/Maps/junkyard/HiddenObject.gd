@@ -34,7 +34,8 @@ func _on_HiddenObject_mouse_entered():
 		tween.tween_property($Sprite, "position", $Sprite.position + Vector2(0, -100), 0.5)
 		tween.tween_property($Sprite, "rotation_degrees", $Sprite.rotation_degrees + rand_range(-50, 50), 0.5)
 		tween.tween_property($Sprite, "modulate", Color(1,1,1,0), 0.5)
-		$CPUParticles2D.emitting = true
+		if Global.user_prefs["particles"]:
+			$CPUParticles2D.emitting = true
 		$AudioStreamPlayer2D.play()
 		yield(tween, "finished")
 		emit_signal("found", mech_part)

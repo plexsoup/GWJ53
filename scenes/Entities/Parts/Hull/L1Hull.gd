@@ -17,3 +17,6 @@ func _on_stopped_walking(_velocity):
 
 func _on_started_walking(_velocity):
 	$AnimationPlayer.play("walk")
+
+func _on_mech_died():
+	$AnimationPlayer.stop()
