@@ -44,6 +44,7 @@ func _on_spawner_finished():
 func _on_player_won():
 	State = States.FINISHED
 	Global.money += cash_for_winning
+	Global.stage_manager.mark_battle_completed()
 	if has_node("HUD"):
 		$HUD.visible = true
 		if $HUD.has_method("_on_player_won"):
