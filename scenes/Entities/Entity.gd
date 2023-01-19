@@ -74,8 +74,6 @@ func _ready():
 		$Debug,
 	]
 
-	if $Locomotion.get_child_count() == 0:
-		spawn_default_legs()
 	
 	
 	for system in systems:
@@ -85,6 +83,7 @@ func _ready():
 
 	custom_ready()
 	State = States.READY
+	
 	
 func spawn_default_legs():
 	var legScene = load("res://scenes/Entities/Parts/Mobility/BasicLegs.tscn").instance()

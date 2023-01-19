@@ -15,12 +15,18 @@ outlines = [ PoolVector2Array( -932, -1043, -700, -1419, -580, -1587, -180, -163
 
 [node name="RoughSketch1" type="Sprite" parent="." index="0"]
 visible = false
-position = Vector2( 4106, -131 )
-scale = Vector2( 9.64652, 11.127 )
+position = Vector2( 3712, -276 )
+scale = Vector2( 22.546, 26.0062 )
 texture = ExtResource( 2 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="1"]
+position = Vector2( -4166.01, 2239.48 )
+scale = Vector2( 2.32402, 2.32402 )
 navpoly = SubResource( 1 )
+
+[node name="Obstacles" parent="YSort" index="0"]
+position = Vector2( -4021.01, 2301.48 )
+scale = Vector2( 2.29297, 2.29297 )
 
 [node name="Mountain1" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
 position = Vector2( 552, 680 )
@@ -149,20 +155,20 @@ position = Vector2( 13, -8 )
 position = Vector2( 1629, 815 )
 
 [node name="LaserMechSpawner" parent="Spawners" index="0" instance=ExtResource( 5 )]
-position = Vector2( 1666, -3203 )
+position = Vector2( 1924, -6309 )
 num_spawns_per_interval = 1
 time_between_spawns = 2.0
 max_spawns = 3
 team = 2
 
 [node name="ShotgunMechSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
-position = Vector2( 4537, -2946 )
+position = Vector2( 7982, -4831 )
 num_spawns_per_interval = 5
 max_spawns = 5
 team = 2
 
 [node name="MissileMechSpawner" parent="Spawners" index="2" instance=ExtResource( 3 )]
-position = Vector2( 943, 2025 )
+position = Vector2( 516, 8362 )
 num_spawns_per_interval = 6
 time_between_spawns = 3.0
 max_spawns = 6

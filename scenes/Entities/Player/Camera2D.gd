@@ -1,7 +1,7 @@
 extends Camera2D
 
-export var default_zoom = 3.0
-export var max_zoom = 6.0
+export var default_zoom = 5.0
+export var max_zoom = 8.0
 export var min_zoom = 1.0
 var current_zoom = max_zoom * 2.0
 

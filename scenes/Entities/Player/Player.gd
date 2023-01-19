@@ -9,12 +9,15 @@ export var lose_scene_path : String
 
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+	
+func custom_ready():
 	Global.player = self
 	knockback_resistance = 0.8
 	
-	
+	if $Locomotion.get_child_count() == 0:
+		var legScene = load("res://scenes/Entities/Parts/Mobility/BasicLegs.tscn").instance()
+		$Locomotion.add_child(legScene)
+
 func die_for_real_this_time():
 	Global.money += Global.current_scene.cash_for_losing
 	print("You lose!")
