@@ -149,6 +149,10 @@
 					"file": "res://Narrative/NA01_Intro/NA01_10G.wav"
 				}
 			}
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {
