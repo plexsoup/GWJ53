@@ -28,7 +28,7 @@ func _ready():
 		add_default_mech()
 	else:
 		for inner_part in Global.persistent_mech.inner_parts:
-			add_building_part(inner_part.part)
+			add_building_part(inner_part.part, inner_part.position)
 			if inner_part.part.type == Part.Type.HULL:
 				hull_part = building_parts[-1]
 	
