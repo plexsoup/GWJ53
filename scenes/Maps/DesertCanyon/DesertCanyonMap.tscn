@@ -217,19 +217,20 @@ position = Vector2( 1629, 815 )
 position = Vector2( 1924, -6309 )
 num_spawns_per_interval = 1
 time_between_spawns = 2.0
-max_spawns = 3
+max_spawns = 6
 team = 2
 
 [node name="ShotgunMechSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
 position = Vector2( 7982, -4831 )
-num_spawns_per_interval = 5
-max_spawns = 5
+num_spawns_per_interval = 1
+time_between_spawns = 0.75
+max_spawns = 8
 team = 2
 
 [node name="MissileMechSpawner" parent="Spawners" index="2" instance=ExtResource( 3 )]
 position = Vector2( 516, 8362 )
-num_spawns_per_interval = 6
-time_between_spawns = 3.0
+num_spawns_per_interval = 1
+time_between_spawns = 1.0
 max_spawns = 6
 team = 2
 
