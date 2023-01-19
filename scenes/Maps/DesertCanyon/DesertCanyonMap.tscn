@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/DesertCanyon/image (1).png" type="Texture" id=2]
+[ext_resource path="res://scenes/Maps/Spawners/MissileMechSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Maps/Spawners/ShotgunMechSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Maps/Spawners/LaserMechSpawner.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 6583, 913, 6486, 936, 5466, 810, 5462, 531, 6402, 960, 7051, 508, 7495, 1645, 6847, 1124, 6819, 1013, 3446, -305, 5371, -514, 5573, -257, 3440, 18, 748, 514, 1038, 168, 1187, 677, 741, 761, 6785, 965, 659, 368, 704, -257, 849, -231, 6811, 1210, 6816, 1286, 6819, 1424, 6804, 1531, 6374, 1043, 6331, 1103, 6245, 1101, 6179, 1143, 6157, 1179, 5391, 939, 5346, -781, 4424, -565, 3798, -2389, 4014, -2248, 3911, -2084, 3790, -2044, 3485, -2067, 6693, 927, 6231, 1386, 6188, 1579, 4292, 1705, 4318, 1558, 6174, 1272, 4243, 1777, 6214, 1676, 5286, 1925, 5092, 1135, 4239, 1467, 4186, 1392, 4873, 1162, 697, 971, 1412, 1184, 1336, 1571, 570, 1149, 1165, 1749, 758, 1800, 498, 1692, 32, 1347, 449, 1136, 2144, 114, 2341, 164, 2348, 399, 7683, 2117, 7407, 2350, 6862, 2284, 6764, 1612, 7737, 1928, 436, 1028, -374, 1140, 2333, 1139, 2022, 1260, 1835, 1261, 1730, 1019, 1698, 612, 6026, -429, 7030, 84, 7111, 165, 5444, 335, 348, 742, 424, 831, -524, 841, -495, 556, -353, 121, 392, 603, 449, 469, 525, 374, -474, -299, -598, -994, 170, -850, 379, -503, 6069, -1680, 5925, -1784, 5769, -2087, 5704, -2308, 6082, -2681, 6505, -2591, 6712, -2085, 6495, -1487, 6968, -1903, 7306, -1557, 7374, -1375, 1196, 54, 1153, -765, 1217, -925, 1676, -983, 1400, 117, 3527, 3025, 3425, 3260, 2901, 3479, 2587, 3457, 1920, 2663, 1914, 2314, 2270, 2105, 2892, 2042, 3589, 2470, 6238, -1053, 6384, -1366, 7481, -1113, 7414, -1005, 6251, -670, 7407, -676, 7212, -185, 1997, 3476, 1779, 3128, 3133, 1971, 3655, 2404, 4751, 2150, 4369, 2392, 4039, 2458, 3228, 1558, 4047, 1875, 2707, -2190, 2675, -2414, 2920, -2612, 3321, -1906, 3345, 215, 5183, 142, 5096, 169, 5342, 203, 5032, 248, 4964, 301, 4900, 316, 4775, 365, 4658, 391, 4564, 459, 4534, 501, 4575, 644, 3116, 317, 6681, 1664, 6298, 2272, 6528, 1740, 6467, 1771, 6371, 1759, 6011, 2224, 5705, 2021, 4630, -968, 5054, -1038, 3955, -534, 3592, -938, 3376, -432, 3268, -540, 3390, -1336, 3084, -528, 2849, -540, 3320, -1472, 5251, 1037, 3230, -1667, 2697, -502, 2411, -566, 2708, 1063, 2056, -32, 3032, -2874, 3782, -2533, 2576, -464, 2733, -1784, 3206, -1757, 2284, -572, 2605, -1597, -486, -1266, -428, -1384, -118, -1512, 10, -1448, 106, -1197, 982, -385, 1820, -1037, 2081, -401, 2132, -172, 4156, 1856, 2119, -1496, 2144, -477, 2767, 450, 2983, 355, 4707, 860, 4722, 1116, 3019, 1216, 3004, -3080, 2782, -3244, 2727, -3496, 2855, -3755, 3110, -3891, 3420, -3823, 3735, -3627, 3959, -3319, 3989, -2992, 3855, -2737, 3016, -2954, 2564, 457, 4054, 1362, 4118, 1362, 3956, 1807, 3888, 1683, 3820, 1535, 3877, 1467, 3956, 1433 )
@@ -14,6 +17,9 @@ outlines = [ PoolVector2Array( -598, -994, -486, -1266, -428, -1384, -118, -1512
 position = Vector2( 4106, -131 )
 scale = Vector2( 9.64652, 11.127 )
 texture = ExtResource( 2 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="1"]
+navpoly = SubResource( 1 )
 
 [node name="Mountain1" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
 position = Vector2( 552, 680 )
@@ -120,8 +126,25 @@ position = Vector2( 7, -13 )
 [node name="Projectiles" parent="YSort" index="3"]
 position = Vector2( 13, -8 )
 
-[node name="Spawners" parent="." index="3"]
+[node name="Spawners" parent="." index="4"]
 position = Vector2( 1629, 815 )
 
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="6"]
-navpoly = SubResource( 1 )
+[node name="LaserMechSpawner" parent="Spawners" index="0" instance=ExtResource( 5 )]
+position = Vector2( 1666, -3203 )
+num_spawns_per_interval = 1
+time_between_spawns = 2.0
+max_spawns = 3
+team = 2
+
+[node name="ShotgunMechSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
+position = Vector2( 4537, -2946 )
+num_spawns_per_interval = 5
+max_spawns = 5
+team = 2
+
+[node name="MissileMechSpawner" parent="Spawners" index="2" instance=ExtResource( 3 )]
+position = Vector2( 943, 2025 )
+num_spawns_per_interval = 6
+time_between_spawns = 3.0
+max_spawns = 6
+team = 2

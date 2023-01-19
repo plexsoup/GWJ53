@@ -74,6 +74,10 @@ func _ready():
 		$Debug,
 	]
 
+	if $Locomotion.get_child_count() == 0:
+		spawn_default_legs()
+	
+	
 	for system in systems:
 		for subsystem in system.get_children():
 			if subsystem.has_method("init"):
@@ -82,6 +86,10 @@ func _ready():
 	custom_ready()
 	State = States.READY
 	
+func spawn_default_legs():
+	var legScene = load("res://scenes/Entities/Parts/Mobility/BasicLegs.tscn").instance()
+	$Locomotion.add_child(legScene)
+
 
 func custom_ready():
 	#override this in descendants
