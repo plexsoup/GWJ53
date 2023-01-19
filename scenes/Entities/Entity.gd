@@ -37,6 +37,7 @@ export var is_human_player : bool = false
 export var team : int = -1 setget set_team, get_team
 var targetting_cursor
 
+var previous_velocity : Vector2 = Vector2.ZERO
 
 # Not sure what to do with these yet.
 # Each mech will have plugins for a variety of functions
@@ -59,6 +60,11 @@ export var damage_resistances : Dictionary = {
 	Damage_Types.SHOCK:0.0,
 }
 
+var ticks : int = 0
+
+signal started_walking
+signal stopped_walking
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var systems = [
@@ -74,14 +80,20 @@ func _ready():
 		$Debug,
 	]
 
-	
+	custom_ready()
 	
 	for system in systems:
 		for subsystem in system.get_children():
 			if subsystem.has_method("init"):
 				subsystem.init(self) # tell each module who the owner is.
+			if subsystem.has_method("_on_started_walking"):
+				#warning-ignore:RETURN_VALUE_DISCARDED
+				connect("started_walking", subsystem, "_on_started_walking")
+			if subsystem.has_method("_on_stopped_walking"):
+				#warning-ignore:RETURN_VALUE_DISCARDED
+				connect("stopped_walking", subsystem, "_on_stopped_walking")
+			
 
-	custom_ready()
 	State = States.READY
 	
 	
@@ -137,9 +149,18 @@ func move(delta):
 		if is_human_player:
 			velocity *= human_velocity_advantage
 		velocity *= speed_fudge_factor # exposed in inspector for game tuning
-		
+		change_walking_animation_if_required(velocity)
+		previous_velocity = velocity
 		move_and_slide(velocity)
 
+func change_walking_animation_if_required(velocity):
+	if previous_velocity.length_squared() < 1000.0 and velocity.length_squared() > 1000.0:
+		emit_signal("started_walking", velocity)
+	elif previous_velocity.length_squared() > 1000.0 and velocity.length_squared() < 1000.0:
+		emit_signal("stopped_walking", velocity)
+
+
+	
 
 func begin_dying():
 	State = States.DYING

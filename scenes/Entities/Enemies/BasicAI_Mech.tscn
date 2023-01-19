@@ -8,8 +8,7 @@
 [ext_resource path="res://scenes/Entities/Enemies/BasicAI_Mech.gd" type="Script" id=7]
 [ext_resource path="res://scenes/Entities/Enemies/AITargetSelection.tscn" type="PackedScene" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30.576, 14.3967 )
+[sub_resource type="CircleShape2D" id=1]
 
 [node name="BasicAI_Mech" groups=["enemies"] instance=ExtResource( 1 )]
 collision_layer = 2
@@ -17,10 +16,12 @@ collision_mask = 3
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( -0.499991, 32.285 )
 rotation = 3.14159
-scale = Vector2( 1.94597, -7.34299 )
+scale = Vector2( 8, 15 )
 shape = SubResource( 1 )
+
+[node name="Health" parent="." index="2"]
+position = Vector2( -7, -5 )
 
 [node name="TextureProgress" parent="Health" index="3"]
 margin_left = -61.0
@@ -29,18 +30,48 @@ margin_right = 67.0
 margin_bottom = 207.0
 rect_scale = Vector2( 1.09932, 0.580939 )
 
+[node name="Appearance" parent="." index="3"]
+position = Vector2( -7, -5 )
+
 [node name="Sprite" parent="Appearance" index="0"]
 visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
+[node name="Engine" parent="." index="4"]
+position = Vector2( -7, -5 )
+
+[node name="Locomotion" parent="." index="5"]
+position = Vector2( -7, -5 )
+
 [node name="BasicLegs" parent="Locomotion" index="0" instance=ExtResource( 3 )]
 position = Vector2( -3, 50 )
+
+[node name="HeatSink" parent="." index="6"]
+position = Vector2( -7, -5 )
+
+[node name="Weapons" parent="." index="7"]
+position = Vector2( -7, -5 )
+
+[node name="Defences" parent="." index="8"]
+position = Vector2( -7, -5 )
+
+[node name="Summons" parent="." index="9"]
+position = Vector2( -7, -5 )
+
+[node name="Input" parent="." index="10"]
+position = Vector2( -7, -5 )
 
 [node name="PathfindToTarget" parent="Input" index="0" instance=ExtResource( 6 )]
 
 [node name="AITargettingCursor" parent="Input/PathfindToTarget" index="2" instance=ExtResource( 5 )]
 
 [node name="AITargetSelection" parent="Input" index="1" instance=ExtResource( 8 )]
+
+[node name="TargetAcquisitionSensors" parent="." index="11"]
+position = Vector2( -7, -5 )
+
+[node name="Debug" parent="." index="12"]
+position = Vector2( -7, -5 )
 
 [editable path="Locomotion/BasicLegs"]
