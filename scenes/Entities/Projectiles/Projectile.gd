@@ -11,6 +11,7 @@ so you can create a new AnimationPlayer with a custom explode animation to overr
 extends Area2D
 
 var mech : KinematicBody2D # whoever launched you
+var team : int
 var damage : float
 var damage_type : int # see Global.damage_types
 var projectile_range : float
@@ -33,6 +34,7 @@ func _ready():
 
 func init(myMech, myDamage, damageType, projectileRange, lineOfSight, targetLocation):
 	mech = myMech
+	team = myMech.team
 	damage = myDamage
 	damage_type = damageType
 	projectile_range = projectileRange
@@ -76,17 +78,18 @@ func hurt(body):
 	
 
 func _on_Projectile_body_entered(body):
+	
 	if State == States.FLYING and line_of_sight:
 		if body.has_method("_on_hit") == false: # walls, etc
 			explode()
-		elif body.team != mech.team:
+		elif body.team != team:
 			explode()
 		else: # friendly fire
 			pass
 			#hurt(body)
 		
 	elif State == States.EXPLODING:
-		if body.get("team") != mech.team:
+		if is_instance_valid(body) and body.get("team") != team:
 			hurt(body)
 			
 			
