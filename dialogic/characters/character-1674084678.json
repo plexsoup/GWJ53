@@ -1,0 +1,25 @@
+{
+	"color": "#ffe09412",
+	"description": "",
+	"display_name": "Danny",
+	"display_name_bool": true,
+	"id": "character-1674084678.json",
+	"mirror_portraits": false,
+	"name": "Danny",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Art/Son.png"
+		},
+		{
+			"name": "Son Portrait",
+			"path": "res://Art/Son Portrait.png"
+		}
+	],
+	"scale": 100,
+	"theme": "default-theme.cfg"
+}
