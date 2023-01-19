@@ -184,16 +184,19 @@ alignment = 1
 
 [node name="FightButton" type="Button" parent="Foreground"]
 unique_name_in_owner = true
-visible = false
-margin_left = 866.0
-margin_top = 397.0
-margin_right = 1024.0
-margin_bottom = 430.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -189.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 60.0
 text = "Go Fight!"
 
 [node name="GrabFocus" parent="Foreground/FightButton" instance=ExtResource( 7 )]
 
 [node name="MoneyDisplay" type="HBoxContainer" parent="Foreground"]
+margin_left = 20.0
+margin_top = 20.0
 margin_right = 271.0
 margin_bottom = 27.0
 
@@ -205,7 +208,7 @@ text = "MONEY: 10"
 
 [node name="TextureRect" type="TextureRect" parent="Foreground/MoneyDisplay"]
 margin_left = 150.0
-margin_right = 271.0
+margin_right = 251.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 texture = ExtResource( 8 )
