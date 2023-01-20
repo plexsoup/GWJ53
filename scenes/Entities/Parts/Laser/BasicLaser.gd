@@ -73,6 +73,7 @@ func scene_finished():
 func shoot():
 	if scene_finished():
 		return
+	
 		
 	# WIP we should ask the target acquisition system for a target
 	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
@@ -82,6 +83,9 @@ func shoot():
 		$Line2D.default_color.a = 0.66
 		$ShotDurationTimer.start()
 		make_noise()
+	else:
+		$ReloadTimer.start()
+
 
 func make_noise():
 	$LaserNoise.set_pitch_scale(rand_range(0.8, 1.5))

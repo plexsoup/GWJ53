@@ -80,6 +80,8 @@ func shoot():
 		flash_muzzle()
 		hurt_targets()
 		#spawn_projectile()
+	else:
+		$ReloadTimer.start()
 
 func hurt_targets():
 	var blast = $ShotgunSprite/MuzzleLocation/BlastArea

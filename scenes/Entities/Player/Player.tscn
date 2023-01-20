@@ -37,3 +37,5 @@ anchor_mode = 1
 look_ahead = true
 
 [node name="PlayerInputController" parent="Input" index="0" instance=ExtResource( 6 )]
+
+[connection signal="tree_exiting" from="." to="." method="_on_Player_tree_exiting"]

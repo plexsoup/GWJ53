@@ -31,7 +31,7 @@ var Damage_Types = Global.damage_types
 # TODO: Should sync these up with Global.damage_types
 
 
-enum States { INITIALIZING, READY, INVULNERABLE, DYING, DEAD }
+enum States { INITIALIZING, READY, PAUSED, INVULNERABLE, DYING, DEAD }
 var State = States.INITIALIZING setget set_state, get_state
 
 # prevent returning to ready afer dying and becoming invulnerable.
