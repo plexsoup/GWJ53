@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Menus/GarageDoorsTransition.gd" type="Script" id=1]
 [ext_resource path="res://Art/Hanger doors.png" type="Texture" id=2]
-[ext_resource path="res://sfx/Garagedoor-s.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/TEMP SOunds(DO NOT KEEP)/Metal-door-slam.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.001

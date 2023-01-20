@@ -1,0 +1,45 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Victory is MINE! HAhahaha"
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You are definitely your mother's son"
+		},
+		{
+			"change_scene": "",
+			"event_id": "dialogic_041"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1674249665.json",
+		"name": "Win2"
+	}
+}
