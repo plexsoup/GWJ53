@@ -50,8 +50,8 @@ stream = ExtResource( 3 )
 volume_db = -15.0
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PoolVector2Array( 7, 599, 1019, 8 )
-width = 300.0
+points = PoolVector2Array( 65, -9, 761, -1 )
+width = 150.0
 default_color = Color( 0.898039, 0.898039, 0.898039, 1 )
 texture = SubResource( 2 )
 texture_mode = 2

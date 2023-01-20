@@ -81,7 +81,7 @@ func shoot():
 	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
 		State = States.SHOOTING
 		$TargetLocation/HurtBox.set_deferred("disabled", false)
-
+		$TargetLocation.visible = true
 		$Line2D.default_color.a = 0.66
 		$ShotDurationTimer.start()
 		make_noise()
@@ -117,8 +117,7 @@ func aim_laser(_delta):
 				if $RayCast2D.is_colliding():
 					$Line2D.points = [ Vector2.ZERO, self.to_local($RayCast2D.get_collision_point())]
 			$TargetLocation.position = rescaled_target_pos
-			if Global.user_prefs["particles"]:
-				$TargetLocation/CPUParticles2D.emitting = true
+			
 		else:
 			$TargetLocation/CPUParticles2D.emitting = false
 
@@ -137,7 +136,7 @@ func _on_ShotDurationTimer_timeout():
 	$LaserNoise.stop()
 	$TargetLocation/HurtBox.set_deferred("disabled", true)
 	$ReloadTimer.start()
-
+	$TargetLocation.visible = false
 
 #func _on_HurtBox_body_entered(body):
 #	if body != mech: # don't hurt yourself.
@@ -154,7 +153,8 @@ func hurt_target(target):
 		emit_signal("hit", damage, impactVector, damage_type)
 		# disconnect signal so they don't keep taking hits after we target someone else
 		disconnect("hit", target, "_on_hit")
-			
+		if Global.user_prefs["particles"]:
+			$TargetLocation/CPUParticles2D.emitting = true
 
 
 func _on_DamageTicks_timeout():

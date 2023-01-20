@@ -1,19 +1,23 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/Entities/Parts/Hull/L1Hull.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Entities/Parts/Hull/L0Hull.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Entities/Enemies/BasicAI_Mech.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Entities/Parts/Melee/BasicClaw.tscn" type="PackedScene" id=3]
 
 [node name="BasicClaw_Mech" instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_vertical_guides_": [ -640.0 ]
+}
 
-[node name="L1Hull" parent="Health" index="4" instance=ExtResource( 1 )]
-position = Vector2( -11, -95 )
+[node name="L1Hull2" parent="Health" index="4" instance=ExtResource( 1 )]
+position = Vector2( 3, -91 )
 
 [node name="BasicClaw" parent="Weapons" index="0" instance=ExtResource( 3 )]
 position = Vector2( 95, -143 )
+scale = Vector2( 0.567749, 0.567749 )
 
 [node name="BasicClaw2" parent="Weapons" index="1" instance=ExtResource( 3 )]
 position = Vector2( -101, -139 )
-scale = Vector2( -1, 1 )
+scale = Vector2( -0.577251, 0.577251 )
 
 [editable path="Locomotion/BasicLegs"]
