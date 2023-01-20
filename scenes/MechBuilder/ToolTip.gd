@@ -7,7 +7,8 @@ onready var builder = get_parent()
 
 var hovered_part_button = null
 
-func _ready():	
+func _ready():
+	hide()
 	yield(part_buttons_h_box, "sort_children")
 	for part_button in part_buttons_h_box.get_children():
 		part_button.connect("mouse_entered", self, "_on_part_button_mouse_entered", [part_button])
@@ -26,7 +27,7 @@ func _process(delta):
 
 func _on_part_button_mouse_entered(part_button):
 	hovered_part_button = part_button
-	$PanelContainer/RichTextLabel.text = part_button.part.description
+	$PanelContainer/RichTextLabel.bbcode_text = "[center]%s[/center]" % part_button.part.description
 	show()
 
 func _on_part_button_mouse_exited(part_button):

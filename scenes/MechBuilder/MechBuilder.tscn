@@ -272,7 +272,6 @@ mouse_filter = 2
 
 [node name="ToolTip" type="Control" parent="Foreground"]
 unique_name_in_owner = true
-visible = false
 margin_left = 190.0
 margin_top = 277.0
 margin_right = 190.0
@@ -292,11 +291,14 @@ mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Foreground/ToolTip/PanelContainer"]
 margin_left = 7.0
-margin_top = 7.0
+margin_top = 72.0
 margin_right = 235.0
-margin_bottom = 193.0
+margin_bottom = 128.0
 mouse_filter = 2
-text = "This is "
+size_flags_vertical = 4
+bbcode_enabled = true
+bbcode_text = "[center]This is some centered text[/center]"
+text = "This is some centered text"
 fit_content_height = true
 
 [connection signal="pressed" from="Foreground/FightButton" to="." method="_on_FightButton_pressed"]
