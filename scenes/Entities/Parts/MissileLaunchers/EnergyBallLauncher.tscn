@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Entities/Parts/MissileLaunchers/BasicMissileLauncher.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Entities/Projectiles/EnergyBallProjectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Entities/Parts/MissileLaunchers/EnergyBallLauncherImage.png" type="Texture" id=3]
+
+[node name="EnergyBallLauncher" instance=ExtResource( 1 )]
+shots_per_burst = 3
+burst_delay = 0.33
+reload_time = 1.5
+projectile = ExtResource( 2 )
+
+[node name="MissileLauncherSprite" parent="." index="3"]
+texture = ExtResource( 3 )
