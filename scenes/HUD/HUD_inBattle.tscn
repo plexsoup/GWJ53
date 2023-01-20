@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/HUD/HUD_inBattle.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Menus/MenuButton.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://scenes/Menus/AutoTargettingOptionButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Menus/ParticlesOptionButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Menus/MasterVolumeSlider.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/HUD/minimap.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/HUD/HealthHUD.tscn" type="PackedScene" id=11]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_cancel"
@@ -61,8 +63,8 @@ rect_min_size = Vector2( 500, 300 )
 [node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/PauseButton/PauseDialog"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 496.0
-margin_bottom = 504.0
+margin_right = 498.0
+margin_bottom = 546.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -136,13 +138,6 @@ margin_right = 454.0
 margin_bottom = 502.0
 text = "Quit Game"
 
-[node name="HelpButton" type="Button" parent="Control/HBoxContainer"]
-visible = false
-margin_left = 654.0
-margin_right = 719.0
-margin_bottom = 50.0
-text = "Help"
-
 [node name="WinDialog" type="PopupPanel" parent="Control"]
 margin_right = 660.0
 margin_bottom = 150.0
@@ -180,10 +175,13 @@ packed_scene = ExtResource( 3 )
 margin_right = 8.0
 margin_bottom = 8.0
 
+[node name="minimap" parent="Control" instance=ExtResource( 10 )]
+
+[node name="Health" parent="Control" instance=ExtResource( 11 )]
+
 [node name="VS_HypeScreen" parent="." instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="Control/HBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="popup_hide" from="Control/HBoxContainer/PauseButton/PauseDialog" to="." method="_on_PauseDialog_popup_hide"]
 [connection signal="pressed" from="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer/QuitToMenuButton" to="." method="_on_QuitToMenuButton_pressed"]
-[connection signal="pressed" from="Control/HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]
