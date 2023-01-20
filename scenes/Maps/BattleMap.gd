@@ -35,6 +35,17 @@ func init(playerScene): # called by MechBuilderTest when user presses finished
 	if not playerScene.is_visible_in_tree():
 		$YSort/Entities.add_child(playerScene)
 	
+
+func get_spawner_teams_list() -> Array : # returns a list of team numbers in the battle
+	var teams = []
+	
+	for spawner in $Spawners.get_children():
+		if not spawner.team in teams:
+			teams.push_back(spawner.team)
+
+	return teams
+
+
 	
 func _on_spawner_finished():
 	
