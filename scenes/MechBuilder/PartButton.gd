@@ -14,6 +14,8 @@ func _ready():
 	cost_label.text = str(part.cost)
 	icon.texture = part.icon
 	name_label.text = part.name
+	$Button.connect("mouse_entered", self, "emit_signal", ["mouse_entered"])
+	$Button.connect("mouse_exited", self, "emit_signal", ["mouse_exited"])
 	
 
 func _set_disabled(v):

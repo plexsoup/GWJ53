@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Menus/GrabFocus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
 [ext_resource path="res://scenes/MechBuilder/SellSymbol.png" type="Texture" id=9]
+[ext_resource path="res://scenes/MechBuilder/ToolTip.gd" type="Script" id=10]
 
 [sub_resource type="GDScript" id=4]
 resource_name = "Cursor"
@@ -212,7 +213,7 @@ margin_right = 778.0
 margin_bottom = 171.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 4
+custom_constants/separation = 0
 alignment = 1
 
 [node name="FightButton" type="Button" parent="Foreground"]
@@ -262,6 +263,41 @@ margin_right = 179.0
 margin_bottom = 471.0
 toggle_mode = true
 text = "Sell Part"
+
+[node name="ToolTipArea" type="ReferenceRect" parent="Foreground"]
+unique_name_in_owner = true
+anchor_right = 1.0
+margin_bottom = 410.0
+mouse_filter = 2
+
+[node name="ToolTip" type="Control" parent="Foreground"]
+unique_name_in_owner = true
+visible = false
+margin_left = 190.0
+margin_top = 277.0
+margin_right = 190.0
+margin_bottom = 277.0
+mouse_filter = 2
+script = ExtResource( 10 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Foreground/ToolTip"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -121.0
+margin_top = -200.0
+margin_right = 121.0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Foreground/ToolTip/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 235.0
+margin_bottom = 193.0
+mouse_filter = 2
+text = "This is "
+fit_content_height = true
 
 [connection signal="pressed" from="Foreground/FightButton" to="." method="_on_FightButton_pressed"]
 [connection signal="pressed" from="Foreground/SellButton" to="." method="_on_SellButton_pressed"]

@@ -1,5 +1,7 @@
 extends Control
 
+signal part_added(building_part)
+
 export(float) var min_joint_distance # Minimum distance parts should be seperated
 export(float) var max_joint_distance # Maximum distance between connected parts
 export(int) var reroll_cost = 1
@@ -106,6 +108,8 @@ func _process(_delta):
 			strut.look_at(nearby_part.position)
 			$BuildingZone.move_child(strut, 0)
 			strut_hints.append(strut)
+	
+	
 
 func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 	# Add part
@@ -134,6 +138,7 @@ func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 		building_part.connected_parts.append(nearby_part)
 	if building_part.connected_parts.size() == 0:
 		tween.kill()
+	emit_signal("part_added", building_part)
 
 func _on_building_part_mouse_enter(building_part : BuildingPart):
 	if sell_button.pressed:
