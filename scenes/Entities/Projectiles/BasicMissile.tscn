@@ -250,7 +250,7 @@ color_ramp = SubResource( 1 )
 [node name="Particles2D" type="Particles2D" parent="Sprite" index="2"]
 position = Vector2( -99.306, -3 )
 rotation = -0.027898
-scale = Vector2( 0.84314, 0.84314 )
+scale = Vector2( 0.845261, 0.84326 )
 amount = 252
 visibility_rect = Rect2( -104.096, -92.23, 200.766, 200 )
 texture = SubResource( 5 )
