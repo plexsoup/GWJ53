@@ -1,22 +1,33 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/HUD/minimapFrameFilled.png" type="Texture" id=1]
-[ext_resource path="res://scenes/HUD/healthBarHudFill.png" type="Texture" id=2]
+[ext_resource path="res://Art/HP_Under.png" type="Texture" id=1]
+[ext_resource path="res://Art/Hp_OVer.png" type="Texture" id=2]
 [ext_resource path="res://scenes/HUD/HealthHUD.gd" type="Script" id=3]
+[ext_resource path="res://Art/Danny_HP.png" type="Texture" id=4]
 
 [node name="Health" type="TextureProgress"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -128.0
-margin_right = 128.0
+margin_left = 89.0
+margin_top = -54.9999
+margin_right = 631.0
+margin_bottom = 73.0001
 rect_min_size = Vector2( 128, 128 )
+rect_rotation = -0.242395
+rect_scale = Vector2( 0.619305, 0.282218 )
 max_value = 1.0
 step = 0.1
+value = 0.9
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 2 )
-fill_mode = 3
 nine_patch_stretch = true
 script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="DannyHp" type="Sprite" parent="."]
+position = Vector2( -37.004, -21.6199 )
+rotation = -0.0656049
+scale = Vector2( 0.947571, 2.14554 )
+texture = ExtResource( 4 )
