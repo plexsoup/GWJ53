@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/BuildingPart.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Hull/hull.png" type="Texture" id=2]
+[ext_resource path="res://scripts/ParticleDisabler.gd" type="Script" id=3]
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.292398, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.736842, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -111,6 +112,7 @@ initial_velocity_random = 0.5
 scale_amount = 5.0
 scale_amount_curve = SubResource( 5 )
 color_ramp = SubResource( 6 )
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 2 )
@@ -121,7 +123,6 @@ visible = false
 polygon = PoolVector2Array( 0, -8, 8, 0, 0, 8, -8, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Build"
 anims/Build = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 

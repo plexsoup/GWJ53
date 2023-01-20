@@ -25,7 +25,7 @@ outlines = [ PoolVector2Array( -932, -1043, -700, -1419, -580, -1587, -180, -163
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="0"]
 stream = ExtResource( 15 )
-volume_db = -1.341
+volume_db = -1.932
 autoplay = true
 
 [node name="DesertFloorWIP" type="Sprite" parent="." index="1"]

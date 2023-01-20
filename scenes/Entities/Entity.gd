@@ -21,6 +21,9 @@ export var knockback_resistance : float = 0.0 # 1.0 == no knockback from impacts
 export var shield_max : float = 0.0
 var shield : float = shield_max
 
+export var iframes_time : float = 0.25
+export var human_iframes_multiplier : float = 3.0
+
 export var human_velocity_advantage = 2.25
 export var speed_fudge_factor = 1.0 # apply to every type of conveyance for every mech
 
@@ -28,8 +31,11 @@ var Damage_Types = Global.damage_types
 # TODO: Should sync these up with Global.damage_types
 
 
-enum States { INITIALIZING, READY, INVULNERABLE, DYING, DEAD }
-var State = States.INITIALIZING
+enum States { INITIALIZING, READY, PAUSED, INVULNERABLE, DYING, DEAD }
+var State = States.INITIALIZING setget set_state, get_state
+
+# prevent returning to ready afer dying and becoming invulnerable.
+var PreviousStates = [] # push/pop states so we can come back to them after yields and timer signals
 
 
 var input_controller
@@ -101,14 +107,38 @@ func _ready():
 				#warning-ignore:RETURN_VALUE_DISCARDED
 				connect("died", subsystem, "_on_mech_died")
 
-	State = States.READY
+	set_state(States.READY)
 	
-	
+	setup_iframes()
+
+func setup_iframes():
+	if self.is_human_player:
+		iframes_time *= human_iframes_multiplier
+	$Defences/iframesTimer.set_wait_time(iframes_time)
+
+func trigger_iframes():
+	$Defences/iframesTimer.start()
+	set_state(States.INVULNERABLE)
+
+	# this should be a shader. who wants to write a shader?
+	self.set_modulate(Color.red)
+
 
 	
 func custom_ready():
 	#override this in descendants
 	pass
+
+func set_state(newState):
+	PreviousStates.push_back(State)
+	State = newState
+	
+func get_state():
+	return State
+	
+func resume_previous_state():
+	State = PreviousStates.pop_back()
+
 
 func set_team(newTeam):
 	team = newTeam
@@ -170,7 +200,7 @@ func change_walking_animation_if_required(velocity):
 	
 
 func begin_dying():
-	State = States.DYING
+	set_state(States.DYING)
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	var animation_player = $DefaultAnimationPlayer
@@ -211,12 +241,20 @@ func _on_hit(damage, impactVector, damageType):
 	if State != States.READY: #INVULNERABLE Can't be hurt
 		return
 	
+	# /begin haiku
+	# in a perfect world with unlimited time, 
+	# we'd check each subsystem in defenses node,
+	# to let them soak damage first.
+	# sadly, we don't have unlimited time.
+	# so all damage comes to Entity
+	# /end haiku
+	
 	# check damage resistance first.
 	# then take damage of shields, then armor
 	var resist = damage_resistances[damageType]
 	damage = max(damage * (1.0-resist), 0.0)
 	if damage > 0.0:
-
+		trigger_iframes()
 		if shield > 0.0:
 			print("Shield took " + str(damage))
 			shield -= damage
@@ -246,3 +284,8 @@ func _on_DecayTimer_timeout():
 
 func _on_DeathTimer_timeout():
 	_on_finished_dying()
+
+
+func _on_iframesTimer_timeout():
+	resume_previous_state()
+	set_modulate(Color.white)

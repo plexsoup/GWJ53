@@ -13,6 +13,8 @@ var _spin = 0
 var _flying = false
 
 func _ready():
+	if Global.user_prefs["particles"]:
+		$AnimationPlayer.play("Build")
 	$Sprite.texture = part.icon
 	if part.type == Part.Type.HULL:
 		$Area2D.input_pickable = false

@@ -34,7 +34,7 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "default",
-"speed": 10.0
+"speed": 20.02
 } ]
 
 [sub_resource type="AtlasTexture" id=15]
@@ -156,6 +156,7 @@ tracks/1/keys = {
 }
 
 [node name="Projectile" instance=ExtResource( 1 )]
+scale = Vector2( 6.95322, 6.95322 )
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 1, -5 )
@@ -163,9 +164,9 @@ scale = Vector2( 2.7661, 2.7661 )
 hframes = 6
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite" index="0"]
-scale = Vector2( 0.380554, 0.380554 )
+scale = Vector2( 0.380949, 0.378415 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="ExplosionSprite" parent="." index="4"]

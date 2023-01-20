@@ -18,7 +18,7 @@ enum damage_types { IMPACT, LASER, FIRE, SHOCK }
 
 var battles = ["Desert Canyon", "Junkyard", "Old Port"]
 var battle_scenes = {
-	"Old Port":"res://scenes/Maps/StreetBattle01.tscn",
+	"Old Port":"res://scenes/Maps/OldPort/OldPortMap.tscn",
 	"Desert Canyon":"res://scenes/Maps/DesertCanyon/DesertCanyonMap.tscn",
 	"Junkyard": "res://scenes/Maps/junkyard/JunkyardMap.tscn",
 }

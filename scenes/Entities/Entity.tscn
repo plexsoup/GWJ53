@@ -147,6 +147,10 @@ texture_progress = ExtResource( 4 )
 
 [node name="Defences" type="Node2D" parent="."]
 
+[node name="iframesTimer" type="Timer" parent="Defences"]
+wait_time = 0.25
+one_shot = true
+
 [node name="Summons" type="Node2D" parent="."]
 
 [node name="Input" type="Node2D" parent="."]
@@ -165,3 +169,4 @@ script = ExtResource( 5 )
 
 [connection signal="timeout" from="Health/DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="timeout" from="Health/DecayTimer" to="." method="_on_DecayTimer_timeout"]
+[connection signal="timeout" from="Defences/iframesTimer" to="." method="_on_iframesTimer_timeout"]
