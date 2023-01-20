@@ -58,7 +58,7 @@ rect_min_size = Vector2( 500, 300 )
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 496.0
-margin_bottom = 443.0
+margin_bottom = 420.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -68,7 +68,7 @@ custom_constants/margin_bottom = 20
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 472.0
-margin_bottom = 419.0
+margin_bottom = 396.0
 
 [node name="Objective" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
 margin_right = 452.0
@@ -163,6 +163,7 @@ margin_right = 8.0
 margin_bottom = 8.0
 
 [connection signal="pressed" from="Control/HBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="popup_hide" from="Control/HBoxContainer/PauseButton/PauseDialog" to="." method="_on_PauseDialog_popup_hide"]
 [connection signal="pressed" from="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer/QuitToMenuButton" to="." method="_on_QuitToMenuButton_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]

@@ -186,16 +186,13 @@ tracks/6/keys = {
 collision_layer = 4
 collision_mask = 3
 
-[node name="Polygon2D" parent="Sprite" index="0"]
-visible = false
-
-[node name="Missile" type="Sprite" parent="Sprite" index="1"]
+[node name="Missile" type="Sprite" parent="Sprite" index="0"]
 position = Vector2( 7.62939e-06, 3.8147e-06 )
 rotation = 1.59745
 scale = Vector2( 0.84314, 0.84314 )
 texture = ExtResource( 2 )
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite" index="2"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite" index="1"]
 position = Vector2( -42, -1 )
 amount = 32
 lifetime = 0.8

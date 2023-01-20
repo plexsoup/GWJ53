@@ -34,3 +34,7 @@ func _on_QuitToMenuButton_pressed():
 	Global.stage_manager.change_scene("res://scenes/Menus/MainMenu02.tscn")
 	Global.battles_completed = []
 	get_tree().paused = false
+
+
+func _on_PauseDialog_popup_hide():
+	get_tree().paused = false

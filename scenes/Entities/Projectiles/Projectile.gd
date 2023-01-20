@@ -18,6 +18,7 @@ var projectile_range : float
 var line_of_sight : bool
 var target_location : Vector2
 var speed : float = 600.0
+var human_fudge_factor : float = 1.5
 var velocity : Vector2
 
 enum States { FLYING, EXPLODING, DEAD }
@@ -45,6 +46,7 @@ func init(myMech, myDamage, damageType, projectileRange, lineOfSight, targetLoca
 		set_collision_layer_bit(3, true)
 	elif mech.is_human_player:
 		set_collision_layer_bit(2, true)
+		speed *= human_fudge_factor
 	set_collision_mask_bit(0, true)
 	set_collision_mask_bit(1, true)
 	
