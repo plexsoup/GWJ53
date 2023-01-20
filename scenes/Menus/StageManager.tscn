@@ -41,3 +41,4 @@ mouse_filter = 2
 
 [node name="SplashImage" parent="." instance=ExtResource( 7 )]
 visible = false
+texture = ExtResource( 2 )

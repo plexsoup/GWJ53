@@ -8,7 +8,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$SplashImage.show()
+#	$SplashImage.show()
 	Global.stage_manager = self
 	
 func change_scene(scenePathStr : String):
