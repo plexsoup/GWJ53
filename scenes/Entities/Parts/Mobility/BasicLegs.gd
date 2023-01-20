@@ -36,20 +36,11 @@ func init(myMech):
 
 
 
-# Entity now handles movement
-#func move(delta):
-#	if mech.State ==  mech.States.READY:
-#
-#		if mech == null or mech.State == mech.States.DEAD:
-#			return
-#		var velocity = get_velocity(delta)
-#		#warning-ignore:RETURN_VALUE_DISCARDED
-#		mech.move_and_slide(velocity * Global.game_speed)
 
 func get_velocity(delta):
 	var velocity = Vector2.ZERO
 		
-	if mech != null and mech.State ==  mech.States.READY:
+	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
 		if mech.input_controller.pressed["move_forwards"] == true:
 			velocity += Vector2.UP
 		if mech.input_controller.pressed["move_right"] == true:
