@@ -1,22 +1,15 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Menus/input_sensitivity_menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Menus/AutoTargettingOptionButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/ui_keyboard_navigation/other_grab_focus.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Menus/LanguageBtn.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Menus/keybinding_menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Menus/accessibility_information.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=7]
-[ext_resource path="res://scenes/Menus/AutoTargettingOptionButton.gd" type="Script" id=8]
+[ext_resource path="res://scenes/Menus/ParticlesOptionButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Menus/MenuButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Menus/audio_mixer_menu.tscn" type="PackedScene" id=10]
-
-[sub_resource type="GDScript" id=1]
-resource_name = "ParticlesSetting"
-script/source = "extends CheckButton
-
-func _on_ParticlesOption_toggled(button_pressed):
-	Global.user_prefs[\"particles\"] = button_pressed
-"
 
 [node name="SettingsMenu" type="Control"]
 anchor_right = 1.0
@@ -112,22 +105,9 @@ margin_bottom = 150.0
 text = "MENU_ACCESSIBILITY_INFORMATION"
 packed_scene = ExtResource( 6 )
 
-[node name="AutoTargettingOptionButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 200.0
-margin_right = 490.0
-margin_bottom = 240.0
-text = "Auto-Targetting"
-flat = true
-script = ExtResource( 8 )
+[node name="AutoTargettingOptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource( 2 )]
 
-[node name="ParticlesOption" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 290.0
-margin_right = 490.0
-margin_bottom = 330.0
-pressed = true
-text = "Flashing / Particles"
-flat = true
-script = SubResource( 1 )
+[node name="ParticlesOption" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource( 8 )]
 
 [node name="ReturnBtn" parent="MarginContainer/VBoxContainer" instance=ExtResource( 9 )]
 margin_left = 369.0
@@ -136,6 +116,3 @@ margin_right = 555.0
 margin_bottom = 465.0
 text = "MENU_RETURN"
 scene_path = "res://scenes/Menus/MainMenu02.tscn"
-
-[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AutoTargettingOptionButton" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AutoTargettingOptionButton" method="_on_AutoTargettingOptionButton_toggled"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ParticlesOption" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ParticlesOption" method="_on_ParticlesOption_toggled"]

@@ -6,13 +6,16 @@ extends Sprite
 
 export var speed : float = 50.0
 
+var mech
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.player_cursor = self
 	
 
 func seek_nearest_enemy(delta):
-	var closest_enemy = Utils.get_closest_object(get_tree().get_nodes_in_group("enemies"), self)
+	var closest_enemy = Utils.get_closest_object(get_tree().get_nodes_in_group("enemies"), mech)
 	var myPos = get_global_position()
 	var enemyPos
 	if closest_enemy != null:
