@@ -37,7 +37,6 @@ signal hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
 	$ReloadTimer.start()
 	$ShotgunSprite/MuzzleFlash.visible = false
 	$CockDurationTimer.set_wait_time(burst_delay)
@@ -68,7 +67,7 @@ func shoot():
 	if $ShotgunSprite/MuzzleLocation/BlastArea.has_method("update_polygon_shape"):
 		$ShotgunSprite/MuzzleLocation/BlastArea.update_polygon_shape()
 	# WIP we should ask the target acquisition system for a target
-	if mech != null and mech.State == mech.States.READY:
+	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE]:
 		shots_left -= 1
 		if shots_left == 0:
 			State = States.RELOADING
@@ -80,6 +79,8 @@ func shoot():
 		flash_muzzle()
 		hurt_targets()
 		#spawn_projectile()
+	else:
+		$ReloadTimer.start()
 
 func hurt_targets():
 	var blast = $ShotgunSprite/MuzzleLocation/BlastArea

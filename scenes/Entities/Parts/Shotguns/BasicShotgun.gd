@@ -32,7 +32,7 @@ var State = States.RELOADING
 
 var target_locked : Node2D # probably a kinematic body
 
-signal hit
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +53,7 @@ func modify_hurtbox_size():
 	var default_blast_size = 500.0
 	if mech.is_human_player:
 		default_blast_size *= 1.25
+	
 	$ShotgunSprite/MuzzleLocation/BlastArea/CollisionPolygon2D.scale.x = projectile_range / default_blast_size
 	$ShotgunSprite/MuzzleLocation/BlastArea/BlastImage.scale.x = projectile_range/ default_blast_size
 

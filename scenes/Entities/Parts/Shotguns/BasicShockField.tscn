@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Entities/Parts/Shotguns/BasicShockField.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Entities/Projectiles/basicShock.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/Entities/Projectiles/DynamicShockArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/angelchama/shield.png" type="Texture" id=6]
+
+[node name="BasicShockField" type="Node2D"]
+script = ExtResource( 1 )
+knockback_effect = 4.0
+
+[node name="CockDurationTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ShootNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -3.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.999997, 3 )
+scale = Vector2( 3.36719, 3.36719 )
+texture = ExtResource( 6 )
+offset = Vector2( 2, 1.33333 )
+
+[node name="BlastArea" parent="Sprite" instance=ExtResource( 4 )]
+position = Vector2( 0.296986, -1.7819 )
+scale = Vector2( 0.445476, 0.445476 )
+
+[connection signal="timeout" from="CockDurationTimer" to="." method="_on_CockDurationTimer_timeout"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
