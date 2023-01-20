@@ -41,10 +41,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 0.541713, 0.8, 1 ),
+"transitions": PoolRealArray( -2, 1, 2, 1, -2, 1 ),
 "update": 0,
-"values": [ -28.7465, 10.7948, -28.7465 ]
+"values": [ -28.7465, -44.9999, -44.9999, 10.7948, 10.7948, -28.7465 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite/Sprite2:rotation_degrees")
@@ -53,10 +53,24 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 0.541713, 0.8, 1 ),
+"transitions": PoolRealArray( -2, 1, 2, 1, -2, 1 ),
 "update": 0,
-"values": [ 39.8454, 1.2564, 39.8454 ]
+"values": [ 39.8454, 59.9999, 59.9999, 1.2564, 1.2564, 39.8454 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.541713 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hurt_targets"
+} ]
 }
 
 [node name="BasicClaw" type="Node2D"]
@@ -80,7 +94,7 @@ scale = Vector2( 0.445476, 0.445476 )
 
 [node name="Sprite" type="Sprite" parent="Sprite"]
 position = Vector2( 1.32139, -1.62294 )
-rotation = -0.50172
+rotation = -0.501721
 scale = Vector2( 1.47535, 1.47535 )
 texture = ExtResource( 1 )
 offset = Vector2( 47.8143, -13.9582 )
