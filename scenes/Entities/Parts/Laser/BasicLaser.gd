@@ -75,7 +75,7 @@ func shoot():
 		return
 		
 	# WIP we should ask the target acquisition system for a target
-	if mech != null and mech.State == mech.States.READY:
+	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
 		State = States.SHOOTING
 		$TargetLocation/HurtBox.set_deferred("disabled", false)
 
