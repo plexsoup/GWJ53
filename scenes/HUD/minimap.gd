@@ -20,7 +20,9 @@ func clear_minimap():
 		threatIcon.queue_free()
 
 func update_minimap_icons():
-
+	if mech == null:
+		return
+	
 	var length = 32.0
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		var enemyDir = mech.global_position.direction_to(enemy.global_position)

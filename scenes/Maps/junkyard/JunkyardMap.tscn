@@ -20,7 +20,8 @@ scale = Vector2( 11.0412, 9.8482 )
 texture = ExtResource( 2 )
 
 [node name="Obstacles" parent="YSort" index="0"]
-scale = Vector2( 3, 3 )
+position = Vector2( -1664, -832 )
+scale = Vector2( 5, 5 )
 
 [node name="Mountain1" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
 position = Vector2( 36, 812 )
@@ -155,40 +156,41 @@ color = Color( 0.74902, 0.517647, 0.223529, 1 )
 polygon = PoolVector2Array( -1212, -2721, -273, -2835, -588, -2573, -611, -2254, -566, -1814, -467, -1527, -440, -1410, 45, -1482, 171, -1496, 248, -1531, 242, -1599, 188, -1985, 467, -1976, 602, -1976, 664, -1779, 805, -1328, 1022, -1070, 1186, -1125, 1299, -979, 1456, -908, 1680, -833, 2038, -836, 2254, -854, 2321, -652, 2289, -498, 2137, -467, 1716, -435, 1585, -237, 1616, -81, 1701, 113, 1905, 197, 2155, 224, 2451, 224, 2442, 1544, -1203, 1526 )
 
 [node name="LaserMechSpawner" parent="Spawners" index="0" instance=ExtResource( 5 )]
-position = Vector2( 12507, 2609 )
+position = Vector2( 17790, 3879 )
 num_spawns_per_interval = 1
 time_between_spawns = 0.75
 max_spawns = 6
 team = 3
 
 [node name="MissileMechSpawner" parent="Spawners" index="1" instance=ExtResource( 3 )]
-position = Vector2( -3818, 3278 )
+position = Vector2( -7831, 5107 )
 num_spawns_per_interval = 1
 time_between_spawns = 0.75
 max_spawns = 6
 team = 3
 
 [node name="ShotgunMechSpawner" parent="Spawners" index="2" instance=ExtResource( 4 )]
-position = Vector2( 3696, -4301 )
+position = Vector2( 4407, -7450 )
 num_spawns_per_interval = 1
 time_between_spawns = 1.0
 max_spawns = 6
 team = 3
 
 [node name="MissileMechSpawner2" parent="Spawners" index="3" instance=ExtResource( 3 )]
-position = Vector2( 4852, 9604 )
+position = Vector2( 5850, 15126 )
 num_spawns_per_interval = 1
 time_between_spawns = 1.25
 max_spawns = 6
 team = 3
 
 [node name="LaserMechSpawner2" parent="Spawners" index="4" instance=ExtResource( 5 )]
-position = Vector2( 3238, 9403 )
+position = Vector2( 1949, 7639 )
 num_spawns_per_interval = 1
 time_between_spawns = 2.0
 max_spawns = 6
 team = 3
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="6"]
-scale = Vector2( 3, 3 )
+position = Vector2( -1664, -832 )
+scale = Vector2( 5, 5 )
 navpoly = SubResource( 1 )

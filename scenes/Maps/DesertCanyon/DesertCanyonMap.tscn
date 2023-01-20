@@ -31,18 +31,18 @@ volume_db = -1.932
 autoplay = true
 
 [node name="DesertFloorWIP" type="Sprite" parent="." index="1"]
-position = Vector2( 4289, 2076 )
-scale = Vector2( 26.058, 25.876 )
+position = Vector2( 6265, 1874 )
+scale = Vector2( 34, 34 )
 texture = ExtResource( 8 )
 
 [node name="DesertWalls" type="Sprite" parent="." index="2"]
-position = Vector2( 4275, 2060 )
-scale = Vector2( 26.9688, 27.2807 )
+position = Vector2( 6825, 1863 )
+scale = Vector2( 34, 34 )
 texture = ExtResource( 2 )
 
 [node name="Obstacles" parent="YSort" index="0"]
 position = Vector2( -4021.01, 2301.48 )
-scale = Vector2( 2.29297, 2.29297 )
+scale = Vector2( 3, 3 )
 
 [node name="Mountain1" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
 position = Vector2( 552, 680 )
@@ -55,7 +55,7 @@ color = Color( 0.607843, 0.227451, 0.227451, 1 )
 polygon = PoolVector2Array( -145, -65, -37, -244, 39, -287, 92, -279, 117, -221, 135, -136, 152, 36, 140, 204, 97, 270, -4, 398, -52, 401, -87, 353, -95, 257, -97, 174, -110, 73, -158, -7 )
 
 [node name="Mount1Sprite" type="Sprite" parent="YSort/Obstacles/Mountain1" index="1"]
-position = Vector2( 366.028, -210.077 )
+position = Vector2( 357.337, -231.16 )
 scale = Vector2( 10.1606, 10.1606 )
 texture = ExtResource( 13 )
 
@@ -222,31 +222,31 @@ position = Vector2( 13, -8 )
 position = Vector2( 1629, 815 )
 
 [node name="LaserMechSpawner" parent="Spawners" index="0" instance=ExtResource( 5 )]
-position = Vector2( 1924, -6309 )
+position = Vector2( 4444, -7206 )
 num_spawns_per_interval = 1
 time_between_spawns = 2.0
 max_spawns = 6
 team = 2
 
 [node name="ShotgunMechSpawner" parent="Spawners" index="1" instance=ExtResource( 4 )]
-position = Vector2( 9781, -2748 )
+position = Vector2( 14394, -2962 )
 num_spawns_per_interval = 1
 time_between_spawns = 0.75
 max_spawns = 8
 team = 2
 
 [node name="MissileMechSpawner" parent="Spawners" index="2" instance=ExtResource( 3 )]
-position = Vector2( 516, 8362 )
+position = Vector2( 1646, 10461 )
 num_spawns_per_interval = 1
 time_between_spawns = 1.0
 max_spawns = 6
 team = 2
 
 [node name="ClawMechSpawner" parent="Spawners" index="3" instance=ExtResource( 16 )]
-position = Vector2( 3811, 1517 )
+position = Vector2( 5910, 1356 )
 team = 2
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="9"]
 position = Vector2( -4166.01, 2239.48 )
-scale = Vector2( 2.32402, 2.32402 )
+scale = Vector2( 3, 3 )
 navpoly = SubResource( 1 )

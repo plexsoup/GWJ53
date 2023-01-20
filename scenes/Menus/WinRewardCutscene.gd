@@ -6,7 +6,7 @@ export var next_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var dialog =Dialogic.start("Intro")
+	var dialog =Dialogic.start("Win1")
 	
 	add_child(dialog) 
 	dialog.connect("timeline_end", self, "_on_dialog_ended")
