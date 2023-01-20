@@ -50,7 +50,6 @@ func shoot():
 		$ReloadTimer.start()
 		make_noise()
 		flash()
-		hurt_targets()
 	else:
 		$ReloadTimer.start()
 
