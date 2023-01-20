@@ -1,10 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/MissileLaunchers/BasicMissileLauncher.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/MissileLaunchers/MissileLauncherImage.png" type="Texture" id=2]
 [ext_resource path="res://sfx/Missileshoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://_common/Materials/white_target.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Entities/Projectiles/BasicMissile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Art/Laser test/Flash_Nozzel1.png" type="Texture" id=6]
+[ext_resource path="res://Art/Laser test/Flash_Nozzel2.png" type="Texture" id=7]
+[ext_resource path="res://Art/Laser test/Flash_Nozzel3.png" type="Texture" id=8]
+[ext_resource path="res://Art/Laser test/Flash_Nozzel4.png" type="Texture" id=9]
+
+[sub_resource type="AnimatedTexture" id=3]
+flags = 6
+frames = 5
+fps = 7.4
+frame_0/texture = ExtResource( 6 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 7 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 8 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 9 )
+frame_4/delay_sec = 0.0
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -65,9 +82,13 @@ scale = Vector2( 2, 2 )
 
 [node name="MuzzleFlash" type="Sprite" parent="MissileLauncherSprite"]
 visible = false
-position = Vector2( 118.667, 5.33333 )
+position = Vector2( 173.333, -1.33334 )
+scale = Vector2( 1.55637, 2.85417 )
+texture = SubResource( 3 )
+offset = Vector2( -1.335, 0 )
 
 [node name="Polygon2D" type="Polygon2D" parent="MissileLauncherSprite/MuzzleFlash"]
+visible = false
 scale = Vector2( 0.458969, 0.458969 )
 color = Color( 1, 0.905882, 0.156863, 1 )
 polygon = PoolVector2Array( -6, -38, -42, -116, 4, -88, 42, -158, 50, -108, 136, -156, 108, -90, 196, -96, 152, -58, 304, -32, 186, -24, 352, -4, 254, 4, 284, 38, 180, 12, 218, 56, 130, 18, 148, 66, 72, 30, 78, 84, 28, 30, 2, 106 )

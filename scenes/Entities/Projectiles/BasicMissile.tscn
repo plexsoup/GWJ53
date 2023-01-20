@@ -1,12 +1,50 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/Entities/Projectiles/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Entities/Projectiles/Missile.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Entities/Projectiles/explosion.wav" type="AudioStream" id=3]
+[ext_resource path="res://Art/Laser test/Smoke_6.png" type="Texture" id=4]
+[ext_resource path="res://Art/Laser test/Smoke_1.png" type="Texture" id=5]
+[ext_resource path="res://Art/Laser test/Smoke_4.png" type="Texture" id=6]
+[ext_resource path="res://Art/Laser test/Smoke_3.png" type="Texture" id=7]
+[ext_resource path="res://Art/Laser test/Smoke_2.png" type="Texture" id=8]
+[ext_resource path="res://Art/Laser test/Smoke_5.png" type="Texture" id=9]
+
+[sub_resource type="AnimatedTexture" id=4]
+flags = 6
+frames = 6
+fps = 25.1
+frame_0/texture = ExtResource( 5 )
+frame_1/texture = ExtResource( 8 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 7 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 6 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 9 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 4 )
+frame_5/delay_sec = 0.0
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.289628, 0.720157, 0.906067, 1 )
 colors = PoolColorArray( 1, 0.929721, 0.60888, 1, 0.808594, 0.0920904, 0, 1, 0.609375, 0.0758881, 0.00772992, 1, 0.199219, 0.181455, 0.179423, 1, 0.402344, 0.358962, 0.358962, 1 )
+
+[sub_resource type="AnimatedTexture" id=5]
+flags = 6
+frames = 6
+fps = 18.0
+frame_0/texture = ExtResource( 5 )
+frame_1/texture = ExtResource( 8 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 7 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 6 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 9 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 4 )
+frame_5/delay_sec = 0.0
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -183,6 +221,7 @@ tracks/6/keys = {
 }
 
 [node name="BasicMissile" instance=ExtResource( 1 )]
+scale = Vector2( 1.84605, 1.84123 )
 collision_layer = 4
 collision_mask = 3
 
@@ -193,17 +232,28 @@ scale = Vector2( 0.84314, 0.84314 )
 texture = ExtResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite" index="1"]
+visible = false
 position = Vector2( -42, -1 )
-amount = 32
+amount = 106
 lifetime = 0.8
+draw_order = 1
+texture = SubResource( 4 )
 emission_shape = 2
-emission_rect_extents = Vector2( 1, 6 )
+emission_rect_extents = Vector2( 1.356, 6.289 )
 direction = Vector2( -1, 0 )
 spread = 22.5
 gravity = Vector2( 0, 0 )
 initial_velocity = 300.0
 scale_amount = 6.0
 color_ramp = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="Sprite" index="2"]
+position = Vector2( -99.306, -3 )
+rotation = -0.027898
+scale = Vector2( 0.84314, 0.84314 )
+amount = 252
+visibility_rect = Rect2( -104.096, -92.23, 200.766, 200 )
+texture = SubResource( 5 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 scale = Vector2( 2.9147, 1.26413 )
@@ -216,6 +266,7 @@ anims/RESET = SubResource( 2 )
 anims/explode = SubResource( 3 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
+position = Vector2( -34, 2 )
 stream = ExtResource( 3 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
