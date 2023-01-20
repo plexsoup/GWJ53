@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Stomp_05.wav-f6da8a3ddf8e0553399368761b2f30a9.sample"
+
+[deps]
+
+source_file="res://sfx/Stomp_05.wav"
+dest_files=[ "res://.import/Stomp_05.wav-f6da8a3ddf8e0553399368761b2f30a9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

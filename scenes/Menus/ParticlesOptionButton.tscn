@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+resource_name = "ParticlesSetting"
+script/source = "extends CheckButton
+
+func _on_ParticlesOption_toggled(button_pressed):
+	Global.user_prefs[\"particles\"] = button_pressed
+"
+
+[node name="ParticlesOption" type="CheckButton"]
+margin_top = 290.0
+margin_right = 490.0
+margin_bottom = 330.0
+pressed = true
+text = "Flashing / Particles"
+flat = true
+script = SubResource( 1 )
+
+[connection signal="toggled" from="." to="." method="_on_ParticlesOption_toggled"]
