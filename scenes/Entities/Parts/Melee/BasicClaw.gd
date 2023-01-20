@@ -76,7 +76,8 @@ func _process(delta):
 	aim(delta)
 	
 func aim(_delta):
-	$Sprite.look_at(mech.targetting_cursor.global_position)
+	if mech.targetting_cursor != null:
+		$Sprite.look_at(mech.targetting_cursor.global_position)
 
 
 
