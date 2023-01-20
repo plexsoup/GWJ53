@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/BuildingPart.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Hull/hull.png" type="Texture" id=2]
@@ -93,6 +93,9 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=7]
+radius = 56.0
+
 [node name="BuildingPart" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -121,3 +124,11 @@ polygon = PoolVector2Array( 0, -8, 8, 0, 0, 8, -8, 0 )
 autoplay = "Build"
 anims/Build = SubResource( 3 )
 anims/RESET = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 7 )
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

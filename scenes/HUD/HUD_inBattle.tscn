@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/HUD/HUD_inBattle.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Menus/MenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://_common/Themes/DefaultTheme.tres" type="Theme" id=4]
+[ext_resource path="res://_common/Fonts/accessibility_font.tres" type="DynamicFont" id=5]
+
+[sub_resource type="InputEventAction" id=1]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="HUD_inBattle" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -11,15 +19,16 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 4 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
 anchor_right = 1.0
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/HBoxContainer2"]
-margin_left = 473.0
-margin_right = 551.0
-margin_bottom = 27.0
+margin_left = 468.0
+margin_right = 556.0
+margin_bottom = 38.0
 text = "FIGHT"
 align = 1
 
@@ -28,46 +37,133 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -50.0
+custom_constants/separation = 20
 alignment = 1
 
-[node name="ReturnToHangarBtn" parent="Control/HBoxContainer" instance=ExtResource( 2 )]
-margin_left = 419.0
-margin_top = 0.0
-margin_right = 605.0
+[node name="PauseButton" type="Button" parent="Control/HBoxContainer"]
+margin_left = 468.0
+margin_right = 556.0
 margin_bottom = 50.0
-text = "MENU_RETURN"
-scene_path = "res://scenes/Testing/MechBuilderTest.tscn"
+shortcut = SubResource( 2 )
+text = "Pause"
 
-[node name="PopupDialog" type="PopupPanel" parent="."]
+[node name="PauseDialog" type="PopupPanel" parent="Control/HBoxContainer/PauseButton"]
+pause_mode = 2
 visible = true
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 500, 300 )
 
-[node name="MarginContainer" type="MarginContainer" parent="PopupDialog"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/PauseButton/PauseDialog"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 496.0
+margin_bottom = 420.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 472.0
+margin_bottom = 396.0
+
+[node name="Objective" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
+margin_right = 452.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Objective:"
+autowrap = true
+
+[node name="Objective2" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 452.0
+margin_bottom = 109.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+text = "Defeat all enemy mechs to win tournament."
+autowrap = true
+
+[node name="Controls" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
+margin_top = 113.0
+margin_right = 452.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+text = "Default Controls:"
+autowrap = true
+
+[node name="Controls2" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
+margin_top = 155.0
+margin_right = 452.0
+margin_bottom = 292.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+text = "WASD move.
+Mouse for targetting.
+Shift/Space dash.
+"
+autowrap = true
+
+[node name="ResumeButton" type="Button" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
+margin_top = 296.0
+margin_right = 452.0
+margin_bottom = 334.0
+text = "Resume Game"
+
+[node name="QuitToMenuButton" type="Button" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
+margin_top = 338.0
+margin_right = 452.0
+margin_bottom = 376.0
+text = "Return to main menu"
+
+[node name="HelpButton" type="Button" parent="Control/HBoxContainer"]
+visible = false
+margin_left = 654.0
+margin_right = 719.0
+margin_bottom = 50.0
+text = "Help"
+
+[node name="WinDialog" type="PopupPanel" parent="Control"]
+margin_right = 660.0
+margin_bottom = 150.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/WinDialog"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 656.0
-margin_bottom = 115.0
+margin_bottom = 179.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PopupDialog/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/WinDialog/MarginContainer"]
 margin_right = 652.0
-margin_bottom = 142.0
+margin_bottom = 175.0
 
-[node name="CongratulationsText" type="Label" parent="PopupDialog/MarginContainer/VBoxContainer"]
+[node name="CongratulationsText" type="Label" parent="Control/WinDialog/MarginContainer/VBoxContainer"]
 margin_right = 652.0
 margin_bottom = 57.0
 text = "We defeated all the mechs in the arena.
 That's why they call us, MechBusters."
 
-[node name="CashPrize" type="Label" parent="PopupDialog/MarginContainer/VBoxContainer"]
+[node name="CashPrize" type="Label" parent="Control/WinDialog/MarginContainer/VBoxContainer"]
 margin_top = 61.0
 margin_right = 652.0
 margin_bottom = 88.0
 
-[node name="ReturnToHangar" parent="PopupDialog/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="ReturnToHangar" parent="Control/WinDialog/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_left = 189.0
 margin_top = 92.0
 margin_right = 463.0
 margin_bottom = 142.0
 text = "Return To Hangar"
 packed_scene = ExtResource( 3 )
+
+[node name="PauseDialog" type="PopupPanel" parent="Control"]
+margin_right = 8.0
+margin_bottom = 8.0
+
+[connection signal="pressed" from="Control/HBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="popup_hide" from="Control/HBoxContainer/PauseButton/PauseDialog" to="." method="_on_PauseDialog_popup_hide"]
+[connection signal="pressed" from="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer/QuitToMenuButton" to="." method="_on_QuitToMenuButton_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]

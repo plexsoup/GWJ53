@@ -8,7 +8,7 @@ Locomotion nodes should look to Input nodes to see when they should move.
 
 extends Node2D
 
-var inputs = [ "move_left", "move_right", "move_forwards", "move_backwards", "shoot_primary", "shoot_alternate", "jump"]
+var inputs = [ "move_left", "move_right", "move_forwards", "move_backwards", "shoot_primary", "shoot_alternate", "dash"]
 
 var pressed = {}
 

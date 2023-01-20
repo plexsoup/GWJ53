@@ -45,6 +45,8 @@ func _get_configuration_warning() -> String:
 		return ""
 
 func _on_pressed():
+	get_tree().paused = false
+	
 	if quit_game:
 		#if owner.get_parent() == get_tree().root:
 		get_tree().quit()

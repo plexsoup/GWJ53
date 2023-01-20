@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Entities/Parts/Mobility/BasicLegs.tscn" type="PackedScene" id=1]
+
+[node name="DashLegs" instance=ExtResource( 1 )]
+speed = 800.0
+dash = true

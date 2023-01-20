@@ -42,6 +42,9 @@ func _ready():
 	$ReloadTimer.start()
 	$MissileLauncherSprite/MuzzleFlash.visible = false
 
+	$CockDurationTimer.set_wait_time(burst_delay)
+	$ReloadTimer.set_wait_time(reload_time)
+
 func init(myMech):
 	mech = myMech
 
@@ -122,17 +125,10 @@ func _on_ReloadTimer_timeout():
 	shoot()
 
 func _on_CockDurationTimer_timeout():
-
-	shoot()
-	$CockDurationTimer.start()
-
-func _on_ShotDurationTimer_timeout():
 	
-	$Line2D.default_color.a = 0
-	State = States.RELOADING
-	$LaserNoise.stop()
-	$TargetLocation/HurtBox.set_deferred("disabled", true)
-	$ReloadTimer.start()
+	shoot() # shoot method restarts the CockDurationTimer or ReloadTimer
+
+
 
 
 		

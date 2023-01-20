@@ -31,7 +31,9 @@ func _ready():
 
 func init(playerScene): # called by MechBuilderTest when user presses finished
 	playerScene.set_scale(Vector2(1.0, 1.0))
-	$YSort/Entities.add_child(playerScene)
+	
+	if not playerScene.is_visible_in_tree():
+		$YSort/Entities.add_child(playerScene)
 	
 	
 func _on_spawner_finished():
@@ -44,6 +46,7 @@ func _on_spawner_finished():
 func _on_player_won():
 	State = States.FINISHED
 	Global.money += cash_for_winning
+	Global.stage_manager.mark_battle_completed()
 	if has_node("HUD"):
 		$HUD.visible = true
 		if $HUD.has_method("_on_player_won"):
@@ -54,8 +57,10 @@ func _on_player_won():
 
 
 func _on_OverviewPauseDuration_timeout():
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("fight_started", Global.player, "_on_fight_started")
 	for spawner in $Spawners.get_children():
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("fight_started", spawner, "_on_fight_started")
 	State = States.SPAWNING
 	emit_signal("fight_started")

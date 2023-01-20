@@ -35,9 +35,6 @@ func _ready():
 	dummy_part.name = "Test part"
 	dummy_part.description = "Nothing to see here"
 	dummy_part.type = Part.Type.UTILITY
-	var laser_part = preload("res://scenes/Entities/Parts/Laser/BasicLaser.tres")
-	for i in 4:
-		builder.add_part_to_list(laser_part)
 	for i in 10:
 		builder.add_part_to_list(dummy_part)
 	

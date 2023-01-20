@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Maps/Spawners/EnemySpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Entities/Enemies/BasicShotgun_Mech.tscn" type="PackedScene" id=2]
+[ext_resource path="res://_common/Materials/white_target.png" type="Texture" id=3]
 
 [node name="ShotgunMechSpawner" instance=ExtResource( 1 )]
 num_spawns_per_interval = 3
 spawn_randomly = true
+
+[node name="Sprite" parent="Appearance" index="0"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
 
 [node name="SpawnSupply" parent="." index="3"]
 resources = [ PoolStringArray( "BasicShotgun_Mech" ), [ ExtResource( 2 ) ] ]
