@@ -33,7 +33,7 @@ func init(myMech):
 		
 
 func _unhandled_input(_event):
-	if mech != null and mech.State == mech.States.READY:
+	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE]:
 		if mech.is_human_player:
 			for inputName in inputs:
 				if Input.is_action_pressed(inputName):

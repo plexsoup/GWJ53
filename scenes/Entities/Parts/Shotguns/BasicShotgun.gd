@@ -68,7 +68,7 @@ func shoot():
 	if $ShotgunSprite/MuzzleLocation/BlastArea.has_method("update_polygon_shape"):
 		$ShotgunSprite/MuzzleLocation/BlastArea.update_polygon_shape()
 	# WIP we should ask the target acquisition system for a target
-	if mech != null and mech.State == mech.States.READY:
+	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
 		shots_left -= 1
 		if shots_left == 0:
 			State = States.RELOADING

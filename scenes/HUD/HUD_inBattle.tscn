@@ -117,7 +117,7 @@ text = "Resume Game"
 margin_top = 338.0
 margin_right = 452.0
 margin_bottom = 376.0
-text = "Return to main menu"
+text = "Quit Game"
 
 [node name="HelpButton" type="Button" parent="Control/HBoxContainer"]
 visible = false
