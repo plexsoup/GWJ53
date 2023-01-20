@@ -25,7 +25,7 @@ func init(myMech):
 	mech = myMech
 	mech.input_controller = self
 	mech.targetting_cursor = $Cursor
-	
+	$Cursor.mech = mech
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(_delta):

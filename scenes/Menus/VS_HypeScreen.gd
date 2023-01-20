@@ -19,7 +19,7 @@ func hide_character_portrait():
 		character.visible = false
 	
 func slide_in(team):
-	var colorStrs = Global.team_names
+	var _colorStrs = Global.team_names
 	
 	for character in find_node("Characters").get_children():
 		if character.get_position_in_parent() == team:
