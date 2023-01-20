@@ -28,7 +28,7 @@
 			"text": "Uhh...Hey..uhhh...Welcome home dad!",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_01D.wav"
 				}
 			}
@@ -61,7 +61,7 @@
 			"text": "Uh, what'cha got there,son?",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_02G.wav"
 				}
 			}
@@ -73,7 +73,7 @@
 			"text": "This is a MechaBusters Hunter V1 core...Old but still works! And that's not even the best thing about it!",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_03D.wav"
 				}
 			}
@@ -85,7 +85,7 @@
 			"text": "Mhm...Where did you get it?",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_04G.wav"
 				}
 			}
@@ -97,7 +97,7 @@
 			"text": "The Junkyard",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_05D.wav"
 				}
 			}
@@ -109,7 +109,7 @@
 			"text": "What!? With what money!?",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_06G.wav"
 				}
 			}
@@ -121,7 +121,7 @@
 			"text": "The Junkyard. And I put it on your tab. ",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_07D.wav"
 				}
 			}
@@ -133,7 +133,7 @@
 			"text": "You did what!? Danny c'mon. ",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_9G.wav"
 				}
 			}
@@ -145,20 +145,19 @@
 			"text": "Just cuz I work there dosn't mean you can invite yourself in. You could of got HURT! Or worse... ",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_10G.wav"
 				}
 			}
 		},
 		{
-
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Got got me fired....Joking. But seriously, Don't go out there withou me.  ",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_11D.wav"
 				}
 			}
@@ -170,7 +169,7 @@
 			"text": "But..the best part..",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_12D.wav"
 				}
 			}
@@ -182,11 +181,22 @@
 			"text": "uhhh...What's the best part?",
 			"voice_data": {
 				"0": {
-					"audio_bus": "Master",
+					"audio_bus": "Voice",
 					"file": "res://Narrative/NA01_Intro/NA01_13G.wav"
 				}
 			}
-
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's old, but the core is still accepted into official tournaments. In fact. its's the absolute oldest model that they allow. How lucky, right?!",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_14D.wav"
+				}
+			}
 		}
 	],
 	"metadata": {
