@@ -13,6 +13,7 @@ outlines = [ PoolVector2Array( -604, -325, 1622, -373, 1936, -496, 1945, -49, 29
 
 [node name="OldPort" instance=ExtResource( 1 )]
 position = Vector2( 288, -551 )
+num_spawners = 4
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 visible = false

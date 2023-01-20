@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Menus/GrabFocus.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Menus/Intro.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Maps/DesertCanyon/DesertCanyonMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Maps/OldPort/OldPortMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Menus/MenuButton.tscn" type="PackedScene" id=8]
 
 [node name="Testing" type="Control"]
@@ -58,10 +59,18 @@ margin_bottom = 150.0
 text = "Desert Map"
 packed_scene = ExtResource( 3 )
 
-[node name="MainMenuBtn" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
-margin_left = 76.0
+[node name="Old Port" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 64.0
 margin_top = 200.0
-margin_right = 262.0
+margin_right = 274.0
+margin_bottom = 250.0
+text = "Old Port Map"
+packed_scene = ExtResource( 5 )
+
+[node name="MainMenuBtn" parent="CenterContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 424.0
+margin_top = 200.0
+margin_right = 610.0
 margin_bottom = 250.0
 text = "MENU_RETURN"
 scene_path = "res://scenes/Menus/MainMenu02.tscn"
