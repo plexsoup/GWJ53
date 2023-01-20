@@ -1,8 +1,33 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/Laser/BasicLaser.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Laser/LaserCannon.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Entities/Parts/Laser/laserShoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://Art/Laser test/Laser_2.png" type="Texture" id=4]
+[ext_resource path="res://Art/Laser test/Laser_3.png" type="Texture" id=5]
+[ext_resource path="res://Art/Laser test/Laser_4.png" type="Texture" id=6]
+[ext_resource path="res://Art/Laser test/Laser_1.png" type="Texture" id=7]
+[ext_resource path="res://Art/Laser test/Laser_5.png" type="Texture" id=8]
+[ext_resource path="res://Art/Laser test/Laser_6.png" type="Texture" id=9]
+
+[sub_resource type="AnimatedTexture" id=2]
+resource_name = "Laser"
+flags = 6
+frames = 7
+fps = 12.6
+frame_0/texture = ExtResource( 9 )
+frame_1/texture = ExtResource( 7 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 4 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 5 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 6 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 8 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 7 )
+frame_6/delay_sec = 0.0
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -26,6 +51,13 @@ stream = ExtResource( 3 )
 volume_db = -15.0
 
 [node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 7, 599, 1019, 8 )
+width = 300.0
+default_color = Color( 0.898039, 0.898039, 0.898039, 1 )
+texture = SubResource( 2 )
+texture_mode = 2
+joint_mode = 2
+antialiased = true
 
 [node name="LaserCannon" type="Sprite" parent="."]
 texture = ExtResource( 2 )
