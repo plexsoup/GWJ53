@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Head_Test.png-2741ffd879454e303232111fda4cc024.stex"
+path="res://.import/shotgun02.png-5a47c09d9275efcf4367e66da74bdf77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Entities/Parts/Head/Head_Test.png"
-dest_files=[ "res://.import/Head_Test.png-2741ffd879454e303232111fda4cc024.stex" ]
+source_file="res://Art/angelchama/shotgun02.png"
+dest_files=[ "res://.import/shotgun02.png-5a47c09d9275efcf4367e66da74bdf77.stex" ]
 
 [params]
 

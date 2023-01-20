@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Head_Test.png-2741ffd879454e303232111fda4cc024.stex"
+path="res://.import/shield02.png-9f40f4a7f656cbec7b1715a8dd2b5ab4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Entities/Parts/Head/Head_Test.png"
-dest_files=[ "res://.import/Head_Test.png-2741ffd879454e303232111fda4cc024.stex" ]
+source_file="res://Art/angelchama/shield02.png"
+dest_files=[ "res://.import/shield02.png-9f40f4a7f656cbec7b1715a8dd2b5ab4.stex" ]
 
 [params]
 

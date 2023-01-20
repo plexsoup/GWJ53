@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Head_Test.png-2741ffd879454e303232111fda4cc024.stex"
+path="res://.import/hull03.png-902cdfe474cff90c4febc001504685bb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Entities/Parts/Head/Head_Test.png"
-dest_files=[ "res://.import/Head_Test.png-2741ffd879454e303232111fda4cc024.stex" ]
+source_file="res://Art/angelchama/hull03.png"
+dest_files=[ "res://.import/hull03.png-902cdfe474cff90c4febc001504685bb.stex" ]
 
 [params]
 
