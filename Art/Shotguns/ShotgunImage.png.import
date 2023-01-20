@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wheels.png-0626c61652dec57902d6037cf7cb2613.stex"
+path="res://.import/ShotgunImage.png-b539a0112ed1772acb3b4c22d6c484db.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Entities/Parts/Mobility/wheels.png"
-dest_files=[ "res://.import/wheels.png-0626c61652dec57902d6037cf7cb2613.stex" ]
+source_file="res://Art/Shotguns/ShotgunImage.png"
+dest_files=[ "res://.import/ShotgunImage.png-b539a0112ed1772acb3b4c22d6c484db.stex" ]
 
 [params]
 

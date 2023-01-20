@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wheels.png-0626c61652dec57902d6037cf7cb2613.stex"
+path="res://.import/Ball.png-6ed7182457fbab8991103dce94df649c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Entities/Parts/Mobility/wheels.png"
-dest_files=[ "res://.import/wheels.png-0626c61652dec57902d6037cf7cb2613.stex" ]
+source_file="res://Art/Ball.png"
+dest_files=[ "res://.import/Ball.png-6ed7182457fbab8991103dce94df649c.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
