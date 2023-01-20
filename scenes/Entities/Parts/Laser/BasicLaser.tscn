@@ -13,7 +13,7 @@
 [sub_resource type="AnimatedTexture" id=2]
 resource_name = "Laser"
 flags = 6
-frames = 6
+frames = 7
 fps = 12.6
 frame_0/texture = ExtResource( 9 )
 frame_1/texture = ExtResource( 7 )
@@ -26,6 +26,8 @@ frame_4/texture = ExtResource( 6 )
 frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 8 )
 frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 7 )
+frame_6/delay_sec = 0.0
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -50,10 +52,10 @@ volume_db = -15.0
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 7, 599, 1019, 8 )
-width = 155.269
+width = 300.0
 default_color = Color( 0.898039, 0.898039, 0.898039, 1 )
 texture = SubResource( 2 )
-texture_mode = 1
+texture_mode = 2
 joint_mode = 2
 antialiased = true
 
