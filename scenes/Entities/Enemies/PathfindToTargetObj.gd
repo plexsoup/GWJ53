@@ -17,6 +17,8 @@ var flocking_vector : Vector2 = Vector2.ZERO
 
 var mech
 
+var wall_avoid_vector : Vector2 = Vector2.ZERO
+
 # for locomotion which relies in input controllers,
 # store virtual button presses
 var pressed = {
@@ -67,6 +69,8 @@ func update_nav():
 
 	update_virtual_controller_buttons()
 
+	
+
 func get_flocking_vector():
 	var new_flocking_vector = Vector2.ZERO
 	var teammates = Utils.get_teammates(mech.team)
@@ -96,9 +100,12 @@ func get_flocking_vector():
 
 func update_virtual_controller_buttons():
 	var targetVec = next_point.normalized()
+	targetVec += wall_avoid_vector
+
 	if flocking:
 		targetVec += flocking_vector.normalized()
 		targetVec /= 2.0
+	
 
 	for buttonName in ["move_right", "move_left", "move_forwards", "move_backwards"]:
 		pressed[buttonName] = false
@@ -127,3 +134,10 @@ func _on_NavUpdateTimer_timeout():
 	update_nav()
 	if flocking:
 		flocking_vector = get_flocking_vector()
+
+
+func _on_wall_detected(direction):
+	wall_avoid_vector = -direction
+
+func _on_wallradar_all_clear():
+	wall_avoid_vector = Vector2.ZERO
