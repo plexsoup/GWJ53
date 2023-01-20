@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Testing/Swarm/Boid.gd" type="Script" id=1]
+[ext_resource path="res://scripts/ParticleDisabler.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -27,6 +28,7 @@ angle = 45.0
 angle_random = 0.9
 scale_amount = 16.0
 color = Color( 0.156863, 0.0235294, 0.188235, 0.556863 )
+script = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PoolVector2Array( -5, -6, 16, 0, -5, 6 )
