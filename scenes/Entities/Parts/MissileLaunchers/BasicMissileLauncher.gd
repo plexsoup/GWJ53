@@ -57,20 +57,24 @@ func scene_finished():
 func shoot():
 	if scene_finished():
 		return
-		
-	# WIP we should ask the target acquisition system for a target
-	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
-		shots_left -= 1
-		if shots_left == 0:
-			State = States.RELOADING
-			$ReloadTimer.start()
-		else:
-			State = States.COCKING
-			$CockDurationTimer.start()
-		make_noise()
-		flash_muzzle()
-		spawn_projectile()
 
+	if mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
+		
+		# WIP we should ask the target acquisition system for a target
+		if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
+			shots_left -= 1
+			if shots_left == 0:
+				State = States.RELOADING
+				$ReloadTimer.start()
+			else:
+				State = States.COCKING
+				$CockDurationTimer.start()
+		
+			make_noise()
+			flash_muzzle()
+			spawn_projectile()
+	else: # wait a bit.
+		$ReloadTimer.start()
 
 
 

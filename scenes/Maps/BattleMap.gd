@@ -34,7 +34,9 @@ func init(playerScene): # called by MechBuilderTest when user presses finished
 	
 	if not playerScene.is_visible_in_tree():
 		$YSort/Entities.add_child(playerScene)
-	
+	# wait until camera zoom 
+	playerScene.State = playerScene.States.PAUSED
+
 
 func get_spawner_teams_list() -> Array : # returns a list of team numbers in the battle
 	var teams = []
@@ -73,5 +75,6 @@ func _on_OverviewPauseDuration_timeout():
 	for spawner in $Spawners.get_children():
 		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("fight_started", spawner, "_on_fight_started")
+		
 	State = States.SPAWNING
 	emit_signal("fight_started")

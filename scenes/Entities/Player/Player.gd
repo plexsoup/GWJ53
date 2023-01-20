@@ -20,6 +20,7 @@ func custom_ready():
 		$Locomotion.set_visible(false)
 		speed_fudge_factor = 0.5
 
+	set_state(States.PAUSED)
 
 func die_for_real_this_time():
 	Global.money += Global.current_scene.cash_for_losing
@@ -35,5 +36,9 @@ func die_for_real_this_time():
 
 func _on_fight_started():
 	$Camera2D.zoom_into_battle()
+	set_state(States.READY)
 	
-	
+
+
+func _on_Player_tree_exiting():
+	set_state(States.PAUSED)
