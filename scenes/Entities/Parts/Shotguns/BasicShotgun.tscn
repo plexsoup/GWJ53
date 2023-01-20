@@ -88,8 +88,11 @@ tracks/2/keys = {
 
 [node name="BasicShotgun" type="Node2D"]
 script = ExtResource( 1 )
+projectile_range = 600.0
 damage_type = 0
-reload_time = 4.0
+shots_per_burst = 4
+burst_delay = 0.5
+reload_time = 3.0
 
 [node name="CockDurationTimer" type="Timer" parent="."]
 one_shot = true

@@ -8,9 +8,9 @@ Area2D hurtbox immediate effect with particles.
 extends Node2D
 
 var mech
-export var projectile_range : float = 500.0
+export var projectile_range : float = 800.0
 
-export var damage : float = 100.0
+export var damage : float = 200.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 #export var line_of_sight : bool = false
 
@@ -18,7 +18,7 @@ export var shots_per_burst : int = 2
 export var burst_delay : float = 1.0
 export var reload_time : float = 5.0
 
-export var knockback_effect : float = 100.0
+export var knockback_effect : float = 3.0
 
 var shots_left : int = shots_per_burst
 

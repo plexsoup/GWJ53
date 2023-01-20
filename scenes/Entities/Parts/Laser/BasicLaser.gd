@@ -15,8 +15,9 @@ extends Node2D
 
 var mech
 #export var projectile : PackedScene
-export var beam_range : float = 200.0
-export var damage : float = 500.0
+export var beam_range : float = 1500.0
+export var human_range_advantage : float = 1.15
+export var damage : float = 100.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 export var line_of_sight : bool = false
 
@@ -45,6 +46,7 @@ func init(myMech):
 	mech = myMech
 	if mech == Global.player:
 		damage *= 2.0
+		beam_range *= human_range_advantage
 
 	if mech.is_in_group("enemies"):
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, true) # player
@@ -122,7 +124,7 @@ func aim_laser(_delta):
 
 
 func _on_ReloadTimer_timeout():
-	vary_shot_timers(0.2)
+	vary_shot_timers(0.5)
 
 	shoot()
 

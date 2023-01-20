@@ -3,9 +3,10 @@
 [ext_resource path="res://scenes/Entities/Parts/Laser/BasicLaser.tscn" type="PackedScene" id=1]
 
 [node name="LongRangeLaser" instance=ExtResource( 1 )]
-beam_range = 800.0
-damage = 350.0
+beam_range = 10000.0
 line_of_sight = true
+shot_duration = 0.3
+reload_time = 1.25
 
 [node name="Line2D" parent="." index="4"]
 points = PoolVector2Array( 63, -3, 154, -5 )

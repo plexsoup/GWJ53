@@ -8,26 +8,25 @@ collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 1.99984, -7.33333, 352, -211.333, 352, 201.333, 2.6665, 19.3333 )
+polygon = PoolVector2Array( 1.99984, -7.33333, 786, -301, 802, 296, 2.6665, 19.3333 )
 
 [node name="BlastImage" type="Polygon2D" parent="."]
-visible = false
 color = Color( 0.439216, 0.443137, 0.368627, 0.25098 )
-polygon = PoolVector2Array( 1.99984, -7.33333, 352, -211.333, 352, 201.333, 2.6665, 19.3333 )
+polygon = PoolVector2Array( 1.99984, -7.33333, 791, -308, 799, 298, 2.6665, 19.3333 )
 
 [node name="Sensors" type="Node2D" parent="."]
 
 [node name="WallDetector1" type="RayCast2D" parent="Sensors"]
 enabled = true
-cast_to = Vector2( 351, -208 )
+cast_to = Vector2( 790, -310 )
 collision_mask = 16
 
 [node name="WallDetector2" type="RayCast2D" parent="Sensors"]
 enabled = true
-cast_to = Vector2( 351, -3 )
+cast_to = Vector2( 802, -1 )
 collision_mask = 16
 
 [node name="WallDetector3" type="RayCast2D" parent="Sensors"]
 enabled = true
-cast_to = Vector2( 351, 195 )
+cast_to = Vector2( 802, 303 )
 collision_mask = 16

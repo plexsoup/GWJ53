@@ -7,8 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Penetrating Laser"
-description = "Hits the first thing it touches.
-"
+description = "High Power, Short Range Laser. Standard Issue."
 icon = ExtResource( 2 )
 mech_part = ExtResource( 3 )
 type = 2

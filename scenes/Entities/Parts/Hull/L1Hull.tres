@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 2 )
 name = "Level 1 Hull"
-description = "A trusty ol thing"
+description = "A trusty ol thing. Extra armor."
 icon = ExtResource( 1 )
 mech_part = ExtResource( 3 )
 type = 0

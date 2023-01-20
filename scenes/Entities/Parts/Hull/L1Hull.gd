@@ -1,7 +1,7 @@
 extends Node2D
 
 var mech
-
+export var health_boost : float = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +10,8 @@ func _ready():
 
 func init(myMech):
 	mech = myMech
+	mech.health_max += health_boost
+	mech.health = mech.health_max
 
 
 func _on_stopped_walking(_velocity):

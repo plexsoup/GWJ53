@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Long Range Laser"
-description = "Shoots a beam at distant targets"
+description = "Advanced focusing optics permit the Mark II long range laser to hit even the most distant targets."
 icon = ExtResource( 2 )
 mech_part = ExtResource( 3 )
 type = 2

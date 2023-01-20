@@ -14,6 +14,7 @@ var mech : KinematicBody2D # whoever launched you
 var team : int
 var damage : float
 var damage_type : int # see Global.damage_types
+var knockback_bonus : float = 2.0
 var projectile_range : float
 var line_of_sight : bool
 var target_location : Vector2
@@ -75,7 +76,7 @@ func hurt(body):
 	if body.has_method("_on_hit"):
 		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("hit", body, "_on_hit")
-		var impactVector = body.global_position - self.global_position
+		var impactVector = (body.global_position - self.global_position).normalized() * knockback_bonus
 		emit_signal("hit", damage, impactVector, damage_type)
 		disconnect("hit", body, "_on_hit")
 	

@@ -31,7 +31,7 @@ var Damage_Types = Global.damage_types
 # TODO: Should sync these up with Global.damage_types
 
 
-enum States { INITIALIZING, READY, PAUSED, INVULNERABLE, DYING, DEAD }
+enum States { INITIALIZING, READY, PAUSED, INVULNERABLE, FLYING, DYING, DEAD }
 var State = States.INITIALIZING setget set_state, get_state
 
 # prevent returning to ready afer dying and becoming invulnerable.
@@ -44,6 +44,7 @@ export var team : int = -1 setget set_team, get_team
 var targetting_cursor
 
 var previous_velocity : Vector2 = Vector2.ZERO
+var knockback_vector : Vector2 = Vector2.ZERO
 
 # Not sure what to do with these yet.
 # Each mech will have plugins for a variety of functions
@@ -122,7 +123,7 @@ func trigger_iframes():
 
 	# this should be a shader. who wants to write a shader?
 	self.set_modulate(Color.red)
-
+	
 
 	
 func custom_ready():
@@ -165,6 +166,9 @@ func _process(delta):
 func move(delta):
 	# locomotion parts need to provide the actual velocity
 	# they'll check with input_controller directly
+	
+	if !self.is_human_player and get_state() == States.INVULNERABLE:
+		move_and_slide(knockback_vector)
 	
 	# multiple sets of legs should give diminishing returns, using the "Harmonic Series"
 	if has_node("Locomotion"):
@@ -230,11 +234,14 @@ func knockback(damage, impactVector, damageType):
 		types.SHOCK:1.0,
 	}
 	var damageKnockback = damage * knockback_modifiers[damageType]
-	var knockbackVector = impactVector.normalized() * damageKnockback * (1-knockback_resistance)
-	var fudgeFactor = 25.0 # modify this to make knockbacks feel good
+	#var knockbackVector = impactVector.normalized() * damageKnockback * (1-knockback_resistance)
+	var knockbackVector = impactVector * damageKnockback * (1-knockback_resistance)
+
+	var fudgeFactor = 1.0 # modify this to make knockbacks feel good
 	
 	#warning-ignore:RETURN_VALUE_DISCARDED
-	move_and_slide(knockbackVector * fudgeFactor)
+	knockback_vector = knockbackVector * fudgeFactor
+	move_and_slide(knockback_vector)
 	
 
 func _on_hit(damage, impactVector, damageType):
@@ -289,3 +296,8 @@ func _on_DeathTimer_timeout():
 func _on_iframesTimer_timeout():
 	resume_previous_state()
 	set_modulate(Color.white)
+
+
+
+
+	
