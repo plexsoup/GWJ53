@@ -63,6 +63,7 @@ position = Vector2( -7, -5 )
 position = Vector2( -7, -5 )
 
 [node name="PathfindToTarget" parent="Input" index="0" instance=ExtResource( 6 )]
+flocking = true
 
 [node name="AITargettingCursor" parent="Input/PathfindToTarget" index="2" instance=ExtResource( 5 )]
 

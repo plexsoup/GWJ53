@@ -18,7 +18,7 @@ var projectile_range : float
 var line_of_sight : bool
 var target_location : Vector2
 var speed : float = 600.0
-var human_fudge_factor : float = 1.5
+var human_fudge_factor : float = 2.5
 var velocity : Vector2
 
 enum States { FLYING, EXPLODING, DEAD }
