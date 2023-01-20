@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/HUD/HUD_inBattle.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Menus/MenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://_common/Themes/DefaultTheme.tres" type="Theme" id=4]
 [ext_resource path="res://_common/Fonts/accessibility_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/Menus/VS_HypeScreen.tscn" type="PackedScene" id=6]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_cancel"
@@ -161,6 +162,8 @@ packed_scene = ExtResource( 3 )
 [node name="PauseDialog" type="PopupPanel" parent="Control"]
 margin_right = 8.0
 margin_bottom = 8.0
+
+[node name="VS_HypeScreen" parent="." instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="Control/HBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="popup_hide" from="Control/HBoxContainer/PauseButton/PauseDialog" to="." method="_on_PauseDialog_popup_hide"]

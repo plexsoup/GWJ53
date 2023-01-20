@@ -96,10 +96,8 @@ func get_flocking_vector():
 
 func update_virtual_controller_buttons():
 	var targetVec = next_point.normalized()
-	print("targetVec " , targetVec)
 	if flocking:
 		targetVec += flocking_vector.normalized()
-		print("flockingVec ", flocking_vector)
 		targetVec /= 2.0
 
 	for buttonName in ["move_right", "move_left", "move_forwards", "move_backwards"]:
