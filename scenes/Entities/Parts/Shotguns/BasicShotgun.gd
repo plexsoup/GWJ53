@@ -32,7 +32,6 @@ var State = States.RELOADING
 
 var target_locked : Node2D # probably a kinematic body
 
-#warning-ignore:UNUSED_SIGNAL
 signal hit
 
 
