@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/OldPort/image (4).png" type="Texture" id=2]
 [ext_resource path="res://scenes/Maps/Spawners/MissileMechSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Maps/Spawners/ShotgunMechSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Maps/Spawners/LaserMechSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Maps/Spawners/EnergyBallMechSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Maps/Spawners/RandomMechSpawner.tscn" type="PackedScene" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 4276, 2244, 5493.02, 3068.14, 4301.97, 3053.09, 871.009, 2795, 861.502, 2206, 1658.05, 2210.6, 1771.33, 5508.47, 3406, 5476.38, 4419, 6268.57, -1256.01, 6308.57, 655.138, 5739.78, 3368.38, 3120.82, 1755.09, 3152.9, 595.724, 3145.77, 7102, 3728, 7130, 4108, 7121, 4822, 6748.24, 3974.79, 6718.53, 1868.37, 7111, 3404, 7102, 1568, 1078.17, 5286.65, 148.139, 4477.83, 624.243, 3951.42, 4267, 1425, 3339.86, 2185.25, 3280.84, 277.661, 3543, -1143, 4400, 208, 3047.94, -907.845, 2237.93, -566.809, 1610.12, 303.011, 1630.72, -321.628, -1256.01, -300.239, 1671.51, 1809.35, 538.687, 1162.14, -619.886, 3971.63, -244.786, 4907.2, 5522, 1501, 5931, 103, 6607, 55, 6959, 969, 5884, 1844, 5478.36, 2225.65, 5880.79, 4008.86, 6938.36, 5423.31, 6757.35, 5689.48, 6106.96, 5710.87, 5968.33, 5572.24, 5830.09, 5231.2, 5489.06, 4325.34, -1256.01, 3697.13, -705.046, 1181.15, 595.724, 1903.62, 2148.41, 2212.58 )
@@ -64,7 +66,7 @@ collision_layer = 17
 collision_mask = 111
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Containers1" index="0"]
-polygon = PoolVector2Array( -504, -863, 994, -863, 1058, 813, -403, 915 )
+polygon = PoolVector2Array( -504, -863, 994, -863, 998, 39.6666, -461.667, -3 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Containers1" index="1"]
 position = Vector2( -50.4518, 13.1245 )
@@ -111,12 +113,22 @@ polygon = PoolVector2Array( -306, -1043, 317, -1032, 320, 920, -329, 961 )
 
 [node name="MissileMechSpawner" parent="Spawners" index="0" instance=ExtResource( 3 )]
 position = Vector2( 10611, 338 )
+num_spawns_per_interval = 6
 
 [node name="LaserMechSpawner" parent="Spawners" index="1" instance=ExtResource( 5 )]
-position = Vector2( 18879, 14547 )
+position = Vector2( 18920, 14749 )
 
 [node name="ShotgunMechSpawner" parent="Spawners" index="2" instance=ExtResource( 4 )]
-position = Vector2( -2104, 16709 )
+position = Vector2( 3686, 8635 )
+
+[node name="EnergyBallMechSpawner" parent="Spawners" index="3" instance=ExtResource( 6 )]
+position = Vector2( -2492, 17648 )
+
+[node name="RandomMechSpawner" parent="Spawners" index="4" instance=ExtResource( 7 )]
+position = Vector2( 11418, 8214 )
+
+[node name="ShotgunMechSpawner2" parent="Spawners" index="5" instance=ExtResource( 4 )]
+position = Vector2( 11055, 17124 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="7"]
 scale = Vector2( 3, 3 )

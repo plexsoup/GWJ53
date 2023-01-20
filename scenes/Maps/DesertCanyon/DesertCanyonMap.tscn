@@ -223,7 +223,7 @@ position = Vector2( 1629, 815 )
 
 [node name="LaserMechSpawner" parent="Spawners" index="0" instance=ExtResource( 5 )]
 position = Vector2( 4444, -7206 )
-num_spawns_per_interval = 1
+num_spawns_per_interval = 4
 time_between_spawns = 2.0
 max_spawns = 6
 team = 2
