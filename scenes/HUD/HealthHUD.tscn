@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/HUD/minimapFrameFilled.png" type="Texture" id=1]
+[ext_resource path="res://scenes/HUD/healthBarHudFill.png" type="Texture" id=2]
+[ext_resource path="res://scenes/HUD/HealthHUD.gd" type="Script" id=3]
+
+[node name="Health" type="TextureProgress"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -128.0
+margin_right = 128.0
+rect_min_size = Vector2( 128, 128 )
+max_value = 1.0
+step = 0.1
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+nine_patch_stretch = true
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
