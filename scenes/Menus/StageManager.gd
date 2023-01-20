@@ -30,7 +30,7 @@ func change_scene_to(packedScene):
 	$GarageDoorsTransition.open()
 
 
-func start_next_battle(playerObj):
+func start_next_battle(_playerObj):
 	var battleIdx = Global.battles_completed.size() % Global.battles.size()
 	var battleName = Global.battles[battleIdx]
 	change_scene(Global.battle_scenes[battleName])
