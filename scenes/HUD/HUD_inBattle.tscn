@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/HUD/HUD_inBattle.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Menus/MenuButton.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Menus/VS_HypeScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Menus/AutoTargettingOptionButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Menus/ParticlesOptionButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Menus/MasterVolumeSlider.tscn" type="PackedScene" id=9]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_cancel"
@@ -61,7 +62,7 @@ rect_min_size = Vector2( 500, 300 )
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 496.0
-margin_bottom = 462.0
+margin_bottom = 504.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -70,11 +71,11 @@ custom_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 472.0
-margin_bottom = 480.0
+margin_right = 474.0
+margin_bottom = 522.0
 
 [node name="Objective" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
-margin_right = 452.0
+margin_right = 454.0
 margin_bottom = 38.0
 size_flags_horizontal = 3
 text = "Objective:"
@@ -82,7 +83,7 @@ autowrap = true
 
 [node name="Objective2" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
 margin_top = 42.0
-margin_right = 452.0
+margin_right = 454.0
 margin_bottom = 109.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
@@ -91,7 +92,7 @@ autowrap = true
 
 [node name="Controls" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
 margin_top = 113.0
-margin_right = 452.0
+margin_right = 454.0
 margin_bottom = 151.0
 size_flags_horizontal = 3
 text = "Default Controls:"
@@ -99,7 +100,7 @@ autowrap = true
 
 [node name="Controls2" type="Label" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
 margin_top = 155.0
-margin_right = 452.0
+margin_right = 454.0
 margin_bottom = 292.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
@@ -111,24 +112,28 @@ autowrap = true
 
 [node name="AutoTargettingOptionButton" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 296.0
-margin_right = 452.0
+margin_right = 454.0
 margin_bottom = 334.0
 
 [node name="ParticlesOption" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer" instance=ExtResource( 8 )]
 margin_top = 338.0
-margin_right = 452.0
+margin_right = 454.0
 margin_bottom = 376.0
 
-[node name="ResumeButton" type="Button" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
+[node name="MasterVolumeContainer" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer" instance=ExtResource( 9 )]
 margin_top = 380.0
-margin_right = 452.0
 margin_bottom = 418.0
+
+[node name="ResumeButton" type="Button" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
+margin_top = 422.0
+margin_right = 454.0
+margin_bottom = 460.0
 text = "Resume Game"
 
 [node name="QuitToMenuButton" type="Button" parent="Control/HBoxContainer/PauseButton/PauseDialog/MarginContainer/VBoxContainer"]
-margin_top = 422.0
-margin_right = 452.0
-margin_bottom = 460.0
+margin_top = 464.0
+margin_right = 454.0
+margin_bottom = 502.0
 text = "Quit Game"
 
 [node name="HelpButton" type="Button" parent="Control/HBoxContainer"]
