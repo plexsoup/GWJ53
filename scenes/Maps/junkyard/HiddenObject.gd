@@ -31,7 +31,7 @@ func _on_HiddenObject_mouse_entered():
 		found = true
 		var tween = create_tween()
 		tween.set_parallel().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-		tween.tween_property($Sprite, "position", $Sprite.position + Vector2(0, -100), 0.5)
+		tween.tween_property($Sprite, "global_position", $Sprite.global_position + Vector2(0, -100), 0.5)
 		tween.tween_property($Sprite, "rotation_degrees", $Sprite.rotation_degrees + rand_range(-50, 50), 0.5)
 		tween.tween_property($Sprite, "modulate", Color(1,1,1,0), 0.5)
 		if Global.user_prefs["particles"]:
