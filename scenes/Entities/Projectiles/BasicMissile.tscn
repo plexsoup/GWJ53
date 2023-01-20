@@ -209,7 +209,6 @@ color_ramp = SubResource( 1 )
 scale = Vector2( 2.9147, 1.26413 )
 
 [node name="ExplosionSprite" parent="." index="4"]
-visible = false
 scale = Vector2( 5, 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]

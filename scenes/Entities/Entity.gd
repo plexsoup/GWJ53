@@ -116,6 +116,8 @@ func set_team(newTeam):
 func get_team():
 	return team
 	
+func get_velocity():
+	return previous_velocity
 
 func scene_finished():
 	if Global.current_scene.State == Global.current_scene.States.FINISHED:
