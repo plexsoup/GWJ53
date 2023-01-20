@@ -6,9 +6,10 @@
 script = ExtResource( 1 )
 
 [node name="VisualizationLine2D" type="Line2D" parent="."]
+visible = false
 points = PoolVector2Array( 370, 124, 2, 0 )
 width = 5.0
-default_color = Color( 0.984314, 0.913725, 0.164706, 1 )
+default_color = Color( 0.984314, 0.913725, 0.164706, 0.266667 )
 
 [node name="NavUpdateTimer" type="Timer" parent="."]
 wait_time = 0.5
