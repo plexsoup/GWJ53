@@ -4,10 +4,7 @@ Cursor (target reticle) follows mouse. Pretty simple
 
 extends Sprite
 
-export var speed : float = 100.0
-
-var mech
-
+export var speed : float = 50.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,15 +12,14 @@ func _ready():
 	
 
 func seek_nearest_enemy(delta):
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	var closest_enemy = Utils.get_closest_object(enemies, mech)
+	var closest_enemy = Utils.get_closest_object(get_tree().get_nodes_in_group("enemies"), self)
 	var myPos = get_global_position()
 	var enemyPos
 	if closest_enemy != null:
 		enemyPos = closest_enemy.get_global_position()
-		#set_global_position(enemyPos)
-		set_global_position(myPos.linear_interpolate(enemyPos, 0.9 * delta * speed))
-	
+	else:
+		enemyPos = Vector2(0,0)
+	set_global_position(myPos.linear_interpolate(enemyPos, 0.9 * delta * speed))
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
