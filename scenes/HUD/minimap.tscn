@@ -17,6 +17,7 @@ texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="MapUpdateTimer" type="Timer" parent="."]
+wait_time = 0.078
 autostart = true
 
 [node name="PlayerIcon" type="Sprite" parent="."]

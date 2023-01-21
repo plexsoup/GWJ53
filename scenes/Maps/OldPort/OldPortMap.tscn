@@ -99,7 +99,7 @@ position = Vector2( 6602.71, 413.623 )
 texture = ExtResource( 11 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/AdminHouse" index="1"]
-polygon = PoolVector2Array( -490, -1298, 590, -1336, 641, -308, 882, -321, 574.708, 159.623, 574.708, 633.957, 653, 1241, -401, 1292 )
+polygon = PoolVector2Array( -465.292, -1330.04, 590, -1336, 628.041, -428.71, 585.374, 1315.29, -465.292, 1272.62 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/AdminHouse" index="2"]
 visible = false
@@ -160,8 +160,8 @@ color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -306, -1043, 317, -1032, 320, 920, -329, 961 )
 
 [node name="Modularbox" type="Sprite" parent="YSort/Obstacles/ShipContainers/Polygon2D" index="0"]
-position = Vector2( -3747.33, -1634.67 )
-scale = Vector2( 3.22508, 3.22508 )
+position = Vector2( -3705.13, -1567.23 )
+scale = Vector2( 3.38968, 3.36391 )
 texture = ExtResource( 13 )
 
 [node name="MissileMechSpawner" parent="Spawners" index="0" instance=ExtResource( 3 )]
@@ -202,7 +202,7 @@ scale = Vector2( 3, 3 )
 navpoly = SubResource( 1 )
 
 [node name="Modularbox" type="Sprite" parent="." index="8"]
-position = Vector2( 8310.56, 13322 )
+position = Vector2( 8197, 13367 )
 scale = Vector2( 10.7717, 12.563 )
 texture = ExtResource( 13 )
 
