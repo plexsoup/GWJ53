@@ -44,7 +44,7 @@ func add_default_mech():
 
 	
 func _update_money_display():
-	money_label.text = "MONEY: %d" % Global.money
+	money_label.text = "CREDITS: %d" % Global.money
 
 
 func _on_part_button_pressed(part_button):

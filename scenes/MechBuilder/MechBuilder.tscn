@@ -250,7 +250,6 @@ unique_name_in_owner = true
 margin_right = 1022.0
 margin_bottom = 411.0
 mouse_filter = 2
-editor_only = false
 
 [node name="ToolTip" type="Control" parent="Foreground/Control"]
 unique_name_in_owner = true
@@ -302,7 +301,7 @@ margin_bottom = 4.0
 [node name="MarginContainer" type="MarginContainer" parent="Foreground/Control/PanelContainer"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 212.0
+margin_right = 207.0
 margin_bottom = 50.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
@@ -312,19 +311,19 @@ custom_constants/margin_bottom = 4
 [node name="MoneyDisplay" type="HBoxContainer" parent="Foreground/Control/PanelContainer/MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 206.0
+margin_right = 201.0
 margin_bottom = 44.0
 
 [node name="MoneyLabel" type="Label" parent="Foreground/Control/PanelContainer/MarginContainer/MoneyDisplay"]
 unique_name_in_owner = true
 margin_top = 1.0
-margin_right = 159.0
+margin_right = 154.0
 margin_bottom = 39.0
-text = "Crowns: 10"
+text = "Credits: 10"
 
 [node name="TextureRect" type="TextureRect" parent="Foreground/Control/PanelContainer/MarginContainer/MoneyDisplay"]
-margin_left = 163.0
-margin_right = 202.0
+margin_left = 158.0
+margin_right = 197.0
 margin_bottom = 40.0
 texture = ExtResource( 8 )
 stretch_mode = 6
