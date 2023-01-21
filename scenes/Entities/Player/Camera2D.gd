@@ -37,13 +37,13 @@ func camera_look_ahead(delta):
 	var mousePos = get_global_mouse_position()
 	var currentPos = get_parent().global_position
 	var averagePos = lerp(currentPos, mousePos, look_ahead_factor)
-	var newPos = lerp(currentPos, averagePos, damping * delta)
+	var newPos = lerp(global_position, averagePos, damping * delta)
 	set_global_position(newPos)
 	
 func zoom_into_battle():
 	# change this to lerp.
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "zoom", Vector2.ONE*default_zoom, 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	tween.parallel().tween_property(self, "look_ahead_factor", 0.5, 1.0)
+	tween.parallel().tween_property(self, "look_ahead_factor", 0.4, 1.0)
 	
 	
