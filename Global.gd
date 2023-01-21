@@ -31,6 +31,8 @@ var vs_hype_screens = {
 var battles_completed = []
 var team_names = ["Danny", "Black", "Blue", "Green", "Pink", "Purple", "White"]
 var team_colors = [Color.peru, Color.black, Color.blue, Color.green, Color.deeppink, Color.darkmagenta, Color.white]
+var into_has_played = false
+
 
 var parts_pool := {}
 func _ready():
