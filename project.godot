@@ -169,7 +169,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/MechBuilder/Mech.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "MechPart",
 "language": "GDScript",
 "path": "res://scenes/Entities/Parts/MechPart.gd"

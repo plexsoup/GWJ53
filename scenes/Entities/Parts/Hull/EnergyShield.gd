@@ -1,7 +1,6 @@
-extends Node2D
+extends MechPart
 
 
-var mech
 export var shield_value : float = 500.0
 
 var rotation_speed : float = 2.0

@@ -11,9 +11,8 @@ To meet accessibility requirements:
 
 """
 
-extends Node2D
+extends MechPart
 
-var mech
 #export var projectile : PackedScene
 export var beam_range : float = 1500.0
 export var human_range_advantage : float = 1.15
@@ -73,7 +72,7 @@ func scene_finished():
 	
 
 func shoot():
-	if scene_finished():
+	if scene_finished() or disabled:
 		return
 	
 		
@@ -95,7 +94,8 @@ func make_noise():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	aim_laser(delta)
+	if not disabled:
+		aim_laser(delta)
 	
 
 func aim_laser(_delta):

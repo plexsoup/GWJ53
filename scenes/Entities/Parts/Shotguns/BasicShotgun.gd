@@ -5,9 +5,8 @@ Area2D hurtbox immediate effect with particles.
 
 """
 
-extends Node2D
+extends MechPart
 
-var mech
 export var projectile_range : float = 800.0
 
 export var damage : float = 200.0
@@ -63,7 +62,7 @@ func scene_finished():
 
 
 func shoot():
-	if scene_finished():
+	if scene_finished() or disabled:
 		return
 
 	if $ShotgunSprite/MuzzleLocation/BlastArea.has_method("update_polygon_shape"):
@@ -114,7 +113,8 @@ func make_noise():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	aim(delta)
+	if not disabled:
+		aim(delta)
 	
 
 func aim(_delta):
