@@ -16,7 +16,7 @@ outlines = [ PoolVector2Array( -1256.01, -300.239, 1630.72, -321.628, 2237.93, -
 
 [node name="OldPort" instance=ExtResource( 1 )]
 position = Vector2( 288, -551 )
-num_spawners = 4
+num_spawners = 6
 win_scene = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -116,21 +116,34 @@ polygon = PoolVector2Array( -306, -1043, 317, -1032, 320, 920, -329, 961 )
 [node name="MissileMechSpawner" parent="Spawners" index="0" instance=ExtResource( 3 )]
 position = Vector2( 10611, 338 )
 num_spawns_per_interval = 6
+max_spawns = 6
+team = 5
 
 [node name="LaserMechSpawner" parent="Spawners" index="1" instance=ExtResource( 5 )]
 position = Vector2( 18920, 14749 )
+max_spawns = 6
+team = 5
 
 [node name="ShotgunMechSpawner" parent="Spawners" index="2" instance=ExtResource( 4 )]
 position = Vector2( 3686, 8635 )
+max_spawns = 5
+team = 5
 
 [node name="EnergyBallMechSpawner" parent="Spawners" index="3" instance=ExtResource( 6 )]
 position = Vector2( -2492, 17648 )
+max_spawns = 12
+team = 5
 
 [node name="RandomMechSpawner" parent="Spawners" index="4" instance=ExtResource( 7 )]
 position = Vector2( 11418, 8214 )
+time_between_spawns = 5.0
+max_spawns = 20
+team = 5
 
 [node name="ShotgunMechSpawner2" parent="Spawners" index="5" instance=ExtResource( 4 )]
 position = Vector2( 11055, 17124 )
+max_spawns = 6
+team = 5
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="7"]
 scale = Vector2( 3, 3 )
