@@ -204,7 +204,6 @@ func _unhandled_input(event):
 		Global.money -= selected_part.cost
 		_update_money_display()
 		add_building_part(selected_part, cursor.global_position)
-		deselect_part()
 		
 	if event.is_action_pressed("ui_cancel"):
 		deselect_part()
