@@ -233,7 +233,10 @@ func begin_dying():
 		animation_player = get_node("AnimationPlayer")
 	animation_player.play("die")
 	$Health/DeathTimer.start()
-
+	$DeathNoise.play()
+	if Global.user_prefs["particles"]:
+		$ShrapnelParticles.emitting = true
+		$SmokeParticles.emitting = true
 	emit_signal("died")
 		
 
