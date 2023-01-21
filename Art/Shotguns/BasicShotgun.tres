@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Basic Missile Launcher"
-description = "Shoots a few rockets"
+description = "Mid range, tight choke. Narrow spread hitscan. Nice knockback."
 icon = ExtResource( 2 )
 mech_part = ExtResource( 3 )
 type = 2
