@@ -34,7 +34,7 @@ func start_next_battle(_playerObj):
 	if battleName in Global.vs_hype_screens:
 		change_scene(Global.vs_hype_screens[battleName])
 		yield(self, "scene_transistion_finished")
-		yield(get_tree().create_timer(5), "timeout")	
+		yield(get_tree().create_timer(3.5), "timeout")	
 	change_scene(Global.battle_scenes[battleName])
 
 func mark_battle_completed():

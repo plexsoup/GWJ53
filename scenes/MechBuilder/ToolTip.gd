@@ -17,7 +17,7 @@ func _ready():
 	print(part_buttons_h_box.get_child_count())
 	print(tool_tip_boundaries)
 
-func _process(delta):
+func _process(_delta):
 	var panel_size = $PanelContainer.rect_size
 	rect_position.x = clamp(get_global_mouse_position().x, 
 		tool_tip_boundaries.position.x + panel_size.x/2,
