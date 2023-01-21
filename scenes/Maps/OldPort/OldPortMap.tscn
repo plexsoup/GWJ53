@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/Maps/Spawners/LaserMechSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Maps/Spawners/EnergyBallMechSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Maps/Spawners/RandomMechSpawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Menus/WinRewardCutscene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Menus/Outro.tscn" type="PackedScene" id=8]
 [ext_resource path="res://vfx/WaterMaterial.tres" type="Material" id=9]
 [ext_resource path="res://_common/Materials/SmallWhiteSquare.png" type="Texture" id=10]
 [ext_resource path="res://Art/Harbor Assests/Modular Boat box_1.png" type="Texture" id=11]
