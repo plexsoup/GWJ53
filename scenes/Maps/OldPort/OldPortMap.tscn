@@ -48,6 +48,7 @@ z_index = 3
 [node name="HarborBase" type="Sprite" parent="Ground" index="2"]
 position = Vector2( 9189, 7039 )
 scale = Vector2( 12.0473, 11.4191 )
+z_index = -1
 texture = ExtResource( 14 )
 
 [node name="Docks" type="Polygon2D" parent="Ground" index="3"]
