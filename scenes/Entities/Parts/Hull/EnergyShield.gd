@@ -15,29 +15,33 @@ func init(myMech):
 	mech.shield_max += shield_value
 	mech.shield += shield_value
 	
-	draw_shield()
+	#draw_shield()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Sprite.rotate(rotation_speed*delta)
-	update()
+	#update()
 	
 	
 func draw_shield():
-	if mech.shield > 0:
-		var radius = 500.0
-		var segments = 12.0
-		var segmentRotation = TAU/segments
-		var lineWidth = 15.0
-		var antiAliasing = true
-		var points = []
-		for i in range(segments):
-			points.push_back( (Vector2.RIGHT*radius).rotated(segmentRotation*i) )
-		$Line2D.points = points
-		$Line2D.width = lineWidth
-		$Line2D.antialiased = antiAliasing
-		$Line2D.default_color = Global.team_colors[mech.team]
-		$Sprite.set_modulate(Global.team_colors[mech.team])
+	pass
+	
+#	if mech.shield > 0:
+#		var radius = 500.0
+#		var segments = 12.0
+#		var segmentRotation = TAU/segments
+#		var lineWidth = 15.0
+#		var antiAliasing = true
+#		var points = []
+#		for i in range(segments+1):
+#			points.push_back( (Vector2.RIGHT*radius).rotated(segmentRotation*i) )
+#		var teamColor = Global.team_colors[mech.team]
+#		teamColor.a = 0.5
+#		$Line2D.points = points
+#		$Line2D.width = lineWidth
+#		$Line2D.antialiased = antiAliasing
+#		$Line2D.default_color = teamColor
+#		$Sprite.set_modulate(teamColor)
 
 
 func _on_Timer_timeout():
