@@ -31,10 +31,6 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "You are definitely your mother's son"
-		},
-		{
-			"change_scene": "",
-			"event_id": "dialogic_041"
 		}
 	],
 	"metadata": {
