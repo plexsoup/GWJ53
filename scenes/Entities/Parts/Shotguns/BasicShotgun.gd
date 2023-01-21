@@ -7,7 +7,8 @@ Area2D hurtbox immediate effect with particles.
 
 extends MechPart
 
-export var projectile_range : float = 800.0
+export var projectile_range : float = 1500.0
+var human_range_advantage : float = 1.25
 
 export var damage : float = 200.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
@@ -49,9 +50,9 @@ func init(myMech):
 	modify_hurtbox_size()
 
 func modify_hurtbox_size():
-	var default_blast_size = 500.0
+	var default_blast_size = 1200 # reference size so we know how to scale up to projectile range
 	if mech.is_human_player:
-		default_blast_size *= 1.25
+		projectile_range *= human_range_advantage
 	
 	$ShotgunSprite/MuzzleLocation/BlastArea/CollisionPolygon2D.scale.x = projectile_range / default_blast_size
 	$ShotgunSprite/MuzzleLocation/BlastArea/BlastImage.scale.x = projectile_range/ default_blast_size
@@ -134,12 +135,15 @@ func aim(_delta):
 
 
 func flash_muzzle():
+
 	if has_node("AnimationPlayer"):
 		if $AnimationPlayer.has_animation("flash"):
 			$AnimationPlayer.play("flash")
 		else:
 			print("no flash animation")
-
+	if Global.user_prefs["particles"]:
+		$ShotgunSprite/MuzzleLocation/CPUParticles2D.emitting = false
+		$ShotgunSprite/MuzzleLocation/CPUParticles2D.emitting = true
 
 
 func _on_ReloadTimer_timeout():
