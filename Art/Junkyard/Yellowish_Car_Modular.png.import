@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HP_OVer.png-f7daca4069a4b4d8c737d2d4106209ed.stex"
+path="res://.import/Yellowish_Car_Modular.png-cb226c39e6de552551d3cf89dc65b3e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/HP_OVer.png"
-dest_files=[ "res://.import/HP_OVer.png-f7daca4069a4b4d8c737d2d4106209ed.stex" ]
+source_file="res://Art/Junkyard/Yellowish_Car_Modular.png"
+dest_files=[ "res://.import/Yellowish_Car_Modular.png-cb226c39e6de552551d3cf89dc65b3e3.stex" ]
 
 [params]
 

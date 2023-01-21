@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HP_OVer.png-f7daca4069a4b4d8c737d2d4106209ed.stex"
+path="res://.import/Purple_car_Modular.png-79d1b4f3a1aa9ce84f778007d63edca6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/HP_OVer.png"
-dest_files=[ "res://.import/HP_OVer.png-f7daca4069a4b4d8c737d2d4106209ed.stex" ]
+source_file="res://Art/Junkyard/Purple_car_Modular.png"
+dest_files=[ "res://.import/Purple_car_Modular.png-79d1b4f3a1aa9ce84f778007d63edca6.stex" ]
 
 [params]
 

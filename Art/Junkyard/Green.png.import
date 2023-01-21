@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HP_OVer.png-f7daca4069a4b4d8c737d2d4106209ed.stex"
+path="res://.import/Green.png-27b095ad8cb3cc65b812205e5e9088b0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/HP_OVer.png"
-dest_files=[ "res://.import/HP_OVer.png-f7daca4069a4b4d8c737d2d4106209ed.stex" ]
+source_file="res://Art/Junkyard/Green.png"
+dest_files=[ "res://.import/Green.png-27b095ad8cb3cc65b812205e5e9088b0.stex" ]
 
 [params]
 
