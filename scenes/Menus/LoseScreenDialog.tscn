@@ -28,7 +28,7 @@ align = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -26.233
-pitch_scale = 0.94
+pitch_scale = 0.57
 autoplay = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
