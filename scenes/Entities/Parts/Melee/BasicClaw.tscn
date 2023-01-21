@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/Melee/clawAtlas.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Melee/BasicClaw.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Entities/Projectiles/basicShock.wav" type="AudioStream" id=3]
 [ext_resource path="res://scenes/Entities/Projectiles/DynamicShockArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/MechBuilder/Strut.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite/Sprite:rotation_degrees")
+tracks/0/path = NodePath("Claw/Sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,7 +21,7 @@ tracks/0/keys = {
 "values": [ -28.7465 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite/Sprite2:rotation_degrees")
+tracks/1/path = NodePath("Claw/Sprite2:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -35,7 +36,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite/Sprite:rotation_degrees")
+tracks/0/path = NodePath("Claw/Sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -47,7 +48,7 @@ tracks/0/keys = {
 "values": [ -28.7465, -44.9999, -44.9999, 10.7948, 10.7948, -28.7465 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite/Sprite2:rotation_degrees")
+tracks/1/path = NodePath("Claw/Sprite2:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -84,15 +85,18 @@ one_shot = true
 stream = ExtResource( 3 )
 volume_db = -3.0
 
-[node name="Sprite" type="Node2D" parent="."]
+[node name="Strut" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0.999997, 3 )
+
+[node name="Claw" type="Node2D" parent="."]
 position = Vector2( 0.999997, 3 )
 scale = Vector2( 2.23985, 2.23985 )
 
-[node name="HurtBox" parent="Sprite" instance=ExtResource( 4 )]
+[node name="HurtBox" parent="Claw" instance=ExtResource( 4 )]
 position = Vector2( 92.6589, -2.67285 )
 scale = Vector2( 0.445476, 0.445476 )
 
-[node name="Sprite" type="Sprite" parent="Sprite"]
+[node name="Sprite" type="Sprite" parent="Claw"]
 position = Vector2( 1.32139, -1.62294 )
 rotation = -0.501721
 scale = Vector2( 1.47535, 1.47535 )
@@ -101,7 +105,7 @@ offset = Vector2( 47.8143, -13.9582 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 124.03, 71.374 )
 
-[node name="Sprite2" type="Sprite" parent="Sprite"]
+[node name="Sprite2" type="Sprite" parent="Claw"]
 position = Vector2( 1.0244, -1.91993 )
 rotation = 0.695433
 scale = Vector2( 1.29218, 1.29218 )
