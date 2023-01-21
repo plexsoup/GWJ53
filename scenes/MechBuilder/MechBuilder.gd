@@ -201,6 +201,7 @@ func _unhandled_input(event):
 					$"%MoneyAnimation".play("GainMoney")
 				hovered_part = null
 				_update_money_display()
+				$SellSound.play()
 			return
 		
 		if not can_place_part:
@@ -212,6 +213,7 @@ func _unhandled_input(event):
 		Global.money -= selected_part.cost
 		_update_money_display()
 		add_building_part(selected_part, cursor.global_position)
+		$BuildSound.play()
 		
 	if event.is_action_pressed("ui_cancel"):
 		deselect_part()
