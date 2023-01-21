@@ -3,6 +3,7 @@ extends Control
 onready var tool_tip_area = $"%ToolTipArea"
 onready var tool_tip_boundaries = Rect2(tool_tip_area.rect_position, tool_tip_area.rect_size)
 onready var part_buttons_h_box = $"%PartButtonsHBox"
+onready var tool_tip_text = $"%ToolTipText"
 onready var builder = get_parent()
 
 var hovered_part_button = null
@@ -14,6 +15,7 @@ func _ready():
 		part_button.connect("mouse_entered", self, "_on_part_button_mouse_entered", [part_button])
 		part_button.connect("mouse_exited", self, "_on_part_button_mouse_exited", [part_button])
 	print(part_buttons_h_box.get_child_count())
+	print(tool_tip_boundaries)
 
 func _process(delta):
 	var panel_size = $PanelContainer.rect_size
@@ -26,8 +28,9 @@ func _process(delta):
 		tool_tip_boundaries.end.y)
 
 func _on_part_button_mouse_entered(part_button):
+	print("oi")
 	hovered_part_button = part_button
-	$PanelContainer/RichTextLabel.bbcode_text = "[center]%s[/center]" % part_button.part.description
+	tool_tip_text.bbcode_text = "[center]%s[/center]" % part_button.part.description
 	show()
 
 func _on_part_button_mouse_exited(part_button):

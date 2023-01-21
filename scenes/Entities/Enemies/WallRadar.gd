@@ -14,25 +14,28 @@ func _ready():
 	
 	var pathfinder = get_parent()
 	if pathfinder.has_method("_on_wall_detected"):
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("wall", pathfinder, "_on_wall_detected")
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("all_clear", pathfinder, "_on_wallradar_all_clear")
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotation += speed * delta
+	$Ray.rotation += speed * delta
 
-
-	if $Ray.is_colliding():
-		emit_signal("wall", Vector2.ONE.rotated(rotation))
-
+	
+#	if $Ray.is_colliding():
+#		emit_signal("wall", Vector2.ONE.rotated(rotation))
+	
 
 
 func _on_PingTimer_timeout():
 	if $Ray.is_colliding():
-		walls_detected.push_back(Vector2.ONE.rotated(rotation))
-
+		#walls_detected.push_back(Vector2.ONE.rotated(rotation))
+		
+		walls_detected.push_back( $Ray.get_collision_point() - self.global_position)
 
 
 func _on_ReportTimer_timeout():
@@ -44,5 +47,8 @@ func _on_ReportTimer_timeout():
 		emit_signal("wall", averageWallVector, "_on_wall_detected")
 	else:
 		emit_signal("all_clear")
+	
+	$Line2D.set_global_rotation(0)
+	$Line2D.points = [ Vector2.ZERO, averageWallVector]
 	walls_detected = []
 	

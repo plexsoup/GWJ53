@@ -12,16 +12,14 @@ margin_bottom = 596.0
 stream = ExtResource( 1 )
 autoplay = true
 
-[node name="Crowd" type="AudioStreamPlayer2D" parent="."]
+[node name="Crowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -4.67
 pitch_scale = 0.9
 autoplay = true
-max_distance = 1484.0
-attenuation = 1.36604
 bus = "SFX"
 
-[node name="Main music" type="AudioStreamPlayer2D" parent="."]
+[node name="Main music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -17.479
 pitch_scale = 1.06

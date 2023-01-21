@@ -15,6 +15,7 @@ func _ready():
 
 	
 func _on_dialog_ended(_signal_properties):
+	Global.into_has_played = true
 	Global.stage_manager.change_scene_to(next_scene)
 
 func _unhandled_input(event):

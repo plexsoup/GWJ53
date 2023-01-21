@@ -34,7 +34,6 @@ rect_scale = Vector2( 1.09932, 0.580939 )
 position = Vector2( -7, -5 )
 
 [node name="Sprite" parent="Appearance" index="0"]
-visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 

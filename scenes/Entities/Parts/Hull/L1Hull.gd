@@ -1,6 +1,5 @@
-extends Node2D
+extends MechPart
 
-var mech
 export var health_boost : float = 500
 
 # Called when the node enters the scene tree for the first time.

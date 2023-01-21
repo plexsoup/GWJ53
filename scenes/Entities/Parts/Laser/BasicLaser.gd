@@ -49,15 +49,13 @@ func init(myMech):
 
 	if mech.is_in_group("enemies"):
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, true) # player
+		$RayCast2D.set_collision_mask_bit(0, true)
 		$TargetLocation/HurtBox.set_collision_mask_bit(1, true) # enemies
 		
 	else: # player
 		$TargetLocation/HurtBox.set_collision_mask_bit(1, true)
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, false)
-
-	
-	$RayCast2D.set_collision_mask_bit(0, true)
-	$RayCast2D.set_collision_mask_bit(1, true)
+		$RayCast2D.set_collision_mask_bit(0, false)
 	
 	
 	if line_of_sight:
@@ -115,9 +113,13 @@ func aim_laser(_delta):
 			if line_of_sight:
 				$RayCast2D.set_cast_to(rescaled_target_pos)
 				if $RayCast2D.is_colliding():
+					var collisionPoint = $RayCast2D.get_collision_point()
 					$Line2D.points = [ Vector2.ZERO, self.to_local($RayCast2D.get_collision_point())]
-			$TargetLocation.position = rescaled_target_pos
-			
+					$TargetLocation.position = collisionPoint
+				else: # no collision
+					$TargetLocation.position = rescaled_target_pos
+			else: # goes through walls
+				$TargetLocation.position = rescaled_target_pos
 		else:
 			$TargetLocation/CPUParticles2D.emitting = false
 

@@ -8,6 +8,7 @@ Area2D static hurtbox immediate effect.
 extends MechPart
 
 export var projectile_range : float = 500.0
+export var stretch_speed = 300.0
 
 export var damage : float = 250.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.IMPACT
@@ -54,7 +55,7 @@ func shoot():
 
 
 func hurt_targets():
-	var blast = $Sprite/HurtBox
+	var blast = $Claw/HurtBox
 	var potential_targets = blast.get_overlapping_bodies()
 	var enemies = Utils.get_enemies_from_list(potential_targets, mech)
 	var impactVector = (mech.targetting_cursor.get_global_position() - self.get_global_position()).normalized() * knockback_effect
@@ -74,9 +75,14 @@ func _process(delta):
 	if not disabled:
 		aim(delta)
 	
-func aim(_delta):
+func aim(delta):
 	if mech.targetting_cursor != null:
-		$Sprite.look_at(mech.targetting_cursor.global_position)
+		var aim_vector = mech.targetting_cursor.global_position - global_position
+		aim_vector = aim_vector.clamped(projectile_range)
+		$Claw.rotation = aim_vector.angle()
+		$Claw.position = $Claw.position.move_toward(aim_vector, stretch_speed * delta)
+		$Strut.look_at($Claw.global_position)
+		$Strut.length = $Claw.position.length()
 
 
 

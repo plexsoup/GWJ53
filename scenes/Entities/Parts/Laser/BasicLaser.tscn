@@ -88,7 +88,7 @@ shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
-collision_mask = 3
+collision_mask = 19
 
 [connection signal="timeout" from="ShotDurationTimer" to="." method="_on_ShotDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

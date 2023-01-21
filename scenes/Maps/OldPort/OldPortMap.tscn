@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/OldPort/image (4).png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://scenes/Menus/Outro.tscn" type="PackedScene" id=8]
 [ext_resource path="res://vfx/WaterMaterial.tres" type="Material" id=9]
 [ext_resource path="res://_common/Materials/SmallWhiteSquare.png" type="Texture" id=10]
-[ext_resource path="res://Art/Harbor Assests/Modular Boat box_1.png" type="Texture" id=11]
 [ext_resource path="res://Art/Harbor Assests/Modular Dock box single.png" type="Texture" id=12]
 [ext_resource path="res://Art/Harbor Assests/Modularbox.png" type="Texture" id=13]
 [ext_resource path="res://Art/Harbor Assests/Harbor_base.png" type="Texture" id=14]
@@ -18,9 +17,9 @@
 [ext_resource path="res://sfx/531015__noted451__ocean-waves.wav" type="AudioStream" id=16]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 4276, 2244, 5493.02, 3068.14, 4301.97, 3053.09, 871.009, 2795, 861.502, 2206, 1658.05, 2210.6, 1771.33, 5508.47, 3406, 5476.38, 4419, 6268.57, -1256.01, 6308.57, 655.138, 5739.78, 3368.38, 3120.82, 1755.09, 3152.9, 595.724, 3145.77, 7102, 3728, 7130, 4108, 7121, 4822, 6748.24, 3974.79, 6718.53, 1868.37, 7111, 3404, 7102, 1568, 1078.17, 5286.65, 148.139, 4477.83, 624.243, 3951.42, 4267, 1425, 3339.86, 2185.25, 3280.84, 277.661, 3543, -1143, 4400, 208, 3047.94, -907.845, 2237.93, -566.809, 1610.12, 303.011, 1630.72, -321.628, -1256.01, -300.239, 1671.51, 1809.35, 538.687, 1162.14, -619.886, 3971.63, -244.786, 4907.2, 5522, 1501, 5931, 103, 6607, 55, 6959, 969, 5884, 1844, 5478.36, 2225.65, 5880.79, 4008.86, 6938.36, 5423.31, 6757.35, 5689.48, 6106.96, 5710.87, 5968.33, 5572.24, 5830.09, 5231.2, 5489.06, 4325.34, -1256.01, 3697.13, -705.046, 1181.15, 595.724, 1903.62, 2148.41, 2212.58 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 9, 10 ), PoolIntArray( 2, 8, 7, 11 ), PoolIntArray( 3, 2, 11, 12, 13 ), PoolIntArray( 14, 15, 16, 17, 18 ), PoolIntArray( 19, 14, 18, 20 ), PoolIntArray( 12, 6, 21, 22, 23 ), PoolIntArray( 24, 0, 25, 26 ), PoolIntArray( 27, 28, 24, 26, 29 ), PoolIntArray( 30, 29, 26, 31 ), PoolIntArray( 32, 30, 31 ), PoolIntArray( 33, 32, 31 ), PoolIntArray( 33, 31, 34, 35 ), PoolIntArray( 23, 13, 12 ), PoolIntArray( 36, 23, 22, 37 ), PoolIntArray( 38, 39, 40, 41, 20, 18, 42 ), PoolIntArray( 43, 38, 42, 44, 1 ), PoolIntArray( 44, 17, 16, 45, 46, 47, 48, 49, 50 ), PoolIntArray( 44, 50, 1 ), PoolIntArray( 0, 43, 1 ), PoolIntArray( 10, 21, 6 ), PoolIntArray( 37, 10, 9 ), PoolIntArray( 37, 9, 51, 36 ), PoolIntArray( 52, 36, 51, 33 ), PoolIntArray( 35, 52, 33 ), PoolIntArray( 4, 53, 35, 34, 5 ), PoolIntArray( 0, 5, 54 ), PoolIntArray( 0, 54, 25 ) ]
-outlines = [ PoolVector2Array( -1256.01, -300.239, 1630.72, -321.628, 2237.93, -566.809, 3047.94, -907.845, 3543, -1143, 4400, 208, 4267, 1425, 4276, 2244, 5478.36, 2225.65, 5522, 1501, 5931, 103, 6607, 55, 6959, 969, 7102, 1568, 7111, 3404, 7102, 3728, 7130, 4108, 7121, 4822, 6938.36, 5423.31, 6757.35, 5689.48, 6106.96, 5710.87, 5968.33, 5572.24, 5830.09, 5231.2, 5489.06, 4325.34, 5493.02, 3068.14, 4301.97, 3053.09, 4419, 6268.57, -1256.01, 6308.57, -1256.01, 3697.13 ), PoolVector2Array( 1610.12, 303.011, 3280.84, 277.661, 3339.86, 2185.25, 2148.41, 2212.58, 1658.05, 2210.6, 1671.51, 1809.35 ), PoolVector2Array( -705.046, 1181.15, 538.687, 1162.14, 595.724, 1903.62, 861.502, 2206, 871.009, 2795, 595.724, 3145.77, 624.243, 3951.42, -619.886, 3971.63 ), PoolVector2Array( 1755.09, 3152.9, 3368.38, 3120.82, 3406, 5476.38, 1771.33, 5508.47 ), PoolVector2Array( 148.139, 4477.83, 1078.17, 5286.65, 655.138, 5739.78, -244.786, 4907.2 ), PoolVector2Array( 5884, 1844, 6718.53, 1868.37, 6748.24, 3974.79, 5880.79, 4008.86 ) ]
+vertices = PoolVector2Array( 3503.33, 5504.67, 4234.33, 6025.67, -1076.33, 6065, 688.333, 5777.67, 1787, 3073.67, 1794.67, 5504.67, 1147, 5308.33, 645.667, 3991, 560.333, 1084.33, 1664.67, 2104.67, 85.6667, 4412.33, -693, 3969.67, 4167.33, 2649, 3482, 3069.67, -383.667, 4796.33, 2773.33, -1057.33, 3384, -1283.67, 4267, 6, 4135, 1264.33, 3203.33, 273.333, 2788.33, -227.667, 1645.67, 271, 1589, -175, 3192.67, 2107.67, 4195, 2211, 1196.67, -491.667, 1566.33, -627.667, 6996, 1752, 7135.67, 1068.67, 7267.67, 1676, 7279.67, 3506, 6956, 2703, 6057, -2, 6724.33, -74, 5917, 1772, 5565.33, 1504.33, 5573.33, 2171.33, 5893, 2699, 6156.67, 5431.67, 5957, 4968.33, 5669.33, 4273, 7275.67, 4017.33, 7247.67, 4776.67, 7047.67, 5348, 6960, 5531.67, 6804, 5607.67, 6268.67, 5611.67, 5554, 2651.33, -1113.67, -532.333, -687.333, 1083.33, -1118.67, 3588.67 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8, 9 ), PoolIntArray( 7, 6, 10 ), PoolIntArray( 11, 7, 10 ), PoolIntArray( 12, 1, 0, 13 ), PoolIntArray( 11, 10, 14 ), PoolIntArray( 15, 16, 17, 18, 19, 20 ), PoolIntArray( 20, 19, 21, 22 ), PoolIntArray( 23, 19, 18, 24, 12, 13 ), PoolIntArray( 25, 26, 22, 8 ), PoolIntArray( 27, 28, 29, 30, 31 ), PoolIntArray( 32, 33, 28, 27, 34, 35 ), PoolIntArray( 36, 35, 34, 37 ), PoolIntArray( 38, 39, 40, 37, 31, 30, 41, 42, 43, 44, 45, 46 ), PoolIntArray( 3, 6, 5 ), PoolIntArray( 24, 36, 37, 47 ), PoolIntArray( 37, 40, 47 ), PoolIntArray( 24, 47, 12 ), PoolIntArray( 23, 13, 4, 9 ), PoolIntArray( 21, 9, 8, 22 ), PoolIntArray( 48, 25, 8, 49 ), PoolIntArray( 50, 48, 49, 11, 2 ), PoolIntArray( 2, 11, 14 ), PoolIntArray( 2, 14, 3 ), PoolIntArray( 0, 3, 5 ) ]
+outlines = [ PoolVector2Array( -1113.67, -532.333, 1196.67, -491.667, 1566.33, -627.667, 1589, -175, 2788.33, -227.667, 2773.33, -1057.33, 3384, -1283.67, 4267, 6, 4135, 1264.33, 4195, 2211, 5573.33, 2171.33, 5565.33, 1504.33, 6057, -2, 6724.33, -74, 7135.67, 1068.67, 7267.67, 1676, 7279.67, 3506, 7275.67, 4017.33, 7247.67, 4776.67, 7047.67, 5348, 6960, 5531.67, 6804, 5607.67, 6268.67, 5611.67, 6156.67, 5431.67, 5957, 4968.33, 5669.33, 4273, 5554, 2651.33, 4167.33, 2649, 4234.33, 6025.67, -1076.33, 6065, -1118.67, 3588.67 ), PoolVector2Array( 1645.67, 271, 3203.33, 273.333, 3192.67, 2107.67, 1664.67, 2104.67 ), PoolVector2Array( -687.333, 1083.33, 560.333, 1084.33, 645.667, 3991, -693, 3969.67 ), PoolVector2Array( 1787, 3073.67, 3482, 3069.67, 3503.33, 5504.67, 1794.67, 5504.67 ), PoolVector2Array( 85.6667, 4412.33, 1147, 5308.33, 688.333, 5777.67, -383.667, 4796.33 ), PoolVector2Array( 5917, 1772, 6996, 1752, 6956, 2703, 5893, 2699 ) ]
 
 [node name="OldPort" instance=ExtResource( 1 )]
 position = Vector2( 288, -551 )
@@ -66,7 +65,7 @@ collision_layer = 128
 collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Layout1" index="0"]
-polygon = PoolVector2Array( -1546, -980, 11145, -961, 11088, 4880, 8481, 4937, 8462, 2730, 8329, 2178, 8100, 1542, 7929, 1157, 7211.67, 1213.33, 7127, 1619.67, 6974.67, 2127.67, 6788.33, 2652.67, 6805.33, 3313, 5552.33, 3431.33, 5535.33, 2398.67, 5671, 1315, 4672, -243, 3893, 197.333, 3943.67, 959.333, 2978.67, 908.667, 2944.67, 383.667, 2521.67, 553, 66.3333, 570, 66.3333, 5124.67, -1508, 5177 )
+polygon = PoolVector2Array( -1546, -980, 11145, -961, 11088, 4880, 8647, 4874, 8658.33, 3832, 8665, 2521.67, 8587.67, 2343.67, 8298.67, 1571, 8073.67, 1023.33, 7277.33, 1090.67, 7127, 1619.67, 6974.67, 2127.67, 6788.33, 2652.67, 6805.33, 3313, 5569.33, 3365.33, 5537.33, 2400, 5691.67, 1176.67, 4708.67, -271, 3966.33, 56.6667, 3986.33, 868, 2978.67, 908.667, 2926.33, 391, 2521.67, 553, 100.667, 580.667, 107.667, 5107.67, -1508, 5177 )
 one_way_collision_margin = 0.0
 
 [node name="Water1" type="Polygon2D" parent="YSort/Obstacles/Layout1" index="1"]
@@ -82,7 +81,7 @@ collision_layer = 128
 collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Layout2" index="0"]
-polygon = PoolVector2Array( -1314.33, -1999.33, 294.333, -2033.33, 362, 252.667, 5899, 286.333, 5831, -1237.33, 5763.33, -3269.33, 6914.67, -3218.67, 7050.33, -1677.67, 7321, -1017.33, 7456.67, -577, 7609, -306, 8238, -162, 8442, -414, 8670, -1085, 8730, -1624, 8701, -2253, 11319, -2271, 11331, 1061, -1315, 1061 )
+polygon = PoolVector2Array( -1314.33, -1999.33, 318.667, -2018.33, 346.333, 247.667, 5891.67, 214, 5798.67, -1217, 5752, -1686.67, 5735, -3219, 6983.67, -3206.33, 7149, -1327, 7321, -1017.33, 7487.67, -590.333, 7665.33, -209.333, 8389.33, -213.667, 8634.67, -472, 8850.67, -1132.33, 8854.67, -1487.67, 8859, -2262.33, 11319, -2271, 11331, 1061, -1315, 1061 )
 
 [node name="Water2" type="Polygon2D" parent="YSort/Obstacles/Layout2" index="1"]
 visible = false
@@ -94,14 +93,10 @@ position = Vector2( -131.041, 2554.71 )
 collision_layer = 16
 collision_mask = 15
 
-[node name="ModularBoatBox1" type="Sprite" parent="YSort/Obstacles/AdminHouse" index="0"]
-position = Vector2( 6602.71, 413.623 )
-texture = ExtResource( 11 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/AdminHouse" index="0"]
+polygon = PoolVector2Array( -482.959, -1365.71, 590, -1336, 628.708, 1314.29, -478.292, 1314.29 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/AdminHouse" index="1"]
-polygon = PoolVector2Array( -490, -1298, 590, -1336, 641, -308, 882, -321, 574.708, 159.623, 574.708, 633.957, 653, 1241, -401, 1292 )
-
-[node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/AdminHouse" index="2"]
+[node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/AdminHouse" index="1"]
 visible = false
 color = Color( 0.294118, 0.152941, 0, 1 )
 polygon = PoolVector2Array( -490, -1298, 590, -1336, 608.374, -466.71, 882, -321, 625.374, 193.623, 642.374, 718.623, 653, 1241, -401, 1292 )
@@ -112,9 +107,10 @@ collision_layer = 16
 collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Containers1" index="0"]
-polygon = PoolVector2Array( -504, -863, 994, -863, 1065, 934.667, -458.333, 973.667 )
+polygon = PoolVector2Array( -453, -883.333, 916.667, -879.333, 924.667, 790.667, -457.667, 806.667 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Containers1" index="1"]
+visible = false
 position = Vector2( -50.4518, 13.1245 )
 color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -439.546, -863, 1036.17, -872.567, 1058, 894, -403, 915 )
@@ -126,9 +122,10 @@ collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Containers2" index="0"]
 position = Vector2( -18, 98 )
-polygon = PoolVector2Array( -387, -1619.73, 1113, -1640.98, 1133, 557, -380, 563 )
+polygon = PoolVector2Array( -305, -1653.5, 1205.33, -1657.5, 1221, 530.5, -303.333, 527.5 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Containers2" index="1"]
+visible = false
 position = Vector2( -23, 91 )
 color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -387, -1619.73, 1113, -1640.98, 1133, 557, -380, 563 )
@@ -139,9 +136,10 @@ collision_layer = 16
 collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Container4" index="0"]
-polygon = PoolVector2Array( -319, -289, -26, -606, 789, 125, 466, 448 )
+polygon = PoolVector2Array( -387.333, -337.667, -76, -622.667, 798.333, 201.667, 492, 494 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Container4" index="1"]
+visible = false
 color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -319, -289, -26, -606, 789, 125, 466, 448 )
 
@@ -153,13 +151,14 @@ collision_mask = 15
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/ShipContainers" index="0"]
 position = Vector2( -0.58132, 0 )
 scale = Vector2( 1.09303, 1 )
-polygon = PoolVector2Array( -306, -1043, 317, -1032, 320, 920, -329, 961 )
+polygon = PoolVector2Array( -244.963, -1079, 574.777, -1129.33, 561.054, -369.333, -277.289, -344 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/ShipContainers" index="1"]
+visible = false
 color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -306, -1043, 317, -1032, 320, 920, -329, 961 )
 
-[node name="Modularbox" type="Sprite" parent="YSort/Obstacles/ShipContainers/Polygon2D" index="0"]
+[node name="Modularbox" type="Sprite" parent="YSort/Obstacles/ShipContainers" index="2"]
 position = Vector2( -3747.33, -1634.67 )
 scale = Vector2( 3.22508, 3.22508 )
 texture = ExtResource( 13 )
@@ -197,7 +196,6 @@ max_spawns = 6
 team = 5
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="7"]
-visible = false
 scale = Vector2( 3, 3 )
 navpoly = SubResource( 1 )
 
