@@ -184,8 +184,8 @@ team = 5
 
 [node name="RandomMechSpawner" parent="Spawners" index="4" instance=ExtResource( 7 )]
 position = Vector2( 11418, 8214 )
-time_between_spawns = 5.0
-max_spawns = 20
+time_between_spawns = 0.66
+max_spawns = 15
 team = 5
 
 [node name="ShotgunMechSpawner2" parent="Spawners" index="5" instance=ExtResource( 4 )]
