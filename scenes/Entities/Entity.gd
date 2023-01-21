@@ -46,6 +46,8 @@ var targetting_cursor
 var previous_velocity : Vector2 = Vector2.ZERO
 var knockback_vector : Vector2 = Vector2.ZERO
 
+var moving_last_frame : bool = false
+
 # Not sure what to do with these yet.
 # Each mech will have plugins for a variety of functions
 # could be slots, hardpoints, or whatever
@@ -201,10 +203,19 @@ func move(delta):
 
 
 func change_walking_animation_if_required(velocity):
-	if previous_velocity.length_squared() < 1000.0 and velocity.length_squared() > 1000.0:
-		emit_signal("started_walking", velocity)
-	elif previous_velocity.length_squared() > 1000.0 and velocity.length_squared() < 1000.0:
-		emit_signal("stopped_walking", velocity)
+	var moving_this_frame = input_controller.is_any_movement_key_pressed()
+	if moving_last_frame != moving_this_frame:
+		if moving_this_frame:
+			emit_signal("started_walking", velocity)
+		else:
+			emit_signal("stopped_walking", velocity)
+	moving_last_frame = moving_this_frame
+	
+# was slow to stop moving. maybe number needed to be higher
+#	if previous_velocity.length_squared() < 1000.0 and velocity.length_squared() > 1000.0:
+#		emit_signal("started_walking", velocity)
+#	elif previous_velocity.length_squared() > 1000.0 and velocity.length_squared() < 1000.0:
+#		emit_signal("stopped_walking", velocity)
 
 
 	

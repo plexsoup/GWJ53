@@ -120,8 +120,14 @@ func update_virtual_controller_buttons():
 		pressed["move_forwards"] = true
 		
 	
-
-
+func is_any_movement_key_pressed():
+	var movementPressed = false
+	for buttonName in ["move_right", "move_left", "move_forwards", "move_backwards"]:
+		if pressed[buttonName] == true:
+			movementPressed = true
+	return movementPressed
+	
+	
 func set_target(newTarget):
 	target = newTarget
 	
