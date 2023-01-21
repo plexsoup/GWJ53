@@ -7,8 +7,10 @@
 [resource]
 script = ExtResource( 2 )
 name = "Level 1 Hull"
-description = "Nanobots repair, resstore, and polish."
+description = "Nanobots repair, restore, and polish."
 icon = ExtResource( 3 )
+icon_scale = 1.0
+icon_offset = Vector2( 0, 0 )
 mech_part = ExtResource( 1 )
 type = 3
 cost = 3
