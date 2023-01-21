@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Art/HP_Under.png" type="Texture" id=1]
-[ext_resource path="res://Art/Hp_OVer.png" type="Texture" id=2]
+[ext_resource path="res://Art/HP_Over.png" type="Texture" id=2]
 [ext_resource path="res://scenes/HUD/HealthHUD.gd" type="Script" id=3]
 [ext_resource path="res://Art/Danny_HP.png" type="Texture" id=4]
 
