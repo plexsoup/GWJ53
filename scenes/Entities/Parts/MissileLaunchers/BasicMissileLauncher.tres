@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Basic Missile Launcher"
-description = "Shoots a few rockets"
+description = "I call it, \"The Ex\". Best Missile Launcher you'll find anywhere."
 icon = ExtResource( 2 )
 icon_scale = 1.0
 icon_offset = Vector2( 0, 0 )
