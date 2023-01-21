@@ -35,6 +35,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
+length = 0.7
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Claw/Sprite:rotation_degrees")
 tracks/0/interp = 1
@@ -42,7 +44,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.541713, 0.8, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.7 ),
 "transitions": PoolRealArray( -2, 1, 2, 1, -2, 1 ),
 "update": 0,
 "values": [ -28.7465, -44.9999, -44.9999, 10.7948, 10.7948, -28.7465 ]
@@ -54,7 +56,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.541713, 0.8, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.7 ),
 "transitions": PoolRealArray( -2, 1, 2, 1, -2, 1 ),
 "update": 0,
 "values": [ 39.8454, 59.9999, 59.9999, 1.2564, 1.2564, 39.8454 ]
@@ -66,7 +68,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.541713 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],

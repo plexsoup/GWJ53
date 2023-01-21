@@ -13,7 +13,7 @@ export var stretch_speed = 300.0
 export var damage : float = 250.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.IMPACT
 
-export var reload_time : float = 1.5
+export var reload_time : float = 0.8
 
 export var knockback_effect : float = 5.0
 

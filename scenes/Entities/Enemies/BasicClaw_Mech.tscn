@@ -13,11 +13,11 @@ __meta__ = {
 position = Vector2( 3, -91 )
 
 [node name="BasicClaw" parent="Weapons" index="0" instance=ExtResource( 3 )]
-position = Vector2( 95, -143 )
+position = Vector2( 233, -178 )
 scale = Vector2( 0.567749, 0.567749 )
 
 [node name="BasicClaw2" parent="Weapons" index="1" instance=ExtResource( 3 )]
-position = Vector2( -101, -139 )
+position = Vector2( -231, -189 )
 scale = Vector2( -0.577251, 0.577251 )
 
 [editable path="Locomotion/BasicLegs"]

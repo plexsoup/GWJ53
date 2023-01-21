@@ -19,7 +19,7 @@ lose_scene_path = "res://scenes/Maps/junkyard/JunkyardHiddenObjectSearch.tscn"
 position = Vector2( 0, 73 )
 shape = SubResource( 1 )
 
-[node name="Health" parent="." index="2"]
+[node name="Health" parent="." index="3"]
 position = Vector2( 0, 1 )
 
 [node name="TextureProgress" parent="Health" index="3"]
@@ -28,7 +28,6 @@ margin_bottom = 226.0
 rect_scale = Vector2( 0.942998, 0.301814 )
 
 [node name="Sprite" parent="Appearance" index="0"]
-visible = false
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
