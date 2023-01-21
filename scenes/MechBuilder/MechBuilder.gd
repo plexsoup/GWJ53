@@ -38,7 +38,7 @@ func _ready():
 
 func add_default_mech():
 	add_building_part(Global.parts_pool["L1Hull"])
-	add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
+	add_building_part(Global.parts_pool["Legs"], Vector2(0, 64))
 	add_building_part(Global.parts_pool["LongRangeLaser"], Vector2(0, -150))
 	
 
@@ -51,7 +51,10 @@ func _on_part_button_pressed(part_button):
 	sell_button.pressed = false
 	selected_part = part_button.part
 	selected_part_button = part_button
-	cursor.texture = part_button.part.icon
+	var part : Part = part_button.part
+	cursor.texture = part.icon
+	cursor.offset = part.icon_offset
+	cursor.scale = Vector2.ONE * part.icon_scale
 
 func add_part_to_list(part : Part):
 	var part_button = part_button_scene.instance()
@@ -209,6 +212,8 @@ func deselect_part():
 		selected_part_button = null
 		selected_part = null
 		cursor.texture = null
+		cursor.scale = Vector2(1,1)
+		cursor.offset = Vector2(0,0)
 	
 
 func generate_mech_structure() -> MechStructure:

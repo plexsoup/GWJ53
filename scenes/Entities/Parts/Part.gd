@@ -16,6 +16,8 @@ enum Type {
 export var name : String
 export(String, MULTILINE) var description : String
 export var icon : Texture
+export var icon_scale = 1.0
+export var icon_offset = Vector2(0,0)
 export var mech_part : PackedScene
 export(Type) var type
 export var cost = 3

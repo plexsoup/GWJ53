@@ -130,7 +130,6 @@ anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )
 
 [node name="LegPivot" type="Node2D" parent="."]
-position = Vector2( 0, -86 )
 
 [node name="LegL" type="Sprite" parent="LegPivot"]
 position = Vector2( 13.3333, -11.7753 )
