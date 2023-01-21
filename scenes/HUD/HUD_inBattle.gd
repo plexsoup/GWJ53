@@ -15,6 +15,13 @@ func _on_player_won(cashPrize):
 	$Control/WinDialog/MarginContainer/VBoxContainer/CashPrize.text = "You've earned: " + str(cashPrize) + " scrap!"
 
 
+func _on_player_lost():
+	pass # player will change screen
+	
+#	$Control/LoseDialog.popup_centered_ratio(0.8)
+#	$Control/LoseDialog/LoseScreenDialogue.start_dialog()
+
+
 func _on_PauseButton_pressed():
 	$Control/HBoxContainer/PauseButton/PauseDialog.popup_centered_ratio(0.618)
 	get_tree().paused = true

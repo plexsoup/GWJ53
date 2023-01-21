@@ -18,7 +18,7 @@ func _on_dialog_ended(_signal_properties):
 	if next_scene != null:
 		Global.stage_manager.change_scene_to(next_scene)
 	else:
-		Global.state_manager.change_scene("res://scenes/Menus/MainMenu02.tscn")
+		Global.stage_manager.change_scene("res://scenes/Menus/MainMenu02.tscn")
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):

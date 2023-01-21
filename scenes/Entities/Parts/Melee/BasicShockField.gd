@@ -98,7 +98,7 @@ func _process(_delta):
 
 func flash():
 	var tween = get_tree().create_tween()
-	tween.tween_property($Sprite, "modulate", Color.red, burst_delay)
+	tween.tween_property($Sprite, "modulate", Color.aqua, burst_delay)
 	tween.tween_interval(burst_delay)
 	tween.tween_property($Sprite, "modulate", Color.white, burst_delay/2.0)
 	

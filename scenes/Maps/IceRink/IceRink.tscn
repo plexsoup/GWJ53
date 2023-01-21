@@ -17,7 +17,7 @@ extents = Vector2( 3791.5, 265.5 )
 
 [node name="IceRink" instance=ExtResource( 1 )]
 win_scene = ExtResource( 2 )
-cash_for_winning = 3
+cash_for_winning = 7
 cash_for_losing = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground/GroundTex" index="0"]

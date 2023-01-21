@@ -12,6 +12,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	value = Global.player.health / Global.player.health_max
 	$HPLabel.text = str(Global.player.health)

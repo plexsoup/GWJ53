@@ -5,6 +5,7 @@ export var max_zoom = 24.0
 export var min_zoom = 1.0
 var current_zoom = max_zoom * 2.0
 
+var zoom_speed : Vector2 = Vector2(0.33, 0.33)
 
 export var look_ahead : bool = false
 var look_ahead_factor = 0.0
@@ -27,11 +28,11 @@ func _unhandled_input(event):
 	if event.is_action("camera_zoom_in") and Input.is_action_just_pressed("camera_zoom_in"):
 		
 		if get_zoom().x > min_zoom:
-			set_zoom( get_zoom() - Vector2(0.1, 0.1) )
+			set_zoom( get_zoom() - zoom_speed )
 
 	elif event.is_action("camera_zoom_out") and Input.is_action_just_pressed("camera_zoom_out"):
 		if get_zoom().x < max_zoom:
-			set_zoom( get_zoom() + Vector2(0.1, 0.1))
+			set_zoom( get_zoom() + zoom_speed)
 
 func camera_look_ahead(delta):
 	var mousePos = get_global_mouse_position()

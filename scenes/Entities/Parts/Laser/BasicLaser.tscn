@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/Laser/BasicLaser.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Laser/LaserCannon.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Art/Laser test/Laser_1.png" type="Texture" id=7]
 [ext_resource path="res://Art/Laser test/Laser_5.png" type="Texture" id=8]
 [ext_resource path="res://Art/Laser test/Laser_6.png" type="Texture" id=9]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 2.41948, 0, 0, Vector2( 0.184783, 0.590909 ), 0.132057, 0.132057, 0, 0, Vector2( 0.942029, 0.190909 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="AnimatedTexture" id=2]
 resource_name = "Laser"
@@ -50,12 +53,15 @@ stream = ExtResource( 3 )
 volume_db = -15.0
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PoolVector2Array( 65, -9, 761, -1 )
+points = PoolVector2Array( 106, -5, 213, -7, 761, -1 )
 width = 150.0
+width_curve = SubResource( 3 )
 default_color = Color( 0.898039, 0.898039, 0.898039, 1 )
 texture = SubResource( 2 )
-texture_mode = 2
-joint_mode = 2
+texture_mode = 1
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 antialiased = true
 
 [node name="LaserCannon" type="Sprite" parent="."]
@@ -82,7 +88,7 @@ shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
-collision_mask = 3
+collision_mask = 19
 
 [connection signal="timeout" from="ShotDurationTimer" to="." method="_on_ShotDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

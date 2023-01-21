@@ -7,7 +7,7 @@ extends "res://scenes/Entities/Entity.gd"
 
 export var lose_scene_path : String
 
-
+signal lost
 
 	
 func custom_ready():
@@ -27,17 +27,18 @@ func provide_free_parts():
 	if $Weapons.get_child_count() == 0:
 		var laserScene = load("res://scenes/Entities/Parts/Laser/PenetratingLaser.tscn").instance()
 		$Weapons.add_child(laserScene)
-		
+	
+	
 
 	set_state(States.PAUSED)
 
 func die_for_real_this_time():
-	Global.money += Global.current_scene.cash_for_losing
-	print("You lose!")
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("lost", Global.current_scene, "_on_player_lost")
+	emit_signal("lost")
+	disconnect("lost", Global.current_scene, "_on_player_lost")
 	
-	Global.stage_manager.change_scene(lose_scene_path)
 	
-
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
