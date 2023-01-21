@@ -44,3 +44,9 @@ func _unhandled_input(_event):
 		else:
 			printerr("Human input on non-human player. " + self.name + " on " + owner.name)
 			
+func is_any_movement_key_pressed():
+	var movementPressed = false
+	for buttonName in ["move_right", "move_left", "move_forwards", "move_backwards"]:
+		if pressed[buttonName] == true:
+			movementPressed = true
+	return movementPressed
