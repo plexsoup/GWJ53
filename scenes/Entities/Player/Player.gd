@@ -33,6 +33,7 @@ func provide_free_parts():
 	set_state(States.PAUSED)
 
 func die_for_real_this_time():
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("lost", Global.current_scene, "_on_player_lost")
 	emit_signal("lost")
 	disconnect("lost", Global.current_scene, "_on_player_lost")

@@ -115,9 +115,13 @@ func aim_laser(_delta):
 			if line_of_sight:
 				$RayCast2D.set_cast_to(rescaled_target_pos)
 				if $RayCast2D.is_colliding():
+					var collisionPoint = $RayCast2D.get_collision_point()
 					$Line2D.points = [ Vector2.ZERO, self.to_local($RayCast2D.get_collision_point())]
-			$TargetLocation.position = rescaled_target_pos
-			
+					$TargetLocation.position = collisionPoint
+				else: # no collision
+					$TargetLocation.position = rescaled_target_pos
+			else: # goes through walls
+				$TargetLocation.position = rescaled_target_pos
 		else:
 			$TargetLocation/CPUParticles2D.emitting = false
 
