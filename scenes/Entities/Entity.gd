@@ -211,7 +211,7 @@ func change_walking_animation_if_required(velocity):
 func begin_dying():
 	for system in systems:
 		for subsystem in system.get_children():
-			if "disabled" in subsystem.get_property_list():
+			if subsystem is MechPart:
 				subsystem.disabled = true
 	set_state(States.DYING)
 	$CollisionShape2D.set_deferred("disabled", true)
