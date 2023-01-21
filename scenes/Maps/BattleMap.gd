@@ -65,7 +65,7 @@ func _on_player_won():
 	var timer = get_tree().create_timer(2.0)
 	yield(timer, "timeout")
 	
-	if win_scene != null:
+	if win_scene == null:
 		win_scene = load("res://scenes/Menus/WinRewardCutscene.tscn")
 	Global.stage_manager.change_scene_to(win_scene)
 		
