@@ -55,7 +55,7 @@ func update_nav():
 		target = mech.currently_targetted_enemy_mech
 		
 		
-	if !is_instance_valid(target) or target.State == target.States.DEAD:
+	if !is_instance_valid(target) or target.State == target.States.DYING:
 		return
 
 	var level_navigation_map = get_world_2d().get_navigation_map()

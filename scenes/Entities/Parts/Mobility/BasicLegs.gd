@@ -103,7 +103,7 @@ func _on_started_walking(velocity):
 
 func _on_stopped_walking(_velocity):
 	$AnimationPlayer.stop()
-	if mech.State != mech.States.DEAD:
+	if mech.State != mech.States.DYING:
 		if $AnimationPlayer.get_animation("idle"):
 			$AnimationPlayer.play("idle")
 

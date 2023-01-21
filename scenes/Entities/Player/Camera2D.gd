@@ -19,7 +19,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player.State != player.States.DEAD:
+	if player.State != player.States.DYING:
 		if look_ahead:
 			camera_look_ahead(delta)
 
