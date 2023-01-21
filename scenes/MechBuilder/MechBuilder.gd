@@ -115,6 +115,7 @@ func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 	var building_part : BuildingPart = building_part_scene.instance()
 	if hull_part == null:
 		hull_part = building_part
+		hull_part.get_node("Area2D").input_pickable = false
 	
 	building_part.connect("mouse_entered", self, "_on_building_part_mouse_enter", [building_part])
 	building_part.connect("mouse_exited", self, "_on_building_part_mouse_exit", [building_part])

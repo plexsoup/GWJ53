@@ -19,8 +19,6 @@ func _ready():
 	sprite.texture = part.icon
 	sprite.offset = part.icon_offset
 	sprite.scale = part.icon_scale * Vector2.ONE
-	if part.type == Part.Type.HULL:
-		$Area2D.input_pickable = false
 
 func _process(delta):
 	if _flying:
