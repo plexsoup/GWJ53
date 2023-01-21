@@ -22,6 +22,11 @@ var battle_scenes = {
 	"Desert Canyon":"res://scenes/Maps/DesertCanyon/DesertCanyonMap.tscn",
 	"Junkyard": "res://scenes/Maps/junkyard/JunkyardMap.tscn",
 }
+var vs_hype_screens = {
+	"Desert Canyon": "res://scenes/Stage1_Vs.tscn",
+	"Junkyard": "res://scenes/Stage2Vs.tscn",
+	"Old Port": "res://scenes/Stage3_Vs.tscn",
+}
 var battles_completed = []
 var team_names = ["Danny", "Black", "Blue", "Green", "Pink", "Purple", "White"]
 var team_colors = [Color.peru, Color.black, Color.blue, Color.green, Color.deeppink, Color.darkmagenta, Color.white]
