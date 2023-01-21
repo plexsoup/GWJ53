@@ -17,5 +17,6 @@ wait_time = 0.5
 autostart = true
 
 [node name="WallRadar" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [connection signal="timeout" from="NavUpdateTimer" to="." method="_on_NavUpdateTimer_timeout"]
