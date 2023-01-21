@@ -14,7 +14,9 @@ func _ready():
 	
 	var pathfinder = get_parent()
 	if pathfinder.has_method("_on_wall_detected"):
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("wall", pathfinder, "_on_wall_detected")
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("all_clear", pathfinder, "_on_wallradar_all_clear")
 
 

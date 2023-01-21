@@ -173,6 +173,7 @@ func move(delta):
 	# they'll check with input_controller directly
 	
 	if !self.is_human_player and get_state() == States.INVULNERABLE:
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		move_and_slide(knockback_vector)
 	
 	# multiple sets of legs should give diminishing returns, using the "Harmonic Series"
