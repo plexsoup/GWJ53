@@ -77,9 +77,9 @@ func _process(delta):
 	
 func aim(delta):
 	if mech.targetting_cursor != null:
-		$Claw.look_at(mech.targetting_cursor.global_position)
 		var aim_vector = mech.targetting_cursor.global_position - global_position
 		aim_vector = aim_vector.clamped(projectile_range)
+		$Claw.rotation = aim_vector.angle()
 		$Claw.position = $Claw.position.move_toward(aim_vector, stretch_speed * delta)
 		$Strut.look_at($Claw.global_position)
 		$Strut.length = $Claw.position.length()
