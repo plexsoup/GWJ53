@@ -183,7 +183,6 @@ margin_bottom = 8.0
 [node name="Health" parent="Control" instance=ExtResource( 11 )]
 
 [node name="VS_HypeScreen" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [connection signal="pressed" from="Control/HBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="popup_hide" from="Control/HBoxContainer/PauseButton/PauseDialog" to="." method="_on_PauseDialog_popup_hide"]
