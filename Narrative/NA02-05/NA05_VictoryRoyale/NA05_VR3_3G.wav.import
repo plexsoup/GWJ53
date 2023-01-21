@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NA05_VR3_3G.wav-43b93c22d7183b338a2edd0d05c2b0ea.sample"
+
+[deps]
+
+source_file="res://Narrative/NA02-05/NA05_VictoryRoyale/NA05_VR3_3G.wav"
+dest_files=[ "res://.import/NA05_VR3_3G.wav-43b93c22d7183b338a2edd0d05c2b0ea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
