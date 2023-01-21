@@ -10,7 +10,7 @@ length = 2.285
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_top = -19.0
-margin_right = 140.0
+margin_right = 2.285
 margin_bottom = 19.0
 texture = ExtResource( 1 )
 axis_stretch_horizontal = 1
