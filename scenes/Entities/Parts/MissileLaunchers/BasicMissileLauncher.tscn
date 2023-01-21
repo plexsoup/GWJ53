@@ -11,7 +11,6 @@
 [ext_resource path="res://Art/Laser test/Flash_Nozzel4.png" type="Texture" id=9]
 
 [sub_resource type="AnimatedTexture" id=3]
-flags = 6
 frames = 5
 fps = 7.4
 frame_0/texture = ExtResource( 6 )
@@ -57,6 +56,9 @@ tracks/0/keys = {
 [node name="BasicMissileLauncher" type="Node2D"]
 script = ExtResource( 1 )
 line_of_sight = true
+shots_per_burst = 5
+burst_delay = 0.8
+reload_time = 2.0
 projectile = ExtResource( 5 )
 
 [node name="CockDurationTimer" type="Timer" parent="."]
