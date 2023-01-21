@@ -124,7 +124,7 @@ dash = true
 dash_speed_multiplier = 3.0
 dash_cooldown = 4.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="DefaultAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )

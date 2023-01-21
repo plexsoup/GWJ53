@@ -4,8 +4,9 @@
 [ext_resource path="res://scenes/Entities/Parts/Mobility/Wheels.png" type="Texture" id=2]
 
 [node name="Wheels2" instance=ExtResource( 1 )]
-speed = 800.0
-dash = true
+speed = 1200.0
+acceleration = 30.0
+deceleration = 5.0
 
 [node name="LegL" parent="LegPivot" index="0"]
 visible = false

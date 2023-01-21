@@ -12,12 +12,16 @@ var dashing: bool = false
 var dash_ready: bool = true
 
 var previous_velocity : Vector2 = Vector2.ZERO
+onready var animation_player = $DefaultAnimationPlayer
+export var custom_animation_player : NodePath
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	if $AnimationPlayer.get_animation("idle"):
-		$AnimationPlayer.play("idle")
+	if not custom_animation_player.is_empty():
+		animation_player = get_node(custom_animation_player)
+		
+	if animation_player.get_animation("idle"):
+		animation_player.play("idle")
 
 var ticks : int = 0
 
@@ -91,22 +95,22 @@ func check_dash_ability(velocity : Vector2) -> Vector2:
 	
 
 func _on_started_walking(velocity):
-	$AnimationPlayer.stop()
-	if $AnimationPlayer.get_animation("walk"):
-		$AnimationPlayer.play("walk")
+	animation_player.stop()
+	if animation_player.get_animation("walk"):
+		animation_player.play("walk")
 	if velocity.x < 0:
 		$LegPivot.scale.x = -1.0
 	else:
 		$LegPivot.scale.x = 1.0
 
 func _on_stopped_walking(_velocity):
-	$AnimationPlayer.stop()
+	animation_player.stop()
 	if mech.State != mech.States.DYING:
-		if $AnimationPlayer.get_animation("idle"):
-			$AnimationPlayer.play("idle")
+		if animation_player.get_animation("idle"):
+			animation_player.play("idle")
 
 func _on_mech_died():
-	$AnimationPlayer.stop()
+	animation_player.stop()
 	
 
 
