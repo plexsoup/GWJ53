@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CashSound.ogg-294571b8662d60efd9dc0341afd0281d.oggstr"
+
+[deps]
+
+source_file="res://sfx/CashSound.ogg"
+dest_files=[ "res://.import/CashSound.ogg-294571b8662d60efd9dc0341afd0281d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
