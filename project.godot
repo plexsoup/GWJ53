@@ -351,6 +351,7 @@ dash={
 2d_physics/layer_5="Walls"
 2d_physics/layer_6="Destructables"
 2d_physics/layer_7="Pickups"
+2d_physics/layer_8="Water"
 
 [locale]
 
