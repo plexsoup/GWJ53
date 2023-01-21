@@ -10,7 +10,7 @@
 [ext_resource path="res://Art/currency.png" type="Texture" id=8]
 [ext_resource path="res://scenes/MechBuilder/SellSymbol.png" type="Texture" id=9]
 [ext_resource path="res://scenes/MechBuilder/ToolTip.gd" type="Script" id=10]
-[ext_resource path="res://_common/Themes/DefaultTheme.tres" type="Theme" id=11]
+[ext_resource path="res://scenes/MechBuilder/MechBuilderTheme.tres" type="Theme" id=11]
 [ext_resource path="res://sfx/Main_Menu theme.wav" type="AudioStream" id=12]
 
 [sub_resource type="GDScript" id=4]
@@ -139,7 +139,7 @@ expand = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme = ExtResource( 12 )
+theme = ExtResource( 11 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control"]
 visible = false
@@ -295,12 +295,6 @@ bbcode_text = "[center]Tool tip text[/center]"
 text = "Tool tip text"
 fit_content_height = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
-volume_db = -28.86
-pitch_scale = 0.99
-autoplay = true
-bus = "Music"
 [node name="PanelContainer" type="PanelContainer" parent="Foreground/Control"]
 margin_right = 4.0
 margin_bottom = 4.0
@@ -340,6 +334,13 @@ unique_name_in_owner = true
 anims/GainMoney = SubResource( 7 )
 anims/RESET = SubResource( 6 )
 anims/ShakeMoney = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -28.86
+pitch_scale = 0.99
+autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="Foreground/Control/FightButton" to="." method="_on_FightButton_pressed"]
 [connection signal="pressed" from="Foreground/Control/SellButton" to="." method="_on_SellButton_pressed"]
