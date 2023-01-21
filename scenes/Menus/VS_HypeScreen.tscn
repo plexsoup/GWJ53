@@ -21,36 +21,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Danny" type="TextureRect" parent="CanvasLayer/Characters"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 6 )
 
 [node name="Black" type="TextureRect" parent="CanvasLayer/Characters"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
 
 [node name="Blue" type="TextureRect" parent="CanvasLayer/Characters"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
 
 [node name="Green" type="TextureRect" parent="CanvasLayer/Characters"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 4 )
 
 [node name="Pink" type="TextureRect" parent="CanvasLayer/Characters"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
 
 [node name="Purple" type="TextureRect" parent="CanvasLayer/Characters"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 7 )
 
 [node name="White" type="TextureRect" parent="CanvasLayer/Characters"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
