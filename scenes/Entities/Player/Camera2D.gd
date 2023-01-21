@@ -5,7 +5,9 @@ export var max_zoom = 24.0
 export var min_zoom = 1.0
 var current_zoom = max_zoom * 2.0
 
+
 export var look_ahead : bool = false
+var look_ahead_factor = 0.0
 export var damping : float = 30.0
 
 var player
@@ -34,13 +36,14 @@ func _unhandled_input(event):
 func camera_look_ahead(delta):
 	var mousePos = get_global_mouse_position()
 	var currentPos = get_parent().global_position
-	var averagePos = (mousePos + currentPos) / 2
+	var averagePos = lerp(currentPos, mousePos, look_ahead_factor)
 	var newPos = lerp(currentPos, averagePos, damping * delta)
 	set_global_position(newPos)
 	
 func zoom_into_battle():
 	# change this to lerp.
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "zoom", Vector2.ONE*default_zoom, 1.0)
-		
+	tween.tween_property(self, "zoom", Vector2.ONE*default_zoom, 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(self, "look_ahead_factor", 0.5, 1.0)
+	
 	
