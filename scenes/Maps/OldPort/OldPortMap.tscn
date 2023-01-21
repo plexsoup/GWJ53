@@ -158,7 +158,7 @@ visible = false
 color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -306, -1043, 317, -1032, 320, 920, -329, 961 )
 
-[node name="Modularbox" type="Sprite" parent="YSort/Obstacles/ShipContainers/Polygon2D" index="0"]
+[node name="Modularbox" type="Sprite" parent="YSort/Obstacles/ShipContainers" index="2"]
 position = Vector2( -3747.33, -1634.67 )
 scale = Vector2( 3.22508, 3.22508 )
 texture = ExtResource( 13 )
