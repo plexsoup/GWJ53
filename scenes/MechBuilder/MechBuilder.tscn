@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=8]
 [ext_resource path="res://scenes/MechBuilder/SellSymbol.png" type="Texture" id=9]
 [ext_resource path="res://scenes/MechBuilder/ToolTip.gd" type="Script" id=10]
+[ext_resource path="res://_common/Themes/DefaultTheme.tres" type="Theme" id=11]
 
 [sub_resource type="GDScript" id=4]
 resource_name = "Cursor"
@@ -98,6 +99,7 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 11 )
 script = ExtResource( 1 )
 min_joint_distance = 100.0
 max_joint_distance = 250.0
@@ -133,60 +135,65 @@ expand = true
 
 [node name="Foreground" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Foreground"]
+[node name="Control" type="Control" parent="Foreground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 11 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Foreground/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Foreground/Control/VBoxContainer"]
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.34
 
-[node name="PartsPanel" type="PanelContainer" parent="Foreground/VBoxContainer/HBoxContainer"]
+[node name="PartsPanel" type="PanelContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer"]
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1017.0
 margin_bottom = 593.0
 
-[node name="Label" type="Label" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
 margin_right = 1010.0
 margin_bottom = 27.0
 text = "Shop"
 
-[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
 margin_top = 31.0
 margin_right = 1010.0
 margin_bottom = 586.0
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
 margin_right = 1010.0
 margin_bottom = 555.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
 margin_right = 1010.0
 margin_bottom = 555.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer"]
 visible = false
 margin_left = 1010.0
 margin_right = 1024.0
 margin_bottom = 112.0
 
-[node name="Info Panel" type="PanelContainer" parent="Foreground/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Info Panel" type="PanelContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 14.0
 margin_bottom = 75.0
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="Foreground"]
+[node name="TextureRect" type="TextureRect" parent="Foreground/Control"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -198,7 +205,7 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/TextureRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/Control/TextureRect"]
 margin_left = 184.0
 margin_top = 44.0
 margin_right = 962.0
@@ -207,7 +214,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_vertical_enabled = false
 
-[node name="PartButtonsHBox" type="HBoxContainer" parent="Foreground/TextureRect/ScrollContainer"]
+[node name="PartButtonsHBox" type="HBoxContainer" parent="Foreground/Control/TextureRect/ScrollContainer"]
 unique_name_in_owner = true
 margin_right = 778.0
 margin_bottom = 171.0
@@ -216,7 +223,7 @@ size_flags_vertical = 3
 custom_constants/separation = 0
 alignment = 1
 
-[node name="FightButton" type="Button" parent="Foreground"]
+[node name="FightButton" type="Button" parent="Foreground/Control"]
 unique_name_in_owner = true
 anchor_left = 1.0
 anchor_right = 1.0
@@ -226,36 +233,36 @@ margin_right = -20.0
 margin_bottom = 60.0
 text = "Go Fight!"
 
-[node name="GrabFocus" parent="Foreground/FightButton" instance=ExtResource( 7 )]
+[node name="GrabFocus" parent="Foreground/Control/FightButton" instance=ExtResource( 7 )]
 
-[node name="MoneyDisplay" type="HBoxContainer" parent="Foreground"]
+[node name="MoneyDisplay" type="HBoxContainer" parent="Foreground/Control"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 271.0
-margin_bottom = 27.0
+margin_bottom = 47.0
 
-[node name="MoneyLabel" type="Label" parent="Foreground/MoneyDisplay"]
+[node name="MoneyLabel" type="Label" parent="Foreground/Control/MoneyDisplay"]
 unique_name_in_owner = true
-margin_right = 146.0
-margin_bottom = 27.0
+margin_right = 161.0
+margin_bottom = 38.0
 text = "MONEY: 10"
 
-[node name="TextureRect" type="TextureRect" parent="Foreground/MoneyDisplay"]
-margin_left = 150.0
+[node name="TextureRect" type="TextureRect" parent="Foreground/Control/MoneyDisplay"]
+margin_left = 165.0
 margin_right = 251.0
-margin_bottom = 27.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
-[node name="MoneyAnimation" type="AnimationPlayer" parent="Foreground/MoneyDisplay"]
+[node name="MoneyAnimation" type="AnimationPlayer" parent="Foreground/Control/MoneyDisplay"]
 unique_name_in_owner = true
 anims/GainMoney = SubResource( 7 )
 anims/RESET = SubResource( 6 )
 anims/ShakeMoney = SubResource( 5 )
 
-[node name="SellButton" type="Button" parent="Foreground"]
+[node name="SellButton" type="Button" parent="Foreground/Control"]
 unique_name_in_owner = true
 margin_left = 21.0
 margin_top = 438.0
@@ -264,13 +271,13 @@ margin_bottom = 471.0
 toggle_mode = true
 text = "Sell Part"
 
-[node name="ToolTipArea" type="ReferenceRect" parent="Foreground"]
+[node name="ToolTipArea" type="ReferenceRect" parent="Foreground/Control"]
 unique_name_in_owner = true
 anchor_right = 1.0
 margin_bottom = 410.0
 mouse_filter = 2
 
-[node name="ToolTip" type="Control" parent="Foreground"]
+[node name="ToolTip" type="Control" parent="Foreground/Control"]
 unique_name_in_owner = true
 margin_left = 190.0
 margin_top = 277.0
@@ -279,7 +286,7 @@ margin_bottom = 277.0
 mouse_filter = 2
 script = ExtResource( 10 )
 
-[node name="PanelContainer" type="PanelContainer" parent="Foreground/ToolTip"]
+[node name="PanelContainer" type="PanelContainer" parent="Foreground/Control/ToolTip"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -289,11 +296,11 @@ margin_top = -200.0
 margin_right = 121.0
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Foreground/ToolTip/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Foreground/Control/ToolTip/PanelContainer"]
 margin_left = 7.0
-margin_top = 72.0
+margin_top = 61.0
 margin_right = 235.0
-margin_bottom = 128.0
+margin_bottom = 139.0
 mouse_filter = 2
 size_flags_vertical = 4
 bbcode_enabled = true
@@ -301,5 +308,5 @@ bbcode_text = "[center]This is some centered text[/center]"
 text = "This is some centered text"
 fit_content_height = true
 
-[connection signal="pressed" from="Foreground/FightButton" to="." method="_on_FightButton_pressed"]
-[connection signal="pressed" from="Foreground/SellButton" to="." method="_on_SellButton_pressed"]
+[connection signal="pressed" from="Foreground/Control/FightButton" to="." method="_on_FightButton_pressed"]
+[connection signal="pressed" from="Foreground/Control/SellButton" to="." method="_on_SellButton_pressed"]

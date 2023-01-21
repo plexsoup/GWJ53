@@ -67,6 +67,19 @@ export var damage_resistances : Dictionary = {
 	Damage_Types.SHOCK:0.0,
 }
 
+onready var systems = [
+	$Engine,
+	$Locomotion,
+	$HeatSink,
+	$Weapons,
+	$Defences,
+	$Health,
+	$Summons,
+	$Input,
+	$TargetAcquisitionSensors,
+	$Debug,
+]
+
 var ticks : int = 0
 
 
@@ -79,18 +92,7 @@ signal died
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
-	var systems = [
-		$Engine,
-		$Locomotion,
-		$HeatSink,
-		$Weapons,
-		$Defences,
-		$Health,
-		$Summons,
-		$Input,
-		$TargetAcquisitionSensors,
-		$Debug,
-	]
+
 
 	custom_ready() # must happen before systems are initialized, if you expect custom addon subsystems to be included
 	
@@ -207,6 +209,10 @@ func change_walking_animation_if_required(velocity):
 	
 
 func begin_dying():
+	for system in systems:
+		for subsystem in system.get_children():
+			if subsystem is MechPart:
+				subsystem.disabled = true
 	set_state(States.DYING)
 	$CollisionShape2D.set_deferred("disabled", true)
 	
@@ -297,7 +303,8 @@ func _on_DeathTimer_timeout():
 
 
 func _on_iframesTimer_timeout():
-	resume_previous_state()
+	if get_state() != States.DYING:
+		resume_previous_state()
 	set_modulate(Color.white)
 
 
