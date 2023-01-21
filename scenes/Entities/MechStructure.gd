@@ -27,7 +27,7 @@ func create_entity(base_entity : PackedScene):
 		entity.armor_max += part.armor
 		entity.health_max += part.health
 		entity.shield_max += part.shield
-		var mech_part : Node
+		var mech_part : MechPart
 		if part.mech_part != null:
 			mech_part = part.mech_part.instance()
 		else:
@@ -47,5 +47,21 @@ func create_entity(base_entity : PackedScene):
 				mech_part_parent = entity.get_node("Weapons")
 		mech_part.position = mech_structure_part.position
 		mech_part_parent.add_child(mech_part)
+		var collision_shape = CollisionShape2D.new()
+		var circle = CircleShape2D.new()
+		circle.radius = 64
+		collision_shape.shape = circle
+		entity.add_child(collision_shape)
+		collision_shape.position = mech_part.position
+		
+		for connected_part in mech_structure_part.connected_parts:
+			var strut = preload("res://scenes/MechBuilder/Strut.tscn").instance()
+			entity.get_node("Struts").add_child(strut)
+			strut.length = mech_part.position.distance_to(connected_part.position)
+			strut.position = mech_part.position
+			strut.look_at(connected_part.position)
+			
+			
+		
 		
 	return entity
