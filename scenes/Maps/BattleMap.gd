@@ -39,6 +39,13 @@ func init(playerScene): # called by MechBuilderTest when user presses finished
 	# wait until camera zoom 
 	playerScene.State = playerScene.States.PAUSED
 
+func is_active():
+	if State in [States.SPAWNING, States.FIGHTING ]:
+		return true
+	else:
+		return false
+	
+	
 
 func get_spawner_teams_list() -> Array : # returns a list of team numbers in the battle
 	var teams = []
@@ -58,7 +65,7 @@ func _on_spawner_finished():
 		State = States.FIGHTING
 		done_initial_spawns = true
 		
-func _on_player_won():
+func _on_player_won(): # from CheckWinConditions node
 	State = States.FINISHED
 	Global.money += cash_for_winning
 	Global.stage_manager.mark_battle_completed()
@@ -70,8 +77,7 @@ func _on_player_won():
 		win_scene = load("res://scenes/Menus/WinRewardCutscene.tscn")
 	Global.stage_manager.change_scene_to(win_scene)
 		
-	
-	
+
 #	if has_node("HUD"):
 #		$HUD.visible = true
 #		if $HUD.has_method("_on_player_won"):

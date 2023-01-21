@@ -255,6 +255,10 @@ func knockback(damage, impactVector, damageType):
 	
 
 func _on_hit(damage, impactVector, damageType):
+	if not Global.current_scene.is_active():
+		# prevent hits after fight is won
+		return
+		
 	if State != States.READY: #INVULNERABLE Can't be hurt
 		return
 	
