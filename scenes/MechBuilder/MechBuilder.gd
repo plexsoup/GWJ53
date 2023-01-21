@@ -117,7 +117,9 @@ func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 		hull_part = building_part
 		hull_part.get_node("Area2D").input_pickable = false
 	
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	building_part.connect("mouse_entered", self, "_on_building_part_mouse_enter", [building_part])
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	building_part.connect("mouse_exited", self, "_on_building_part_mouse_exit", [building_part])
 	
 	building_part.part = part
@@ -131,7 +133,9 @@ func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 		if nearby_part == building_part: continue
 		var strut = strut_scene.instance()
 		nearby_part.add_child(strut)
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		building_part.connect("fling", strut, "queue_free")
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		nearby_part.connect("fling", strut, "queue_free")
 		tween.tween_property(strut, "length", building_part.position.distance_to(nearby_part.position), 0.2)
 		strut.look_at(building_part.global_position)

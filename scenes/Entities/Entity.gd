@@ -235,6 +235,17 @@ func disappear():
 	queue_free()
 
 
+func spawn_shrapnel(impactVector):
+	if has_node("ShrapnelParticles"):
+		if Global.user_prefs["particles"]:
+			$ShrapnelParticles.direction = impactVector
+			$ShrapnelParticles.emitting = true
+
+func spawn_smoke(_impactVector):
+	if has_node("SmokeParticles"):
+		if Global.user_prefs["particles"]:
+			$SmokeParticles.emitting = true
+
 func knockback(damage, impactVector, damageType):
 	var types = Global.damage_types
 	var knockback_modifiers = {
@@ -280,6 +291,10 @@ func _on_hit(damage, impactVector, damageType):
 			print("Shield took " + str(damage))
 			shield -= damage
 		else:
+			if damageType == Global.damage_types.IMPACT:
+				spawn_shrapnel(impactVector)
+			elif damageType in [ Global.damage_types.LASER, Global.damage_types.FIRE ]:
+				spawn_smoke(impactVector)
 			knockback(damage, impactVector, damageType)
 			health = max(health - damage, 0.0)
 			update_health_bar()

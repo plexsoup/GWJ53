@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://_common/Materials/HP_progress_over.png" type="Texture" id=2]
@@ -120,6 +120,10 @@ particles_anim_h_frames = 4
 particles_anim_v_frames = 4
 particles_anim_loop = false
 
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.0820896, 0.19403, 0.763682, 0.855721 )
+colors = PoolColorArray( 1, 0.888608, 0.175476, 1, 0.988662, 0.144223, 0.144223, 1, 0, 0, 0, 1, 0.38, 0.38, 0.38, 1 )
+
 [node name="Entity" type="KinematicBody2D"]
 script = ExtResource( 1 )
 iframes_time = 0.2
@@ -196,22 +200,41 @@ script = ExtResource( 5 )
 [node name="ShrapnelParticles" type="CPUParticles2D" parent="."]
 material = SubResource( 4 )
 emitting = false
-lifetime = 0.75
+amount = 20
+lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.37
 local_coords = false
 texture = ExtResource( 6 )
 emission_shape = 2
-emission_rect_extents = Vector2( 80, 80 )
+emission_rect_extents = Vector2( 100, 100 )
 direction = Vector2( 0, -1 )
 spread = 90.0
-initial_velocity = 600.0
+initial_velocity = 1200.0
 initial_velocity_random = 0.6
-angular_velocity = 474.0
+angular_velocity = 800.0
 angular_velocity_random = 0.65
+scale_amount = 5.0
 anim_offset = 1.0
 anim_offset_random = 1.0
+
+[node name="SmokeParticles" type="CPUParticles2D" parent="."]
+z_index = 1
+emitting = false
+amount = 80
+one_shot = true
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 30, 30 )
+direction = Vector2( 0, -1 )
+spread = 69.0
+gravity = Vector2( 0, -100 )
+initial_velocity = 100.0
+linear_accel = 15.0
+angle = 45.0
+scale_amount = 40.0
+color_ramp = SubResource( 5 )
 
 [connection signal="timeout" from="Health/DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="timeout" from="Health/DecayTimer" to="." method="_on_DecayTimer_timeout"]

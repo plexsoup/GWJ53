@@ -14,7 +14,9 @@ func _ready():
 	cost_label.text = str(part.cost)
 	icon.texture = part.icon
 	name_label.text = part.name
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	$Button.connect("mouse_entered", self, "emit_signal", ["mouse_entered"])
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	$Button.connect("mouse_exited", self, "emit_signal", ["mouse_exited"])
 	
 
