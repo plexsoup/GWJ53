@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/Laser/BasicLaser.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Laser test/Smoke_6.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Art/Laser test/Smoke_3.png" type="Texture" id=5]
 [ext_resource path="res://Art/Laser test/Smoke_2.png" type="Texture" id=6]
 [ext_resource path="res://Art/Laser test/Smoke_5.png" type="Texture" id=7]
+[ext_resource path="res://Art/angelchama/laser03.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,11 +21,15 @@ animations = [ {
 damage = 300.0
 line_of_sight = true
 
+[node name="LaserCannon" parent="." index="5"]
+scale = Vector2( 1.6717, 1.18146 )
+texture = ExtResource( 8 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TargetLocation" index="2"]
 self_modulate = Color( 1, 1, 1, 0.517647 )
 position = Vector2( -1, -1 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 offset = Vector2( -26, -6.66667 )

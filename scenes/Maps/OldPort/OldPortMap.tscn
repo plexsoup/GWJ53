@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/OldPort/image (4).png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://scenes/Maps/Spawners/EnergyBallMechSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Maps/Spawners/RandomMechSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Menus/WinRewardCutscene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://vfx/WaterMaterial.tres" type="Material" id=9]
+[ext_resource path="res://_common/Materials/SmallWhiteSquare.png" type="Texture" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 4276, 2244, 5493.02, 3068.14, 4301.97, 3053.09, 871.009, 2795, 861.502, 2206, 1658.05, 2210.6, 1771.33, 5508.47, 3406, 5476.38, 4419, 6268.57, -1256.01, 6308.57, 655.138, 5739.78, 3368.38, 3120.82, 1755.09, 3152.9, 595.724, 3145.77, 7102, 3728, 7130, 4108, 7121, 4822, 6748.24, 3974.79, 6718.53, 1868.37, 7111, 3404, 7102, 1568, 1078.17, 5286.65, 148.139, 4477.83, 624.243, 3951.42, 4267, 1425, 3339.86, 2185.25, 3280.84, 277.661, 3543, -1143, 4400, 208, 3047.94, -907.845, 2237.93, -566.809, 1610.12, 303.011, 1630.72, -321.628, -1256.01, -300.239, 1671.51, 1809.35, 538.687, 1162.14, -619.886, 3971.63, -244.786, 4907.2, 5522, 1501, 5931, 103, 6607, 55, 6959, 969, 5884, 1844, 5478.36, 2225.65, 5880.79, 4008.86, 6938.36, 5423.31, 6757.35, 5689.48, 6106.96, 5710.87, 5968.33, 5572.24, 5830.09, 5231.2, 5489.06, 4325.34, -1256.01, 3697.13, -705.046, 1181.15, 595.724, 1903.62, 2148.41, 2212.58 )
@@ -16,69 +18,90 @@ outlines = [ PoolVector2Array( -1256.01, -300.239, 1630.72, -321.628, 2237.93, -
 
 [node name="OldPort" instance=ExtResource( 1 )]
 position = Vector2( 288, -551 )
-num_spawners = 4
+num_spawners = 6
 win_scene = ExtResource( 8 )
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Sketch" type="Sprite" parent="." index="0"]
 visible = false
 position = Vector2( 3499, 2398 )
 scale = Vector2( 11.7274, 11.7274 )
 texture = ExtResource( 2 )
+
+[node name="Water" type="Sprite" parent="Ground" index="0"]
+material = ExtResource( 9 )
+position = Vector2( -3897, -3624 )
+scale = Vector2( 3000, 3000 )
+z_index = -2
+texture = ExtResource( 10 )
+
+[node name="GroundTex" parent="Ground" index="1"]
+visible = false
+z_index = 3
+
+[node name="Docks" type="Polygon2D" parent="Ground" index="2"]
+color = Color( 0.596078, 0.588235, 0.584314, 1 )
+polygon = PoolVector2Array( -4118, 19000, -4118, -1348, 4949, -1286, 10851, -3622, 13463, 435, 17121, 865, 17797, -88, 19857, -118, 21424, 4677, 21640, 14267, 20349, 17279, 17982, 17279, 16199, 13160, 16322, 9379, 12941, 9287, 13218, 18816 )
 
 [node name="Obstacles" parent="YSort" index="0"]
 scale = Vector2( 3, 3 )
 
 [node name="Layout1" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
 position = Vector2( -1299, -1208 )
-collision_layer = 17
-collision_mask = 111
+collision_layer = 128
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Layout1" index="0"]
 polygon = PoolVector2Array( -1546, -980, 11145, -961, 11088, 4880, 8481, 4937, 8462, 2730, 8329, 2178, 8100, 1542, 7929, 1157, 7187, 1200, 7066, 1544, 6894, 2088, 6717, 2711, 6655.95, 3358.96, 5627.29, 3349.91, 5662, 2269, 5762, 1399, 4878, -12, 2911, 786, -18.1013, 815, -18.1013, 5132.15, -1508, 5177 )
 
-[node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Layout1" index="1"]
+[node name="Water1" type="Polygon2D" parent="YSort/Obstacles/Layout1" index="1"]
+visible = false
+material = ExtResource( 9 )
 color = Color( 0.298039, 0.431373, 0.556863, 1 )
+texture_scale = Vector2( 20, 20 )
 polygon = PoolVector2Array( -1546, -980, 11145, -961, 11088, 4880, 8481, 4937, 8462, 2730, 8329, 2178, 8100, 1542, 7929, 1157, 7187, 1200, 7066, 1544, 6894, 2088, 6717, 2711, 6655.95, 3358.96, 5627.29, 3349.91, 5662, 2269, 5762, 1399, 4878, -12, 2911, 786, -18.1013, 815, -18.1013, 5132.15, -1508, 5177 )
 
 [node name="Layout2" type="StaticBody2D" parent="YSort/Obstacles" index="1"]
 position = Vector2( -1510, 5933 )
+collision_layer = 128
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Layout2" index="0"]
 polygon = PoolVector2Array( -1327, -1972, 192.899, -2080, 204.311, 403.41, 5970.51, 380.979, 5949, -1025, 5871.35, -2767.94, 6836, -2767.94, 6885, -1601, 7100, -1036, 7351, -318, 7495, -162, 8238, -162, 8442, -414, 8670, -1085, 8730, -1624, 8701, -2253, 11319, -2271, 11331, 1061, -1315, 1061 )
 
-[node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Layout2" index="1"]
+[node name="Water2" type="Polygon2D" parent="YSort/Obstacles/Layout2" index="1"]
+visible = false
 color = Color( 0.298039, 0.431373, 0.556863, 1 )
 polygon = PoolVector2Array( -1327, -1972, 192.899, -2080, 204.311, 403.41, 5970.51, 380.979, 5949, -1025, 5871.35, -2767.94, 6836, -2767.94, 6885, -1601, 7100, -1036, 7351, -318, 7495, -162, 8238, -162, 8442, -414, 8670, -1085, 8730, -1624, 8701, -2253, 11319, -2271, 11331, 1061, -1315, 1061 )
 
 [node name="AdminHouse" type="StaticBody2D" parent="YSort/Obstacles" index="2"]
 position = Vector2( -131.041, 2554.71 )
-collision_layer = 17
-collision_mask = 111
+collision_layer = 16
+collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/AdminHouse" index="0"]
 polygon = PoolVector2Array( -490, -1298, 590, -1336, 641, -308, 882, -321, 895, 187, 641, 175, 653, 1241, -401, 1292 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/AdminHouse" index="1"]
-color = Color( 0.298039, 0.431373, 0.556863, 1 )
+color = Color( 0.294118, 0.152941, 0, 1 )
 polygon = PoolVector2Array( -490, -1298, 590, -1336, 641, -308, 882, -321, 895, 187, 641, 175, 653, 1241, -401, 1292 )
 
 [node name="Containers1" type="StaticBody2D" parent="YSort/Obstacles" index="3"]
 position = Vector2( 2184, 1219 )
-collision_layer = 17
-collision_mask = 111
+collision_layer = 16
+collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Containers1" index="0"]
-polygon = PoolVector2Array( -504, -863, 994, -863, 998, 39.6666, -461.667, -3 )
+polygon = PoolVector2Array( -504, -863, 994, -863, 1065, 934.667, -458.333, 973.667 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Containers1" index="1"]
 position = Vector2( -50.4518, 13.1245 )
-color = Color( 0.298039, 0.431373, 0.556863, 1 )
+color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -439.546, -863, 1036.17, -872.567, 1058, 894, -403, 915 )
 
 [node name="Containers2" type="StaticBody2D" parent="YSort/Obstacles" index="4"]
 position = Vector2( 2208, 4728.5 )
-collision_layer = 17
-collision_mask = 111
+collision_layer = 16
+collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Containers2" index="0"]
 position = Vector2( -18, 98 )
@@ -86,23 +109,25 @@ polygon = PoolVector2Array( -387, -1619.73, 1113, -1640.98, 1133, 557, -380, 563
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Containers2" index="1"]
 position = Vector2( -23, 91 )
-color = Color( 0.298039, 0.431373, 0.556863, 1 )
+color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -387, -1619.73, 1113, -1640.98, 1133, 557, -380, 563 )
 
 [node name="Container4" type="StaticBody2D" parent="YSort/Obstacles" index="5"]
 position = Vector2( 178, 5156 )
+collision_layer = 16
+collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/Container4" index="0"]
 polygon = PoolVector2Array( -319, -289, -26, -606, 789, 125, 466, 448 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Container4" index="1"]
-color = Color( 0.298039, 0.431373, 0.556863, 1 )
+color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -319, -289, -26, -606, 789, 125, 466, 448 )
 
 [node name="ShipContainers" type="StaticBody2D" parent="YSort/Obstacles" index="6"]
 position = Vector2( 6282, 2949 )
-collision_layer = 17
-collision_mask = 111
+collision_layer = 16
+collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/ShipContainers" index="0"]
 position = Vector2( -0.58132, 0 )
@@ -110,27 +135,40 @@ scale = Vector2( 1.09303, 1 )
 polygon = PoolVector2Array( -306, -1043, 317, -1032, 320, 920, -329, 961 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/ShipContainers" index="1"]
-color = Color( 0.298039, 0.431373, 0.556863, 1 )
+color = Color( 0.333333, 0.0823529, 0.0823529, 1 )
 polygon = PoolVector2Array( -306, -1043, 317, -1032, 320, 920, -329, 961 )
 
 [node name="MissileMechSpawner" parent="Spawners" index="0" instance=ExtResource( 3 )]
 position = Vector2( 10611, 338 )
 num_spawns_per_interval = 6
+max_spawns = 6
+team = 5
 
 [node name="LaserMechSpawner" parent="Spawners" index="1" instance=ExtResource( 5 )]
 position = Vector2( 18920, 14749 )
+max_spawns = 6
+team = 5
 
 [node name="ShotgunMechSpawner" parent="Spawners" index="2" instance=ExtResource( 4 )]
 position = Vector2( 3686, 8635 )
+max_spawns = 5
+team = 5
 
 [node name="EnergyBallMechSpawner" parent="Spawners" index="3" instance=ExtResource( 6 )]
 position = Vector2( -2492, 17648 )
+max_spawns = 12
+team = 5
 
 [node name="RandomMechSpawner" parent="Spawners" index="4" instance=ExtResource( 7 )]
 position = Vector2( 11418, 8214 )
+time_between_spawns = 5.0
+max_spawns = 20
+team = 5
 
 [node name="ShotgunMechSpawner2" parent="Spawners" index="5" instance=ExtResource( 4 )]
 position = Vector2( 11055, 17124 )
+max_spawns = 6
+team = 5
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="7"]
 scale = Vector2( 3, 3 )

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://vfx/waterShader.tres" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/OCTAVE = 6
+shader_param/mulscale = 150.0
+shader_param/height = 0.6
+shader_param/tide = 0.35
+shader_param/foamthickness = 0.1
+shader_param/timescale = 0.5
+shader_param/waterdeep = 0.3
+shader_param/WATER_COL = Color( 0.04, 0.38, 0.88, 1 )
+shader_param/WATER2_COL = Color( 0.04, 0.35, 0.78, 1 )
+shader_param/FOAM_COL = Color( 0.8125, 0.9609, 0.9648, 1 )
