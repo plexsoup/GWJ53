@@ -16,11 +16,12 @@ var user_prefs = {
 
 enum damage_types { IMPACT, LASER, FIRE, SHOCK }
 
-var battles = ["Desert Canyon", "Junkyard", "Old Port"]
+var battles = ["Ice Rink", "Desert Canyon", "Junkyard", "Old Port"]
 var battle_scenes = {
-	"Old Port":"res://scenes/Maps/OldPort/OldPortMap.tscn",
+	"Ice Rink":"res://scenes/Maps/IceRink/IceRink.tscn",
 	"Desert Canyon":"res://scenes/Maps/DesertCanyon/DesertCanyonMap.tscn",
 	"Junkyard": "res://scenes/Maps/junkyard/JunkyardMap.tscn",
+	"Old Port":"res://scenes/Maps/OldPort/OldPortMap.tscn",
 }
 var battles_completed = []
 var team_names = ["Danny", "Black", "Blue", "Green", "Pink", "Purple", "White"]

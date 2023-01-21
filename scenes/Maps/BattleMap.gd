@@ -8,6 +8,7 @@ var State = States.PREVIEW
 
 export var num_spawners : int = 1 # count the $Spawners children
 var spawners_finished_spawning : int = 0
+export var win_scene : PackedScene
 export var cash_for_winning : int = 10
 export var cash_for_losing : int = 3
 
@@ -60,12 +61,19 @@ func _on_player_won():
 	State = States.FINISHED
 	Global.money += cash_for_winning
 	Global.stage_manager.mark_battle_completed()
-	if has_node("HUD"):
-		$HUD.visible = true
-		if $HUD.has_method("_on_player_won"):
-			$HUD._on_player_won(cash_for_winning)
-	else:
-		printerr("Configuration error in BattleMap.gd for " + self.name + ". No HUD found.")
+	
+	var timer = get_tree().create_timer(2.0)
+	yield(timer, "timeout")
+	
+	if win_scene != null:
+		win_scene = load("res://scenes/Menus/WinRewardCutscene.tscn")
+	Global.stage_manager.change_scene_to(win_scene)
+		
+	
+#	if has_node("HUD"):
+#		$HUD.visible = true
+#		if $HUD.has_method("_on_player_won"):
+#			$HUD._on_player_won(cash_for_winning)
 
 
 
