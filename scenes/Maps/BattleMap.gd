@@ -9,6 +9,7 @@ var State = States.PREVIEW
 export var num_spawners : int = 1 # count the $Spawners children
 var spawners_finished_spawning : int = 0
 export var win_scene : PackedScene
+export var lose_scene : PackedScene
 export var cash_for_winning : int = 10
 export var cash_for_losing : int = 3
 
@@ -70,11 +71,24 @@ func _on_player_won():
 	Global.stage_manager.change_scene_to(win_scene)
 		
 	
+	
 #	if has_node("HUD"):
 #		$HUD.visible = true
 #		if $HUD.has_method("_on_player_won"):
 #			$HUD._on_player_won(cash_for_winning)
 
+func _on_player_lost():
+	Global.money += cash_for_losing
+
+	if lose_scene == null:
+		Global.stage_manager.change_scene("res://scenes/Menus/LoseScreenDialog.tscn")
+	else:
+		Global.stage_manager.change_scene_to(lose_scene)
+	
+	if has_node("HUD"):
+		$HUD.visible = true
+		if $HUD.has_method("_on_player_lost"):
+			$HUD._on_player_lost()
 
 
 func _on_OverviewPauseDuration_timeout():
