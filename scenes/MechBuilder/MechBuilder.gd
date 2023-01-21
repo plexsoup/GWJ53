@@ -31,17 +31,13 @@ func _ready():
 	else:
 		for inner_part in Global.persistent_mech.inner_parts:
 			add_building_part(inner_part.part, inner_part.position)
-			if inner_part.part.type == Part.Type.HULL:
-				hull_part = building_parts[-1]
 	
 	for part in Global.parts_pool.values():
-		if part.type != Part.Type.HULL:
-			add_part_to_list(part)
+		add_part_to_list(part)
 	_update_money_display()
 
 func add_default_mech():
 	add_building_part(Global.parts_pool["L1Hull"])
-	hull_part = building_parts[-1]
 	add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
 	add_building_part(Global.parts_pool["LongRangeLaser"], Vector2(0, -150))
 	
@@ -114,6 +110,9 @@ func _process(_delta):
 func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 	# Add part
 	var building_part : BuildingPart = building_part_scene.instance()
+	if hull_part == null:
+		hull_part = building_part
+	
 	building_part.connect("mouse_entered", self, "_on_building_part_mouse_enter", [building_part])
 	building_part.connect("mouse_exited", self, "_on_building_part_mouse_exit", [building_part])
 	
