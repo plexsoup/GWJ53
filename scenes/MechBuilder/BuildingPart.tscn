@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/BuildingPart.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Entities/Parts/Hull/hull.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Entities/Parts/Melee/claw.png" type="Texture" id=2]
 [ext_resource path="res://scripts/ParticleDisabler.gd" type="Script" id=3]
 
 [sub_resource type="Curve" id=5]
@@ -31,7 +31,7 @@ shader_param/whiteness = 0.0
 resource_name = "Build"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:material:shader_param/whiteness")
+tracks/0/path = NodePath("SpriteParent:material:shader_param/whiteness")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("SpriteParent:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -70,7 +70,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:material:shader_param/whiteness")
+tracks/0/path = NodePath("SpriteParent:material:shader_param/whiteness")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -82,7 +82,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("SpriteParent:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -114,8 +114,12 @@ scale_amount_curve = SubResource( 5 )
 color_ramp = SubResource( 6 )
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="SpriteParent" type="Node2D" parent="."]
 material = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="SpriteParent"]
+unique_name_in_owner = true
+use_parent_material = true
 texture = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

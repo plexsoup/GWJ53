@@ -24,6 +24,7 @@ mouse_filter = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SceneContainer"]
 stream = ExtResource( 8 )
+volume_db = -22.029
 autoplay = true
 bus = "Music"
 

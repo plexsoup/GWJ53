@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/Entities/Projectiles/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Entities/Projectiles/Missile.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Art/Laser test/Smoke_3.png" type="Texture" id=7]
 [ext_resource path="res://Art/Laser test/Smoke_2.png" type="Texture" id=8]
 [ext_resource path="res://Art/Laser test/Smoke_5.png" type="Texture" id=9]
+[ext_resource path="res://scripts/ParticleDisabler.gd" type="Script" id=10]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -213,7 +214,7 @@ position = Vector2( -6.72675, 136.536 )
 rotation = -1.58133
 scale = Vector2( 1.23244, 0.975651 )
 frames = SubResource( 4 )
-frame = 4
+frame = 5
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite" index="1"]
@@ -229,6 +230,7 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 300.0
 scale_amount = 6.0
 color_ramp = SubResource( 1 )
+script = ExtResource( 10 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 scale = Vector2( 2.9147, 1.26413 )

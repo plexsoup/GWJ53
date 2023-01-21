@@ -164,6 +164,9 @@ func _process(delta):
 		move(delta)
 	
 func move(delta):
+	if get_state() == States.DYING:
+		return
+	
 	# locomotion parts need to provide the actual velocity
 	# they'll check with input_controller directly
 	

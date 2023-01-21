@@ -51,7 +51,7 @@ func check_win_conditions():
 		if battle_scene.get("done_initial_spawns") == true:
 			var possible_enemies = get_tree().get_nodes_in_group("enemies")
 			for enemy in possible_enemies:
-				if enemy.State != enemy.States.DEAD and enemy.team != Global.player.team:
+				if enemy.State != enemy.States.DYING and enemy.team != Global.player.team:
 					enemies_remain = true
 			return !enemies_remain
 		else: # still spawning enemies

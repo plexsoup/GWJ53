@@ -31,7 +31,7 @@ func identify_nearest_enemy():
 	
 	# remove the mechs on my team
 	for singleMech in all_mechs:
-		if singleMech.team != mech.team and singleMech.State != singleMech.States.DEAD:
+		if singleMech.team != mech.team and singleMech.State != singleMech.States.DYING:
 			enemy_mechs.push_back(singleMech)
 	
 	var closest_enemy = Utils.get_closest_object(enemy_mechs, self)

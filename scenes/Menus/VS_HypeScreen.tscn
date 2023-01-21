@@ -10,9 +10,11 @@
 [ext_resource path="res://scenes/Menus/VS_HypeScreen.gd" type="Script" id=8]
 
 [node name="VS_HypeScreen" type="Control"]
+visible = false
 script = ExtResource( 8 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Characters" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0

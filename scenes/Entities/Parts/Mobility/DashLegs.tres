@@ -10,9 +10,11 @@ name = "Dash Legs"
 description = "Mark 2 super dash speedy jumper legs.
 "
 icon = ExtResource( 3 )
+icon_scale = 1.0
+icon_offset = Vector2( 0, 86 )
 mech_part = ExtResource( 2 )
 type = 1
-cost = 3
+cost = 5
 health = 0
 power_draw = 0
 armor = 0

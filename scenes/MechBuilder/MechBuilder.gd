@@ -31,18 +31,14 @@ func _ready():
 	else:
 		for inner_part in Global.persistent_mech.inner_parts:
 			add_building_part(inner_part.part, inner_part.position)
-			if inner_part.part.type == Part.Type.HULL:
-				hull_part = building_parts[-1]
 	
 	for part in Global.parts_pool.values():
-		if part.type != Part.Type.HULL:
-			add_part_to_list(part)
+		add_part_to_list(part)
 	_update_money_display()
 
 func add_default_mech():
 	add_building_part(Global.parts_pool["L1Hull"])
-	hull_part = building_parts[-1]
-	add_building_part(Global.parts_pool["Legs"], Vector2(0, 150))
+	add_building_part(Global.parts_pool["Legs"], Vector2(0, 64))
 	add_building_part(Global.parts_pool["LongRangeLaser"], Vector2(0, -150))
 	
 
@@ -55,7 +51,10 @@ func _on_part_button_pressed(part_button):
 	sell_button.pressed = false
 	selected_part = part_button.part
 	selected_part_button = part_button
-	cursor.texture = part_button.part.icon
+	var part : Part = part_button.part
+	cursor.texture = part.icon
+	cursor.offset = part.icon_offset
+	cursor.scale = Vector2.ONE * part.icon_scale
 
 func add_part_to_list(part : Part):
 	var part_button = part_button_scene.instance()
@@ -114,6 +113,10 @@ func _process(_delta):
 func add_building_part(part : Part, position : Vector2 = Vector2.ZERO):
 	# Add part
 	var building_part : BuildingPart = building_part_scene.instance()
+	if hull_part == null:
+		hull_part = building_part
+		hull_part.get_node("Area2D").input_pickable = false
+	
 	building_part.connect("mouse_entered", self, "_on_building_part_mouse_enter", [building_part])
 	building_part.connect("mouse_exited", self, "_on_building_part_mouse_exit", [building_part])
 	
@@ -210,6 +213,8 @@ func deselect_part():
 		selected_part_button = null
 		selected_part = null
 		cursor.texture = null
+		cursor.scale = Vector2(1,1)
+		cursor.offset = Vector2(0,0)
 	
 
 func generate_mech_structure() -> MechStructure:

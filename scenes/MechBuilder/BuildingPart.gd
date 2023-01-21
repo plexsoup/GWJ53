@@ -11,13 +11,14 @@ var connected_parts := []
 var _vel = Vector2()
 var _spin = 0
 var _flying = false
+onready var sprite = $"%Sprite"
 
 func _ready():
 	if Global.user_prefs["particles"]:
 		$AnimationPlayer.play("Build")
-	$Sprite.texture = part.icon
-	if part.type == Part.Type.HULL:
-		$Area2D.input_pickable = false
+	sprite.texture = part.icon
+	sprite.offset = part.icon_offset
+	sprite.scale = part.icon_scale * Vector2.ONE
 
 func _process(delta):
 	if _flying:
