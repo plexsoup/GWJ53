@@ -183,6 +183,10 @@ func remove_building_part(building_part : BuildingPart) -> Array:
 	return remaining_parts
 
 func _unhandled_input(event):
+	if Input.is_action_just_pressed("free money cheat"):
+		Global.money += 10
+		_update_money_display()
+
 	if event.is_action_pressed("place_part"):
 		
 		if sell_button.pressed:

@@ -22,7 +22,7 @@ cash_for_winning = 7
 cash_for_losing = 0
 
 [node name="GroundTex" parent="Ground" index="0"]
-position = Vector2( -2.99976, -9.00012 )
+position = Vector2( 3126, 14 )
 scale = Vector2( 17.383, 17.383 )
 texture = ExtResource( 4 )
 
@@ -31,11 +31,11 @@ visible = false
 polygon = PoolVector2Array( -1719, -2052, 5268, -2086, 5314, 2160, -1782, 2155 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Ground" index="1"]
-position = Vector2( -426, -91 )
+position = Vector2( 2787, -91 )
 navpoly = SubResource( 1 )
 
 [node name="WallWest" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
-position = Vector2( -4845, -34 )
+position = Vector2( -1716, -11 )
 collision_layer = 16
 collision_mask = 15
 
@@ -52,7 +52,7 @@ margin_bottom = 2522.0
 color = Color( 0.247059, 0.698039, 0.941176, 1 )
 
 [node name="WallEast" type="StaticBody2D" parent="YSort/Obstacles" index="1"]
-position = Vector2( 4841, -4 )
+position = Vector2( 7970, 19 )
 collision_layer = 16
 collision_mask = 15
 
@@ -69,7 +69,7 @@ margin_bottom = 2522.0
 color = Color( 0.247059, 0.698039, 0.941176, 1 )
 
 [node name="WallNorth" type="StaticBody2D" parent="YSort/Obstacles" index="2"]
-position = Vector2( -299, -2451 )
+position = Vector2( 2830, -2428 )
 scale = Vector2( 1.24798, 0.95142 )
 collision_layer = 16
 collision_mask = 15
@@ -88,7 +88,7 @@ rect_scale = Vector2( 8.17493, 0.110362 )
 color = Color( 0.247059, 0.698039, 0.941176, 1 )
 
 [node name="WallSouth" type="StaticBody2D" parent="YSort/Obstacles" index="3"]
-position = Vector2( -320, 1931 )
+position = Vector2( 2809, 1954 )
 scale = Vector2( 1.22739, 1.06701 )
 collision_layer = 16
 collision_mask = 15
