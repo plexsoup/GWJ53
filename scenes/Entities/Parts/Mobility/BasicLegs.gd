@@ -1,6 +1,4 @@
-extends Node2D
-
-var mech : KinematicBody2D
+extends MechPart
 
 export var speed : float = 600.0
 export var acceleration : float = 5.0 # per second

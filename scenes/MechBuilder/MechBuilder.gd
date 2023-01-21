@@ -44,7 +44,7 @@ func add_default_mech():
 
 	
 func _update_money_display():
-	money_label.text = "MONEY: %d" % Global.money
+	money_label.text = "CREDITS: %d" % Global.money
 
 
 func _on_part_button_pressed(part_button):
@@ -219,20 +219,21 @@ func deselect_part():
 
 func generate_mech_structure() -> MechStructure:
 	var mech_structure = MechStructure.new()
-	
-	var hull_building_part : BuildingPart
-	for building_part in building_parts:
-		building_part = building_part as BuildingPart
-		if building_part.part.type == Part.Type.HULL:
-			hull_building_part = building_part
-			break
+	var mech_structure_parts = {}
 	
 	for building_part in building_parts:
 		building_part = building_part as BuildingPart
 		var mech_structure_part = MechStructure.MechStructurePart.new()
+		mech_structure_parts[building_part] = mech_structure_part
 		mech_structure_part.part = building_part.part
-		mech_structure_part.position = building_part.position - hull_building_part.position
+		mech_structure_part.position = building_part.position - hull_part.position
 		mech_structure.inner_parts.append(mech_structure_part)
+	
+	for building_part in building_parts:
+		building_part = building_part as BuildingPart
+		for connected_part in building_part.connected_parts:
+			mech_structure_parts[building_part].connected_parts.append(mech_structure_parts[connected_part])
+			connected_part.connected_parts.erase(building_part)
 	
 	return mech_structure
 

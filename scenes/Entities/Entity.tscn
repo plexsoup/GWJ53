@@ -131,6 +131,8 @@ anims/idle = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+[node name="Struts" type="Node2D" parent="."]
+
 [node name="Health" type="Node2D" parent="."]
 z_index = 1
 

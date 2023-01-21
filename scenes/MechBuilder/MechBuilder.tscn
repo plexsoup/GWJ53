@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/MechBuilder/PartButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/MechBuilder/Build_UI.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Menus/GrabFocus.tscn" type="PackedScene" id=7]
-[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://Art/currency.png" type="Texture" id=8]
 [ext_resource path="res://scenes/MechBuilder/SellSymbol.png" type="Texture" id=9]
 [ext_resource path="res://scenes/MechBuilder/ToolTip.gd" type="Script" id=10]
 [ext_resource path="res://_common/Themes/DefaultTheme.tres" type="Theme" id=11]
@@ -100,7 +100,6 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme = ExtResource( 11 )
 script = ExtResource( 1 )
 min_joint_distance = 100.0
 max_joint_distance = 250.0
@@ -140,7 +139,7 @@ expand = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme = ExtResource( 11 )
+theme = ExtResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control"]
 visible = false
@@ -160,29 +159,29 @@ margin_bottom = 600.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 593.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 1022.0
+margin_bottom = 598.0
 
 [node name="Label" type="Label" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
-margin_right = 1010.0
-margin_bottom = 27.0
+margin_right = 1020.0
+margin_bottom = 38.0
 text = "Shop"
 
 [node name="MarginContainer" type="MarginContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer"]
-margin_top = 31.0
-margin_right = 1010.0
-margin_bottom = 586.0
+margin_top = 42.0
+margin_right = 1020.0
+margin_bottom = 596.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
-margin_right = 1010.0
-margin_bottom = 555.0
+margin_right = 1020.0
+margin_bottom = 554.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer/PartsPanel/VBoxContainer/MarginContainer"]
-margin_right = 1010.0
-margin_bottom = 555.0
+margin_right = 1020.0
+margin_bottom = 554.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control/VBoxContainer/HBoxContainer"]
 visible = false
@@ -208,9 +207,9 @@ expand = true
 stretch_mode = 6
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Foreground/Control/TextureRect"]
-margin_left = 184.0
-margin_top = 44.0
-margin_right = 962.0
+margin_left = 192.0
+margin_top = 50.0
+margin_right = 951.0
 margin_bottom = 215.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -218,8 +217,8 @@ scroll_vertical_enabled = false
 
 [node name="PartButtonsHBox" type="HBoxContainer" parent="Foreground/Control/TextureRect/ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 778.0
-margin_bottom = 171.0
+margin_right = 759.0
+margin_bottom = 165.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
@@ -229,54 +228,28 @@ alignment = 1
 unique_name_in_owner = true
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -189.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = 60.0
+margin_left = -188.0
+margin_top = 57.0
+margin_right = -19.0
+margin_bottom = 97.0
 text = "Go Fight!"
 
 [node name="GrabFocus" parent="Foreground/Control/FightButton" instance=ExtResource( 7 )]
 
-[node name="MoneyDisplay" type="HBoxContainer" parent="Foreground/Control"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 271.0
-margin_bottom = 47.0
-
-[node name="MoneyLabel" type="Label" parent="Foreground/Control/MoneyDisplay"]
-unique_name_in_owner = true
-margin_right = 161.0
-margin_bottom = 38.0
-text = "MONEY: 10"
-
-[node name="TextureRect" type="TextureRect" parent="Foreground/Control/MoneyDisplay"]
-margin_left = 165.0
-margin_right = 251.0
-margin_bottom = 38.0
-size_flags_horizontal = 3
-texture = ExtResource( 8 )
-expand = true
-stretch_mode = 5
-
-[node name="MoneyAnimation" type="AnimationPlayer" parent="Foreground/Control/MoneyDisplay"]
-unique_name_in_owner = true
-anims/GainMoney = SubResource( 7 )
-anims/RESET = SubResource( 6 )
-anims/ShakeMoney = SubResource( 5 )
-
 [node name="SellButton" type="Button" parent="Foreground/Control"]
 unique_name_in_owner = true
-margin_left = 21.0
-margin_top = 438.0
-margin_right = 179.0
-margin_bottom = 471.0
+margin_left = 86.0
+margin_top = 443.0
+margin_right = 157.0
+margin_bottom = 578.0
 toggle_mode = true
-text = "Sell Part"
+text = "Sell"
+clip_text = true
 
 [node name="ToolTipArea" type="ReferenceRect" parent="Foreground/Control"]
 unique_name_in_owner = true
-anchor_right = 1.0
-margin_bottom = 410.0
+margin_right = 1022.0
+margin_bottom = 411.0
 mouse_filter = 2
 
 [node name="ToolTip" type="Control" parent="Foreground/Control"]
@@ -294,20 +267,32 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -121.0
-margin_top = -200.0
+margin_top = -75.0
 margin_right = 121.0
+grow_vertical = 0
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Foreground/Control/ToolTip/PanelContainer"]
-margin_left = 7.0
-margin_top = 61.0
-margin_right = 235.0
-margin_bottom = 139.0
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/Control/ToolTip/PanelContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 240.0
+margin_bottom = 73.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="ToolTipText" type="RichTextLabel" parent="Foreground/Control/ToolTip/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 222.0
+margin_bottom = 55.0
 mouse_filter = 2
 size_flags_vertical = 4
 bbcode_enabled = true
-bbcode_text = "[center]This is some centered text[/center]"
-text = "This is some centered text"
+bbcode_text = "[center]Tool tip text[/center]"
+text = "Tool tip text"
 fit_content_height = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -316,6 +301,45 @@ volume_db = -28.86
 pitch_scale = 0.99
 autoplay = true
 bus = "Music"
+[node name="PanelContainer" type="PanelContainer" parent="Foreground/Control"]
+margin_right = 4.0
+margin_bottom = 4.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/Control/PanelContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 207.0
+margin_bottom = 50.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="MoneyDisplay" type="HBoxContainer" parent="Foreground/Control/PanelContainer/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 201.0
+margin_bottom = 44.0
+
+[node name="MoneyLabel" type="Label" parent="Foreground/Control/PanelContainer/MarginContainer/MoneyDisplay"]
+unique_name_in_owner = true
+margin_top = 1.0
+margin_right = 154.0
+margin_bottom = 39.0
+text = "Credits: 10"
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/Control/PanelContainer/MarginContainer/MoneyDisplay"]
+margin_left = 158.0
+margin_right = 197.0
+margin_bottom = 40.0
+texture = ExtResource( 8 )
+stretch_mode = 6
+
+[node name="MoneyAnimation" type="AnimationPlayer" parent="Foreground/Control/PanelContainer/MarginContainer/MoneyDisplay"]
+unique_name_in_owner = true
+anims/GainMoney = SubResource( 7 )
+anims/RESET = SubResource( 6 )
+anims/ShakeMoney = SubResource( 5 )
 
 [connection signal="pressed" from="Foreground/Control/FightButton" to="." method="_on_FightButton_pressed"]
 [connection signal="pressed" from="Foreground/Control/SellButton" to="." method="_on_SellButton_pressed"]

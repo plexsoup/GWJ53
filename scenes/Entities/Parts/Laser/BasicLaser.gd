@@ -49,15 +49,13 @@ func init(myMech):
 
 	if mech.is_in_group("enemies"):
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, true) # player
+		$RayCast2D.set_collision_mask_bit(0, true)
 		$TargetLocation/HurtBox.set_collision_mask_bit(1, true) # enemies
 		
 	else: # player
 		$TargetLocation/HurtBox.set_collision_mask_bit(1, true)
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, false)
-
-	
-	$RayCast2D.set_collision_mask_bit(0, true)
-	$RayCast2D.set_collision_mask_bit(1, true)
+		$RayCast2D.set_collision_mask_bit(0, false)
 	
 	
 	if line_of_sight:
