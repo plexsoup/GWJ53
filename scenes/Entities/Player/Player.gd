@@ -27,6 +27,7 @@ func provide_free_parts():
 	if $Weapons.get_child_count() == 0:
 		var laserScene = load("res://scenes/Entities/Parts/Laser/PenetratingLaser.tscn").instance()
 		$Weapons.add_child(laserScene)
+	
 		
 
 	set_state(States.PAUSED)
