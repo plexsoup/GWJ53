@@ -7,8 +7,10 @@
 [resource]
 script = ExtResource( 1 )
 name = "Basic Missile Launcher"
-description = "Shoots a few rockets"
+description = "Refurbished vintage shotgun. Pump action mechanism converted for mechas."
 icon = ExtResource( 2 )
+icon_scale = 1.0
+icon_offset = Vector2( 0, 0 )
 mech_part = ExtResource( 3 )
 type = 2
 cost = 3

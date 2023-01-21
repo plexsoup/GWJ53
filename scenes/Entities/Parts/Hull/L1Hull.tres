@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 2 )
 name = "Level 1 Hull"
-description = "A trusty ol thing. Extra armor."
+description = "Mark 2 Armor. Carbon fiber insdustrial molded plasteel for extra protection."
 icon = ExtResource( 1 )
 icon_scale = 1.0
 icon_offset = Vector2( 0, 0 )

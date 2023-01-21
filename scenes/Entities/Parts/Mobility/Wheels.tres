@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Wheels"
-description = "Some wheels to get you moving"
+description = "Who needs legs when you can have Tracks!?"
 icon = ExtResource( 2 )
 icon_scale = 1.0
 icon_offset = Vector2( 0, 0 )

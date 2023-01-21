@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Dash Legs"
-description = "Mark 2 super dash speedy jumper legs.
+description = "Mark 2 super dash speedy jumper legs. (shift to activate dash ability)
 "
 icon = ExtResource( 3 )
 icon_scale = 1.0
