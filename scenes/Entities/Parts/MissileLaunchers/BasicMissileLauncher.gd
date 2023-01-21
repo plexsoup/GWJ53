@@ -10,9 +10,8 @@ To meet accessibility requirements:
 
 """
 
-extends Node2D
+extends MechPart
 
-var mech
 export var projectile_range : float = 200.0
 export var damage : float = 500.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
@@ -55,7 +54,7 @@ func scene_finished():
 
 
 func shoot():
-	if scene_finished():
+	if scene_finished() or disabled:
 		return
 
 	if mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
@@ -96,7 +95,8 @@ func make_noise():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	aim(delta)
+	if not disabled:
+		aim(delta)
 	
 
 func aim(_delta):

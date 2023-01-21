@@ -5,9 +5,8 @@ Area2D static hurtbox immediate effect.
 
 """
 
-extends Node2D
+extends MechPart
 
-var mech
 export var projectile_range : float = 500.0
 
 export var damage : float = 1000.0
@@ -54,7 +53,7 @@ func scene_finished():
 
 
 func shoot():
-	if scene_finished():
+	if scene_finished() or disabled:
 		return
 
 	# WIP we should ask the target acquisition system for a target

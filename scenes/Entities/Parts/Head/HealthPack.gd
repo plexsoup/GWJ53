@@ -1,6 +1,5 @@
-extends Node2D
+extends MechPart
 
-var mech
 
 export var healing : float = 50.0
 export var healing_interval : float = 1.0
