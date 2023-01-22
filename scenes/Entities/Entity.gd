@@ -60,6 +60,9 @@ export var engine : NodePath
 export var legs : NodePath
 export var head : NodePath
 
+var shield_parts = [] # list of parts that should light up (blue) when shields take damage
+
+
 # resistance is float: 0 to 1.
 # applied to damage as (1-resistance) * damage
 export var damage_resistances : Dictionary = {
@@ -121,12 +124,12 @@ func setup_iframes():
 		iframes_time *= human_iframes_multiplier
 	$Defences/iframesTimer.set_wait_time(iframes_time)
 
-func trigger_iframes():
+func trigger_iframes(flashColor):
 	$Defences/iframesTimer.start()
 	set_state(States.INVULNERABLE)
 
 	# this should be a shader. who wants to write a shader?
-	self.set_modulate(Color.red)
+	self.set_modulate(flashColor)
 	
 
 	
@@ -300,10 +303,18 @@ func _on_hit(damage, impactVector, damageType):
 	var resist = damage_resistances[damageType]
 	damage = max(damage * (1.0-resist), 0.0)
 	if damage > 0.0:
-		trigger_iframes()
 		if shield > 0.0:
-			print("Shield took " + str(damage))
-			shield -= damage
+			var remainingDamage = damage - shield
+			shield = max(shield - damage, 0)
+			if remainingDamage > 0:
+				_on_hit(remainingDamage, impactVector, damageType)
+			else: # shield took all the damage
+				for currentShield in shield_parts:
+					if currentShield.has_method("flash"):
+						currentShield.flash(impactVector)
+				trigger_iframes(Color.aqua)
+
+
 		else:
 			if damageType == Global.damage_types.IMPACT:
 				spawn_shrapnel(impactVector)
@@ -315,6 +326,8 @@ func _on_hit(damage, impactVector, damageType):
 		
 			if health <= 0.0:
 				begin_dying()
+			else:
+				trigger_iframes(Color.red)
 	
 func update_health_bar():
 	if $Health.has_node("TextureProgress"):
