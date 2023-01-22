@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://_common/Materials/HP_progress_over.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Entities/TeamLabel.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Entities/Projectiles/shrapnel.png" type="Texture" id=6]
 [ext_resource path="res://Art/angelchama/hullv2.png" type="Texture" id=7]
+[ext_resource path="res://sfx/ROBOT_EXPLOSION.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -235,6 +236,9 @@ linear_accel = 15.0
 angle = 45.0
 scale_amount = 40.0
 color_ramp = SubResource( 5 )
+
+[node name="DeathNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="timeout" from="Health/DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="timeout" from="Health/DecayTimer" to="." method="_on_DecayTimer_timeout"]

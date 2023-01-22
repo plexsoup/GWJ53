@@ -17,7 +17,6 @@ export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 export var shots_per_burst : int = 2
 export var burst_delay : float = 1.0
 export var reload_time : float = 5.0
-
 export var knockback_effect : float = 3.0
 
 var shots_left : int = shots_per_burst
@@ -109,8 +108,15 @@ func hurt_targets():
 #		newProjectile.global_rotation = $ShotgunSprite.global_rotation
 
 func make_noise():
-	$ShootNoise.set_pitch_scale(rand_range(0.8, 1.2))
-	$ShootNoise.play()
+	# copy a ShootNoise.tscn node which will queue itself free after audio finished.
+	var noise = $ShootNoise.duplicate()
+	add_child(noise)
+	
+	noise.set_pitch_scale(rand_range(0.8, 1.2))
+	noise.play()
+	
+	
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
