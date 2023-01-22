@@ -14,7 +14,7 @@
 [ext_resource path="res://Art/Harbor Assests/Modular Dock box single.png" type="Texture" id=12]
 [ext_resource path="res://Art/Harbor Assests/Modularbox.png" type="Texture" id=13]
 [ext_resource path="res://Art/Harbor Assests/Harbor_base.png" type="Texture" id=14]
-[ext_resource path="res://Music/Hardor.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Music/Harbor.ogg" type="AudioStream" id=15]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 3503.33, 5504.67, 4234.33, 6025.67, -1076.33, 6065, 688.333, 5777.67, 1787, 3073.67, 1794.67, 5504.67, 1147, 5308.33, 645.667, 3991, 560.333, 1084.33, 1664.67, 2104.67, 85.6667, 4412.33, -693, 3969.67, 4167.33, 2649, 3482, 3069.67, -383.667, 4796.33, 2773.33, -1057.33, 3384, -1283.67, 4267, 6, 4135, 1264.33, 3203.33, 273.333, 2788.33, -227.667, 1645.67, 271, 1589, -175, 3192.67, 2107.67, 4195, 2211, 1196.67, -491.667, 1566.33, -627.667, 6996, 1752, 7135.67, 1068.67, 7267.67, 1676, 7279.67, 3506, 6956, 2703, 6057, -2, 6724.33, -74, 5917, 1772, 5565.33, 1504.33, 5573.33, 2171.33, 5893, 2699, 6156.67, 5431.67, 5957, 4968.33, 5669.33, 4273, 7275.67, 4017.33, 7247.67, 4776.67, 7047.67, 5348, 6960, 5531.67, 6804, 5607.67, 6268.67, 5611.67, 5554, 2651.33, -1113.67, -532.333, -687.333, 1083.33, -1118.67, 3588.67 )
@@ -223,6 +223,6 @@ pitch_scale = 0.69
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
-stream = ExtResource( 11 )
+stream = ExtResource( 15 )
 volume_db = -7.417
 autoplay = true
