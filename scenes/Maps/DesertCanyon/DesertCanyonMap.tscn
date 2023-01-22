@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/Maps/DesertCanyon/Rocks/Rock_1.png" type="Texture" id=12]
 [ext_resource path="res://scenes/Maps/DesertCanyon/Rocks/Rock_2.png" type="Texture" id=13]
 [ext_resource path="res://scenes/Maps/DesertCanyon/Rocks/Rock_9.png" type="Texture" id=14]
-[ext_resource path="res://Music/Godot Wild Jam 53 Dessert MASTER.wav" type="AudioStream" id=15]
+[ext_resource path="res://Music/Desert.ogg" type="AudioStream" id=15]
 [ext_resource path="res://scenes/Maps/Spawners/ClawMechSpawner.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Menus/WinRewardCutscene.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sfx/SAndstorm.mp3" type="AudioStream" id=18]
