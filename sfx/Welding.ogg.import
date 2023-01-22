@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Welding.ogg-e82b9aba0bc589ab6075f48c9636d95e.oggstr"
+
+[deps]
+
+source_file="res://sfx/Welding.ogg"
+dest_files=[ "res://.import/Welding.ogg-e82b9aba0bc589ab6075f48c9636d95e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/audio_mixing/audio_bus_volume_slider.gd" type="Script" id=1]
-[ext_resource path="res://addons/audio_mixing/Ultralounge.mp3" type="AudioStream" id=2]
+[ext_resource path="res://addons/audio_mixing/WHAT.wav" type="AudioStream" id=2]
 
 [node name="MasterVolumeContainer" type="HBoxContainer"]
 margin_top = 240.0

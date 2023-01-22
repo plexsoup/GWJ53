@@ -205,7 +205,7 @@ position = Vector2( -6.72675, 136.536 )
 rotation = -1.58133
 scale = Vector2( 1.23244, 0.975651 )
 frames = SubResource( 4 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite" index="1"]
