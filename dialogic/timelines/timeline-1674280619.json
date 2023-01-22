@@ -24,7 +24,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "OOF...wasted",
+			"text": "OOF! Wasted.",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -56,7 +56,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "(Don't change)",
-			"text": "Oh I feel bad for the little guy",
+			"text": "Oh, I feel bad for the little guy.",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",

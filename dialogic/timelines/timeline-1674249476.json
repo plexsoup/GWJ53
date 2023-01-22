@@ -4,7 +4,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Woah! THAT WAS INCREDIABLE!",
+			"text": "Woah! THAT WAS INCREDIBLE!",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -37,7 +37,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "DO YOU GET IT NOW DAD! ",
+			"text": "DO YOU GET IT NOW DAD? ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -49,7 +49,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I..I..I can't belive it. ",
+			"text": "I-I-I can't belive it!",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -81,7 +81,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I can. You're an animal, kiddo!",
+			"text": "I can! You are an animal, kiddo!",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -93,7 +93,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I can't believe I'm the champ.",
+			"text": "I can't believe it, I'm the champ!",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -105,7 +105,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "HO OH... Huge congrats son...Now lets go pay off your tab.",
+			"text": "Huge congrats son! Now lets go pay off your tab.",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -117,7 +117,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Uhhh...oh..yeah",
+			"text": "Uhhh... oh... yeah.",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",

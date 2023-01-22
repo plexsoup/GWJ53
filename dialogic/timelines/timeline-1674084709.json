@@ -25,7 +25,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "Default",
-			"text": "Uhh...Hey..uhhh...Welcome home dad!",
+			"text": "Uhh... hey, uhhh... Welcome home, Dad!",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -58,7 +58,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "Default",
-			"text": "Uh, what'cha got there,son?",
+			"text": "Uh, what'cha got there, Son?",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -70,7 +70,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "This is a MechaBusters Hunter V1 core...Old but still works! And that's not even the best thing about it!",
+			"text": "That is a MechaBusters Hunter V1 core. Old, but still works! And, that's not even the best thing about it!",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -82,7 +82,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Mhm...Where did you get it?",
+			"text": "Mhm... where did you get it?",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -94,7 +94,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "The Junkyard",
+			"text": "The Junkyard.",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -118,7 +118,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Ummm.I put it on your tab..at the junkyard. ",
+			"text": "Ummm... I put it on your tab at the junkyard. ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -130,7 +130,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "You did what!? Danny c'mon. ",
+			"text": "You did what!? Danny! Come on! ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -142,7 +142,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Just cuz I work there dosn't mean you can invite yourself in. You could of got HURT! Or worse... ",
+			"text": "Just 'cause I work there doesn't mean you can invite yourself in! You could've got HURT! Or worse... ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -166,7 +166,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Joking son.But seriously, Don't go out there without me.  ",
+			"text": "Joking son. But seriously, don't go out there without me.  ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -178,7 +178,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "But..the best part..",
+			"text": "But... the best part...",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -190,7 +190,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "uhhh...What's the best part?",
+			"text": "uhhh... What's the best part?",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -202,7 +202,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "It's old, but the core is still accepted into official tournaments. In fact. its's the absolute oldest model that they allow. How lucky, right?!",
+			"text": "It's old, but the core is still accepted in official tournaments. In fact, it's the absolute oldest model that they allow. How lucky, right?!",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Voice",
@@ -214,7 +214,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Excuse me?.. tournament?",
+			"text": "Excuse me? Tournament?",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -226,7 +226,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Yeah and there's one happening at the Kiernan Cowell hockey rink. You know, the one by the train yard.",
+			"text": "Yeah, and there's one happening at the Kiernan Cowell hockey rink. You know? The one by the train yard.",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -250,7 +250,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "But there is a junkyard with cheap parts..",
+			"text": "But there is a junkyard with cheap parts...",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -262,7 +262,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Yeahhh...and that also costs money. ",
+			"text": "Yeah... and that also costs money. ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -274,7 +274,7 @@
 			"character": "character-1674084678.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "But not as much. And aren't you paying off your boss for that solid brass skull gear shift knob you put in the car?  ",
+			"text": "But not as much! And aren't you paying off your boss for that solid brass skull gear shift knob you put in the car?  ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -286,7 +286,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Urgh..Fine, but you are not to make a habit of this. ",
+			"text": "Urgh... fine. But you are not to make a habit of this. Okay?",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -298,7 +298,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "And its you paying this off not me. So you better go around and mow some lawns.   ",
+			"text": "And it's you paying this off, not me. So, you better go around and mow some lawns.   ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
@@ -343,7 +343,7 @@
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Haha...Alright, so when's this tournament? ",
+			"text": "Haha... alright, so when's this tournament? ",
 			"voice_data": {
 				"0": {
 					"audio_bus": "Master",
