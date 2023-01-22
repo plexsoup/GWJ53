@@ -14,7 +14,12 @@ func _ready():
 	dialog.connect("dialogic_signal", self, "_on_dialog_ended")
 
 	
-func _on_dialog_ended(_signal_properties):
+func _on_dialog_ended(signal_properties):
+	if signal_properties == "show skip":
+		var tween = create_tween()
+		tween.tween_property($MarginContainer/EscToSkipLabel, "modulate", Color.white, 5)
+		return
+	
 	Global.into_has_played = true
 	Global.stage_manager.change_scene_to(next_scene)
 

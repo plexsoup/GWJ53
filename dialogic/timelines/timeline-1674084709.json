@@ -55,6 +55,10 @@
 			"z_index": 0
 		},
 		{
+			"emit_signal": "show skip",
+			"event_id": "dialogic_040"
+		},
+		{
 			"character": "character-1674084541.json",
 			"event_id": "dialogic_001",
 			"portrait": "Default",
