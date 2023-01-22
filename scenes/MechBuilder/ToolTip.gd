@@ -14,8 +14,6 @@ func _ready():
 	for part_button in part_buttons_h_box.get_children():
 		part_button.connect("mouse_entered", self, "_on_part_button_mouse_entered", [part_button])
 		part_button.connect("mouse_exited", self, "_on_part_button_mouse_exited", [part_button])
-	print(part_buttons_h_box.get_child_count())
-	print(tool_tip_boundaries)
 
 func _process(_delta):
 	var panel_size = $PanelContainer.rect_size
@@ -28,7 +26,6 @@ func _process(_delta):
 		tool_tip_boundaries.end.y)
 
 func _on_part_button_mouse_entered(part_button):
-	print("oi")
 	hovered_part_button = part_button
 	tool_tip_text.bbcode_text = "[center]%s[/center]" % part_button.part.description
 	show()
