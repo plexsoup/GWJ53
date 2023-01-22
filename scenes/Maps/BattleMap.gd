@@ -46,7 +46,7 @@ func is_active():
 		return false
 	
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("free money cheat"):
 		pass
 		# was going to instantiate super player mech, but it's already in _ready()

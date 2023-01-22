@@ -302,7 +302,7 @@ func _on_hit(damage, impactVector, damageType):
 	if damage > 0.0:
 		trigger_iframes()
 		if shield > 0.0:
-			print("Shield took " + str(damage))
+			#print("Shield took " + str(damage))
 			shield -= damage
 		else:
 			if damageType == Global.damage_types.IMPACT:
