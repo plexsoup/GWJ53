@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Entities/Parts/Laser/BasicLaser.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Laser/LaserCannon.png" type="Texture" id=2]
-[ext_resource path="res://scenes/Entities/Parts/Laser/laserShoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/Laser.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Art/Laser test/Laser_2.png" type="Texture" id=4]
 [ext_resource path="res://Art/Laser test/Laser_3.png" type="Texture" id=5]
 [ext_resource path="res://Art/Laser test/Laser_4.png" type="Texture" id=6]
@@ -50,7 +50,6 @@ autostart = true
 
 [node name="LaserNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-volume_db = -15.0
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 106, -5, 213, -7, 761, -1 )

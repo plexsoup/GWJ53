@@ -47,7 +47,6 @@ radius = 9.33214
 position = Vector2( 4.60442, 5.70271 )
 scale = Vector2( 0.756987, 0.818294 )
 frames = SubResource( 6 )
-frame = 2
 speed_scale = 2.684
 playing = true
 
@@ -55,6 +54,9 @@ playing = true
 scale = Vector2( 0.0280086, -49.6425 )
 texture = SubResource( 7 )
 color = Color( 0.113725, 0.937255, 1, 1 )
+
+[node name="AnimatedSprite" parent="Sprite/Missile" index="0"]
+frame = 5
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 5.41697, 10.3192 )
