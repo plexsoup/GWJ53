@@ -87,6 +87,6 @@ anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1, 76 )
+position = Vector2( 1, 57 )
 texture = ExtResource( 1 )
 offset = Vector2( -1, -76 )
