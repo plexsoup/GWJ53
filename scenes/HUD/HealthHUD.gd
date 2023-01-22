@@ -14,4 +14,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	value = lerp(value, Global.player.health / Global.player.health_max, delta * 3)
-	$HPLabel.text = str(Global.player.health)
+	$"%HPLabel".text = str(Global.player.health)

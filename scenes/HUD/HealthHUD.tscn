@@ -1,11 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Art/HP_Under.png" type="Texture" id=1]
 [ext_resource path="res://Art/HP_Over.png" type="Texture" id=2]
 [ext_resource path="res://scenes/HUD/HealthHUD.gd" type="Script" id=3]
 [ext_resource path="res://Art/Danny_HP.png" type="Texture" id=4]
+[ext_resource path="res://_common/Themes/DefaultTheme.tres" type="Theme" id=5]
 
-[node name="Health" type="TextureProgress"]
+[node name="Control" type="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="DannyHp" type="Sprite" parent="."]
+position = Vector2( 66.0576, -21.0044 )
+rotation = -0.0341608
+scale = Vector2( 0.585835, 0.610454 )
+texture = ExtResource( 4 )
+
+[node name="Health" type="TextureProgress" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 89.0
@@ -23,19 +39,11 @@ texture_progress = ExtResource( 2 )
 nine_patch_stretch = true
 script = ExtResource( 3 )
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="DannyHp" type="Sprite" parent="."]
-position = Vector2( -37.004, -21.6199 )
-rotation = -0.0656049
-scale = Vector2( 0.947571, 2.14554 )
-texture = ExtResource( 4 )
-
 [node name="HPLabel" type="Label" parent="."]
-margin_left = 48.4
-margin_top = 21.7092
-margin_right = 110.4
-margin_bottom = 48.7092
-rect_scale = Vector2( 2.42894, 2.42894 )
+unique_name_in_owner = true
+margin_left = 115.0
+margin_top = -17.0
+margin_right = 187.0
+margin_bottom = 21.0
+theme = ExtResource( 5 )
 text = "1000"
