@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maps/textures/RoughSketch2.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Art/Junkyard/Purple_car_Modular.png" type="Texture" id=11]
 [ext_resource path="res://Art/Junkyard/Yellowish_Car_Modular.png" type="Texture" id=12]
 [ext_resource path="res://Art/Junkyard/Green_Car.png" type="Texture" id=13]
+[ext_resource path="res://Music/Junkyard.wav" type="AudioStream" id=14]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 2077.8, 2162.2, 2365, 1756.6, 2786, 1723.2, 2923.2, 1764, 2906.8, 1959.4, 2577, 2290, 2121, 2397, 2557.2, 1629, 1701, 1934.2, 1740.2, 2246, 1238.4, 2118.2, 972.4, 1740, 2181, 1595, 2065.8, 1692.6, 2091.6, 1501.6, 2841.8, 336.8, 3137, 62.4, 3180.4, 314, 3055.2, 498, 2775.6, 406.2, 1098.4, 538.8, 1016.4, 163.8, 1036.6, -77.6, 1258.8, 115.6, 1270.4, 590.8, 2368.6, 224.4, 2496, 574, 1924.4, 589.4, 1950.2, 450.4, 2270.4, 198, 1483.2, 1403, 1336, 1204, 1619, 1178.8, 1833.8, 1436.6, 362.8, 73, 467.8, -24.2, 569.6, -94.4, 626.6, 155.4, 223.8, 480.2, 2364, 3330, 1851.4, 3470.2, 1231, 3478, 888, 3437, 657.6, 3137, 1000.2, 2950.8, 1317.2, 2915, 1928.2, 2904.4, 2407.6, 2911.6, 2789.2, 241.8, 2758.8, 84.2, 3034, -255, 2657, -41.2, 2736.4, -446, 2561.2, -75, 2566.4, -170, 2469.4, -293.4, 2543.4, -540.8, 2235, -533, 2103.8, -97, 1401.8, -60.6, 1622.6, -573.6, 1752.4, 321.4, 1586.4, 336.4, 1496.4, -910.4, 983.2, -451.4, 1137.2, -659.6, 1800.2, 2586.8, 1369.4, 2663.6, 1632.8, 2495.6, 1309.4, 2398.8, 230.2, 1037, 614.2, 1002.6, 421.4, 1462, 776.8, 803, 1065.8, 2257.8, 806.2, 2211.4, 1002, 2411, 837, 2407.6, -1579.6, 1370.2, -1557, 769, -1306, 594.8, -989.6, 515, -915, 929, -906.8, 1262, -1428, 1827, 3315.4, 923.6, 3180.8, 1243.6, 2881, 1098.8, -861.2, 1738, -858, 978, -314, 1281.8, -393.8, 1062.4, 3934.2, 406.6, 4015.8, 280.2, 4157, 257.6, 4352, 280, 4460.2, 671.6, 4488, 1028, 4509, 1313, 3936.6, 1393, 3800.6, 923.6, 3816.2, 644.6, 3633.6, 665.4, 3480.4, 928.6, 3565, 773.8, 3464.2, 768.2, 2204.4, 93.6, 1881.4, 819.2, 2706, 1342, 1281.8, 1563.8, 1106.4, -1046.8, 672, -1137.4, 653, -1616, 1034.4, -1757.6, 1719.2, -1723.8, 1863.2, -1452.4, 1837.8, -1257.6, 1627.6, -1191.4, 461, -596, 620.2, -470.6, -159, -232, 12, -403.8, 230.6, -576.8, 227.2, -120.4, -359.6, 107.4, -85, 469, -362.4, 432.4, -73.8, 1041.8, 1787.8, 1050.6, 926.6, 2135, 416.4, 1989.2, 582, 2411, 311, 2297, 173.6, 2134.4, 304, 2008, 209.6, 1767.2, 14, 2168.6, -182.8, 1914.8, 197.6, 1492.6, 755.4, 1858.8, 502.8, 1682.4, 940, 1262.8 )
@@ -31,7 +32,7 @@ texture = ExtResource( 2 )
 
 [node name="JunkMap" type="Sprite" parent="." index="2"]
 position = Vector2( 4444, 6802 )
-scale = Vector2( 50.9628, 50.9628 )
+scale = Vector2( 12.178, 12.28 )
 z_index = -1
 texture = ExtResource( 9 )
 
@@ -58,7 +59,7 @@ polygon = PoolVector2Array( -95, -265, -35, -301, 46, -304, 94, -304, 118, -274,
 [node name="Sprite" type="Sprite" parent="YSort/Obstacles/Mountain1" index="2"]
 position = Vector2( 19.8, -12.6 )
 rotation = 1.16161
-scale = Vector2( 4.55602, 4.55602 )
+scale = Vector2( 0.914, 0.887 )
 texture = ExtResource( 10 )
 
 [node name="Mountain2" type="StaticBody2D" parent="YSort/Obstacles" index="1"]
@@ -78,7 +79,7 @@ polygon = PoolVector2Array( -594, 237, -534, 187, -509, 119, -475, 57, -370, -8,
 [node name="Sprite" type="Sprite" parent="YSort/Obstacles/Mountain2" index="2"]
 position = Vector2( -396.8, 170.8 )
 rotation = -0.133945
-scale = Vector2( 3.29145, 3.29144 )
+scale = Vector2( 0.902, 1.069 )
 texture = ExtResource( 7 )
 
 [node name="RedCarModular" type="Sprite" parent="YSort/Obstacles/Mountain2/Sprite" index="0"]
@@ -120,6 +121,7 @@ color = Color( 0.74902, 0.517647, 0.223529, 1 )
 polygon = PoolVector2Array( -407, -81, -400, -119, -348, -175, -23, -310, 42, -303, 148, -265, 253, -218, 255, -117, 208, -38, 231, 101, 215, 256, 204, 346, 154, 467, 101, 521, 11, 519, -7, 415, 9, 272, -66, 186, -254, 137, -371, 43 )
 
 [node name="Sprite" type="Sprite" parent="YSort/Obstacles/Mountain3" index="2"]
+scale = Vector2( 0.603, 0.431 )
 
 [node name="Sprite" type="Sprite" parent="YSort/Obstacles/Mountain3/Sprite" index="0"]
 position = Vector2( -213.8, -119.6 )
@@ -161,6 +163,7 @@ polygon = PoolVector2Array( -783, 96, -698, 70, -594, 62, -506, -9, -472, -114, 
 
 [node name="Sprite" type="Sprite" parent="YSort/Obstacles/Mountain4" index="2"]
 position = Vector2( 0, -1.60004 )
+scale = Vector2( 0.347, 0.384 )
 
 [node name="PurpleCarModular" type="Sprite" parent="YSort/Obstacles/Mountain4/Sprite" index="0"]
 position = Vector2( -687.8, 281.6 )
@@ -227,7 +230,7 @@ polygon = PoolVector2Array( -273, -243, -269, -436, -80, -472, -4, -256, 108, -9
 [node name="BlueCarModular" type="Sprite" parent="YSort/Obstacles/Mountain5" index="2"]
 position = Vector2( 506.6, 30.6 )
 rotation = 6.81591
-scale = Vector2( 4.14032, 4.14032 )
+scale = Vector2( 0.933, 0.978 )
 texture = ExtResource( 11 )
 
 [node name="PurpleCarModular" type="Sprite" parent="YSort/Obstacles/Mountain5/BlueCarModular" index="0"]
@@ -252,13 +255,13 @@ polygon = PoolVector2Array( -69, -352.2, 123.8, -299.4, 55.7999, 66.2001, 227.8,
 [node name="RedCarModular" type="Sprite" parent="YSort/Obstacles/Mountain6/CollisionPolygon2D" index="0"]
 position = Vector2( 185, 46.2 )
 rotation = 2.74563
-scale = Vector2( 3.96399, 3.96399 )
+scale = Vector2( 0.971, 1.567 )
 texture = ExtResource( 7 )
 
 [node name="PurpleCarModular" type="Sprite" parent="YSort/Obstacles/Mountain6/CollisionPolygon2D/RedCarModular" index="0"]
 position = Vector2( 30.7266, 56.2653 )
 rotation = -1.3843
-scale = Vector2( 1.1373, 1.1373 )
+scale = Vector2( 0.466, 1.137 )
 texture = ExtResource( 11 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Mountain6" index="1"]
@@ -284,7 +287,7 @@ polygon = PoolVector2Array( -165, -26, -102, -137, -23, -179, 267, -175, 343, -1
 [node name="GreenCar" type="Sprite" parent="YSort/Obstacles/Mountain7" index="2"]
 position = Vector2( 130, -68.8 )
 rotation = 0.000848957
-scale = Vector2( 4.18807, 4.18807 )
+scale = Vector2( 0.797, 0.915 )
 texture = ExtResource( 13 )
 
 [node name="RedCarModular" type="Sprite" parent="YSort/Obstacles/Mountain7/GreenCar" index="0"]
@@ -294,7 +297,7 @@ texture = ExtResource( 7 )
 
 [node name="RedCar1(StaticBody)" type="StaticBody2D" parent="YSort/Obstacles" index="7"]
 position = Vector2( -1664, -832 )
-scale = Vector2( 5, 5 )
+scale = Vector2( 4.923, 5 )
 collision_layer = 16
 collision_mask = 15
 
@@ -302,9 +305,9 @@ collision_mask = 15
 polygon = PoolVector2Array( 3203.8, 419.2, 3115.4, 524, 3117.4, 563.8, 3448.2, 786.2, 3528, 792.6, 3595.8, 686.4, 3583.6, 621.6, 3253.6, 395 )
 
 [node name="RedCarModular2" type="Sprite" parent="YSort/Obstacles/RedCar1(StaticBody)/CollisionPolygon2D" index="0"]
-position = Vector2( 3354.6, 604.6 )
-rotation = 1.19359
-scale = Vector2( 4.18807, 4.18807 )
+position = Vector2( 3340.96, 561.584 )
+rotation = 0.0979824
+scale = Vector2( 0.887185, 1.0559 )
 texture = ExtResource( 7 )
 
 [node name="BlueCar1" type="StaticBody2D" parent="YSort/Obstacles" index="8"]
@@ -319,7 +322,7 @@ polygon = PoolVector2Array( 2077.2, 2503.4, 2102.8, 2546.8, 2060.2, 2658.8, 2018
 [node name="BlueCarModular" type="Sprite" parent="YSort/Obstacles/BlueCar1/CollisionPolygon2D" index="0"]
 position = Vector2( 1887.8, 2512.8 )
 rotation = -0.00269684
-scale = Vector2( 3.96055, 3.96055 )
+scale = Vector2( 0.724, 0.934 )
 texture = ExtResource( 10 )
 
 [node name="MountainLayout1" type="StaticBody2D" parent="YSort/Obstacles" index="9"]
@@ -329,6 +332,7 @@ collision_layer = 16
 collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/MountainLayout1" index="0"]
+visible = false
 polygon = PoolVector2Array( -1374, 2122, -1356, -1344, 2155, -1344, 2129, -198.6, 1841.2, -217.4, 1448.2, -74.8, 1451, 463.4, 1884.2, 557.6, 1927.2, 885.8, 1677, 902, 1061.2, 956.6, 667.8, 1261.6, 413.6, 1685.4, 403.4, 2594, -23.8, 2502.6, -122, 2055, -417, 2068.6 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/MountainLayout1" index="1"]
@@ -343,6 +347,7 @@ collision_layer = 16
 collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/MountainLayout2" index="0"]
+visible = false
 polygon = PoolVector2Array( -1784, -1219, 2267, -1228, 2233, 1747, 2242, 2713, 1444.2, 2640.2, 1420.6, 2389.4, 1320.6, 1955.4, 907, 1940.2, 707, 2325, 535.6, 2345.4, 367, 2305, 274, 2292, 199, 2222, 147.6, 2080.8, 103.4, 1836.8, 84, 1645, 68.2, 1571.6, -127, 1314, -304.6, 1251.6, -383, 1142.8, -627.8, 1120.4, -973.4, 1110.8, -1445.4, 1086.8, -1531.8, 832.4, -1427.8, 574.8, -1197.4, 491.6, -1175, 242, -1327, -44.4, -1779.8, -60.4 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/MountainLayout2" index="1"]
@@ -357,6 +362,7 @@ collision_layer = 16
 collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/MountainLayout3" index="0"]
+visible = false
 polygon = PoolVector2Array( 164.8, -2257, 279.6, -2586.2, 717.6, -2580.2, 803.6, -2291.6, 821.8, -2099.8, 1495.4, -2190.4, 1480, -2616, 2265, -2533, 2280, 1257, -1616, 1250, -1623.2, -8, -1405.6, 0, -1188, -1.6001, -807.2, -75.2, -608.8, -208, -592.8, -454.4, -605, -674.8, -944.2, -729.2, -1110.6, -673.2, -1155, -789, -1238.6, -1025.2, -904.2, -1095.6, -448.2, -1182, -301, -1382, -69.2002, -1565.2, 72.7998, -1834, 136, -1952, 27, -2076 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/MountainLayout3" index="1"]
@@ -371,6 +377,7 @@ collision_layer = 16
 collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Obstacles/MountainLayout4" index="0"]
+visible = false
 polygon = PoolVector2Array( -1212, -2721, -232.2, -2765.2, -584.2, -2530.8, -597.2, -2248.4, -609.6, -1867, -467, -1358, 215, -1456.2, 144.4, -1941.8, 641, -1927, 783.6, -1322.8, 1021.2, -1018.6, 1174, -1076.2, 1316.6, -908.8, 1620.8, -795.6, 2287.2, -818.2, 2344, -602.4, 2291.4, -368.4, 1720.2, -343, 1594.8, -81.8, 1731, 208, 2048.2, 269.2, 2440.8, 276, 2442, 1544, -1203, 1526 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/MountainLayout4" index="1"]
@@ -418,3 +425,6 @@ visible = false
 position = Vector2( -1745, -550 )
 scale = Vector2( 5, 5 )
 navpoly = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = ExtResource( 14 )

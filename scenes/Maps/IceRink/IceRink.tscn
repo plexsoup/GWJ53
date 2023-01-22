@@ -23,7 +23,7 @@ cash_for_losing = 0
 
 [node name="GroundTex" parent="Ground" index="0"]
 position = Vector2( 3126, 14 )
-scale = Vector2( 17.383, 17.383 )
+scale = Vector2( 2.086, 2.027 )
 texture = ExtResource( 4 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground/GroundTex" index="0"]
