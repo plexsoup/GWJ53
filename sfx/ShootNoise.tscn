@@ -6,4 +6,3 @@
 script = ExtResource( 1 )
 
 [connection signal="finished" from="." to="." method="_on_ShootNoise_finished"]
-[connection signal="finished" from="." to="." method="_on_ShootNoise_finished"]
