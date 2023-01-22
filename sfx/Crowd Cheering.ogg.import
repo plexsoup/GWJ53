@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Crowd Cheering.ogg-69ba76b3c14a0fcda5cc901c182c8d68.oggstr"
+
+[deps]
+
+source_file="res://sfx/Crowd Cheering.ogg"
+dest_files=[ "res://.import/Crowd Cheering.ogg-69ba76b3c14a0fcda5cc901c182c8d68.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

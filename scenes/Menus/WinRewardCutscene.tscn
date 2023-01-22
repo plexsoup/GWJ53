@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Menus/WinRewardCutscene.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sfx/Main_Menu theme.wav" type="AudioStream" id=3]
+[ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=3]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=4]
 
 [node name="WinRewardCutscene" type="Control"]

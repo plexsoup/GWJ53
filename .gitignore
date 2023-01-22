@@ -12,6 +12,7 @@ data_*/
 
 # Big Files
 exports/**
+export/**
 WIP/**
 
 # Mac

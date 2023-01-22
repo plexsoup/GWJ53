@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Menus/LoseScreenDialog.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Maps/junkyard/JunkyardHiddenObjectSearch.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sfx/Main_Menu theme.wav" type="AudioStream" id=4]
+[ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -26,7 +26,7 @@ text = "You Lost the match. Better luck next time."
 align = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )
 volume_db = -26.233
 pitch_scale = 0.57
 autoplay = true

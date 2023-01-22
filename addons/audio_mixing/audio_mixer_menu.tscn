@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Menus/MasterVolumeSlider.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/audio_mixing/Ultralounge.mp3" type="AudioStream" id=2]
 [ext_resource path="res://addons/audio_mixing/audio_bus_volume_slider.gd" type="Script" id=3]
+[ext_resource path="res://addons/audio_mixing/WHAT.wav" type="AudioStream" id=4]
 
 [node name="AudioMixerMenu" type="Control"]
 anchor_right = 1.0
@@ -59,7 +59,7 @@ bus_name = "Music"
 example_audio_path = NodePath("../AudioStreamPlayerMusic")
 
 [node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="Panel/HBoxContainer/VBoxContainer2/MusicVolumeContainer"]
-stream = ExtResource( 2 )
+stream = ExtResource( 4 )
 bus = "Music"
 
 [node name="SFXVolumeContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2"]
@@ -92,7 +92,7 @@ bus_name = "SFX"
 example_audio_path = NodePath("../AudioStreamPlayerSFX")
 
 [node name="AudioStreamPlayerSFX" type="AudioStreamPlayer" parent="Panel/HBoxContainer/VBoxContainer2/SFXVolumeContainer"]
-stream = ExtResource( 2 )
+stream = ExtResource( 4 )
 bus = "SFX"
 
 [node name="VoiceVolumeContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2"]
@@ -125,5 +125,5 @@ bus_name = "Voice"
 example_audio_path = NodePath("../AudioStreamPlayerVoice")
 
 [node name="AudioStreamPlayerVoice" type="AudioStreamPlayer" parent="Panel/HBoxContainer/VBoxContainer2/VoiceVolumeContainer"]
-stream = ExtResource( 2 )
+stream = ExtResource( 4 )
 bus = "Voice"

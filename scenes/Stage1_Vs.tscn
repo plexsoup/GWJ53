@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Art/Vs SCreens/Vs SCreens/Stage1.webm" type="VideoStream" id=1]
-[ext_resource path="res://sfx/TEMP SOunds(DO NOT KEEP)/Crowd Cheering.wav" type="AudioStream" id=2]
-[ext_resource path="res://sfx/Main_Menu theme.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/Crowd Cheering.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,15 +12,15 @@ margin_bottom = 597.0
 stream = ExtResource( 1 )
 autoplay = true
 
+[node name="Main music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -17.479
+pitch_scale = 1.06
+autoplay = true
+
 [node name="Crowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -4.67
 pitch_scale = 0.9
 autoplay = true
 bus = "SFX"
-
-[node name="Main music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -17.479
-pitch_scale = 1.06
-autoplay = true
