@@ -9,14 +9,14 @@ func _ready():
 	map = Global.current_scene
 	mech = Global.player
 	
-	$PlayerIcon.position = get_size()/2
+	$Center.position = get_size()/2
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 func clear_minimap():
-	for threatIcon in $PlayerIcon.get_children():
+	for threatIcon in $Center/Threats.get_children():
 		threatIcon.queue_free()
 
 func update_minimap_icons():
@@ -27,9 +27,10 @@ func update_minimap_icons():
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		var enemyDir = mech.global_position.direction_to(enemy.global_position)
 		var enemyIcon = $ThreatIcon.duplicate()
-		$PlayerIcon.add_child(enemyIcon)
+		$Center/Threats.add_child(enemyIcon)
 		enemyIcon.visible = true
 		enemyIcon.position = enemyDir * length
+	$Center/PlayerIcon.rotation = (Global.player_cursor.global_position - Global.player.global_position).angle() + PI/2
 	
 
 func _on_MapUpdateTimer_timeout():
