@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Entities/Parts/MissileLaunchers/BasicMissileLauncher.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/Entities/Parts/Melee/BasicClaw.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Entities/Parts/Head/HealthPack.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Entities/Parts/Mobility/DashLegs.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Entities/Parts/MissileLaunchers/EnergyBallLauncher.tscn" type="PackedScene" id=7]
 
 [node name="SuperPlayerMech" instance=ExtResource( 1 )]
 
@@ -29,3 +30,9 @@ position = Vector2( 102, -70 )
 
 [node name="BasicMissileLauncher" parent="Weapons" index="1" instance=ExtResource( 2 )]
 position = Vector2( -182, -48 )
+
+[node name="EnergyBallLauncher" parent="Weapons" index="2" instance=ExtResource( 7 )]
+position = Vector2( 184, 195 )
+
+[node name="EnergyBallLauncher2" parent="Weapons" index="3" instance=ExtResource( 7 )]
+position = Vector2( -158, 187 )
