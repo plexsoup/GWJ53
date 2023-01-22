@@ -124,27 +124,27 @@ polygon = PoolVector2Array( -407, -81, -400, -119, -348, -175, -23, -310, 42, -3
 scale = Vector2( 0.603, 0.431 )
 
 [node name="Sprite" type="Sprite" parent="YSort/Obstacles/Mountain3/Sprite" index="0"]
-position = Vector2( -213.8, -119.6 )
-rotation = -0.920904
-scale = Vector2( 3.57619, 3.57619 )
+position = Vector2( -328.781, -266.003 )
+rotation = -7.4561
+scale = Vector2( 1.19519, 1.19519 )
 texture = ExtResource( 10 )
 
 [node name="Sprite2" type="Sprite" parent="YSort/Obstacles/Mountain3/Sprite" index="1"]
-position = Vector2( -85.7999, 46.6 )
-rotation = -0.547908
-scale = Vector2( 3.4872, 3.4872 )
+position = Vector2( -124.054, 118.979 )
+rotation = -0.655016
+scale = Vector2( 1.17156, 1.27846 )
 texture = ExtResource( 11 )
 
 [node name="GreenCar" type="Sprite" parent="YSort/Obstacles/Mountain3/Sprite" index="2"]
-position = Vector2( 42.7998, 200.6 )
-rotation = -3.78987
-scale = Vector2( 3.2937, 3.2937 )
+position = Vector2( 82.688, 462.169 )
+rotation = -4.03667
+scale = Vector2( 1.04742, 1.14241 )
 texture = ExtResource( 13 )
 
 [node name="YellowishCarModular" type="Sprite" parent="YSort/Obstacles/Mountain3/Sprite" index="3"]
-position = Vector2( 75.2, 355 )
-rotation = -0.878096
-scale = Vector2( 3.23285, 3.23285 )
+position = Vector2( 121.68, 812.637 )
+rotation = -1.04807
+scale = Vector2( 1.12754, 1.25113 )
 texture = ExtResource( 12 )
 
 [node name="Mountain4" type="StaticBody2D" parent="YSort/Obstacles" index="3"]
@@ -228,18 +228,18 @@ color = Color( 0.596078, 0.411765, 0.176471, 1 )
 polygon = PoolVector2Array( -273, -243, -269, -436, -80, -472, -4, -256, 108, -99, 351, -9, 598, -68, 620, -41, 598, 58, 584, 179, 512, 193, 266, 157, -22, 54, -98, 9 )
 
 [node name="BlueCarModular" type="Sprite" parent="YSort/Obstacles/Mountain5" index="2"]
-position = Vector2( 506.6, 30.6 )
+position = Vector2( 499.4, 34.2001 )
 rotation = 6.81591
 scale = Vector2( 0.933, 0.978 )
 texture = ExtResource( 11 )
 
 [node name="PurpleCarModular" type="Sprite" parent="YSort/Obstacles/Mountain5/BlueCarModular" index="0"]
-position = Vector2( -165.964, 19.3431 )
+position = Vector2( -749.3, 77.9959 )
 rotation = 0.402079
 texture = ExtResource( 13 )
 
 [node name="YellowishCarModular" type="Sprite" parent="YSort/Obstacles/Mountain5/BlueCarModular" index="1"]
-position = Vector2( -70.1958, 34.5449 )
+position = Vector2( -293.26, 120.454 )
 rotation = -0.422242
 texture = ExtResource( 12 )
 
@@ -253,15 +253,15 @@ collision_mask = 15
 polygon = PoolVector2Array( -69, -352.2, 123.8, -299.4, 55.7999, 66.2001, 227.8, -185, 376.6, -75.3999, 355.2, -10.6, 185.6, 249.6, 125.6, 283.6, 17, 216.8, -7.80005, 141, -142.6, 104.8, -156.2, 28 )
 
 [node name="RedCarModular" type="Sprite" parent="YSort/Obstacles/Mountain6/CollisionPolygon2D" index="0"]
-position = Vector2( 185, 46.2 )
-rotation = 2.74563
-scale = Vector2( 0.971, 1.567 )
+position = Vector2( 176, 52.3999 )
+rotation = 1.70489
+scale = Vector2( 0.845287, 0.942602 )
 texture = ExtResource( 7 )
 
-[node name="PurpleCarModular" type="Sprite" parent="YSort/Obstacles/Mountain6/CollisionPolygon2D/RedCarModular" index="0"]
-position = Vector2( 30.7266, 56.2653 )
-rotation = -1.3843
-scale = Vector2( 0.466, 1.137 )
+[node name="PurpleCarModular" type="Sprite" parent="YSort/Obstacles/Mountain6/CollisionPolygon2D" index="1"]
+position = Vector2( -9.20007, -110.4 )
+rotation = -4.90607
+scale = Vector2( 0.72422, 0.908625 )
 texture = ExtResource( 11 )
 
 [node name="Polygon2D" type="Polygon2D" parent="YSort/Obstacles/Mountain6" index="1"]
@@ -284,16 +284,17 @@ visible = false
 color = Color( 0.596078, 0.411765, 0.176471, 1 )
 polygon = PoolVector2Array( -165, -26, -102, -137, -23, -179, 267, -175, 343, -177, 320, 31, 216, 27, 165, 92, 95, 137, -23, 160, -95, 205, -193, 181, -191, 54 )
 
-[node name="GreenCar" type="Sprite" parent="YSort/Obstacles/Mountain7" index="2"]
-position = Vector2( 130, -68.8 )
-rotation = 0.000848957
-scale = Vector2( 0.797, 0.915 )
-texture = ExtResource( 13 )
-
-[node name="RedCarModular" type="Sprite" parent="YSort/Obstacles/Mountain7/GreenCar" index="0"]
-position = Vector2( -24.5983, 50.7364 )
-rotation = 0.779101
+[node name="RedCarModular" type="Sprite" parent="YSort/Obstacles/Mountain7" index="2"]
+position = Vector2( 47.7798, 152.625 )
+rotation = -0.401785
+scale = Vector2( 0.804065, 0.908798 )
 texture = ExtResource( 7 )
+
+[node name="GreenCar" type="Sprite" parent="YSort/Obstacles/Mountain7" index="3"]
+position = Vector2( -329, -68.2 )
+rotation = -0.0245831
+scale = Vector2( 0.714665, 0.820475 )
+texture = ExtResource( 13 )
 
 [node name="RedCar1(StaticBody)" type="StaticBody2D" parent="YSort/Obstacles" index="7"]
 position = Vector2( -1664, -832 )
