@@ -21,7 +21,7 @@ func _ready():
 	Global.current_scene = self
 	var player = Global.player
 	if player == null:
-		player = load("res://scenes/Entities/Player/Player.tscn").instance()
+		player = load("res://scenes/Entities/Player/SuperPlayerMech.tscn").instance()
 	init(player)
 
 	#num_spawners = $Spawners.get_child_count()
@@ -45,7 +45,11 @@ func is_active():
 	else:
 		return false
 	
-	
+
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("free money cheat"):
+		pass
+		# was going to instantiate super player mech, but it's already in _ready()
 
 func get_spawner_teams_list() -> Array : # returns a list of team numbers in the battle
 	var teams = []
