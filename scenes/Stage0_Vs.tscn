@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Art/Vs SCreens/Vs SCreens/Rink.webm" type="VideoStream" id=1]
 [ext_resource path="res://sfx/Crowd Cheering.ogg" type="AudioStream" id=2]
-[ext_resource path="res://sfx/Main_Menu theme.wav" type="AudioStream" id=3]
+[ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=3]
 
 [node name="Node2D" type="Node2D"]
 

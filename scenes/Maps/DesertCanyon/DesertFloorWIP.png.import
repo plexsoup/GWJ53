@@ -14,7 +14,7 @@ dest_files=[ "res://.import/DesertFloorWIP.png-42fb0ff2eda481c607b2b8b3a81919ce.
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
