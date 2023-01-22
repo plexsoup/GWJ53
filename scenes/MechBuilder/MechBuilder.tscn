@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/MechBuilder/SellSymbol.png" type="Texture" id=9]
 [ext_resource path="res://scenes/MechBuilder/ToolTip.gd" type="Script" id=10]
 [ext_resource path="res://scenes/MechBuilder/MechBuilderTheme.tres" type="Theme" id=11]
-[ext_resource path="res://sfx/Main_Menu theme.wav" type="AudioStream" id=12]
+[ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=12]
 [ext_resource path="res://sfx/AddPart.ogg" type="AudioStream" id=13]
 [ext_resource path="res://sfx/CashSound.ogg" type="AudioStream" id=14]
 

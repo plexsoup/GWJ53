@@ -10,10 +10,10 @@
 [ext_resource path="res://scenes/Menus/Outro.tscn" type="PackedScene" id=8]
 [ext_resource path="res://vfx/WaterMaterial.tres" type="Material" id=9]
 [ext_resource path="res://_common/Materials/SmallWhiteSquare.png" type="Texture" id=10]
+[ext_resource path="res://Music/Harbor.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Art/Harbor Assests/Modular Dock box single.png" type="Texture" id=12]
 [ext_resource path="res://Art/Harbor Assests/Modularbox.png" type="Texture" id=13]
 [ext_resource path="res://Art/Harbor Assests/Harbor_base.png" type="Texture" id=14]
-[ext_resource path="res://Music/Hardor.wav" type="AudioStream" id=15]
 [ext_resource path="res://sfx/531015__noted451__ocean-waves.wav" type="AudioStream" id=16]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -223,6 +223,6 @@ pitch_scale = 0.69
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
-stream = ExtResource( 15 )
+stream = ExtResource( 11 )
 volume_db = -7.417
 autoplay = true
