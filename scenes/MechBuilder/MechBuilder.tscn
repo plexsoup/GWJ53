@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/MechBuilder/MechBuilder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=12]
 [ext_resource path="res://sfx/AddPart.ogg" type="AudioStream" id=13]
 [ext_resource path="res://sfx/CashSound.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Art/Fight_Push.png" type="Texture" id=15]
+[ext_resource path="res://Art/Fight_Netural.png" type="Texture" id=16]
+[ext_resource path="res://Art/Fight_Hover.png" type="Texture" id=17]
 
 [sub_resource type="GDScript" id=4]
 resource_name = "Cursor"
@@ -226,15 +229,18 @@ size_flags_vertical = 3
 custom_constants/separation = 0
 alignment = 1
 
-[node name="FightButton" type="Button" parent="Foreground/Control"]
+[node name="FightButton" type="TextureButton" parent="Foreground/Control"]
 unique_name_in_owner = true
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -188.0
-margin_top = 57.0
-margin_right = -19.0
-margin_bottom = 97.0
-text = "Go Fight!"
+margin_left = -163.0
+margin_top = 298.0
+margin_right = -35.0
+margin_bottom = 395.0
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 17 )
+expand = true
 
 [node name="GrabFocus" parent="Foreground/Control/FightButton" instance=ExtResource( 7 )]
 
