@@ -4,7 +4,7 @@ Cursor moves onto the closest enemy, so weapons can point toward it.
 
 extends Sprite
 
-export var speed : float = 50.0
+export var speed : float = 1.5
 var mech
 var nearest_enemy
 

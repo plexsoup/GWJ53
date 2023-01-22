@@ -124,5 +124,6 @@ func _on_DeathViz_finished():
 
 func _on_fight_started():
 	State = States.STARTED
-
+	
+	$Appearance/Sprite.hide()
 

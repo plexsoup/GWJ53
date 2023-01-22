@@ -6,7 +6,10 @@ export var next_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var dialog =Dialogic.start("Win1")
+	
+	var win_num = Global.battles_completed.size() % Global.battles.size()
+	
+	var dialog =Dialogic.start("Win" + str(win_num))
 	
 	add_child(dialog) 
 	dialog.connect("timeline_end", self, "_on_dialog_ended")
