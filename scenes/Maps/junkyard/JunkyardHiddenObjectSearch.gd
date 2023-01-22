@@ -26,6 +26,9 @@ func _ready():
 
 		part.connect("found", self, "_on_part_found")
 
+	if num_parts_to_find == 0:
+		found_all_parts()
+	
 func found_all_parts():
 	# TODO: Pass the cards back to the mechbuilder hangar or player deck
 	Global.stage_manager.change_scene_to(next_scene)
