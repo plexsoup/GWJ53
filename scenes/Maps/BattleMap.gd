@@ -51,6 +51,17 @@ func _unhandled_input(_event):
 		pass
 		# was going to instantiate super player mech, but it's already in _ready()
 
+	if Input.is_action_just_pressed("debug_mode"):
+		Global.debug_mode = !Global.debug_mode
+		
+		var entities = get_tree().get_nodes_in_group("enemies")
+		entities.append(Global.player)
+		
+		for entity in entities:
+			if entity.has_method("_on_debug_mode_requested"):
+				entity._on_debug_mode_requested()
+
+
 func get_spawner_teams_list() -> Array : # returns a list of team numbers in the battle
 	var teams = []
 	

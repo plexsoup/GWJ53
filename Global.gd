@@ -1,5 +1,6 @@
 extends Node
 
+var debug_mode : bool = false
 
 var player
 var current_scene
@@ -26,7 +27,7 @@ var battle_scenes = {
 var vs_hype_screens = {
 	"Ice Rink":"res://scenes/Stage0_Vs.tscn",
 	"Desert Canyon": "res://scenes/Stage1_Vs.tscn",
-	"Junkyard": "res://scenes/Stage2Vs.tscn",
+	"Junkyard": "res://scenes/Stage2_Vs.tscn",
 	"Old Port": "res://scenes/Stage3_Vs.tscn",
 }
 var battles_completed = []
