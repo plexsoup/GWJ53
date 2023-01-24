@@ -8,7 +8,7 @@ Locomotion nodes should look to Input nodes to see when they should move.
 
 extends Node2D
 
-var inputs = [ "move_left", "move_right", "move_forwards", "move_backwards", "shoot_primary", "shoot_alternate", "jump"]
+var inputs = [ "move_left", "move_right", "move_forwards", "move_backwards", "shoot_primary", "shoot_alternate", "dash"]
 
 var pressed = {}
 
@@ -25,7 +25,7 @@ func init(myMech):
 	mech = myMech
 	mech.input_controller = self
 	mech.targetting_cursor = $Cursor
-	
+	$Cursor.mech = mech
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(_delta):
@@ -33,7 +33,7 @@ func init(myMech):
 		
 
 func _unhandled_input(_event):
-	if mech != null and mech.State == mech.States.READY:
+	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE]:
 		if mech.is_human_player:
 			for inputName in inputs:
 				if Input.is_action_pressed(inputName):
@@ -44,3 +44,9 @@ func _unhandled_input(_event):
 		else:
 			printerr("Human input on non-human player. " + self.name + " on " + owner.name)
 			
+func is_any_movement_key_pressed():
+	var movementPressed = false
+	for buttonName in ["move_right", "move_left", "move_forwards", "move_backwards"]:
+		if pressed[buttonName] == true:
+			movementPressed = true
+	return movementPressed

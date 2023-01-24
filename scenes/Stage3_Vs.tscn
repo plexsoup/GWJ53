@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Art/Vs SCreens/Vs SCreens/stage 3.webm" type="VideoStream" id=1]
+[ext_resource path="res://sfx/Crowd Cheering.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=3]
+[ext_resource path="res://scenes/VS_Screen.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Maps/OldPort/OldPortMap.tscn" type="PackedScene" id=5]
+
+[node name="Stage3Vs_OldPort" type="Node2D"]
+script = ExtResource( 4 )
+next_scene = ExtResource( 5 )
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1019.0
+margin_bottom = 596.0
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="Crowd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -4.67
+pitch_scale = 0.9
+autoplay = true
+bus = "SFX"
+
+[node name="Main music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -17.479
+pitch_scale = 1.06
+autoplay = true

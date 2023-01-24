@@ -7,6 +7,11 @@
 num_spawns_per_interval = 3
 spawn_randomly = true
 
+[node name="Sprite" parent="Appearance" index="0"]
+self_modulate = Color( 1, 1, 1, 1 )
+scale = Vector2( 1, 1 )
+texture = null
+
 [node name="SpawnSupply" parent="." index="3"]
 resources = [ PoolStringArray( "BasicAIMech" ), [ ExtResource( 2 ) ] ]
 

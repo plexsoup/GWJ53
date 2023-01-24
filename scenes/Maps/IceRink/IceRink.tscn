@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Maps/GenericBattle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Menus/WinRewardCutscene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Maps/Spawners/EnergyBallMechSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Maps/IceRink/iceRinkMapTexture.png" type="Texture" id=4]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( -3780, -1682, 4624, -1644, 4647, 1836, -3796, 1828 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -3780, -1682, 4624, -1644, 4647, 1836, -3796, 1828 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 451.5, 2534 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3791.5, 265.5 )
+
+[node name="IceRink" instance=ExtResource( 1 )]
+win_scene = ExtResource( 2 )
+cash_for_winning = 7
+cash_for_losing = 0
+
+[node name="GroundTex" parent="Ground" index="0"]
+position = Vector2( 3126, 14 )
+scale = Vector2( 2.086, 2.027 )
+texture = ExtResource( 4 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground/GroundTex" index="0"]
+visible = false
+polygon = PoolVector2Array( -1719, -2052, 5268, -2086, 5314, 2160, -1782, 2155 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Ground" index="1"]
+position = Vector2( 2787, -91 )
+navpoly = SubResource( 1 )
+
+[node name="WallWest" type="StaticBody2D" parent="YSort/Obstacles" index="0"]
+position = Vector2( -1716, -11 )
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Obstacles/WallWest" index="0"]
+position = Vector2( 10.5, 1 )
+shape = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="YSort/Obstacles/WallWest" index="1"]
+visible = false
+margin_left = -427.0
+margin_top = -2499.0
+margin_right = 466.0
+margin_bottom = 2522.0
+color = Color( 0.247059, 0.698039, 0.941176, 1 )
+
+[node name="WallEast" type="StaticBody2D" parent="YSort/Obstacles" index="1"]
+position = Vector2( 7970, 19 )
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Obstacles/WallEast" index="0"]
+position = Vector2( 10.5, 1 )
+shape = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="YSort/Obstacles/WallEast" index="1"]
+visible = false
+margin_left = -427.0
+margin_top = -2499.0
+margin_right = 466.0
+margin_bottom = 2522.0
+color = Color( 0.247059, 0.698039, 0.941176, 1 )
+
+[node name="WallNorth" type="StaticBody2D" parent="YSort/Obstacles" index="2"]
+position = Vector2( 2830, -2428 )
+scale = Vector2( 1.24798, 0.95142 )
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Obstacles/WallNorth" index="0"]
+position = Vector2( 273.5, 256.5 )
+shape = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="YSort/Obstacles/WallNorth" index="1"]
+visible = false
+margin_left = -3345.0
+margin_top = -41.0
+margin_right = -2452.0
+margin_bottom = 4980.0
+rect_scale = Vector2( 8.17493, 0.110362 )
+color = Color( 0.247059, 0.698039, 0.941176, 1 )
+
+[node name="WallSouth" type="StaticBody2D" parent="YSort/Obstacles" index="3"]
+position = Vector2( 2809, 1954 )
+scale = Vector2( 1.22739, 1.06701 )
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Obstacles/WallSouth" index="0"]
+position = Vector2( 273.5, 256.5 )
+shape = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="YSort/Obstacles/WallSouth" index="1"]
+visible = false
+margin_left = -3345.0
+margin_top = -41.0
+margin_right = -2452.0
+margin_bottom = 4980.0
+rect_scale = Vector2( 8.17493, 0.110362 )
+color = Color( 0.247059, 0.698039, 0.941176, 1 )
+
+[node name="EnergyBallMechSpawner" parent="Spawners" index="0" instance=ExtResource( 3 )]
+position = Vector2( 4172, -79 )
+team = 4

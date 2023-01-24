@@ -11,14 +11,17 @@ To meet accessibility requirements:
 
 """
 
-extends Node2D
+extends MechPart
 
-var mech
 #export var projectile : PackedScene
-export var beam_range : float = 200.0
-export var damage : float = 500.0
+export var beam_range : float = 1500.0
+export var human_range_advantage : float = 1.15
+export var damage : float = 100.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 export var line_of_sight : bool = false
+
+export var shot_duration : float = 1.0
+export var reload_time : float = 1.5
 
 
 enum States { RELOADING, SHOOTING }
@@ -30,22 +33,30 @@ signal hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	vary_shot_timers(0.2)
 	$ReloadTimer.start()
+
+func vary_shot_timers(variation): # 0.0 to 1.0. Low is less variability
+	$ShotDurationTimer.set_wait_time(rand_range(1.0-variation, 1.0+variation)*shot_duration)
+	$ReloadTimer.set_wait_time(rand_range(1.0-variation, 1.0+variation)*reload_time)
+
 
 func init(myMech):
 	mech = myMech
+	if mech == Global.player:
+		damage *= 2.0
+		beam_range *= human_range_advantage
+
 	if mech.is_in_group("enemies"):
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, true) # player
-		$TargetLocation/HurtBox.set_collision_mask_bit(1, false) # enemies
 		$RayCast2D.set_collision_mask_bit(0, true)
-		$RayCast2D.set_collision_mask_bit(1, false)
+		$TargetLocation/HurtBox.set_collision_mask_bit(1, true) # enemies
 		
 	else: # player
 		$TargetLocation/HurtBox.set_collision_mask_bit(1, true)
 		$TargetLocation/HurtBox.set_collision_mask_bit(0, false)
-		$RayCast2D.set_collision_mask_bit(1, true)
 		$RayCast2D.set_collision_mask_bit(0, false)
+	
 	
 	if line_of_sight:
 		$RayCast2D.enabled = true
@@ -59,25 +70,30 @@ func scene_finished():
 	
 
 func shoot():
-	if scene_finished():
+	if scene_finished() or disabled:
 		return
+	
 		
 	# WIP we should ask the target acquisition system for a target
-	if mech != null and mech.State == mech.States.READY:
+	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
 		State = States.SHOOTING
 		$TargetLocation/HurtBox.set_deferred("disabled", false)
-
+		$TargetLocation.visible = true
 		$Line2D.default_color.a = 0.66
 		$ShotDurationTimer.start()
 		make_noise()
+	else:
+		$ReloadTimer.start()
+
 
 func make_noise():
-	$LaserNoise.set_pitch_scale(rand_range(0.8, 1.2))
+	$LaserNoise.set_pitch_scale(rand_range(0.8, 1.5))
 	$LaserNoise.play()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	aim_laser(delta)
+	if not disabled:
+		aim_laser(delta)
 	
 
 func aim_laser(_delta):
@@ -97,14 +113,20 @@ func aim_laser(_delta):
 			if line_of_sight:
 				$RayCast2D.set_cast_to(rescaled_target_pos)
 				if $RayCast2D.is_colliding():
+					var collisionPoint = $RayCast2D.get_collision_point()
 					$Line2D.points = [ Vector2.ZERO, self.to_local($RayCast2D.get_collision_point())]
-			$TargetLocation.position = rescaled_target_pos
-			$TargetLocation/CPUParticles2D.emitting = true
+					$TargetLocation.position = collisionPoint
+				else: # no collision
+					$TargetLocation.position = rescaled_target_pos
+			else: # goes through walls
+				$TargetLocation.position = rescaled_target_pos
 		else:
 			$TargetLocation/CPUParticles2D.emitting = false
 
 
 func _on_ReloadTimer_timeout():
+	vary_shot_timers(0.5)
+
 	shoot()
 
 
@@ -116,7 +138,7 @@ func _on_ShotDurationTimer_timeout():
 	$LaserNoise.stop()
 	$TargetLocation/HurtBox.set_deferred("disabled", true)
 	$ReloadTimer.start()
-
+	$TargetLocation.visible = false
 
 #func _on_HurtBox_body_entered(body):
 #	if body != mech: # don't hurt yourself.
@@ -127,25 +149,26 @@ func _on_ShotDurationTimer_timeout():
 
 func hurt_target(target):
 	var impactVector = Vector2.ZERO # no knockback for beam weapon
-	if target.has_method("_on_hit"):
+	if target.has_method("_on_hit") and target.team != mech.team:
 		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("hit", target, "_on_hit")
 		emit_signal("hit", damage, impactVector, damage_type)
 		# disconnect signal so they don't keep taking hits after we target someone else
 		disconnect("hit", target, "_on_hit")
-			
+		if Global.user_prefs["particles"]:
+			$TargetLocation/CPUParticles2D.emitting = true
 
 
 func _on_DamageTicks_timeout():
 	if State == States.SHOOTING:
-		if line_of_sight == false: # hit only things under the target
+		if line_of_sight == false: # hurtbox under cursor
 			var possible_targets = $TargetLocation/HurtBox.get_overlapping_bodies()
 			if possible_targets.size() > 0:
 				for target in possible_targets:
 					hurt_target(target)
-		else: # hit the first thing you touch
+		else: # raycast: first thing you touch
 			var target = $RayCast2D.get_collider()
-			if target:
+			if target and target.has_method("get_team") and target.team != mech.team:
 				hurt_target(target)
 				
 			

@@ -17,8 +17,9 @@ var current_target
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	var timer = get_tree().create_timer(0.66)
+	yield(timer, "timeout")
+	select_new_target()
 
 func init(myMech):
 	mech = myMech
@@ -29,9 +30,11 @@ func init(myMech):
 #	pass
 
 func select_new_target():
-	var possible_targets = get_tree().get_nodes_in_group("enemeies")
+	var possible_targets = get_tree().get_nodes_in_group("enemies")
 	possible_targets.erase(mech)
-	possible_targets.push_back(Global.player)
+	if Global.player != null:
+		if mech.team != Global.player.team:
+			possible_targets.push_back(Global.player)
 	
 	var enemy_targets = []
 	for target in possible_targets:
@@ -39,7 +42,10 @@ func select_new_target():
 			enemy_targets.push_back(target)
 			
 	# grab one randomly for now, but it might be better to look for the closest
-	set_target( enemy_targets[randi()%enemy_targets.size()] )
+	
+	if enemy_targets.size() > 0:
+		set_target( enemy_targets[randi()%enemy_targets.size()] )
+
 
 
 func set_target(target):

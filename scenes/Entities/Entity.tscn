@@ -1,21 +1,142 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://_common/Materials/HP_progress_over.png" type="Texture" id=2]
 [ext_resource path="res://_common/Materials/HP_progress_back.png" type="Texture" id=3]
 [ext_resource path="res://_common/Materials/HP_progress_fill.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Entities/TeamLabel.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Entities/Projectiles/shrapnel.png" type="Texture" id=6]
+[ext_resource path="res://Art/angelchama/hullv2.png" type="Texture" id=7]
+[ext_resource path="res://sfx/ROBOT_EXPLOSION.wav" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Appearance:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Health/TextureProgress:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Debug/TeamLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShrapnelParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "die"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Health/TextureProgress:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShrapnelParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+
+[sub_resource type="CanvasItemMaterial" id=4]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.0820896, 0.19403, 0.763682, 0.855721 )
+colors = PoolColorArray( 1, 0.888608, 0.175476, 1, 0.988662, 0.144223, 0.144223, 1, 0, 0, 0, 1, 0.38, 0.38, 0.38, 1 )
 
 [node name="Entity" type="KinematicBody2D"]
 script = ExtResource( 1 )
+iframes_time = 0.2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="DefaultAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
 anims/die = SubResource( 1 )
+anims/idle = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Struts" type="Node2D" parent="."]
 
 [node name="Health" type="Node2D" parent="."]
 z_index = 1
@@ -44,6 +165,8 @@ texture_progress = ExtResource( 4 )
 [node name="Appearance" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Appearance"]
+visible = false
+texture = ExtResource( 7 )
 
 [node name="Engine" type="Node2D" parent="."]
 
@@ -54,6 +177,10 @@ texture_progress = ExtResource( 4 )
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Defences" type="Node2D" parent="."]
+
+[node name="iframesTimer" type="Timer" parent="Defences"]
+wait_time = 0.25
+one_shot = true
 
 [node name="Summons" type="Node2D" parent="."]
 
@@ -71,5 +198,48 @@ margin_bottom = 225.0
 text = "TeamLabel"
 script = ExtResource( 5 )
 
+[node name="ShrapnelParticles" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.37
+local_coords = false
+texture = ExtResource( 6 )
+emission_shape = 2
+emission_rect_extents = Vector2( 100, 100 )
+direction = Vector2( 0, -1 )
+spread = 90.0
+initial_velocity = 1200.0
+initial_velocity_random = 0.6
+angular_velocity = 800.0
+angular_velocity_random = 0.65
+scale_amount = 5.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[node name="SmokeParticles" type="CPUParticles2D" parent="."]
+z_index = 1
+emitting = false
+amount = 80
+one_shot = true
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 30, 30 )
+direction = Vector2( 0, -1 )
+spread = 69.0
+gravity = Vector2( 0, -100 )
+initial_velocity = 100.0
+linear_accel = 15.0
+angle = 45.0
+scale_amount = 40.0
+color_ramp = SubResource( 5 )
+
+[node name="DeathNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
 [connection signal="timeout" from="Health/DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="timeout" from="Health/DecayTimer" to="." method="_on_DecayTimer_timeout"]
+[connection signal="timeout" from="Defences/iframesTimer" to="." method="_on_iframesTimer_timeout"]

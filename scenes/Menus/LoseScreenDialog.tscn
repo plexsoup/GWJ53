@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Menus/LoseScreenDialog.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Maps/junkyard/JunkyardHiddenObjectSearch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[node name="LoseScreenDialogue" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+next_scene = ExtResource( 2 )
+
+[node name="BGImage" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+stretch_mode = 7
+
+[node name="Label" type="Label" parent="BGImage"]
+visible = false
+anchor_right = 1.0
+margin_bottom = 27.0
+text = "You Lost the match. Better luck next time."
+align = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -26.233
+pitch_scale = 0.57
+autoplay = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="EscToSkipLabel" type="Label" parent="MarginContainer"]
+material = SubResource( 1 )
+margin_left = 802.0
+margin_top = 553.0
+margin_right = 1004.0
+margin_bottom = 580.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = " ESC to skip"

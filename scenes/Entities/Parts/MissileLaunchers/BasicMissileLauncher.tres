@@ -7,11 +7,13 @@
 [resource]
 script = ExtResource( 1 )
 name = "Basic Missile Launcher"
-description = "Shoots a few rockets"
+description = "I call it, \"The Ex\". Best Missile Launcher you'll find anywhere."
 icon = ExtResource( 2 )
+icon_scale = 1.0
+icon_offset = Vector2( 0, 0 )
 mech_part = ExtResource( 3 )
 type = 2
-cost = 3
+cost = 5
 health = 0
 power_draw = 5
 armor = 0

@@ -1,0 +1,25 @@
+{
+	"color": "#ffc61313",
+	"description": "The Father of Danny, the Mechanic",
+	"display_name": "Gerard",
+	"display_name_bool": true,
+	"id": "character-1674084541.json",
+	"mirror_portraits": false,
+	"name": "Gerard",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 100,
+	"offset_y": 30,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Art/Gerard.png"
+		},
+		{
+			"name": "Father Portrait",
+			"path": "res://Art/Father Portrait.png"
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

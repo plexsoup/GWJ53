@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Harbor.ogg-91db38677f72dd6c58bfbf97731e7756.oggstr"
+
+[deps]
+
+source_file="res://Music/Harbor.ogg"
+dest_files=[ "res://.import/Harbor.ogg-91db38677f72dd6c58bfbf97731e7756.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

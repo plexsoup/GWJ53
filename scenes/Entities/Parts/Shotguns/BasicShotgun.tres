@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Entities/Parts/Part.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Entities/Parts/Shotguns/shotgun.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Entities/Parts/Shotguns/BasicShotgun.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Basic Missile Launcher"
+description = "Refurbished vintage shotgun. Pump action mechanism converted for mechas."
+icon = ExtResource( 2 )
+icon_scale = 1.0
+icon_offset = Vector2( 0, 0 )
+mech_part = ExtResource( 3 )
+type = 2
+cost = 3
+health = 0
+power_draw = 5
+armor = 0
+shield = 0

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Menus/WinRewardCutscene.gd" type="Script" id=1]
+[ext_resource path="res://scenes/MechBuilder/MechBuilder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=3]
+[ext_resource path="res://scenes/MechBuilder/Hanger_copy.jpg" type="Texture" id=4]
+
+[node name="WinRewardCutscene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+next_scene = ExtResource( 2 )
+
+[node name="BGImage" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

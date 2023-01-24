@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Time to Fix Things.ogg-bc64f8b887349a2936035ea0946ef896.oggstr"
+
+[deps]
+
+source_file="res://Music/Time to Fix Things.ogg"
+dest_files=[ "res://.import/Time to Fix Things.ogg-bc64f8b887349a2936035ea0946ef896.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

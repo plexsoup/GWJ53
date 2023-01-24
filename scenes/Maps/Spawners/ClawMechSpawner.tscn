@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Maps/Spawners/EnemySpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Entities/Enemies/BasicClaw_Mech.tscn" type="PackedScene" id=2]
+
+[node name="ClawMechSpawner" instance=ExtResource( 1 )]
+num_spawns_per_interval = 3
+spawn_randomly = true
+
+[node name="Sprite" parent="Appearance" index="0"]
+self_modulate = Color( 1, 1, 1, 1 )
+scale = Vector2( 4, 4 )
+texture = null
+
+[node name="SpawnSupply" parent="." index="3"]
+resources = [ PoolStringArray( "BasicClaw_Mech" ), [ ExtResource( 2 ) ] ]
+
+[editable path="DeathViz"]

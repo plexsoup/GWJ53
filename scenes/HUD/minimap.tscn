@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/HUD/minimapPointer.png" type="Texture" id=1]
+[ext_resource path="res://scenes/HUD/minimapFrameFilled.png" type="Texture" id=2]
+[ext_resource path="res://scenes/HUD/minimap.gd" type="Script" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[node name="minimap" type="NinePatchRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="MapUpdateTimer" type="Timer" parent="."]
+wait_time = 0.078
+autostart = true
+
+[node name="Center" type="Node2D" parent="."]
+position = Vector2( 61, 63 )
+
+[node name="Threats" type="Node2D" parent="Center"]
+
+[node name="PlayerIcon" type="Sprite" parent="Center"]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -2.503 )
+
+[node name="ThreatIcon" type="Polygon2D" parent="."]
+visible = false
+material = SubResource( 1 )
+position = Vector2( 65, 62 )
+scale = Vector2( 0.339027, 0.339027 )
+color = Color( 0.545098, 0.0588235, 0.0588235, 1 )
+polygon = PoolVector2Array( 0, -8.84888, 8.84888, 0, 0, 8.84888, -8.84888, 0 )
+
+[connection signal="timeout" from="MapUpdateTimer" to="." method="_on_MapUpdateTimer_timeout"]

@@ -1,5 +1,6 @@
 extends Node
 
+var debug_mode : bool = false
 
 var player
 var current_scene
@@ -7,17 +8,33 @@ var stage_manager
 var game_speed : float = 1.0 # Slow Motion < 1.0, Speed Up > 1.0
 var auto_targetting: bool = false # false = binding twin-stick roguelite, true = bullet_heaven vampire survivors clone
 var player_cursor : Sprite # in battles, always use this for targetting instead of get_global_mouse_position()
+var persistent_mech : MechStructure
+var money = 3
+
+var user_prefs = {
+	"particles" : true
+}
 
 enum damage_types { IMPACT, LASER, FIRE, SHOCK }
 
-var battles = ["Desert Canyon", "Junkyard", "Old Port"]
+var battles = ["Ice Rink", "Desert Canyon", "Junkyard", "Old Port"]
 var battle_scenes = {
-	"Old Port":"res://scenes/Maps/StreetBattle01.tscn",
-	"Desert Canyon":"res://scenes/Maps/DesertCanyonBattle.tscn",
-	"Junkyard": "res://scenes/Maps/StreetBattle01.tscn",
+	"Ice Rink":"res://scenes/Maps/IceRink/IceRink.tscn",
+	"Desert Canyon":"res://scenes/Maps/DesertCanyon/DesertCanyonMap.tscn",
+	"Junkyard": "res://scenes/Maps/junkyard/JunkyardMap.tscn",
+	"Old Port":"res://scenes/Maps/OldPort/OldPortMap.tscn",
+}
+var vs_hype_screens = {
+	"Ice Rink":"res://scenes/Stage0_Vs.tscn",
+	"Desert Canyon": "res://scenes/Stage1_Vs.tscn",
+	"Junkyard": "res://scenes/Stage2_Vs.tscn",
+	"Old Port": "res://scenes/Stage3_Vs.tscn",
 }
 var battles_completed = []
-var team_colors = [Color.red, Color.blue, Color.yellow, Color.purple, Color.peru]
+var team_names = ["Danny", "Black", "Blue", "Green", "Pink", "Purple", "White"]
+var team_colors = [Color.peru, Color.black, Color.blue, Color.green, Color.deeppink, Color.darkmagenta, Color.white]
+var into_has_played = false
+
 
 var parts_pool := {}
 func _ready():

@@ -12,8 +12,12 @@ var current_path
 var local_path
 var next_point : Vector2
 var target : Node2D
+export var flocking : bool = false
+var flocking_vector : Vector2 = Vector2.ZERO
 
 var mech
+
+var wall_avoid_vector : Vector2 = Vector2.ZERO
 
 # for locomotion which relies in input controllers,
 # store virtual button presses
@@ -51,7 +55,7 @@ func update_nav():
 		target = mech.currently_targetted_enemy_mech
 		
 		
-	if !is_instance_valid(target) or target.State == target.States.DEAD:
+	if !is_instance_valid(target) or target.State == target.States.DYING:
 		return
 
 	var level_navigation_map = get_world_2d().get_navigation_map()
@@ -65,22 +69,65 @@ func update_nav():
 
 	update_virtual_controller_buttons()
 
+	
+
+func get_flocking_vector():
+	var new_flocking_vector = Vector2.ZERO
+	var teammates = Utils.get_teammates(mech.team)
+	var cohesion_vector = Vector2.ZERO
+	var alignment_vector = Vector2.ZERO
+	var avoidance_vector = Vector2.ZERO
+	
+	teammates.erase(self.mech)
+	for teammate in teammates:
+		cohesion_vector += teammate.global_position
+		alignment_vector += teammate.get_velocity()
+		if teammate.global_position.distance_to(self.mech.global_position) < 100:
+			avoidance_vector += teammate.global_position - self.mech.global_position
+	
+	if teammates.size() > 1: # if there are more than 2 teammates, average the vectors
+		cohesion_vector /= float(teammates.size())
+		alignment_vector /= float(teammates.size())
+		cohesion_vector -= self.mech.global_position
+		#alignment_vector -= self.mech.velocity
+		cohesion_vector = cohesion_vector.normalized() * 1.5
+		alignment_vector = alignment_vector.normalized()
+		avoidance_vector = avoidance_vector.normalized()
+	new_flocking_vector = cohesion_vector + alignment_vector + avoidance_vector
+	return new_flocking_vector # just returns a value, doesn't update global var, flocking_vector
+
+
+
 func update_virtual_controller_buttons():
+	var targetVec = next_point.normalized()
+	targetVec += wall_avoid_vector
+
+	if flocking:
+		targetVec += flocking_vector.normalized()
+		targetVec /= 2.0
+	
+
 	for buttonName in ["move_right", "move_left", "move_forwards", "move_backwards"]:
 		pressed[buttonName] = false
 		
-	if next_point.x > 0:
+	if targetVec.x > 0:
 		pressed["move_right"] = true
-	elif next_point.x < 0:
+	elif targetVec.x < 0:
 		pressed["move_left"] = true
-	if next_point.y > 0:
+	if targetVec.y > 0:
 		pressed["move_backwards"] = true
-	elif next_point.y < 0:
+	elif targetVec.y < 0:
 		pressed["move_forwards"] = true
 		
 	
-
-
+func is_any_movement_key_pressed():
+	var movementPressed = false
+	for buttonName in ["move_right", "move_left", "move_forwards", "move_backwards"]:
+		if pressed[buttonName] == true:
+			movementPressed = true
+	return movementPressed
+	
+	
 func set_target(newTarget):
 	target = newTarget
 	
@@ -91,3 +138,12 @@ func get_next_point():
 
 func _on_NavUpdateTimer_timeout():
 	update_nav()
+	if flocking:
+		flocking_vector = get_flocking_vector()
+
+
+func _on_wall_detected(direction):
+	wall_avoid_vector = -direction
+
+func _on_wallradar_all_clear():
+	wall_avoid_vector = Vector2.ZERO

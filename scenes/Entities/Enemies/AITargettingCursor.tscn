@@ -4,6 +4,7 @@
 [ext_resource path="res://scenes/Entities/Enemies/AITargettingCursor.gd" type="Script" id=2]
 
 [node name="AITargettingCursor" type="Sprite"]
+visible = false
 modulate = Color( 0.811765, 0.85098, 0.113725, 1 )
 scale = Vector2( 0.527254, 0.5687 )
 texture = ExtResource( 1 )

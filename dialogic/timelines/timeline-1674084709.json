@@ -1,0 +1,364 @@
+{
+	"events": [
+		{
+			"animation": "1-fade_in.gd",
+			"animation_length": 1,
+			"animation_wait": true,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Uhh... hey, uhhh... Welcome home, Dad!",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_01D.wav"
+				}
+			}
+		},
+		{
+			"animation": "slide_in_left.gd",
+			"animation_length": 1,
+			"animation_wait": true,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"emit_signal": "show skip",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Uh, what'cha got there, Son?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_02G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That is a MechaBusters Hunter V1 core. Old, but still works! And, that's not even the best thing about it!",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_03D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Mhm... where did you get it?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_04G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The Junkyard.",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_05D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What!? With what money!?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_06G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ummm... I put it on your tab at the junkyard. ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_07D [TAKE 2].wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You did what!? Danny! Come on! ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_9G [Take 2].wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Just 'cause I work there doesn't mean you can invite yourself in! You could've got HURT! Or worse... ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_10G [Take 2].wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Got me fired!",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/GottenMeFired.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Joking son. But seriously, don't go out there without me.  ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/JustKidding.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "But... the best part...",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_12D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "uhhh... What's the best part?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_13G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's old, but the core is still accepted in official tournaments. In fact, it's the absolute oldest model that they allow. How lucky, right?!",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Voice",
+					"file": "res://Narrative/NA01_Intro/NA01_14D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Excuse me? Tournament?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_15G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah, and there's one happening at the Kiernan Cowell hockey rink. You know? The one by the train yard.",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_16D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "We don't have money to buy parts.",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_17G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "But there is a junkyard with cheap parts...",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_18D [Take 2].wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah... and that also costs money. ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_19G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "But not as much! And aren't you paying off your boss for that solid brass skull gear shift knob you put in the car?  ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_20D.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Urgh... fine. But you are not to make a habit of this. Okay?",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_21G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "And it's you paying this off, not me. So, you better go around and mow some lawns.   ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_22G.wav"
+				}
+			}
+		},
+		{
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Deal!",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_23D.wav"
+				}
+			}
+		},
+		{
+			"animation": "back_out_left.gd",
+			"animation_length": 0,
+			"animation_wait": true,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1674084678.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
+		},
+		{
+			"character": "character-1674084541.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Haha... alright, so when's this tournament? ",
+			"voice_data": {
+				"0": {
+					"audio_bus": "Master",
+					"file": "res://Narrative/NA01_Intro/NA01_24G.wav"
+				}
+			}
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1674084709.json",
+		"name": "Intro"
+	}
+}

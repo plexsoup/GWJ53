@@ -19,8 +19,12 @@ export var spawn_randomly : bool = false # if true, walk down the list of availa
 export var team : int = -1 setget set_team, get_team
 export var rescale_spawns : Vector2 = Vector2.ONE
 
+var map
 var current_spawn_num : int = 0
 var active_spawns = [] # array of object refs in case we need it for flocking or running patterns
+
+enum States { WAITING, STARTED }
+var State = States.WAITING
 
 signal finished
 
@@ -28,6 +32,7 @@ signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	map = Global.current_scene
 	$SpawnTimer.set_wait_time(time_between_spawns)
 	$SpawnTimer.start()
 	custom_ready()
@@ -89,7 +94,6 @@ func spawn_something(spawnNum : int = -1):
 	if current_spawn_num < max_spawns:
 		$SpawnTimer.start()
 	else:
-		print(self.name + " finished spawning")
 		emit_signal("finished")
 
 
@@ -103,8 +107,9 @@ func die():
 		
 
 func _on_SpawnTimer_timeout():
-	if current_spawn_num < max_spawns:
-		spawn_something(num_spawns_per_interval)
+	if Global.current_scene.State == Global.current_scene.States.SPAWNING:
+		if current_spawn_num < max_spawns:
+			spawn_something(num_spawns_per_interval)
 
 
 func _on_spawn_died(spawnObj):
@@ -117,6 +122,8 @@ func _on_DeathViz_finished():
 	call_deferred("queue_free")
 	
 
-
-
+func _on_fight_started():
+	State = States.STARTED
+	
+	$Appearance/Sprite.hide()
 

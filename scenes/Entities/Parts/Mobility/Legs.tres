@@ -7,11 +7,13 @@
 [resource]
 script = ExtResource( 1 )
 name = "Legs"
-description = ""
+description = "Basic Mark 1 legs. Buy as many as you need for the speed you deserve."
 icon = ExtResource( 3 )
+icon_scale = 1.0
+icon_offset = Vector2( 0, 86 )
 mech_part = ExtResource( 2 )
 type = 1
-cost = 3
+cost = 2
 health = 0
 power_draw = 0
 armor = 0

@@ -13,12 +13,13 @@ radius = 66.0076
 script = ExtResource( 2 )
 is_human_player = true
 team = 0
+lose_scene_path = "res://scenes/Maps/junkyard/JunkyardHiddenObjectSearch.tscn"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 73 )
 shape = SubResource( 1 )
 
-[node name="Health" parent="." index="2"]
+[node name="Health" parent="." index="3"]
 position = Vector2( 0, 1 )
 
 [node name="TextureProgress" parent="Health" index="3"]
@@ -27,19 +28,14 @@ margin_bottom = 226.0
 rect_scale = Vector2( 0.942998, 0.301814 )
 
 [node name="Sprite" parent="Appearance" index="0"]
-visible = false
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="Camera2D" parent="." index="10" instance=ExtResource( 3 )]
 anchor_mode = 1
+look_ahead = true
+damping = 10.0
 
 [node name="PlayerInputController" parent="Input" index="0" instance=ExtResource( 6 )]
 
-[node name="refSprite" type="Sprite" parent="." index="13"]
-position = Vector2( -1, 64 )
-scale = Vector2( 4.10793, 4.10793 )
-
-[node name="Polygon2D" type="Polygon2D" parent="refSprite" index="0"]
-color = Color( 0.858824, 0.827451, 0.0470588, 0.231373 )
-polygon = PoolVector2Array( -23, 20, -23, -52, 24, -52, 23, 20 )
+[connection signal="tree_exiting" from="." to="." method="_on_Player_tree_exiting"]

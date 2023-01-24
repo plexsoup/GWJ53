@@ -10,9 +10,8 @@ To meet accessibility requirements:
 
 """
 
-extends Node2D
+extends MechPart
 
-var mech
 export var projectile_range : float = 200.0
 export var damage : float = 500.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
@@ -42,6 +41,9 @@ func _ready():
 	$ReloadTimer.start()
 	$MissileLauncherSprite/MuzzleFlash.visible = false
 
+	$CockDurationTimer.set_wait_time(burst_delay)
+	$ReloadTimer.set_wait_time(reload_time)
+
 func init(myMech):
 	mech = myMech
 
@@ -52,22 +54,26 @@ func scene_finished():
 
 
 func shoot():
-	if scene_finished():
+	if scene_finished() or disabled:
 		return
-		
-	# WIP we should ask the target acquisition system for a target
-	if mech != null and mech.State == mech.States.READY:
-		shots_left -= 1
-		if shots_left == 0:
-			State = States.RELOADING
-			$ReloadTimer.start()
-		else:
-			State = States.COCKING
-			$CockDurationTimer.start()
-		make_noise()
-		flash_muzzle()
-		spawn_projectile()
 
+	if mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
+		
+		# WIP we should ask the target acquisition system for a target
+		if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
+			shots_left -= 1
+			if shots_left == 0:
+				State = States.RELOADING
+				$ReloadTimer.start()
+			else:
+				State = States.COCKING
+				$CockDurationTimer.start()
+		
+			make_noise()
+			flash_muzzle()
+			spawn_projectile()
+	else: # wait a bit.
+		$ReloadTimer.start()
 
 
 
@@ -89,7 +95,8 @@ func make_noise():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	aim(delta)
+	if not disabled:
+		aim(delta)
 	
 
 func aim(_delta):
@@ -122,17 +129,10 @@ func _on_ReloadTimer_timeout():
 	shoot()
 
 func _on_CockDurationTimer_timeout():
-
-	shoot()
-	$CockDurationTimer.start()
-
-func _on_ShotDurationTimer_timeout():
 	
-	$Line2D.default_color.a = 0
-	State = States.RELOADING
-	$LaserNoise.stop()
-	$TargetLocation/HurtBox.set_deferred("disabled", true)
-	$ReloadTimer.start()
+	shoot() # shoot method restarts the CockDurationTimer or ReloadTimer
+
+
 
 
 		

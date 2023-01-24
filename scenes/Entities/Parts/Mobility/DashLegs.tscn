@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Entities/Parts/Mobility/BasicLegs.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Entities/Parts/Mobility/DashLegs.png" type="Texture" id=2]
+
+[node name="DashLegs" instance=ExtResource( 1 )]
+speed = 800.0
+dash_speed_multiplier = 4.0
+dash_duration = 0.4
+
+[node name="LegL" parent="LegPivot" index="0"]
+texture = ExtResource( 2 )
+
+[node name="LegR" parent="LegPivot" index="1"]
+texture = ExtResource( 2 )
