@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Art/Vs SCreens/Vs SCreens/Stage1.webm" type="VideoStream" id=1]
 [ext_resource path="res://sfx/Crowd Cheering.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Music/Time to Fix Things.ogg" type="AudioStream" id=3]
+[ext_resource path="res://scenes/Maps/DesertCanyon/DesertCanyonMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/VS_Screen.gd" type="Script" id=5]
 
-[node name="Node2D" type="Node2D"]
+[node name="DesertCanyonVs" type="Node2D"]
+script = ExtResource( 5 )
+next_scene = ExtResource( 4 )
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
 margin_right = 1019.0

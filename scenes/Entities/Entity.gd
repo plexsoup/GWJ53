@@ -334,6 +334,19 @@ func update_health_bar():
 		$Health/TextureProgress.value = health/health_max
 
 
+func simplify_all_textures(currentNode):
+
+	var squareTexture = ImageTexture.new()
+	var image = Image.new()
+	image.load("res://_common/Materials/SmallWhiteSquare.png")
+	squareTexture.create_from_image(image)
+
+	for child in currentNode.get_children():
+			if child.is_class("Sprite"):
+				child.set_texture(squareTexture)
+			# recursion danger
+			simplify_all_textures(child)
+
 func _on_finished_dying():
 	die_for_real_this_time()
 	
@@ -356,5 +369,8 @@ func _on_iframesTimer_timeout():
 
 
 
-
+func _on_debug_mode_requested():
+	simplify_all_textures(self)
+	
+	
 	
