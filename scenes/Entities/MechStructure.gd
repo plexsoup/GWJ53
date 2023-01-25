@@ -55,17 +55,20 @@ func create_entity(base_entity : PackedScene):
 		entity.add_child(collision_shape)
 		collision_shape.position = mech_part.position
 		
-#		if mech_structure_part.part.type == Part.Type.MOBILITY:
-#			mech_part.dont_bounce = true
-		
+	# add struts
+	for mech_structure_part in inner_parts:
 		for connected_part in mech_structure_part.connected_parts:
 			#Add visual struts
 			var strut = preload("res://scenes/MechBuilder/Strut.tscn").instance()
 			entity.get_node("Struts").add_child(strut)
-			var strut_len = mech_part.position.distance_to(connected_part.position)
+			var mech_part = mech_parts[mech_structure_part]
+			var c_mech_part = mech_parts[connected_part]
+			var strut_len = mech_part.position.distance_to(c_mech_part.position)
 			strut.length = strut_len
 			strut.position = mech_part.position
-			strut.rotation = (connected_part.position - mech_part.position).angle()
+			strut.rotation = (c_mech_part.position - mech_part.position).angle()
+			strut.anchor_1 = mech_part
+			strut.anchor_2 = c_mech_part
 			
 			#Add strut colliders
 			var strut_collider = CollisionShape2D.new()
