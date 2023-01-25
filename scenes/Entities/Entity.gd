@@ -114,6 +114,7 @@ func _ready():
 			if subsystem.has_method("_on_mech_died"):
 				#warning-ignore:RETURN_VALUE_DISCARDED
 				connect("died", subsystem, "_on_mech_died")
+	
 
 	set_state(States.READY)
 	

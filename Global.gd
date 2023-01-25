@@ -11,6 +11,9 @@ var player_cursor : Sprite # in battles, always use this for targetting instead 
 var persistent_mech : MechStructure
 var money = 3
 
+var part_spring = 600
+var part_damp = 15
+
 var user_prefs = {
 	"particles" : true
 }
