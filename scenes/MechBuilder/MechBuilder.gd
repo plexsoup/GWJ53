@@ -10,6 +10,7 @@ export(PackedScene) var building_part_scene
 export(PackedScene) var strut_scene
 export(Texture) var sell_symbol
 
+onready var part_scroll_container = $"%PartScrollContainer"
 onready var part_buttons_hbox = $"%PartButtonsHBox"
 var part_buttons = []
 onready var money_label : Label = $"%MoneyLabel"
@@ -34,6 +35,13 @@ func _ready():
 	
 	for part in Global.parts_pool.values():
 		add_part_to_list(part)
+	var tween = create_tween()
+	var start_scroll = int(part_scroll_container.rect_size.x - part_buttons_hbox.rect_size.x)
+	part_scroll_container.notification(Container.NOTIFICATION_SORT_CHILDREN)
+	part_scroll_container.scroll_horizontal = start_scroll
+	tween.tween_property(part_scroll_container, "scroll_horizontal", start_scroll, 0)
+	tween.tween_interval(0.5)
+	tween.tween_property(part_scroll_container, "scroll_horizontal", 0, 1.0).from(start_scroll).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	_update_money_display()
 
 func add_default_mech():
