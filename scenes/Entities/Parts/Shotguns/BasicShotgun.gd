@@ -14,9 +14,9 @@ export var damage : float = 200.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 #export var line_of_sight : bool = false
 
-export var shots_per_burst : int = 2
-export var burst_delay : float = 1.0
-export var reload_time : float = 5.0
+export var shots_per_burst : int = 4
+export var burst_delay : float = 0.5
+export var reload_time : float = 3.0
 export var knockback_effect : float = 3.0
 
 var shots_left : int = shots_per_burst
@@ -40,9 +40,10 @@ func _ready():
 	$ReloadTimer.start()
 	$ShotgunSprite/MuzzleFlash.visible = false
 	$CockDurationTimer.set_wait_time(burst_delay)
-	$ReloadTimer.set_wait_time(reload_time)
+	vary_reload_time()
 
-	
+func vary_reload_time():
+	$ReloadTimer.set_wait_time(reload_time * rand_range(0.75, 1.25))
 
 func init(myMech):
 	mech = myMech
@@ -162,6 +163,7 @@ func flash_muzzle():
 
 func _on_ReloadTimer_timeout():
 	shots_left = shots_per_burst
+	vary_reload_time()
 	shoot()
 
 func _on_CockDurationTimer_timeout():

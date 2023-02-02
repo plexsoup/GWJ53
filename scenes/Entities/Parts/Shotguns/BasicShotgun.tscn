@@ -61,7 +61,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ShotgunSprite/BarrelPump:position")
+tracks/4/path = NodePath("ShotgunSprite:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -70,10 +70,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 106, 16 ) ]
+"values": [ 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("ShotgunSprite:rotation_degrees")
+tracks/5/path = NodePath("ShotgunSprite:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -82,10 +82,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ Vector2( -69, -4 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("ShotgunSprite:position")
+tracks/6/path = NodePath("ShotgunSprite/Sprite:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -94,35 +94,47 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -69, -4 ) ]
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ShotgunSprite/Sprite:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "cock"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("ShotgunSprite/BarrelPump:position")
+tracks/0/path = NodePath("ShotgunSprite/Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
+"times": PoolRealArray( 0, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 106, 16 ), Vector2( 72, 16 ), Vector2( 106, 16 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -60, 50 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ShotgunSprite:position")
+tracks/1/path = NodePath("ShotgunSprite/Sprite:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
+"times": PoolRealArray( 0, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -69, -4 ), Vector2( -127, 25 ), Vector2( -69, -4 ) ]
+"values": [ 0.0, -32.2052, 0.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -181,10 +193,8 @@ tracks/3/keys = {
 [node name="BasicShotgun" type="Node2D"]
 position = Vector2( 0, -2 )
 script = ExtResource( 1 )
+projectile_range = 1200.0
 damage_type = 0
-shots_per_burst = 4
-burst_delay = 0.5
-reload_time = 3.0
 
 [node name="CockDurationTimer" type="Timer" parent="."]
 one_shot = true
@@ -192,23 +202,18 @@ one_shot = true
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="ShotgunSprite" type="Sprite" parent="."]
+[node name="ShotgunSprite" type="Node2D" parent="."]
 position = Vector2( -69, -4 )
-texture = ExtResource( 2 )
-offset = Vector2( 96.6667, 6.66666 )
 
-[node name="BarrelPump" type="Sprite" parent="ShotgunSprite"]
-position = Vector2( 106, 16 )
+[node name="Sprite" type="Sprite" parent="ShotgunSprite"]
 texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 82, 126, 109, 23 )
+offset = Vector2( 97, 6 )
 
 [node name="MuzzleLocation" type="Position2D" parent="ShotgunSprite"]
 position = Vector2( 221.333, -2.66667 )
 scale = Vector2( 2, 2 )
 
 [node name="BlastArea" parent="ShotgunSprite/MuzzleLocation" instance=ExtResource( 5 )]
-scale = Vector2( 0.856606, 1.12614 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ShotgunSprite/MuzzleLocation"]
 emitting = false

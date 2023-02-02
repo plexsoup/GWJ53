@@ -257,6 +257,7 @@ collision_mask = 19
 
 [node name="ChargeNoise" parent="." instance=ExtResource( 12 )]
 stream = ExtResource( 10 )
+volume_db = -7.0
 shoot_sound_effect = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

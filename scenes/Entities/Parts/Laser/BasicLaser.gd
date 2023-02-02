@@ -35,6 +35,7 @@ signal hit
 func _ready():
 	vary_shot_timers(0.2)
 	$ReloadTimer.start()
+	$Line2D.default_color.a = 0.0
 
 func vary_shot_timers(variation): # 0.0 to 1.0. Low is less variability
 	$ShotDurationTimer.set_wait_time(rand_range(1.0-variation, 1.0+variation)*shot_duration)
@@ -141,6 +142,7 @@ func aim_laser(_delta):
 func _on_ReloadTimer_timeout():
 	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
 		vary_shot_timers(0.5)
+		$ChargeNoise.pitch_scale = rand_range(0.8, 1.2)
 		$AnimationPlayer.play("charge")
 		#shoot() # shoot happens after charge animation is finished now
 	else:
