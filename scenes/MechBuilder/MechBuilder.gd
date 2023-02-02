@@ -39,7 +39,7 @@ func _ready():
 func add_default_mech():
 	add_building_part(Global.parts_pool["L1Hull"])
 	add_building_part(Global.parts_pool["Legs"], Vector2(0, 64))
-	add_building_part(Global.parts_pool["LongRangeLaser"], Vector2(0, -150))
+	add_building_part(Global.parts_pool["PenetratingLaser"], Vector2(0, -150))
 	
 
 	

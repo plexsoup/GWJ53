@@ -30,6 +30,6 @@ self_modulate = Color( 1, 1, 1, 0.517647 )
 position = Vector2( -1, -1 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
-frame = 3
+frame = 4
 playing = true
 offset = Vector2( -26, -6.66667 )
