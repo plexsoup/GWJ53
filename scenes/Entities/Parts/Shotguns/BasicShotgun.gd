@@ -76,9 +76,10 @@ func shoot():
 		else:
 			State = States.COCKING
 			$CockDurationTimer.start()
-		make_noise()
+		make_noise("shoot")
 		flash_muzzle()
 		hurt_targets()
+		
 		#spawn_projectile()
 	else:
 		$ReloadTimer.start()
@@ -107,9 +108,14 @@ func hurt_targets():
 #		newProjectile.global_position = $ShotgunSprite/MuzzleLocation.global_position
 #		newProjectile.global_rotation = $ShotgunSprite.global_rotation
 
-func make_noise():
+func make_noise(noiseStr:String):
+	var noise
+	
 	# copy a ShootNoise.tscn node which will queue itself free after audio finished.
-	var noise = $ShootNoise.duplicate()
+	if noiseStr == "shoot":
+		noise = $ShootNoise.duplicate()
+	elif noiseStr == "cock":
+		noise = $CockNoise.duplicate()
 	add_child(noise)
 	
 	noise.set_pitch_scale(rand_range(0.8, 1.2))
@@ -152,15 +158,23 @@ func flash_muzzle():
 		$ShotgunSprite/MuzzleLocation/CPUParticles2D.emitting = true
 
 
+
+
 func _on_ReloadTimer_timeout():
 	shots_left = shots_per_burst
 	shoot()
 
 func _on_CockDurationTimer_timeout():
-	shoot() # shoot method will subtract ammo and restart timers
+	$AnimationPlayer.play("cock")
+	make_noise("cock")
 
 
 
 
 
 
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "cock":
+		shoot()
