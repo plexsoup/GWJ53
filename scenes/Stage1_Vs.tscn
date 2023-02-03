@@ -28,3 +28,5 @@ volume_db = -4.67
 pitch_scale = 0.9
 autoplay = true
 bus = "SFX"
+
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
