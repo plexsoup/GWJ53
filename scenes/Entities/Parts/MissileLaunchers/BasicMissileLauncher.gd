@@ -129,9 +129,11 @@ func _on_ReloadTimer_timeout():
 	shoot()
 
 func _on_CockDurationTimer_timeout():
-	
-	shoot() # shoot method restarts the CockDurationTimer or ReloadTimer
-
+	if global_position.distance_squared_to(Global.player.global_position) < projectile_range * projectile_range:
+		shoot() # shoot method restarts the CockDurationTimer or ReloadTimer
+	else:
+		State = States.RELOADING
+		$ReloadTimer.start()
 
 
 

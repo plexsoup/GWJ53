@@ -20,7 +20,7 @@ export var damage : float = 100.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 export var line_of_sight : bool = false
 
-export var shot_duration : float = 1.0
+export var shot_duration : float = 2.0
 export var reload_time : float = 1.5
 
 
@@ -35,6 +35,7 @@ signal hit
 func _ready():
 	vary_shot_timers(0.2)
 	$ReloadTimer.start()
+	$Line2D.default_color.a = 0.0
 
 func vary_shot_timers(variation): # 0.0 to 1.0. Low is less variability
 	$ShotDurationTimer.set_wait_time(rand_range(1.0-variation, 1.0+variation)*shot_duration)
@@ -81,15 +82,22 @@ func shoot():
 		$TargetLocation.visible = true
 		$Line2D.default_color.a = 0.66
 		$ShotDurationTimer.start()
-		make_noise()
+		make_noise("shoot")
 	else:
 		$ReloadTimer.start()
 
 
-func make_noise():
-	$LaserNoise.set_pitch_scale(rand_range(0.8, 1.5))
-	$LaserNoise.play()
-	
+func make_noise(noiseStr : String):
+	if noiseStr == "shoot":
+		$LaserNoise.set_pitch_scale(rand_range(0.8, 1.5))
+		$LaserNoise.play()
+	elif noiseStr == "charge": # moved to animation player
+		pass
+#		var noise = $ChargeNoise.duplicate()
+#		add_child(noise)
+#		noise.play()
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not disabled:
@@ -105,11 +113,18 @@ func aim_laser(_delta):
 			targetPos = myPos.direction_to(cursorPos)*beam_range
 		else:
 			targetPos = cursorPos - myPos
-			
-		$LaserCannon.look_at(targetPos + myPos)
+		
+		if targetPos.x > 0:
+			$LaserCannon.scale.x = abs($LaserCannon.scale.x)
+			$LaserCannon.look_at(targetPos + myPos)
+		else:
+			$LaserCannon.scale.x = -abs($LaserCannon.scale.x)
+			var invertedPos = targetPos - myPos
+			$LaserCannon.rotation = atan2(-targetPos.y, -targetPos.x)
+		
 		if State == States.SHOOTING:
 			var rescaled_target_pos = Vector2(targetPos.x / global_scale.x, targetPos.y / global_scale.y)
-			$Line2D.points = [ Vector2.ZERO, rescaled_target_pos]
+			$Line2D.points = [ Vector2.ZERO, rescaled_target_pos * 0.2, rescaled_target_pos]
 			if line_of_sight:
 				$RayCast2D.set_cast_to(rescaled_target_pos)
 				if $RayCast2D.is_colliding():
@@ -125,10 +140,13 @@ func aim_laser(_delta):
 
 
 func _on_ReloadTimer_timeout():
-	vary_shot_timers(0.5)
-
-	shoot()
-
+	if mech != null and mech.State in [ mech.States.READY, mech.States.INVULNERABLE ]:
+		vary_shot_timers(0.5)
+		$ChargeNoise.pitch_scale = rand_range(0.8, 1.2)
+		$AnimationPlayer.play("charge")
+		#shoot() # shoot happens after charge animation is finished now
+	else:
+		$ReloadTimer.start()
 
 
 func _on_ShotDurationTimer_timeout():
@@ -172,4 +190,8 @@ func _on_DamageTicks_timeout():
 				hurt_target(target)
 				
 			
-	
+
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	shoot()

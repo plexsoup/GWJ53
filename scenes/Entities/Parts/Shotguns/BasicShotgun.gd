@@ -14,9 +14,9 @@ export var damage : float = 200.0
 export (Global.damage_types) var damage_type : int = Global.damage_types.LASER
 #export var line_of_sight : bool = false
 
-export var shots_per_burst : int = 2
-export var burst_delay : float = 1.0
-export var reload_time : float = 5.0
+export var shots_per_burst : int = 4
+export var burst_delay : float = 0.5
+export var reload_time : float = 3.0
 export var knockback_effect : float = 3.0
 
 var shots_left : int = shots_per_burst
@@ -40,9 +40,10 @@ func _ready():
 	$ReloadTimer.start()
 	$ShotgunSprite/MuzzleFlash.visible = false
 	$CockDurationTimer.set_wait_time(burst_delay)
-	$ReloadTimer.set_wait_time(reload_time)
+	vary_reload_time()
 
-	
+func vary_reload_time():
+	$ReloadTimer.set_wait_time(reload_time * rand_range(0.75, 1.25))
 
 func init(myMech):
 	mech = myMech
@@ -76,9 +77,10 @@ func shoot():
 		else:
 			State = States.COCKING
 			$CockDurationTimer.start()
-		make_noise()
+		make_noise("shoot")
 		flash_muzzle()
 		hurt_targets()
+		
 		#spawn_projectile()
 	else:
 		$ReloadTimer.start()
@@ -107,9 +109,14 @@ func hurt_targets():
 #		newProjectile.global_position = $ShotgunSprite/MuzzleLocation.global_position
 #		newProjectile.global_rotation = $ShotgunSprite.global_rotation
 
-func make_noise():
+func make_noise(noiseStr:String):
+	var noise
+	
 	# copy a ShootNoise.tscn node which will queue itself free after audio finished.
-	var noise = $ShootNoise.duplicate()
+	if noiseStr == "shoot":
+		noise = $ShootNoise.duplicate()
+	elif noiseStr == "cock":
+		noise = $CockNoise.duplicate()
 	add_child(noise)
 	
 	noise.set_pitch_scale(rand_range(0.8, 1.2))
@@ -152,15 +159,24 @@ func flash_muzzle():
 		$ShotgunSprite/MuzzleLocation/CPUParticles2D.emitting = true
 
 
+
+
 func _on_ReloadTimer_timeout():
 	shots_left = shots_per_burst
+	vary_reload_time()
 	shoot()
 
 func _on_CockDurationTimer_timeout():
-	shoot() # shoot method will subtract ammo and restart timers
+	$AnimationPlayer.play("cock")
+	make_noise("cock")
 
 
 
 
 
 
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "cock":
+		shoot()

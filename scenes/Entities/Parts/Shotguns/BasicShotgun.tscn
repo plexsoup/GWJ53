@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/Shotguns/BasicShotgun.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/Shotguns/shotgun.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/Entities/Projectiles/DynamicShotgunBlastArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/ParticleDisabler.gd" type="Script" id=6]
 [ext_resource path="res://sfx/SHOTGUN.wav" type="AudioStream" id=7]
+[ext_resource path="res://scenes/Entities/Projectiles/Flash_Sprite.png" type="Texture" id=8]
+[ext_resource path="res://sfx/cock_shotgun.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -46,10 +48,99 @@ tracks/2/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShotgunSprite/MuzzleFlash:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShotgunSprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ShotgunSprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -69, -4 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ShotgunSprite/Sprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ShotgunSprite/Sprite:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "cock"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShotgunSprite/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -60, 50 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ShotgunSprite/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -32.2052, 0.0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "flash"
 length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("ShotgunSprite/MuzzleFlash:visible")
 tracks/0/interp = 1
@@ -74,14 +165,36 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShotgunSprite/MuzzleFlash:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShotgunSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -69, -4 ), Vector2( -124, -4 ), Vector2( -69, -4 ) ]
+}
 
 [node name="BasicShotgun" type="Node2D"]
 position = Vector2( 0, -2 )
 script = ExtResource( 1 )
+projectile_range = 1200.0
 damage_type = 0
-shots_per_burst = 4
-burst_delay = 0.5
-reload_time = 3.0
 
 [node name="CockDurationTimer" type="Timer" parent="."]
 one_shot = true
@@ -89,14 +202,15 @@ one_shot = true
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="ShotgunSprite" type="Sprite" parent="."]
-position = Vector2( 2, 0 )
-scale = Vector2( 0.75, 0.75 )
+[node name="ShotgunSprite" type="Node2D" parent="."]
+position = Vector2( -69, -4 )
+
+[node name="Sprite" type="Sprite" parent="ShotgunSprite"]
 texture = ExtResource( 2 )
-offset = Vector2( 2, 1.33333 )
+offset = Vector2( 97, 6 )
 
 [node name="MuzzleLocation" type="Position2D" parent="ShotgunSprite"]
-position = Vector2( 69.3333, 1.90735e-06 )
+position = Vector2( 221.333, -2.66667 )
 scale = Vector2( 2, 2 )
 
 [node name="BlastArea" parent="ShotgunSprite/MuzzleLocation" instance=ExtResource( 5 )]
@@ -117,9 +231,13 @@ script = ExtResource( 6 )
 
 [node name="MuzzleFlash" type="Sprite" parent="ShotgunSprite"]
 visible = false
-position = Vector2( 65.3333, 4 )
+position = Vector2( 264, -34.6667 )
+scale = Vector2( 6.94877, 6.94877 )
+texture = ExtResource( 8 )
+hframes = 6
 
 [node name="Polygon2D" type="Polygon2D" parent="ShotgunSprite/MuzzleFlash"]
+visible = false
 scale = Vector2( 0.458969, 0.458969 )
 color = Color( 1, 0.905882, 0.156863, 1 )
 polygon = PoolVector2Array( -6, -38, -42, -116, 4, -88, 42, -158, 50, -108, 136, -156, 108, -90, 196, -96, 152, -58, 304, -32, 186, -24, 352, -4, 254, 4, 284, 38, 180, 12, 218, 56, 130, 18, 148, 66, 72, 30, 78, 84, 28, 30, 2, 106 )
@@ -131,11 +249,17 @@ texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
+anims/cock = SubResource( 3 )
 anims/flash = SubResource( 2 )
 
 [node name="ShootNoise" parent="." instance=ExtResource( 3 )]
 stream = ExtResource( 7 )
 shoot_sound_effect = ExtResource( 7 )
 
+[node name="CockNoise" parent="." instance=ExtResource( 3 )]
+stream = ExtResource( 9 )
+shoot_sound_effect = ExtResource( 9 )
+
 [connection signal="timeout" from="CockDurationTimer" to="." method="_on_CockDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

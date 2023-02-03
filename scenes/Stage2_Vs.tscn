@@ -28,3 +28,5 @@ stream = ExtResource( 3 )
 volume_db = -17.479
 pitch_scale = 1.06
 autoplay = true
+
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
