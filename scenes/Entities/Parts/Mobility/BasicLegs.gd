@@ -1,9 +1,9 @@
 extends MechPart
 
-export var speed : float = 600.0
-export var acceleration : float = 5.0 # per second
-export var deceleration : float = 25.0
-export var dash : bool = false
+export var speed : float = 850.0
+export var acceleration : float = 10.0 # per second
+export var deceleration : float = 20.0
+export var dash : bool = true
 export var dash_speed_multiplier : float = 8.0
 export var dash_duration : float = 0.2
 export var dash_cooldown : float = 2.0
@@ -52,8 +52,11 @@ func get_velocity(delta):
 		if mech.input_controller.pressed["move_left"] == true:
 			velocity += Vector2.LEFT
 
-		if dash:
+		var current_acceleration = acceleration
+		if dash: # has the dash ability, but may or may not be using it.
 			velocity = check_dash_ability(velocity)
+			if dashing:
+				current_acceleration *= dash_speed_multiplier
 
 		var desired_velocity = velocity * speed / global_scale.x 
 		var new_velocity = Vector2.ZERO
@@ -61,7 +64,7 @@ func get_velocity(delta):
 
 
 		if desired_velocity.length_squared() > previous_velocity.length_squared():
-			new_velocity = lerp(previous_velocity, desired_velocity, acceleration*delta)
+			new_velocity = lerp(previous_velocity, desired_velocity, current_acceleration*delta)
 		else:
 			new_velocity = lerp(previous_velocity, desired_velocity, deceleration*delta)
 		

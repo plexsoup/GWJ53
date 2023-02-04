@@ -114,6 +114,7 @@ func _ready():
 			if subsystem.has_method("_on_mech_died"):
 				#warning-ignore:RETURN_VALUE_DISCARDED
 				connect("died", subsystem, "_on_mech_died")
+	
 
 	set_state(States.READY)
 	
@@ -177,6 +178,8 @@ func move(delta):
 	# locomotion parts need to provide the actual velocity
 	# they'll check with input_controller directly
 	
+	# Here we're using Invulnerable as a surrogate marker for "just got hit", hence requires knockback.
+	# It would be preferable to have a knockback flag or a knockback state.
 	if !self.is_human_player and get_state() == States.INVULNERABLE:
 		#warning-ignore:RETURN_VALUE_DISCARDED
 		move_and_slide(knockback_vector)
