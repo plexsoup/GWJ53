@@ -13,10 +13,12 @@ var local_path
 var next_point : Vector2
 var target : Node2D
 export var flocking : bool = false
-var flocking_vector : Vector2 = Vector2.ZERO
+export var peer_consider_distance : float = 2500.0
+export var peer_avoid_distance : float = 850.0
 
 var mech
 
+var flocking_vector : Vector2 = Vector2.ZERO
 var wall_avoid_vector : Vector2 = Vector2.ZERO
 
 # for locomotion which relies in input controllers,
@@ -39,9 +41,12 @@ func init(myMech):
 	
 	
 func _process(_delta):
-	if current_path != null:
-		if current_path.size() > 1:
-			next_point = local_path[1] # look ahead an extra step
+	if mech != null and mech.State in [mech.States.READY, mech.States.INVULNERABLE]:
+
+		#update()
+		if current_path != null:
+			if current_path.size() > 1:
+				next_point = local_path[1] # look ahead an extra step
 
 
 func translate_points_to_local(pointsArr):
@@ -79,31 +84,42 @@ func get_flocking_vector():
 	var avoidance_vector = Vector2.ZERO
 	
 	teammates.erase(self.mech)
+
+	# drop distant teammates
+	var nearby_teammates = []
 	for teammate in teammates:
+		var culling_range = peer_consider_distance
+		if global_position.distance_squared_to(teammate.global_position) < culling_range * culling_range:
+			nearby_teammates.push_back(teammate)
+	
+	for teammate in nearby_teammates:
 		cohesion_vector += teammate.global_position
 		alignment_vector += teammate.get_velocity()
-		if teammate.global_position.distance_to(self.mech.global_position) < 100:
+		var avoidance_distance = peer_avoid_distance
+		if teammate.global_position.distance_squared_to(self.mech.global_position) < avoidance_distance * avoidance_distance:
 			avoidance_vector += teammate.global_position - self.mech.global_position
 	
-	if teammates.size() > 1: # if there are more than 2 teammates, average the vectors
-		cohesion_vector /= float(teammates.size())
-		alignment_vector /= float(teammates.size())
+	if nearby_teammates.size() > 1: # if there are more than 2 teammates, average the vectors
+		cohesion_vector /= float(nearby_teammates.size())
+		alignment_vector /= float(nearby_teammates.size())
 		cohesion_vector -= self.mech.global_position
 		#alignment_vector -= self.mech.velocity
-		cohesion_vector = cohesion_vector.normalized() * 1.5
+		cohesion_vector = cohesion_vector.normalized()
 		alignment_vector = alignment_vector.normalized()
 		avoidance_vector = avoidance_vector.normalized()
-	new_flocking_vector = cohesion_vector + alignment_vector + avoidance_vector
+	new_flocking_vector = cohesion_vector + alignment_vector + (1.5 * avoidance_vector) / 3.5
 	return new_flocking_vector # just returns a value, doesn't update global var, flocking_vector
 
 
 
 func update_virtual_controller_buttons():
 	var targetVec = next_point.normalized()
-	targetVec += wall_avoid_vector
+	targetVec += wall_avoid_vector.normalized()
 
 	if flocking:
 		targetVec += flocking_vector.normalized()
+		targetVec /= 3.0
+	else:
 		targetVec /= 2.0
 	
 
@@ -147,3 +163,8 @@ func _on_wall_detected(direction):
 
 func _on_wallradar_all_clear():
 	wall_avoid_vector = Vector2.ZERO
+
+#func _draw():
+#	draw_circle(Vector2.ZERO, peer_avoid_distance, Color(0.8, 0.3, 0.0, 0.25))
+#	draw_circle(Vector2.ZERO, peer_consider_distance, Color(0.2, 0.2, 0.2, 0.15))
+#
