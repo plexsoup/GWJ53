@@ -8,6 +8,10 @@ signal finished
 func _ready():
 	pass # Replace with function body.
 
+func _unhandled_key_input(event):
+	if event.scancode == KEY_ESCAPE:
+		emit_signal("finished")
+
 
 func close():
 	$AnimationPlayer.play("close")
