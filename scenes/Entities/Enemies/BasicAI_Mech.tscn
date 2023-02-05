@@ -18,6 +18,7 @@ script = ExtResource( 7 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 rotation = 3.14159
+scale = Vector2( 1, 2.32 )
 shape = SubResource( 1 )
 
 [node name="Health" parent="." index="3"]

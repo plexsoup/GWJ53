@@ -194,11 +194,16 @@ scale = Vector2( 1.84605, 1.84123 )
 collision_layer = 4
 collision_mask = 3
 
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 42.2524, 1.08623 )
+offset = Vector2( 30.8767, 0 )
+
 [node name="Missile" type="Sprite" parent="Sprite" index="0"]
-position = Vector2( 7.62939e-06, 3.8147e-06 )
+position = Vector2( -40.58, -0.383295 )
 rotation = 1.59745
 scale = Vector2( 0.84314, 0.84314 )
 texture = ExtResource( 2 )
+offset = Vector2( -0.828233, -48.1247 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite/Missile" index="0"]
 position = Vector2( -6.72675, 136.536 )
@@ -224,6 +229,7 @@ color_ramp = SubResource( 1 )
 script = ExtResource( 10 )
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 29.7933, 0 )
 scale = Vector2( 2.9147, 1.26413 )
 
 [node name="ExplosionSprite" parent="." index="4"]

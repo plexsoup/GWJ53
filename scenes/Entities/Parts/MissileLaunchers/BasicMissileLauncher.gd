@@ -39,7 +39,7 @@ var target_locked : Node2D # probably a kinematic body
 func _ready():
 	pass # Replace with function body.
 	$ReloadTimer.start()
-	$MissileLauncherSprite/MuzzleFlash.visible = false
+	$MissileLauncherSprite/Sprite/MuzzleFlash.visible = false
 
 	$CockDurationTimer.set_wait_time(burst_delay)
 	$ReloadTimer.set_wait_time(reload_time)
@@ -68,10 +68,13 @@ func shoot():
 			else:
 				State = States.COCKING
 				$CockDurationTimer.start()
-		
-			make_noise()
-			flash_muzzle()
-			spawn_projectile()
+			
+			#make_noise() # moved into animation
+			#flash_muzzle() # moved into animation
+			#spawn_projectile() # moved into animation
+			$AnimationPlayer.play("shoot")
+
+			
 	else: # wait a bit.
 		$ReloadTimer.start()
 
@@ -86,12 +89,14 @@ func spawn_projectile():
 #		if Global.current_scene.has_node("YSort/Projectiles"):
 #			Global.current_scene.get_node("Ysort/Projectiles").add_child(newProjectile)
 		Global.current_scene.add_child(newProjectile)
-		newProjectile.global_position = $MissileLauncherSprite/MuzzleLocation.global_position
+		newProjectile.global_position = $MissileLauncherSprite/Sprite/MuzzleLocation.global_position
 		newProjectile.global_rotation = $MissileLauncherSprite.global_rotation
 
 func make_noise():
-	$ShootNoise.set_pitch_scale(rand_range(0.8, 1.2))
-	$ShootNoise.play()
+	var shootNoise = $ShootNoise.duplicate()
+	shootNoise.set_pitch_scale(rand_range(0.8, 1.2))
+	add_child(shootNoise)
+	shootNoise.play()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -111,8 +116,12 @@ func aim(_delta):
 		else:
 			targetPos = cursorPos - myPos
 			
-		$MissileLauncherSprite.look_at(targetPos + myPos)
-		
+		if targetPos.x > 0:
+			$MissileLauncherSprite.scale.x = abs($MissileLauncherSprite.scale.x)
+			$MissileLauncherSprite.look_at(targetPos + myPos)
+		else:
+			$MissileLauncherSprite.scale.x = -abs($MissileLauncherSprite.scale.x)
+			$MissileLauncherSprite.rotation = atan2(-targetPos.y, -targetPos.x)
 
 
 func flash_muzzle():
@@ -124,8 +133,12 @@ func flash_muzzle():
 
 
 
+func vary_reload_time():
+	$ReloadTimer.set_wait_time(reload_time * rand_range(0.8, 1.25))
+
 func _on_ReloadTimer_timeout():
 	shots_left = shots_per_burst
+	vary_reload_time()
 	shoot()
 
 func _on_CockDurationTimer_timeout():

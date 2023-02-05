@@ -173,7 +173,12 @@ func _process(delta):
 	
 func move(delta):
 	if get_state() == States.DYING:
-		return
+		if !self.is_human_player:
+			#warning-ignore:RETURN_VALUE_DISCARDED
+			move_and_slide(knockback_vector)
+			return
+		else:
+			return
 	
 	# locomotion parts need to provide the actual velocity
 	# they'll check with input_controller directly

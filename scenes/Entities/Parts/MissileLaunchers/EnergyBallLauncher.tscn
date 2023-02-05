@@ -11,8 +11,10 @@ burst_delay = 0.33
 reload_time = 1.5
 projectile = ExtResource( 2 )
 
-[node name="MissileLauncherSprite" parent="." index="3"]
+[node name="Sprite" parent="MissileLauncherSprite" index="0"]
 texture = ExtResource( 3 )
 
-[node name="MuzzleLocation" parent="MissileLauncherSprite" index="0"]
-position = Vector2( 126.667, -24 )
+[node name="MuzzleLocation" parent="MissileLauncherSprite/Sprite" index="0"]
+position = Vector2( 147.39, -17.8214 )
+
+[node name="MuzzleLocation" type="Position2D" parent="MissileLauncherSprite" index="1"]

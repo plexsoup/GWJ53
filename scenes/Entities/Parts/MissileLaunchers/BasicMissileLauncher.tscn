@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Entities/Parts/MissileLaunchers/BasicMissileLauncher.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Entities/Parts/MissileLaunchers/MissileLauncherImage.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://_common/Materials/white_target.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Entities/Projectiles/BasicMissile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Entities/Projectiles/Flash_Sprite.png" type="Texture" id=6]
+[ext_resource path="res://sfx/ShootNoise.tscn" type="PackedScene" id=7]
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
@@ -49,7 +50,7 @@ animations = [ {
 length = 0.001
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("MissileLauncherSprite/MuzzleFlash:visible")
+tracks/0/path = NodePath("MissileLauncherSprite/Sprite/MuzzleFlash:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -61,7 +62,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MissileLauncherSprite/MuzzleFlash:frame")
+tracks/1/path = NodePath("MissileLauncherSprite/Sprite/MuzzleFlash:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -72,43 +73,196 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("MissileLauncherSprite/Sprite/Exhaust:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MissileLauncherSprite/Sprite/Exhaust:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MissileLauncherSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MissileLauncherSprite/Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "flash"
-length = 0.25
+length = 0.9
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("MissileLauncherSprite/MuzzleFlash:visible")
+tracks/0/path = NodePath("MissileLauncherSprite/Sprite/MuzzleFlash:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
+"times": PoolRealArray( 0.25, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MissileLauncherSprite/MuzzleFlash:frame")
+tracks/1/path = NodePath("MissileLauncherSprite/Sprite/MuzzleFlash:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25 ),
+"times": PoolRealArray( 0.25, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 5 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_projectile"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MissileLauncherSprite/Sprite/Exhaust:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MissileLauncherSprite/Sprite/Exhaust:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "shoot"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MissileLauncherSprite/Sprite/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MissileLauncherSprite/Sprite/MuzzleFlash:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "make_noise"
+}, {
+"args": [  ],
+"method": "spawn_projectile"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MissileLauncherSprite/Sprite/Exhaust:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MissileLauncherSprite/Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 74.5973, -3.56427 ), Vector2( -66.175, 0.891068 ), Vector2( 0, 0 ) ]
 }
 
 [node name="BasicMissileLauncher" type="Node2D"]
 script = ExtResource( 1 )
 damage = 800.0
 line_of_sight = true
-shots_per_burst = 5
-burst_delay = 0.8
-reload_time = 2.0
 projectile = ExtResource( 5 )
 
 [node name="CockDurationTimer" type="Timer" parent="."]
@@ -118,27 +272,33 @@ one_shot = true
 wait_time = 1.5
 one_shot = true
 
-[node name="ShootNoise" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-volume_db = -15.0
-
-[node name="MissileLauncherSprite" type="Sprite" parent="."]
+[node name="MissileLauncherSprite" type="Node2D" parent="."]
 position = Vector2( 2, 0 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 2 )
-offset = Vector2( 2, 1.33333 )
+scale = Vector2( 1.66226, 1.12225 )
 
-[node name="MuzzleLocation" type="Position2D" parent="MissileLauncherSprite"]
-position = Vector2( 134.667, -20 )
+[node name="Sprite" type="Sprite" parent="MissileLauncherSprite"]
+texture = ExtResource( 2 )
+
+[node name="MuzzleLocation" type="Position2D" parent="MissileLauncherSprite/Sprite"]
+position = Vector2( 146.187, -19.6035 )
 scale = Vector2( 2, 2 )
 
-[node name="MuzzleFlash" type="AnimatedSprite" parent="MissileLauncherSprite"]
+[node name="MuzzleFlash" type="AnimatedSprite" parent="MissileLauncherSprite/Sprite"]
 visible = false
-position = Vector2( 136, -9.33333 )
+position = Vector2( 150.667, -17.3333 )
 scale = Vector2( 3.66513, 6.72134 )
 frames = SubResource( 9 )
 animation = "flash"
 offset = Vector2( 3.80517, -6.07298 )
+
+[node name="Exhaust" type="AnimatedSprite" parent="MissileLauncherSprite/Sprite"]
+self_modulate = Color( 0.552941, 0.32549, 0.286275, 1 )
+position = Vector2( -292, 1.33333 )
+scale = Vector2( 14.011, 8.86887 )
+frames = SubResource( 9 )
+animation = "flash"
+offset = Vector2( 3.80517, -6.07298 )
+flip_h = true
 
 [node name="TargetLocation" type="Sprite" parent="."]
 self_modulate = Color( 0.831373, 0.180392, 0.180392, 0.647059 )
@@ -148,6 +308,11 @@ texture = ExtResource( 4 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/flash = SubResource( 2 )
+anims/shoot = SubResource( 10 )
+
+[node name="ShootNoise" parent="." instance=ExtResource( 7 )]
+stream = ExtResource( 3 )
+shoot_sound_effect = ExtResource( 3 )
 
 [connection signal="timeout" from="CockDurationTimer" to="." method="_on_CockDurationTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
