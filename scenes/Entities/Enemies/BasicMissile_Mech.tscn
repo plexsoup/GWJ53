@@ -6,6 +6,9 @@
 
 [node name="BasicMissile_Mech" instance=ExtResource( 2 )]
 
+[node name="CollisionShape2D" parent="." index="1"]
+scale = Vector2( 1, 2.28 )
+
 [node name="L1Hull" parent="Health" index="4" instance=ExtResource( 3 )]
 position = Vector2( 1, -82 )
 

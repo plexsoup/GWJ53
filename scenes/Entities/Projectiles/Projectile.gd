@@ -14,7 +14,7 @@ var mech : KinematicBody2D # whoever launched you
 var team : int
 var damage : float
 var damage_type : int # see Global.damage_types
-var knockback_bonus : float = 2.0
+export var knockback_bonus : float = 50.0
 var projectile_range : float
 var line_of_sight : bool
 var target_location : Vector2
